@@ -3853,6 +3853,10 @@ async function openFile(
 
     try {
 
+        item.lastOpened = Date.now();
+
+        await updateItem(item);
+
         if (!item.blob) {
 
             alert(
