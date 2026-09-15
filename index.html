@@ -2355,6 +2355,48 @@ function addItem(item) {
     );
 
 }
+/* =====================================================
+   UPDATE ITEM
+===================================================== */
+
+function updateItem(item) {
+
+    return new Promise(
+        (resolve, reject) => {
+
+            const request =
+                getStore("readwrite").put(item);
+
+            request.onsuccess =
+                () => resolve(item);
+
+            request.onerror =
+                () =>
+                    reject(
+                        request.error
+                    );
+
+        }
+    );
+
+}
+/* =====================================================
+   FAVORITE
+===================================================== */
+
+async function toggleFavorite(item) {
+
+    item.favorite =
+        item.favorite === true
+            ? false
+            : true;
+
+    await updateItem(item);
+
+    await displayCurrentFolder();
+
+}
+
 
 
 /* =====================================================
@@ -2808,12 +2850,55 @@ function createFileItem(
 
 
     const actions =
-        document.createElement(
-            "div"
-        );
+    document.createElement(
+        "div"
+    );
 
-    actions.className =
-        "item-actions";
+actions.className =
+    "item-actions";
+
+
+/* =====================================================
+   FAVORITE BUTTON
+===================================================== */
+
+const favoriteBtn =
+    document.createElement(
+        "button"
+    );
+
+favoriteBtn.className =
+    "item-btn";
+
+favoriteBtn.type =
+    "button";
+
+favoriteBtn.textContent =
+    item.favorite === true
+        ? "⭐"
+        : "☆";
+
+favoriteBtn.setAttribute(
+    "aria-label",
+    item.favorite === true
+        ? "Remove Favorite"
+        : "Add Favorite"
+);
+
+favoriteBtn.addEventListener(
+    "click",
+    event => {
+
+        event.stopPropagation();
+
+        toggleFavorite(item);
+
+    }
+);
+
+actions.appendChild(
+    favoriteBtn
+);
 
 
     const moreBtn =
