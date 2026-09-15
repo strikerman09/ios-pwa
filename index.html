@@ -499,7 +499,14 @@ button {
 
     overflow: hidden;
 }
-
+.recent-file-path {
+    margin-top: 3px;
+    font-size: 12px;
+    opacity: 0.65;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .file-name {
     overflow: hidden;
 
@@ -5859,15 +5866,20 @@ async function displayRecentDocuments() {
     if (row && folderPath) {
 
         const pathInfo =
-            document.createElement("div");
+    document.createElement("div");
 
-        pathInfo.className =
-            "recent-file-path";
+pathInfo.className =
+    "recent-file-path";
 
-        pathInfo.textContent =
-            "📁 " + folderPath;
+pathInfo.textContent =
+    "📁 " + folderPath;
 
-        row.appendChild(pathInfo);
+const fileInfo =
+    row.querySelector(".file-info");
+
+if (fileInfo) {
+    fileInfo.appendChild(pathInfo);
+}
     }
 }
     message.textContent =
