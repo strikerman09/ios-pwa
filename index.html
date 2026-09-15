@@ -2483,6 +2483,50 @@ button{
         text-overflow: clip;
     }
 }
+    @media (max-width: 600px) {
+
+    .file-name {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .file-name-text {
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    .file-name.marquee {
+        text-overflow: clip;
+    }
+
+    .file-name.marquee .file-name-text {
+        padding-right: 30px;
+
+        animation:
+            fileNameMarquee
+            8s
+            ease-in-out
+            infinite
+            alternate;
+    }
+
+    @keyframes fileNameMarquee {
+
+        0%,
+        15% {
+            transform: translateX(0);
+        }
+
+        85%,
+        100% {
+            transform:
+                translateX(
+                    var(--marquee-distance)
+                );
+        }
+    }
+}
 </style>
 
 <style id="mobile-v4-pwa-diagnostic-css">
@@ -3455,18 +3499,27 @@ function createFileItem(
 
 
     const name =
-        document.createElement(
-            "div"
-        );
+    document.createElement(
+        "div"
+    );
 
-    name.className =
-        "file-name";
+name.className =
+    "file-name";
 
-    name.textContent =
-        item.name;
+const nameText =
+    document.createElement(
+        "span"
+    );
 
+nameText.className =
+    "file-name-text";
 
-    info.appendChild(name);
+nameText.textContent =
+    item.name;
+
+name.appendChild(nameText);
+
+info.appendChild(name);
 
 
     const type =
@@ -3661,7 +3714,30 @@ actions.appendChild(favoriteBtn);
 
 
     attachLongPress(row,item);
-    fileList.appendChild(row);
+fileList.appendChild(row);
+
+requestAnimationFrame(() => {
+
+    if (
+        window.innerWidth <= 600 &&
+        nameText.scrollWidth > name.clientWidth
+    ) {
+
+        const distance =
+            nameText.scrollWidth -
+            name.clientWidth;
+
+        name.style.setProperty(
+            "--marquee-distance",
+            "-" + distance + "px"
+        );
+
+        name.classList.add(
+            "marquee"
+        );
+    }
+
+});
 
 }
 
