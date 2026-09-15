@@ -2387,7 +2387,16 @@ function updateItem(item) {
     );
 
 }
+async function toggleFavorite(item) {
 
+    item.favorite = item.favorite === true
+        ? false
+        : true;
+
+    await updateItem(item);
+
+    await displayCurrentFolder();
+}
 
 /* =====================================================
    GET
@@ -2819,7 +2828,10 @@ function createFileItem(
 
 favoriteBtn.type = "button";
 
-favoriteBtn.textContent = "☆";
+favoriteBtn.textContent =
+    item.favorite === true
+        ? "⭐"
+        : "☆";
 
 favoriteBtn.style.display = "inline-flex";
 favoriteBtn.style.width = "40px";
@@ -2832,11 +2844,11 @@ favoriteBtn.style.background = "transparent";
 favoriteBtn.style.cursor = "pointer";
 favoriteBtn.setAttribute("aria-label", "Add Favorite");
 
-favoriteBtn.addEventListener("click", event => {
+favoriteBtn.addEventListener("click", async event => {
     event.stopPropagation();
-    alert("Favorite button works");
-});
 
+    await toggleFavorite(item);
+});
 actions.appendChild(favoriteBtn);
 
 
