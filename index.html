@@ -3047,7 +3047,12 @@ homeBtn.addEventListener(
 
     }
 );
-
+favoritesBtn.addEventListener(
+    "click",
+    () => {
+        displayFavorites();
+    }
+);
 
 /* =====================================================
    UP
@@ -5695,6 +5700,61 @@ document.addEventListener("DOMContentLoaded",()=>{
     showDiagnosticPanel();
   }
 })();
+async function displayFavorites() {
+
+    if (reorderMode) return;
+
+    fileList.innerHTML = "";
+
+    const allItems = await getAllItems();
+
+    const favorites = allItems.filter(
+        item => item.favorite === true
+    );
+
+    renderFavoritesBreadcrumb();
+
+    if (!favorites.length) {
+
+        showEmpty();
+
+        message.textContent =
+            "အကြိုက်ဆုံး ဖိုင် မရှိသေးပါ။";
+
+        updateNavigation();
+
+        return;
+    }
+
+    favorites.forEach((item, index) => {
+
+        createFileItem(
+            item,
+            index + 1
+        );
+
+    });
+
+    message.textContent =
+        toMyanmarNumber(favorites.length) +
+        " ခု";
+
+    updateNavigation();
+}
+function renderFavoritesBreadcrumb() {
+
+    breadcrumb.innerHTML = "";
+
+    const item =
+        document.createElement("span");
+
+    item.className = "breadcrumb-current";
+
+    item.textContent =
+        "⭐ အကြိုက်ဆုံး";
+
+    breadcrumb.appendChild(item);
+}
 </script>
 
 </body>
