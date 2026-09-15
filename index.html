@@ -6036,10 +6036,33 @@ if (fileInfo) {
     size.innerHTML =
         "<strong>Size</strong><span></span>";
 
+    if (item.type === "folder") {
+
+    const allItems = await getAllItems();
+
+    const children = allItems.filter(
+        x => x.parentId === item.id
+    );
+
+    let totalSize = 0;
+
+    for (const child of children) {
+
+        if (child.type !== "folder" && child.blob) {
+            totalSize += child.blob.size || 0;
+        }
+    }
+
     size.querySelector("span").textContent =
-        item.type === "folder"
-            ? "-"
-            : formatFileSize(item.blob?.size || 0);
+        children.length +
+        " items • " +
+        formatFileSize(totalSize);
+
+} else {
+
+    size.querySelector("span").textContent =
+        formatFileSize(item.blob?.size || 0);
+}
 
     card.appendChild(size);
 
