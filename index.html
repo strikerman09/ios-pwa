@@ -6000,6 +6000,8 @@ if (fileInfo) {
 
     card.appendChild(title);
 
+
+    // Name
     const name =
         document.createElement("div");
 
@@ -6013,6 +6015,8 @@ if (fileInfo) {
 
     card.appendChild(name);
 
+
+    // Type
     const type =
         document.createElement("div");
 
@@ -6028,6 +6032,8 @@ if (fileInfo) {
 
     card.appendChild(type);
 
+
+    // Size
     const size =
         document.createElement("div");
 
@@ -6036,36 +6042,21 @@ if (fileInfo) {
     size.innerHTML =
         "<strong>Size</strong><span></span>";
 
-    if (item.type === "folder") {
-
-    const allItems = await getAllItems();
-
-    const children = allItems.filter(
-        x => x.parentId === item.id
-    );
-
-    let totalSize = 0;
-
-    for (const child of children) {
-
-        if (child.type !== "folder" && child.blob) {
-            totalSize += child.blob.size || 0;
-        }
+    if (
+        item.type !== "folder" &&
+        item.blob
+    ) {
+        size.querySelector("span").textContent =
+            formatFileSize(item.blob.size);
+    } else {
+        size.querySelector("span").textContent =
+            "-";
     }
-
-    size.querySelector("span").textContent =
-        children.length +
-        " items • " +
-        formatFileSize(totalSize);
-
-} else {
-
-    size.querySelector("span").textContent =
-        formatFileSize(item.blob?.size || 0);
-}
 
     card.appendChild(size);
 
+
+    // Location
     const location =
         document.createElement("div");
 
@@ -6079,6 +6070,8 @@ if (fileInfo) {
 
     card.appendChild(location);
 
+
+    // Close
     const closeBtn =
         document.createElement("button");
 
@@ -6093,12 +6086,28 @@ if (fileInfo) {
 
     card.appendChild(closeBtn);
 
+
     modal.appendChild(card);
 
     document.body.appendChild(modal);
 
-    location.querySelector("span").textContent =
-        await getItemPath(item);
+
+    // Load location
+    try {
+
+        location.querySelector("span").textContent =
+            await getItemPath(item);
+
+    } catch (error) {
+
+        console.error(
+            "Could not get file location:",
+            error
+        );
+
+        location.querySelector("span").textContent =
+            "-";
+    }
 }
 </script>
 
