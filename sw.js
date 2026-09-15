@@ -7,7 +7,16 @@ const APP_SHELL = [
   './icon-192.png',
   './icon-512.png'
 ];
+self.addEventListener('message', event => {
 
+    if (
+        event.data &&
+        event.data.type === 'SKIP_WAITING'
+    ) {
+        self.skipWaiting();
+    }
+
+});
 self.addEventListener('install', event => {
 
   event.waitUntil(
