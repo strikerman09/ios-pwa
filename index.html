@@ -2815,6 +2815,18 @@ function createFileItem(
 
     actions.className =
         "item-actions";
+    const favoriteBtn = document.createElement("button");
+favoriteBtn.className = "item-btn";
+favoriteBtn.type = "button";
+favoriteBtn.textContent = "☆";
+favoriteBtn.setAttribute("aria-label", "Add Favorite");
+
+favoriteBtn.addEventListener("click", event => {
+    event.stopPropagation();
+    alert("Favorite button works");
+});
+
+actions.appendChild(favoriteBtn);
 
 
     const moreBtn =
