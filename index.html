@@ -5841,17 +5841,35 @@ async function displayRecentDocuments() {
         return;
     }
 
-    recentDocuments.forEach(
-        (item, index) => {
+    for (let index = 0; index < recentDocuments.length; index++) {
 
-            createFileItem(
-                item,
-                index + 1
-            );
+    const item = recentDocuments[index];
 
-        }
+    const folderPath =
+        await getItemPath(item);
+
+    createFileItem(
+        item,
+        index + 1
     );
 
+    const row =
+        fileList.lastElementChild;
+
+    if (row && folderPath) {
+
+        const pathInfo =
+            document.createElement("div");
+
+        pathInfo.className =
+            "recent-file-path";
+
+        pathInfo.textContent =
+            "📁 " + folderPath;
+
+        row.appendChild(pathInfo);
+    }
+}
     message.textContent =
         toMyanmarNumber(
             recentDocuments.length
