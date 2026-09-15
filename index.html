@@ -6805,6 +6805,42 @@ if (fileInfo) {
             "-";
     }
 }
+async function requestPersistentStorage() {
+
+    if (!navigator.storage ||
+        !navigator.storage.persist) {
+        return;
+    }
+
+    try {
+
+        const alreadyPersistent =
+            await navigator.storage.persisted();
+
+        if (alreadyPersistent) {
+            console.log(
+                "Persistent storage: already enabled"
+            );
+            return;
+        }
+
+        const granted =
+            await navigator.storage.persist();
+
+        console.log(
+            "Persistent storage:",
+            granted ? "enabled" : "not granted"
+        );
+
+    } catch (error) {
+
+        console.log(
+            "Persistent storage request failed:",
+            error
+        );
+
+    }
+}
 </script>
 
 </body>
