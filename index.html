@@ -5629,10 +5629,10 @@ document.addEventListener("DOMContentLoaded",()=>{
       return;
     }
     try {
-      const reg = await navigator.serviceWorker.register('/my-pwa-test/sw.js', {
-        scope: './',
-        updateViaCache: 'none'
-      });
+      const reg = await navigator.serviceWorker.register('./sw.js', {
+  scope: './',
+  updateViaCache: 'none'
+});
       console.log('[Mobile V4 PWA] Service worker registration:', reg.scope);
       try { await reg.update(); } catch (e) { console.warn('[Mobile V4 PWA] update() failed:', e); }
       if (DIAG_MODE) inspectPWA();
