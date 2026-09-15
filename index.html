@@ -1371,54 +1371,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
    MOBILE ACTIONS BUTTON
 ===================================================== */
 
-.mobile-actions-btn {
-    display: none;
-}
 
-@media (max-width: 600px) {
-
-    .mobile-actions-btn {
-        display: inline-flex;
-
-        width: 34px;
-        height: 34px;
-
-        min-width: 34px;
-
-        align-items: center;
-        justify-content: center;
-
-        border: none;
-        border-radius: 10px;
-
-        background: #f2f2f7;
-
-        color: #333;
-
-        font-size: 18px;
-
-        cursor: pointer;
-    }
-
-    .file-item {
-        grid-template-columns:
-            28px
-            42px
-            minmax(0, 1fr)
-            34px;
-    }
-
-    .mobile-actions-btn {
-        grid-column: 4;
-        grid-row: 1 / 3;
-
-        align-self: center;
-    }
-
-    .item-actions {
-        display: none;
-    }
-}
 /* =====================================================
    iPHONE CLEAN FILE / FOLDER LIST
 ===================================================== */
@@ -3216,25 +3169,7 @@ actions.appendChild(favoriteBtn);
         deleteBtn
     );
 
-const mobileActionsBtn = document.createElement("button");
 
-mobileActionsBtn.type = "button";
-mobileActionsBtn.className = "mobile-actions-btn";
-mobileActionsBtn.textContent = "☰";
-mobileActionsBtn.setAttribute(
-    "aria-label",
-    "Actions"
-);
-
-mobileActionsBtn.addEventListener(
-    "click",
-    event => {
-        event.stopPropagation();
-        alert("Mobile Actions");
-    }
-);
-
-row.appendChild(mobileActionsBtn);
     row.appendChild(actions);
 
 
