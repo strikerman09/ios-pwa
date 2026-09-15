@@ -5910,6 +5910,113 @@ if (fileInfo) {
 
     updateNavigation();
 }
+    async function showFileDetails(item) {
+
+    if (!item) return;
+
+    const existing =
+        document.getElementById("fileDetailsModal");
+
+    if (existing) {
+        existing.remove();
+    }
+
+    const modal =
+        document.createElement("div");
+
+    modal.id = "fileDetailsModal";
+    modal.className = "file-details-modal";
+
+    const card =
+        document.createElement("div");
+
+    card.className = "file-details-card";
+
+    const title =
+        document.createElement("h3");
+
+    title.textContent =
+        "ⓘ File Details";
+
+    card.appendChild(title);
+
+    const name =
+        document.createElement("div");
+
+    name.className = "file-detail-row";
+
+    name.innerHTML =
+        "<strong>Name</strong><span></span>";
+
+    name.querySelector("span").textContent =
+        item.name;
+
+    card.appendChild(name);
+
+    const type =
+        document.createElement("div");
+
+    type.className = "file-detail-row";
+
+    type.innerHTML =
+        "<strong>Type</strong><span></span>";
+
+    type.querySelector("span").textContent =
+        item.type === "folder"
+            ? "Folder"
+            : getFileType(item.name);
+
+    card.appendChild(type);
+
+    const size =
+        document.createElement("div");
+
+    size.className = "file-detail-row";
+
+    size.innerHTML =
+        "<strong>Size</strong><span></span>";
+
+    size.querySelector("span").textContent =
+        item.type === "folder"
+            ? "-"
+            : formatFileSize(item.blob?.size || 0);
+
+    card.appendChild(size);
+
+    const location =
+        document.createElement("div");
+
+    location.className = "file-detail-row";
+
+    location.innerHTML =
+        "<strong>Location</strong><span></span>";
+
+    location.querySelector("span").textContent =
+        "Loading...";
+
+    card.appendChild(location);
+
+    const closeBtn =
+        document.createElement("button");
+
+    closeBtn.type = "button";
+    closeBtn.className = "file-details-close";
+    closeBtn.textContent = "Close";
+
+    closeBtn.addEventListener(
+        "click",
+        () => modal.remove()
+    );
+
+    card.appendChild(closeBtn);
+
+    modal.appendChild(card);
+
+    document.body.appendChild(modal);
+
+    location.querySelector("span").textContent =
+        await getItemPath(item);
+}
 </script>
 
 </body>
