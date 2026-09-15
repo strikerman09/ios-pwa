@@ -2816,9 +2816,20 @@ function createFileItem(
     actions.className =
         "item-actions";
     const favoriteBtn = document.createElement("button");
-favoriteBtn.className = "item-btn";
+
 favoriteBtn.type = "button";
+
 favoriteBtn.textContent = "☆";
+
+favoriteBtn.style.display = "inline-flex";
+favoriteBtn.style.width = "40px";
+favoriteBtn.style.height = "40px";
+favoriteBtn.style.alignItems = "center";
+favoriteBtn.style.justifyContent = "center";
+favoriteBtn.style.fontSize = "22px";
+favoriteBtn.style.border = "none";
+favoriteBtn.style.background = "transparent";
+favoriteBtn.style.cursor = "pointer";
 favoriteBtn.setAttribute("aria-label", "Add Favorite");
 
 favoriteBtn.addEventListener("click", event => {
