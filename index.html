@@ -2848,6 +2848,26 @@ function createFileItem(
 
     actions.className =
         "item-actions";
+    const detailsBtn = document.createElement("button");
+
+detailsBtn.className = "item-btn";
+detailsBtn.type = "button";
+detailsBtn.textContent = "ⓘ";
+
+detailsBtn.setAttribute(
+    "aria-label",
+    "Details"
+);
+
+detailsBtn.addEventListener(
+    "click",
+    event => {
+        event.stopPropagation();
+        showFileDetails(item);
+    }
+);
+
+actions.appendChild(detailsBtn);
     const favoriteBtn = document.createElement("button");
 
 favoriteBtn.type = "button";
