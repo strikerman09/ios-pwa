@@ -3061,6 +3061,12 @@ favoritesBtn.addEventListener(
         displayFavorites();
     }
 );
+recentBtn.addEventListener(
+    "click",
+    () => {
+        displayRecentDocuments();
+    }
+);
 
 /* =====================================================
    UP
@@ -5766,6 +5772,67 @@ function renderFavoritesBreadcrumb() {
         "⭐ အကြိုက်ဆုံး";
 
     breadcrumb.appendChild(item);
+}
+async function displayRecentDocuments() {
+
+    if (reorderMode) return;
+
+    fileList.innerHTML = "";
+
+    const allItems = await getAllItems();
+
+    const recentDocuments = allItems
+        .filter(item =>
+            item.type !== "folder" &&
+            item.lastOpened
+        )
+        .sort((a, b) =>
+            b.lastOpened - a.lastOpened
+        );
+
+    breadcrumb.innerHTML = "";
+
+    const item =
+        document.createElement("span");
+
+    item.className =
+        "breadcrumb-current";
+
+    item.textContent =
+        "🕘 Recent";
+
+    breadcrumb.appendChild(item);
+
+    if (!recentDocuments.length) {
+
+        showEmpty();
+
+        message.textContent =
+            "No recent documents.";
+
+        updateNavigation();
+
+        return;
+    }
+
+    recentDocuments.forEach(
+        (item, index) => {
+
+            createFileItem(
+                item,
+                index + 1
+            );
+
+        }
+    );
+
+    message.textContent =
+        toMyanmarNumber(
+            recentDocuments.length
+        ) +
+        " ခု";
+
+    updateNavigation();
 }
 </script>
 
