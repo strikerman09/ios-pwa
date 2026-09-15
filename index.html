@@ -1359,7 +1359,70 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 @media (prefers-reduced-motion: reduce){
     .header-menu,.header-menu .menu-line,.toolbar{transition:none!important;}
 }
+/* =====================================================
+   MOBILE FILE ITEM LAYOUT
+   iPhone / narrow screens
+===================================================== */
 
+@media (max-width: 600px) {
+
+    .file-item {
+        grid-template-columns:
+            28px
+            42px
+            minmax(0, 1fr)
+            auto;
+
+        gap: 6px;
+
+        min-height: 68px;
+
+        padding: 8px 6px;
+    }
+
+    .position {
+        width: 26px;
+        font-size: 12px;
+    }
+
+    .file-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 25px;
+    }
+
+    .file-name {
+        font-size: 14px;
+    }
+
+    .file-type {
+        font-size: 10px;
+    }
+
+    .recent-file-path {
+        font-size: 10px;
+    }
+
+    .item-actions {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        flex-shrink: 0;
+    }
+
+    .item-btn {
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        padding: 0;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 14px;
+    }
+}
 </style>
 
 
