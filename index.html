@@ -2856,6 +2856,43 @@ function createFileItem(
 
 actions.className =
     "item-actions";
+    const favoriteBtn =
+    document.createElement(
+        "button"
+    );
+
+favoriteBtn.className =
+    "item-btn";
+
+favoriteBtn.type =
+    "button";
+
+favoriteBtn.textContent =
+    item.favorite === true
+        ? "⭐"
+        : "☆";
+
+favoriteBtn.setAttribute(
+    "aria-label",
+    item.favorite === true
+        ? "Remove Favorite"
+        : "Add Favorite"
+);
+
+favoriteBtn.addEventListener(
+    "click",
+    event => {
+
+        event.stopPropagation();
+
+        toggleFavorite(item);
+
+    }
+);
+
+actions.appendChild(
+    favoriteBtn
+);
 
 
 /* =====================================================
