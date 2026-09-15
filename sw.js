@@ -1,34 +1,47 @@
-const CACHE_NAME = 'ios-pwa-dev-v1';
+const CACHE_NAME = 'ios-pwa-dev-v2';
 
 const APP_SHELL = [
   './',
   './index.html',
-  './manifest.json'
+  './manifest.json',
+  './icon-192.png',
+  './icon-512.png'
 ];
 
 self.addEventListener('install', event => {
+
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(APP_SHELL))
       .then(() => self.skipWaiting())
   );
+
 });
 
+
 self.addEventListener('activate', event => {
+
   event.waitUntil(
+
     caches.keys()
       .then(keys =>
         Promise.all(
+
           keys
             .filter(key => key !== CACHE_NAME)
             .map(key => caches.delete(key))
+
         )
       )
       .then(() => self.clients.claim())
+
   );
+
 });
 
+
 self.addEventListener('fetch', event => {
+
   const request = event.request;
 
   if (request.method !== 'GET') {
@@ -36,6 +49,7 @@ self.addEventListener('fetch', event => {
   }
 
   event.respondWith(
+
     caches.match(request)
       .then(cached => {
 
@@ -51,14 +65,19 @@ self.addEventListener('fetch', event => {
               response.ok &&
               new URL(request.url).origin === self.location.origin
             ) {
+
               const copy = response.clone();
 
               caches.open(CACHE_NAME)
-                .then(cache => cache.put(request, copy))
+                .then(cache => {
+                  cache.put(request, copy);
+                })
                 .catch(() => {});
+
             }
 
             return response;
+
           })
           .catch(() => {
 
@@ -70,7 +89,11 @@ self.addEventListener('fetch', event => {
               status: 503,
               statusText: 'Offline'
             });
+
           });
+
       })
+
   );
+
 });
