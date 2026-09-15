@@ -2457,6 +2457,32 @@ button{
         grid-row: 2;
     }
 }
+/* =====================================================
+   MOBILE LONG FILE NAME MARQUEE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .file-name {
+        display: block;
+
+        width: 100%;
+
+        overflow: hidden;
+
+        white-space: nowrap;
+
+        text-overflow: clip;
+    }
+
+    .file-name:hover {
+        text-overflow: clip;
+    }
+
+    .file-name.marquee {
+        text-overflow: clip;
+    }
+}
 </style>
 
 <style id="mobile-v4-pwa-diagnostic-css">
