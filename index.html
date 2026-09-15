@@ -6485,6 +6485,28 @@ document.addEventListener("DOMContentLoaded",()=>{
   scope: './',
   updateViaCache: 'none'
 });
+if (reg.waiting) {
+    showUpdateAvailable(reg);
+}
+
+reg.addEventListener('updatefound', () => {
+
+    const newWorker = reg.installing;
+
+    if (!newWorker) return;
+
+    newWorker.addEventListener('statechange', () => {
+
+        if (
+            newWorker.state === 'installed' &&
+            navigator.serviceWorker.controller
+        ) {
+            showUpdateAvailable(reg);
+        }
+
+    });
+
+});
       console.log('[Mobile V4 PWA] Service worker registration:', reg.scope);
       try { await reg.update(); } catch (e) { console.warn('[Mobile V4 PWA] update() failed:', e); }
       if (DIAG_MODE) inspectPWA();
@@ -6840,6 +6862,112 @@ async function requestPersistentStorage() {
         );
 
     }
+}
+    function showUpdateAvailable(reg) {
+
+    if (document.getElementById("pwaUpdateNotice")) {
+        return;
+    }
+
+    const notice = document.createElement("div");
+
+    notice.id = "pwaUpdateNotice";
+
+    notice.innerHTML = `
+        <div style="
+            position:fixed;
+            left:50%;
+            bottom:20px;
+            transform:translateX(-50%);
+            z-index:99999;
+            width:min(92vw,420px);
+            padding:16px;
+            border-radius:18px;
+            background:#ffffff;
+            box-shadow:0 10px 35px rgba(0,0,0,.22);
+            border:1px solid #e5e7eb;
+            font-family:inherit;
+        ">
+            <div style="
+                font-size:16px;
+                font-weight:700;
+                margin-bottom:6px;
+            ">
+                New version available
+            </div>
+
+            <div style="
+                font-size:13px;
+                color:#6b7280;
+                margin-bottom:14px;
+            ">
+                A new version of the File Manager is ready.
+            </div>
+
+            <div style="
+                display:flex;
+                gap:8px;
+            ">
+                <button
+                    id="pwaUpdateBtn"
+                    type="button"
+                    style="
+                        flex:1;
+                        border:0;
+                        border-radius:12px;
+                        padding:11px;
+                        background:#007aff;
+                        color:white;
+                        font-weight:600;
+                        cursor:pointer;
+                    "
+                >
+                    Update
+                </button>
+
+                <button
+                    id="pwaUpdateLaterBtn"
+                    type="button"
+                    style="
+                        flex:1;
+                        border:0;
+                        border-radius:12px;
+                        padding:11px;
+                        background:#e5e7eb;
+                        color:#111827;
+                        font-weight:600;
+                        cursor:pointer;
+                    "
+                >
+                    Later
+                </button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(notice);
+
+    document
+        .getElementById("pwaUpdateLaterBtn")
+        .addEventListener("click", () => {
+            notice.remove();
+        });
+
+    document
+        .getElementById("pwaUpdateBtn")
+        .addEventListener("click", () => {
+
+            const worker = reg.waiting;
+
+            if (!worker) {
+                notice.remove();
+                return;
+            }
+
+            worker.postMessage({
+                type: "SKIP_WAITING"
+            });
+        });
 }
 </script>
 
