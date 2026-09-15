@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ios-pwa-dev-v2';
+const CACHE_NAME = 'ios-pwa-dev-v3';
 
 const APP_SHELL = [
   './',
