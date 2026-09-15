@@ -5773,6 +5773,32 @@ function renderFavoritesBreadcrumb() {
 
     breadcrumb.appendChild(item);
 }
+async function getItemPath(item) {
+
+    const allItems = await getAllItems();
+
+    const path = [];
+
+    let current = item;
+
+    while (current) {
+
+        if (current.type === "folder") {
+            path.unshift(current.name);
+        }
+
+        if (!current.parentId) {
+            break;
+        }
+
+        current =
+            allItems.find(
+                x => x.id === current.parentId
+            );
+    }
+
+    return path.join(" › ");
+}
 async function displayRecentDocuments() {
 
     if (reorderMode) return;
