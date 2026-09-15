@@ -1640,6 +1640,65 @@ button{
   .app { padding-left:4px !important; padding-right:4px !important; }
   .file-list { padding-left:8px !important; padding-right:8px !important; }
 }
+    .file-details-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.file-details-card {
+    width: min(92vw, 420px);
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 22px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.file-details-card h3 {
+    margin: 0 0 18px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.file-detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.file-detail-row strong {
+    font-size: 13px;
+    opacity: 0.55;
+}
+
+.file-detail-row span {
+    font-size: 15px;
+    word-break: break-word;
+}
+
+.file-details-close {
+    width: 100%;
+    margin-top: 18px;
+    padding: 12px;
+    border: none;
+    border-radius: 14px;
+    background: #007aff;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
 </style>
 
 <style id="breadcrumb-fit-fix">
@@ -1835,6 +1894,7 @@ button{
         font-size:7px!important;
     }
 }
+
 </style>
 
 <style id="mobile-v4-pwa-diagnostic-css">
