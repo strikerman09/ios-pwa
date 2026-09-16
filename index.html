@@ -3718,10 +3718,12 @@ fileList.appendChild(row);
 
 requestAnimationFrame(() => {
 
-    if (
-        window.innerWidth <= 600 &&
-        nameText.scrollWidth > name.clientWidth
-    ) {
+    setTimeout(() => {
+
+        if (
+            window.innerWidth <= 600 &&
+            nameText.scrollWidth > name.clientWidth
+        ) {
 
         const distance =
             nameText.scrollWidth -
@@ -3732,10 +3734,11 @@ requestAnimationFrame(() => {
             "-" + distance + "px"
         );
 
-        name.classList.add(
+                name.classList.add(
             "marquee"
         );
-    }
+
+    }, 150);
 
 });
 
