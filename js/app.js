@@ -2020,14 +2020,14 @@ function showUploadStatus(
 text
 ) {
 
-```
+
 uploadStatus.style.display =
     "block";
 
 
 uploadStatus.textContent =
     "⏳ " + text;
-```
+
 
 }
 
@@ -2202,7 +2202,7 @@ try {
     );
 
 }
-```
+
 
 }
 
@@ -3741,7 +3741,7 @@ row.appendChild(
 fileList.appendChild(
     row
 );
-```
+
 
 }
 
@@ -4081,7 +4081,7 @@ message.textContent =
         sorted.length
     ) +
     " ခု တွေ့ရှိပါသည်။";
-```
+
 
 }
 
@@ -4636,7 +4636,7 @@ window.addEventListener(
 "DOMContentLoaded",
 () => {
 
-```
+
     initialize();
 
     initializeHeaderMenu();
