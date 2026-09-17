@@ -1610,7 +1610,16 @@ button:focus-visible {
 }
 
 .paste-cancel {
-    display: inline-flex;
+    position: fixed;
+
+    left: calc(50% + 85px);
+    bottom: calc(
+        25px + env(safe-area-inset-bottom)
+    );
+
+    z-index: 2147483646;
+
+    display: none;
 
     align-items: center;
     justify-content: center;
@@ -1618,23 +1627,35 @@ button:focus-visible {
     width: 28px;
     height: 28px;
 
-    margin-left: 10px;
+    margin: 0;
 
+    border: 0;
     border-radius: 50%;
 
     background: rgba(255, 255, 255, 0.22);
 
+    color: #fff;
+
     font-size: 22px;
-
     line-height: 1;
-
     font-weight: 400;
+
+    transform: translateX(-50%);
+
+    touch-action: manipulation;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+.paste-cancel.show {
+    display: inline-flex;
 }
 
 .paste-cancel:active {
     background: rgba(255, 255, 255, 0.4);
-
-    transform: scale(0.9);
+    transform:
+        translateX(-50%)
+        scale(0.9);
 }
 
 
