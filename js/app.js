@@ -3315,6 +3315,36 @@ function updatePasteFab() {
         }
     }
 }
+if (pasteFab) {
+    pasteFab.addEventListener(
+        "click",
+        event => {
+            event.preventDefault();
+            event.stopPropagation();
+
+            pasteClipboardItems();
+        }
+    );
+}
+
+if (pasteCancel) {
+    pasteCancel.addEventListener(
+        "click",
+        event => {
+            event.preventDefault();
+            event.stopPropagation();
+
+            clipboardItems = [];
+            clipboardMode = null;
+            actionMenuItemId = null;
+
+            updatePasteFab();
+
+            message.textContent =
+                "ကူး/ဖြတ်ထားသော ဖိုင်ကို ပယ်ဖျက်လိုက်ပါပြီ။";
+        }
+    );
+}
 
 /* =====================================================
 LONG PRESS
