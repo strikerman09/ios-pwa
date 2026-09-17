@@ -912,6 +912,28 @@ actions.appendChild(
 /* =================================================
    MORE
 ================================================= */
+    const moreBtn =
+    document.createElement(
+        "button"
+    );
+
+moreBtn.className =
+    "item-btn item-more-btn";
+
+moreBtn.type =
+    "button";
+
+moreBtn.setAttribute(
+    "aria-label",
+    "More"
+);
+
+moreBtn.innerHTML =
+    "<span>•••</span>";
+
+actions.appendChild(
+    moreBtn
+);
 
 const openMoreMenu =
     event => {
