@@ -1612,7 +1612,7 @@ button:focus-visible {
 .paste-cancel {
     position: fixed;
 
-    left: calc(50% + 85px);
+    left: calc(50% + 115px);
     bottom: calc(
         25px + env(safe-area-inset-bottom)
     );
@@ -1624,21 +1624,26 @@ button:focus-visible {
     align-items: center;
     justify-content: center;
 
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
 
     margin: 0;
 
-    border: 0;
+    padding: 0;
+
+    border: 1px solid #c7d7ea;
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, 0.22);
+    background: #ffffff;
 
-    color: #fff;
+    color: #007aff;
 
-    font-size: 22px;
+    font-size: 21px;
     line-height: 1;
-    font-weight: 400;
+    font-weight: 600;
+
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.15);
 
     transform: translateX(-50%);
 
@@ -1652,7 +1657,10 @@ button:focus-visible {
 }
 
 .paste-cancel:active {
-    background: rgba(255, 255, 255, 0.4);
+    background: #eef6ff;
+
+    color: #005ecb;
+
     transform:
         translateX(-50%)
         scale(0.9);
