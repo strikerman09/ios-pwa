@@ -4942,35 +4942,31 @@ document.addEventListener(
            PASTE FAB
            ================================================= */
 
-        if (pasteFab) {
+        pasteFab) { ... } and if (pasteCancel) { ... } inside the TOUCH ACTION SHEET section with this:
 
-            pasteFab.addEventListener(
-                "click",
-                event => {
+if (pasteFab) {
+    pasteFab.addEventListener(
+        "click",
+        event => {
+            event.preventDefault();
+            event.stopPropagation();
 
-                    event.preventDefault();
-                    event.stopPropagation();
+            const clickedCancel =
+                event.target &&
+                event.target.closest &&
+                event.target.closest(
+                    "#v4PasteCancel"
+                );
 
-                    /*
-                     * If the X button was clicked,
-                     * do NOT paste.
-                     */
+            if (clickedCancel) {
+                return;
+            }
 
-                    if (
-                        event.target ===
-                        pasteCancel
-                    ) {
-
-                        return;
-
-                    }
-
-                    pasteClipboardItems();
-
-                }
-            );
-
+            pasteClipboardItems();
         }
+    );
+}
+
 
 
         /* =================================================
@@ -4978,29 +4974,24 @@ document.addEventListener(
            ================================================= */
 
         if (pasteCancel) {
+    pasteCancel.addEventListener(
+        "click",
+        event => {
+            event.preventDefault();
+            event.stopImmediatePropagation();
 
-            pasteCancel.addEventListener(
-                "click",
-                event => {
+            clipboardItems = [];
+            clipboardMode = null;
+            actionMenuItemId = null;
 
-                    event.preventDefault();
-                    event.stopPropagation();
+            updatePasteFab();
 
-                    clipboardItems = [];
-
-                    clipboardMode = null;
-
-                    actionMenuItemId = null;
-
-                    updatePasteFab();
-
-                    message.textContent =
-                        "ကူး/ဖြတ်ထားသော ဖိုင်ကို ပယ်ဖျက်လိုက်ပါပြီ။";
-
-                }
-            );
-
-        }
+            message.textContent =
+                "ကူး/ဖြတ်ထားသော ဖိုင်ကို ပယ်ဖျက်လိုက်ပါပြီ။";
+        },
+        true
+    );
+}
 
 
         /* =================================================
