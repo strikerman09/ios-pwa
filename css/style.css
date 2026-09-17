@@ -1612,9 +1612,9 @@ button:focus-visible {
 .paste-cancel {
     position: fixed;
 
-    left: calc(50% + 115px);
+    left: calc(50% + 120px);
     bottom: calc(
-        14px + env(safe-area-inset-bottom)
+        9px + env(safe-area-inset-bottom)
     );
 
     z-index: 2147483646;
@@ -1624,8 +1624,8 @@ button:focus-visible {
     align-items: center;
     justify-content: center;
 
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
 
     margin: 0;
     padding: 0;
@@ -1637,7 +1637,7 @@ button:focus-visible {
 
     color: #ffffff;
 
-    font-size: 24px;
+    font-size: 28px;
     line-height: 1;
     font-weight: 400;
 
