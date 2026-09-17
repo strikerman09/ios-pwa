@@ -920,6 +920,14 @@ const openMoreMenu =
 
         event.stopPropagation();
 
+        if (
+            event.stopImmediatePropagation
+        ) {
+
+            event.stopImmediatePropagation();
+
+        }
+
         openItemActionMenu(
             item.id,
             event.currentTarget
@@ -932,6 +940,24 @@ const openMoreMenu =
 moreBtn.addEventListener(
     "click",
     openMoreMenu
+);
+
+moreBtn.addEventListener(
+    "pointerup",
+    event => {
+
+        if (
+            event.pointerType ===
+            "touch"
+        ) {
+
+            openMoreMenu(
+                event
+            );
+
+        }
+
+    }
 );
 
 
