@@ -1612,7 +1612,7 @@ button:focus-visible {
 .paste-cancel {
     position: fixed;
 
-    left: calc(50% + 120px);
+    left: calc(50% + 90px);
     bottom: calc(
         9px + env(safe-area-inset-bottom)
     );
@@ -1637,14 +1637,15 @@ button:focus-visible {
 
     color: #ffffff;
 
-    font-size: 28px;
+    font-size: 30px;
     line-height: 1;
     font-weight: 400;
 
     box-shadow:
         0 6px 22px rgba(0, 122, 255, 0.30);
 
-    transform: translateX(-50%);
+    /* IMPORTANT: no translate */
+    transform: none;
 
     touch-action: manipulation;
 
@@ -1658,7 +1659,9 @@ button:focus-visible {
 .paste-cancel:active {
     background: #007aff;
     color: #ffffff;
-    transform: translateX(-50%);
+
+    /* IMPORTANT: do not move the button */
+    transform: none;
 }
 
 
