@@ -1657,10 +1657,8 @@ button:focus-visible {
 
 .paste-cancel:active {
     background: #007aff;
-
-    transform:
-        translateX(-50%)
-        scale(0.96);
+    color: #ffffff;
+    transform: translateX(-50%);
 }
 
 
