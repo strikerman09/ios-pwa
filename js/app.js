@@ -4925,13 +4925,20 @@ document.addEventListener(
         }
 
 
-               /* =================================================
-           PASTE FAB + CANCEL X
-           ================================================= */
+             /* =================================================
+   PASTE FAB + CANCEL X
+   ================================================= */
 
-       if (pasteFab) {
+const pasteCancel =
+    document.getElementById(
+        "v4PasteCancel"
+    );
+
+
+if (pasteFab) {
 
     /* PASTE */
+
     pasteFab.addEventListener(
         "click",
         event => {
@@ -4940,50 +4947,58 @@ document.addEventListener(
             event.stopPropagation();
 
             /*
-             * If the actual × element was clicked,
-             * do NOT paste.
+             * If × was clicked,
+             * do not paste.
              */
+
             if (
-                event.target &&
-                event.target.id ===
-                    "v4PasteCancel"
+                event.target ===
+                pasteCancel
             ) {
+
                 return;
+
             }
 
+
             pasteClipboardItems();
+
         }
     );
 
+}
 
-   pasteCancel 
 
-        /* CLOSE ACTION SHEET BACKDROP */
+/* CANCEL × */
 
-        if (sheet) {
+if (pasteCancel) {
 
-            sheet.addEventListener(
-                "click",
-                event => {
+    pasteCancel.addEventListener(
+        "click",
+        event => {
 
-                    if (
-                        event.target.dataset.touchClose
-                    ) {
+            event.preventDefault();
+            event.stopPropagation();
 
-                        closeTouchMenu();
+            clipboardItems = [];
 
-                    }
+            clipboardMode = null;
 
-                }
-            );
+            actionMenuItemId = null;
+
+            updatePasteFab();
+
+            message.textContent =
+                "ကူး/ဖြတ်ထားသော ဖိုင်ကို ပယ်ဖျက်လိုက်ပါပြီ။";
 
         }
+    );
+
+}
 
 
-        updatePasteFab();
+/* CLOSE ACTION SHEET BACKDROP */
 
-    }
-);
 
 /* =====================================================
 PWA DIAGNOSTIC V11
