@@ -1,4 +1,4 @@
-<script>
+
 
 "use strict";
 
@@ -4102,4 +4102,4 @@ async function requestPersistentStorage() {
             });
         });
 }
-</script>
+
