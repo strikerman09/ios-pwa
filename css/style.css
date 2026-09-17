@@ -1877,14 +1877,14 @@ button:focus-visible {
 
 
 /* =====================================================
-   TABLET / DESKTOP APP WIDTH
+   TABLET / DESKTOP
    ===================================================== */
 
 @media (min-width: 600px) {
 
     .app {
         width: 100%;
-        max-width: 1400px;
+        max-width: 1200px;
         margin: 0 auto;
 
         padding:
@@ -1894,6 +1894,82 @@ button:focus-visible {
 
         box-shadow:
             0 0 20px rgba(0, 0, 0, 0.08);
+    }
+}
+
+
+/* =====================================================
+   LAPTOP - 1366px
+   ===================================================== */
+
+@media (min-width: 1000px) {
+
+    body {
+        background: #e9edf3;
+    }
+
+    .app {
+        max-width: 1200px;
+        min-height: 100vh;
+
+        margin: 0 auto;
+
+        padding:
+            14px
+            20px
+            30px;
+    }
+
+    /* Header */
+
+    .header {
+        min-height: 90px;
+        border-radius: 18px;
+    }
+
+    .brand-text h1 {
+        font-size: 25px;
+    }
+
+    .brand-text p {
+        font-size: 13px;
+    }
+
+    .app-logo {
+        width: 60px;
+        height: 60px;
+        flex-basis: 60px;
+    }
+
+    .header-menu {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        min-height: 50px;
+    }
+
+    /* Main toolbar */
+
+    .toolbar {
+        display: grid;
+
+        grid-template-columns:
+            repeat(7, minmax(0, 1fr));
+
+        gap: 8px;
+
+        width: 100%;
+        padding: 8px 10px;
+    }
+
+    .toolbar button {
+        min-height: 46px;
+    }
+
+    /* File area */
+
+    .file-list {
+        width: 100%;
     }
 }
 
