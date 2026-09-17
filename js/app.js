@@ -3315,17 +3315,6 @@ function updatePasteFab() {
         }
     }
 }
-if (pasteFab) {
-    pasteFab.addEventListener(
-        "click",
-        event => {
-            event.preventDefault();
-            event.stopPropagation();
-
-            pasteClipboardItems();
-        }
-    );
-}
 
 
 
