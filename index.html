@@ -5945,61 +5945,7 @@ async function createSearchItem(
    PATH
 ===================================================== */
 
-async function getItemPath(
-    item
-) {
 
-    const all =
-        await getAllItems();
-
-
-    const map =
-        new Map();
-
-
-    all.forEach(
-        current => {
-
-            map.set(
-                current.id,
-                current
-            );
-
-        }
-    );
-
-
-    const parts = [];
-
-
-    let current =
-        item;
-
-
-    while (
-        current &&
-        current.id !== "root"
-    ) {
-
-        parts.unshift(
-            current.name
-        );
-
-
-        current =
-            map.get(
-                current.parentId
-            );
-
-    }
-
-
-    return (
-        "မူလ / " +
-        parts.join(" / ")
-    );
-
-}
 
 
 /* =====================================================
