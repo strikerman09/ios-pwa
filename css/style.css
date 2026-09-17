@@ -1877,23 +1877,79 @@ button:focus-visible {
 
 
 /* =====================================================
-   TABLET / DESKTOP
+   RESPONSIVE TABLET / DESKTOP
    ===================================================== */
 
 @media (min-width: 600px) {
 
+    body {
+        background: #e9edf3;
+    }
+
     .app {
         width: 100%;
-        max-width: 1200px;
+        max-width: 1400px;
+        min-height: 100vh;
+
         margin: 0 auto;
 
         padding:
             12px
-            16px
-            calc(24px + env(safe-area-inset-bottom));
+            clamp(16px, 2vw, 32px)
+            32px;
 
-        box-shadow:
-            0 0 20px rgba(0, 0, 0, 0.08);
+        box-sizing: border-box;
+    }
+
+    .header {
+        min-height: 90px;
+        border-radius: 18px;
+    }
+
+    .brand-text h1 {
+        font-size: clamp(22px, 1.8vw, 28px);
+    }
+
+    .brand-text p {
+        font-size: clamp(12px, 1vw, 14px);
+    }
+
+    .app-logo {
+        width: clamp(56px, 4.5vw, 68px);
+        height: clamp(56px, 4.5vw, 68px);
+        flex-basis: clamp(56px, 4.5vw, 68px);
+    }
+
+    .header-menu {
+        width: clamp(46px, 3.5vw, 54px);
+        height: clamp(46px, 3.5vw, 54px);
+        min-width: clamp(46px, 3.5vw, 54px);
+        min-height: clamp(46px, 3.5vw, 54px);
+    }
+
+    .toolbar {
+        display: grid;
+        grid-template-columns:
+            repeat(7, minmax(0, 1fr));
+
+        gap: clamp(6px, 0.7vw, 10px);
+
+        width: 100%;
+
+        padding:
+            8px
+            clamp(8px, 1vw, 12px);
+
+        box-sizing: border-box;
+    }
+
+    .toolbar button {
+        min-height: clamp(44px, 3.5vw, 50px);
+    }
+
+    .file-list {
+        width: 100%;
+        box-sizing: border-box;
     }
 }
 
