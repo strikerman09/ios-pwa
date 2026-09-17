@@ -6485,6 +6485,11 @@ document.addEventListener("DOMContentLoaded",()=>{
   scope: './',
   updateViaCache: 'none'
 });
+// Reload the page when the new Service Worker takes control
+navigator.serviceWorker.addEventListener('controllerchange', () => {
+  window.location.reload();
+});
+
 if (reg.waiting) {
     showUpdateAvailable(reg);
 }
