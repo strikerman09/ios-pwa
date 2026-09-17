@@ -4942,7 +4942,6 @@ document.addEventListener(
            PASTE FAB
            ================================================= */
 
-        pasteFab) { ... } and if (pasteCancel) { ... } inside the TOUCH ACTION SHEET section with this:
 
 if (pasteFab) {
     pasteFab.addEventListener(
