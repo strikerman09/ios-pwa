@@ -4973,10 +4973,6 @@ if (pasteCancel) {
     );
 
 }
-const pasteCancel =
-    document.getElementById(
-        "v4PasteCancel"
-    );
 
 if (pasteCancel) {
 
