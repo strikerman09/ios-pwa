@@ -913,30 +913,6 @@ actions.appendChild(
    MORE
 ================================================= */
 
-const moreBtn =
-    document.createElement(
-        "button"
-    );
-
-
-moreBtn.className =
-    "item-btn item-more-btn";
-
-
-moreBtn.type =
-    "button";
-
-
-moreBtn.setAttribute(
-    "aria-label",
-    "More"
-);
-
-
-moreBtn.innerHTML =
-    "<span>•••</span>";
-
-
 const openMoreMenu =
     event => {
 
@@ -944,53 +920,18 @@ const openMoreMenu =
 
         event.stopPropagation();
 
-        if (
-            event.stopImmediatePropagation
-        ) {
-
-            event.stopImmediatePropagation();
-
-        }
-
-
         openItemActionMenu(
             item.id,
             event.currentTarget
         );
 
-
         return false;
 
     };
 
-
 moreBtn.addEventListener(
     "click",
     openMoreMenu
-);
-
-
-moreBtn.addEventListener(
-    "pointerup",
-    event => {
-
-        if (
-            event.pointerType ===
-            "touch"
-        ) {
-
-            openMoreMenu(
-                event
-            );
-
-        }
-
-    }
-);
-
-
-actions.appendChild(
-    moreBtn
 );
 
 
