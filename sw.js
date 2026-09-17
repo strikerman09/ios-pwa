@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ios-pwa-dev-v7';
+const CACHE_NAME = 'ios-pwa-dev-v8';
 
 const APP_SHELL = [
   './',
@@ -7,33 +7,64 @@ const APP_SHELL = [
   './icon-192.png',
   './icon-512.png'
 ];
+
+/* =====================================================
+   UPDATE CONTROL
+===================================================== */
+
 self.addEventListener('message', event => {
 
-    if (
-        event.data &&
-        event.data.type === 'SKIP_WAITING'
-    ) {
-        self.skipWaiting();
-    }
+  if (
+    event.data &&
+    event.data.type === 'SKIP_WAITING'
+  ) {
+    self.skipWaiting();
+  }
 
 });
+
+
+/* =====================================================
+   INSTALL
+===================================================== */
+
 self.addEventListener('install', event => {
 
   event.waitUntil(
+
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(APP_SHELL))
-      .then(() => self.skipWaiting())
+
+      .then(cache => {
+
+        return cache.addAll(APP_SHELL);
+
+      })
+
+      /*
+       * IMPORTANT:
+       * Do NOT call skipWaiting() here.
+       *
+       * The new worker should wait until
+       * the user presses "Update".
+       */
+
   );
 
 });
 
+
+/* =====================================================
+   ACTIVATE
+===================================================== */
 
 self.addEventListener('activate', event => {
 
   event.waitUntil(
 
     caches.keys()
+
       .then(keys =>
+
         Promise.all(
 
           keys
@@ -41,13 +72,19 @@ self.addEventListener('activate', event => {
             .map(key => caches.delete(key))
 
         )
+
       )
+
       .then(() => self.clients.claim())
 
   );
 
 });
 
+
+/* =====================================================
+   FETCH
+===================================================== */
 
 self.addEventListener('fetch', event => {
 
@@ -60,6 +97,7 @@ self.addEventListener('fetch', event => {
   event.respondWith(
 
     caches.match(request)
+
       .then(cached => {
 
         if (cached) {
@@ -67,6 +105,7 @@ self.addEventListener('fetch', event => {
         }
 
         return fetch(request)
+
           .then(response => {
 
             if (
@@ -78,9 +117,13 @@ self.addEventListener('fetch', event => {
               const copy = response.clone();
 
               caches.open(CACHE_NAME)
+
                 .then(cache => {
+
                   cache.put(request, copy);
+
                 })
+
                 .catch(() => {});
 
             }
@@ -88,16 +131,24 @@ self.addEventListener('fetch', event => {
             return response;
 
           })
+
           .catch(() => {
 
             if (request.mode === 'navigate') {
-              return caches.match('./index.html');
+
+              return caches.match(
+                './index.html'
+              );
+
             }
 
-            return new Response('', {
-              status: 503,
-              statusText: 'Offline'
-            });
+            return new Response(
+              '',
+              {
+                status: 503,
+                statusText: 'Offline'
+              }
+            );
 
           });
 
