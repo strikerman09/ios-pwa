@@ -4862,6 +4862,10 @@ document.addEventListener(
             document.getElementById(
                 "touchCancelAction"
             );
+        const pasteFab =
+    document.getElementById(
+        "v4PasteFab"
+    );
 
         
 
