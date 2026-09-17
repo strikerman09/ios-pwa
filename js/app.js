@@ -4929,8 +4929,9 @@ document.addEventListener(
            PASTE FAB + CANCEL X
            ================================================= */
 
-        if (pasteFab) {
+       if (pasteFab) {
 
+    /* PASTE */
     pasteFab.addEventListener(
         "click",
         event => {
@@ -4938,40 +4939,49 @@ document.addEventListener(
             event.preventDefault();
             event.stopPropagation();
 
+            /*
+             * If the actual × element was clicked,
+             * do NOT paste.
+             */
+            if (
+                event.target &&
+                event.target.id ===
+                    "v4PasteCancel"
+            ) {
+                return;
+            }
+
             pasteClipboardItems();
-
         }
     );
 
-}
 
+    /* CANCEL × */
+    const pasteCancel =
+        document.getElementById(
+            "v4PasteCancel"
+        );
 
-const pasteCancel =
-    document.getElementById(
-        "v4PasteCancel"
-    );
+    if (pasteCancel) {
 
-if (pasteCancel) {
+        pasteCancel.addEventListener(
+            "click",
+            event => {
 
-    pasteCancel.addEventListener(
-        "click",
-        event => {
+                event.preventDefault();
+                event.stopPropagation();
 
-            event.preventDefault();
-            event.stopPropagation();
+                clipboardItems = [];
+                clipboardMode = null;
+                actionMenuItemId = null;
 
-            clipboardItems = [];
-            clipboardMode = null;
-            actionMenuItemId = null;
+                updatePasteFab();
 
-            updatePasteFab();
-
-            message.textContent =
-                "ကူး/ဖြတ်ထားသော ဖိုင်ကို ပယ်ဖျက်လိုက်ပါပြီ။";
-
-        }
-    );
-
+                message.textContent =
+                    "ကူး/ဖြတ်ထားသော ဖိုင်ကို ပယ်ဖျက်လိုက်ပါပြီ။";
+            }
+        );
+    }
 }
 
 if (pasteCancel) {
