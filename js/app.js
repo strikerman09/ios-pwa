@@ -3262,60 +3262,58 @@ PASTE FAB
 ===================================================== */
 
 function updatePasteFab() {
-
-
-const fab =
-    document.getElementById(
-        "v4PasteFab"
-    );
-
-
-if (!fab) {
-    return;
-}
-
-
-const hasClipboard =
-    Array.isArray(
-        clipboardItems
-    ) &&
-    clipboardItems.length >
-    0;
-
-
-fab.classList.toggle(
-    "show",
-    hasClipboard
-);
-
-
-fab.style.display =
-    hasClipboard
-        ? "block"
-        : "none";
-
-
-if (hasClipboard) {
-
-    const label =
-        fab.querySelector(
-            ".paste-label"
+    const fab =
+        document.getElementById(
+            "v4PasteFab"
         );
 
+    const cancel =
+        document.getElementById(
+            "v4PasteCancel"
+        );
 
-    if (label) {
-
-        label.textContent =
-            clipboardMode ===
-            "cut"
-                ? "ကပ် • ဖြတ်ထားသည်"
-                : "ကပ် • ကူးထားသည်";
-
+    if (!fab) {
+        return;
     }
 
-}
+    const hasClipboard =
+        Array.isArray(
+            clipboardItems
+        ) &&
+        clipboardItems.length >
+        0;
 
+    fab.classList.toggle(
+        "show",
+        hasClipboard
+    );
 
+    fab.style.display =
+        hasClipboard
+            ? "block"
+            : "none";
+
+    if (cancel) {
+        cancel.classList.toggle(
+            "show",
+            hasClipboard
+        );
+    }
+
+    if (hasClipboard) {
+        const label =
+            fab.querySelector(
+                ".paste-label"
+            );
+
+        if (label) {
+            label.textContent =
+                clipboardMode ===
+                "cut"
+                    ? "ကပ် • ဖြတ်ထားသည်"
+                    : "ကပ် • ကူးထားသည်";
+        }
+    }
 }
 
 /* =====================================================
