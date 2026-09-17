@@ -1876,19 +1876,85 @@ button:focus-visible {
 }
 
 
-/* =========================================================
-   25. TABLET / DESKTOP
-   ========================================================= */
+/* =====================================================
+   TABLET / DESKTOP APP WIDTH
+   ===================================================== */
 
 @media (min-width: 600px) {
 
     .app {
-        max-width: 800px;
-
+        width: 100%;
+        max-width: 1400px;
         margin: 0 auto;
+
+        padding:
+            12px
+            16px
+            calc(24px + env(safe-area-inset-bottom));
 
         box-shadow:
             0 0 20px rgba(0, 0, 0, 0.08);
+    }
+}
+
+
+/* =====================================================
+   LAPTOP / DESKTOP LAYOUT
+   ===================================================== */
+
+@media (min-width: 1000px) {
+
+    body {
+        background: #e9edf3;
+    }
+
+    .app {
+        max-width: 1400px;
+        min-height: 100vh;
+        margin: 0 auto;
+        padding: 16px 24px 40px;
+    }
+
+    .header {
+        min-height: 96px;
+        border-radius: 18px;
+    }
+
+    .brand-text h1 {
+        font-size: 26px;
+    }
+
+    .brand-text p {
+        font-size: 14px;
+    }
+
+    .app-logo {
+        width: 64px;
+        height: 64px;
+        flex-basis: 64px;
+    }
+
+    .header-menu {
+        width: 52px;
+        height: 52px;
+        min-width: 52px;
+        min-height: 52px;
+    }
+
+    .toolbar {
+        grid-template-columns:
+            repeat(7, minmax(110px, 1fr));
+
+        gap: 10px;
+        padding: 10px 12px;
+    }
+
+    .toolbar button {
+        min-height: 48px;
+    }
+
+    .file-list {
+        width: 100%;
     }
 }
 
