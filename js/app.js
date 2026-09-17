@@ -3256,60 +3256,7 @@ try {
 
 }
 
-function cancelClipboard() {
 
-    clipboardItems = [];
-    clipboardMode = null;
-
-    actionMenuItemId = null;
-
-    closeTouchMenu();
-
-    updatePasteFab();
-
-    message.textContent =
-        "ကူး/ဖြတ်ထားသော ဖိုင်ကို ပယ်ဖျက်လိုက်ပါပြီ။";
-}
-
-
-const pasteCancel =
-    document.getElementById("v4PasteCancel");
-
-if (pasteCancel) {
-
-    pasteCancel.addEventListener(
-        "click",
-        event => {
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            cancelClipboard();
-
-        }
-    );
-
-}
-
-
-const cancelAction =
-    document.getElementById("touchCancelAction");
-
-if (cancelAction) {
-
-    cancelAction.addEventListener(
-        "click",
-        event => {
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            closeTouchMenu();
-
-        }
-    );
-
-}
 /* =====================================================
 PASTE FAB
 ===================================================== */
@@ -4888,121 +4835,167 @@ TOUCH ACTION SHEET
 ===================================================== */
 
 document.addEventListener(
-"DOMContentLoaded",
-() => {
+    "DOMContentLoaded",
+    () => {
+
+        const sheet =
+            document.getElementById(
+                "touchActionSheet"
+            );
+
+        const copyAction =
+            document.getElementById(
+                "touchCopyAction"
+            );
+
+        const cutAction =
+            document.getElementById(
+                "touchCutAction"
+            );
+
+        const pasteAction =
+            document.getElementById(
+                "touchPasteAction"
+            );
+
+        const cancelAction =
+            document.getElementById(
+                "touchCancelAction"
+            );
+
+        const pasteFab =
+            document.getElementById(
+                "v4PasteFab"
+            );
 
 
-    const sheet =
-        document.getElementById(
-            "touchActionSheet"
-        );
+        /* COPY */
+
+        if (copyAction) {
+
+            copyAction.addEventListener(
+                "click",
+                copyLongPressedItem
+            );
+
+        }
 
 
-    const copyAction =
-        document.getElementById(
-            "touchCopyAction"
-        );
+        /* CUT */
+
+        if (cutAction) {
+
+            cutAction.addEventListener(
+                "click",
+                cutItemFromMenu
+            );
+
+        }
 
 
-    const cutAction =
-        document.getElementById(
-            "touchCutAction"
-        );
+        /* PASTE FROM ACTION SHEET */
+
+        if (pasteAction) {
+
+            pasteAction.addEventListener(
+                "click",
+                pasteClipboardItems
+            );
+
+        }
 
 
-    const pasteAction =
-        document.getElementById(
-            "touchPasteAction"
-        );
+        /* CANCEL ACTION SHEET */
 
+        if (cancelAction) {
 
-    const cancelAction =
-        document.getElementById(
-            "touchCancelAction"
-        );
+            cancelAction.addEventListener(
+                "click",
+                event => {
 
-
-    const pasteFab =
-        document.getElementById(
-            "v4PasteFab"
-        );
-
-
-    if (copyAction) {
-
-        copyAction.addEventListener(
-            "click",
-            copyLongPressedItem
-        );
-
-    }
-
-
-    if (cutAction) {
-
-        cutAction.addEventListener(
-            "click",
-            cutItemFromMenu
-        );
-
-    }
-
-
-    if (pasteAction) {
-
-        pasteAction.addEventListener(
-            "click",
-            pasteClipboardItems
-        );
-
-    }
-
-
-    if (cancelAction) {
-
-        cancelAction.addEventListener(
-            "click",
-            closeTouchMenu
-        );
-
-    }
-
-
-    if (pasteFab) {
-
-        pasteFab.addEventListener(
-            "click",
-            pasteClipboardItems
-        );
-
-    }
-
-
-    if (sheet) {
-
-        sheet.addEventListener(
-            "click",
-            e => {
-
-                if (
-                    e.target.dataset.touchClose
-                ) {
+                    event.preventDefault();
+                    event.stopPropagation();
 
                     closeTouchMenu();
 
                 }
+            );
 
-            }
-        );
+        }
+
+
+        /* =================================================
+           PASTE FAB + CANCEL X
+           ================================================= */
+
+        if (pasteFab) {
+
+            pasteFab.addEventListener(
+                "click",
+                event => {
+
+                    event.preventDefault();
+                    event.stopPropagation();
+
+
+                    /*
+                     * If the X was clicked,
+                     * cancel the clipboard.
+                     */
+
+                    const cancelButton =
+                        event.target.closest(
+                            "#v4PasteCancel"
+                        );
+
+
+                    if (cancelButton) {
+
+                        cancelClipboard();
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Otherwise,
+                     * paste the copied/cut item.
+                     */
+
+                    pasteClipboardItems();
+
+                }
+            );
+
+        }
+
+
+        /* CLOSE ACTION SHEET BACKDROP */
+
+        if (sheet) {
+
+            sheet.addEventListener(
+                "click",
+                event => {
+
+                    if (
+                        event.target.dataset.touchClose
+                    ) {
+
+                        closeTouchMenu();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        updatePasteFab();
 
     }
-
-
-    updatePasteFab();
-
-}
-
-
 );
 
 /* =====================================================
