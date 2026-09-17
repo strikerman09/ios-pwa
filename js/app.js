@@ -4830,6 +4830,7 @@ if (toolbar) {
 
 })();
 
+```js
 /* =====================================================
 TOUCH ACTION SHEET
 ===================================================== */
@@ -4862,15 +4863,21 @@ document.addEventListener(
             document.getElementById(
                 "touchCancelAction"
             );
+
         const pasteFab =
-    document.getElementById(
-        "v4PasteFab"
-    );
+            document.getElementById(
+                "v4PasteFab"
+            );
 
-        
+        const pasteCancel =
+            document.getElementById(
+                "v4PasteCancel"
+            );
 
 
-        /* COPY */
+        /* =================================================
+           COPY
+           ================================================= */
 
         if (copyAction) {
 
@@ -4882,7 +4889,9 @@ document.addEventListener(
         }
 
 
-        /* CUT */
+        /* =================================================
+           CUT
+           ================================================= */
 
         if (cutAction) {
 
@@ -4894,7 +4903,9 @@ document.addEventListener(
         }
 
 
-        /* PASTE FROM ACTION SHEET */
+        /* =================================================
+           PASTE FROM ACTION SHEET
+           ================================================= */
 
         if (pasteAction) {
 
@@ -4906,7 +4917,9 @@ document.addEventListener(
         }
 
 
-        /* CANCEL ACTION SHEET */
+        /* =================================================
+           CANCEL ACTION SHEET
+           ================================================= */
 
         if (cancelAction) {
 
@@ -4925,79 +4938,104 @@ document.addEventListener(
         }
 
 
-             /* =================================================
-   PASTE FAB + CANCEL X
-   ================================================= */
+        /* =================================================
+           PASTE FAB
+           ================================================= */
 
-const pasteCancel =
-    document.getElementById(
-        "v4PasteCancel"
-    );
+        if (pasteFab) {
 
+            pasteFab.addEventListener(
+                "click",
+                event => {
 
-if (pasteFab) {
+                    event.preventDefault();
+                    event.stopPropagation();
 
-    /* PASTE */
+                    /*
+                     * If the X button was clicked,
+                     * do NOT paste.
+                     */
 
-    pasteFab.addEventListener(
-        "click",
-        event => {
+                    if (
+                        event.target ===
+                        pasteCancel
+                    ) {
 
-            event.preventDefault();
-            event.stopPropagation();
+                        return;
 
-            /*
-             * If × was clicked,
-             * do not paste.
-             */
+                    }
 
-            if (
-                event.target ===
-                pasteCancel
-            ) {
+                    pasteClipboardItems();
 
-                return;
-
-            }
-
-
-            pasteClipboardItems();
+                }
+            );
 
         }
-    );
-
-}
 
 
-/* CANCEL × */
+        /* =================================================
+           CANCEL X
+           ================================================= */
 
-if (pasteCancel) {
+        if (pasteCancel) {
 
-    pasteCancel.addEventListener(
-        "click",
-        event => {
+            pasteCancel.addEventListener(
+                "click",
+                event => {
 
-            event.preventDefault();
-            event.stopPropagation();
+                    event.preventDefault();
+                    event.stopPropagation();
 
-            clipboardItems = [];
+                    clipboardItems = [];
 
-            clipboardMode = null;
+                    clipboardMode = null;
 
-            actionMenuItemId = null;
+                    actionMenuItemId = null;
 
-            updatePasteFab();
+                    updatePasteFab();
 
-            message.textContent =
-                "ကူး/ဖြတ်ထားသော ဖိုင်ကို ပယ်ဖျက်လိုက်ပါပြီ။";
+                    message.textContent =
+                        "ကူး/ဖြတ်ထားသော ဖိုင်ကို ပယ်ဖျက်လိုက်ပါပြီ။";
+
+                }
+            );
 
         }
-    );
-
-}
 
 
-/* CLOSE ACTION SHEET BACKDROP */
+        /* =================================================
+           CLOSE ACTION SHEET BACKDROP
+           ================================================= */
+
+        if (sheet) {
+
+            sheet.addEventListener(
+                "click",
+                event => {
+
+                    if (
+                        event.target.dataset.touchClose
+                    ) {
+
+                        closeTouchMenu();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =================================================
+           INITIAL PASTE FAB STATE
+           ================================================= */
+
+        updatePasteFab();
+
+    }
+);
+
 
 
 /* =====================================================
