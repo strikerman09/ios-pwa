@@ -4863,40 +4863,7 @@ document.addEventListener(
                 "touchCancelAction"
             );
 
-        const pasteFab = document.getElementById("v4PasteFab");
-
-if (pasteFab) {
-
-    pasteFab.addEventListener("click", function(e) {
-
-        e.preventDefault();
-        e.stopPropagation();
-
-        // X button
-        if (
-            e.target &&
-            e.target.id === "v4PasteCancel"
-        ) {
-
-            clipboardItems = [];
-            clipboardMode = null;
-            actionMenuItemId = null;
-
-            closeTouchMenu();
-            updatePasteFab();
-
-            message.textContent =
-                "ကူး/ဖြတ်ထားသော ဖိုင်ကို ပယ်ဖျက်လိုက်ပါပြီ။";
-
-            return;
-        }
-
-        // Normal Paste button
-        pasteClipboardItems();
-
-    });
-
-}
+        
 
 
         /* COPY */
@@ -4954,7 +4921,7 @@ if (pasteFab) {
         }
 
 
-        /* =================================================
+               /* =================================================
            PASTE FAB + CANCEL X
            ================================================= */
 
@@ -4967,7 +4934,6 @@ if (pasteFab) {
                     event.preventDefault();
                     event.stopPropagation();
 
-
                     /*
                      * If the X was clicked,
                      * cancel the clipboard.
@@ -4978,15 +4944,20 @@ if (pasteFab) {
                             "#v4PasteCancel"
                         );
 
-
                     if (cancelButton) {
 
-                        cancelClipboard();
+                        clipboardItems = [];
+                        clipboardMode = null;
+                        actionMenuItemId = null;
+
+                        updatePasteFab();
+
+                        message.textContent =
+                            "ကူး/ဖြတ်ထားသော ဖိုင်ကို ပယ်ဖျက်လိုက်ပါပြီ။";
 
                         return;
 
                     }
-
 
                     /*
                      * Otherwise,
