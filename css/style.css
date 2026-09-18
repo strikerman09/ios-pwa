@@ -1587,20 +1587,9 @@ button:focus-visible {
     box-shadow:
         0 6px 22px rgba(0, 122, 255, 0.30);
 
-    transform: none;
+    transform: translateX(-50%);
 
     touch-action: manipulation;
-}
-
-.v4-paste-fab.show {
-    display: block;
-
-    animation:
-        touchSheetIn 0.18s ease-out;
-}
-
-.v4-paste-fab:active {
-    transform:none;
 }
 
 .paste-label {
