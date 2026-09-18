@@ -1608,8 +1608,8 @@ button:focus-visible {
 .paste-cancel {
     position: fixed;
 
-    left: auto;
-    right: 14px;
+    left: calc(50% + 85px);
+    right: auto;
 
     bottom:
         calc(9px + env(safe-area-inset-bottom));
@@ -1631,7 +1631,6 @@ button:focus-visible {
     border-radius: 50%;
 
     background: #007aff;
-
     color: #ffffff;
 
     font-size: 30px;
