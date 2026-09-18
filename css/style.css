@@ -1558,7 +1558,7 @@ button:focus-visible {
 .v4-paste-fab {
     position: fixed;
 
-    left: 50%;
+    left: calc(50% - 110px);
     right: auto;
 
     bottom:
@@ -1568,20 +1568,18 @@ button:focus-visible {
 
     display: none;
 
+    width: 150px;
     min-height: 50px;
 
-    padding: 0 20px;
+    padding: 0;
 
     border: 0;
-
     border-radius: 25px;
 
     background: #007aff;
-
     color: #fff;
 
     font-size: 16px;
-
     font-weight: 700;
 
     box-shadow:
@@ -1604,11 +1602,10 @@ button:focus-visible {
 .paste-label {
     display: inline-block;
 }
-
 .paste-cancel {
     position: fixed;
 
-    left: calc(50% + 160px);
+    left: calc(50% + 40px);
     right: auto;
 
     bottom:
