@@ -1587,9 +1587,19 @@ button:focus-visible {
     box-shadow:
         0 6px 22px rgba(0, 122, 255, 0.30);
 
-    transform: translateX(-50%);
+    transform: none;
 
     touch-action: manipulation;
+}
+
+.v4-paste-fab.show {
+    display: block;
+
+    animation: none;
+}
+
+.v4-paste-fab:active {
+    transform: none;
 }
 
 .paste-label {
