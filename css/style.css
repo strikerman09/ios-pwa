@@ -1600,9 +1600,7 @@ button:focus-visible {
 }
 
 .v4-paste-fab:active {
-    transform:
-        translateX(-50%)
-        scale(0.96);
+    transform:none;
 }
 
 .paste-label {
