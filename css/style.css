@@ -1608,7 +1608,7 @@ button:focus-visible {
 .paste-cancel {
     position: fixed;
 
-    left: calc(50% + 85px);
+    left: calc(50% + 100px);
     right: auto;
 
     bottom:
