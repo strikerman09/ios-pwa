@@ -2692,3 +2692,307 @@ button:focus-visible {
         transition: none !important;
     }
 }
+/* =========================================================
+   iPHONE UI — STEP 2
+   HEADER ONLY
+   UI ONLY — DO NOT CHANGE APPLICATION LOGIC
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    /* -----------------------------------------
+       iPhone Header
+       ----------------------------------------- */
+
+    .header {
+        min-height: 68px;
+
+        padding:
+            8px 10px;
+
+        gap: 8px;
+
+        border-radius:
+            18px 18px 0 0;
+    }
+
+
+    /* -----------------------------------------
+       Brand
+       ----------------------------------------- */
+
+    .brand {
+        min-width: 0;
+
+        gap: 10px;
+
+        flex: 1 1 auto;
+    }
+
+
+    /* -----------------------------------------
+       Logo
+       ----------------------------------------- */
+
+    .app-logo {
+        width: 48px;
+        height: 48px;
+
+        min-width: 48px;
+        min-height: 48px;
+
+        flex: 0 0 48px;
+
+        border-radius: 15px;
+    }
+
+    .app-logo svg {
+        width: 40px;
+        height: 40px;
+    }
+
+
+    /* -----------------------------------------
+       Title
+       ----------------------------------------- */
+
+    .brand-text {
+        min-width: 0;
+
+        overflow: hidden;
+    }
+
+    .brand-text h1 {
+        font-size: 19px;
+
+        line-height: 1.15;
+
+        letter-spacing: -0.3px;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+    }
+
+    .brand-text p {
+        margin-top: 3px;
+
+        font-size: 11px;
+
+        line-height: 1.2;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+    }
+
+
+    /* -----------------------------------------
+       Hamburger
+       ----------------------------------------- */
+
+    .header-menu {
+        width: 46px;
+        height: 46px;
+
+        min-width: 46px;
+        min-height: 46px;
+
+        flex: 0 0 46px;
+
+        border-radius: 50%;
+
+        gap: 4px;
+    }
+
+    .header-menu span,
+    .header-menu .menu-line {
+        width: 20px;
+        height: 2.3px;
+    }
+}
+
+
+/* =========================================================
+   SMALL iPHONE
+   <= 430px
+   ========================================================= */
+
+@media (max-width: 430px) {
+
+    .header {
+        min-height: 64px;
+
+        padding:
+            7px 9px;
+
+        gap: 7px;
+    }
+
+    .brand {
+        gap: 9px;
+    }
+
+    .app-logo {
+        width: 45px;
+        height: 45px;
+
+        min-width: 45px;
+        min-height: 45px;
+
+        flex-basis: 45px;
+
+        border-radius: 14px;
+    }
+
+    .app-logo svg {
+        width: 37px;
+        height: 37px;
+    }
+
+    .brand-text h1 {
+        font-size: 18px;
+    }
+
+    .brand-text p {
+        margin-top: 2px;
+
+        font-size: 10px;
+    }
+
+    .header-menu {
+        width: 44px;
+        height: 44px;
+
+        min-width: 44px;
+        min-height: 44px;
+
+        flex-basis: 44px;
+    }
+
+    .header-menu span,
+    .header-menu .menu-line {
+        width: 19px;
+        height: 2.2px;
+    }
+}
+
+
+/* =========================================================
+   SMALL iPHONE
+   <= 390px
+   ========================================================= */
+
+@media (max-width: 390px) {
+
+    .header {
+        min-height: 60px;
+
+        padding:
+            6px 8px;
+    }
+
+    .brand {
+        gap: 8px;
+    }
+
+    .app-logo {
+        width: 42px;
+        height: 42px;
+
+        min-width: 42px;
+        min-height: 42px;
+
+        flex-basis: 42px;
+
+        border-radius: 13px;
+    }
+
+    .app-logo svg {
+        width: 34px;
+        height: 34px;
+    }
+
+    .brand-text h1 {
+        font-size: 17px;
+    }
+
+    .brand-text p {
+        font-size: 9px;
+    }
+
+    .header-menu {
+        width: 42px;
+        height: 42px;
+
+        min-width: 42px;
+        min-height: 42px;
+
+        flex-basis: 42px;
+    }
+
+    .header-menu span,
+    .header-menu .menu-line {
+        width: 18px;
+        height: 2px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL iPHONE
+   <= 350px
+   ========================================================= */
+
+@media (max-width: 350px) {
+
+    .header {
+        min-height: 58px;
+
+        padding:
+            5px 7px;
+    }
+
+    .brand {
+        gap: 7px;
+    }
+
+    .app-logo {
+        width: 40px;
+        height: 40px;
+
+        min-width: 40px;
+        min-height: 40px;
+
+        flex-basis: 40px;
+
+        border-radius: 12px;
+    }
+
+    .app-logo svg {
+        width: 32px;
+        height: 32px;
+    }
+
+    .brand-text h1 {
+        font-size: 16px;
+    }
+
+    .brand-text p {
+        font-size: 8.5px;
+    }
+
+    .header-menu {
+        width: 40px;
+        height: 40px;
+
+        min-width: 40px;
+        min-height: 40px;
+
+        flex-basis: 40px;
+    }
+}
