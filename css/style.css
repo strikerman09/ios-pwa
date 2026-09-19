@@ -7755,3 +7755,655 @@ button:focus-visible {
             1.4 !important;
     }
 }
+/* =========================================================
+   STEP 24 — NEW iPHONE FILE MANAGEMENT LIST
+   MOBILE ONLY
+   Desktop / Tablet UI is NOT changed
+   JS / HTML / File Management Logic is NOT changed
+========================================================= */
+
+@media (max-width: 700px) {
+
+    /* -----------------------------------------------------
+       FILE LIST
+    ----------------------------------------------------- */
+
+    .file-list {
+        width: 100% !important;
+
+        padding:
+            4px
+            8px
+            calc(24px + env(safe-area-inset-bottom)) !important;
+
+        box-sizing: border-box !important;
+    }
+
+
+    /* -----------------------------------------------------
+       FILE / FOLDER ROW
+       iOS-style flat list instead of desktop card
+    ----------------------------------------------------- */
+
+    .file-item {
+        width: 100% !important;
+
+        min-height: 68px !important;
+
+        margin: 0 !important;
+
+        padding:
+            8px
+            4px !important;
+
+        display: grid !important;
+
+        grid-template-columns:
+            28px
+            46px
+            minmax(0, 1fr)
+            auto !important;
+
+        column-gap: 9px !important;
+
+        align-items: center !important;
+
+        border: 0 !important;
+
+        border-bottom:
+            1px solid
+            rgba(60, 60, 67, 0.10) !important;
+
+        border-radius: 0 !important;
+
+        background:
+            transparent !important;
+
+        box-shadow: none !important;
+
+        overflow: visible !important;
+
+        transition:
+            background 0.12s ease,
+            transform 0.12s ease !important;
+    }
+
+
+    /* First row gets a little breathing room */
+
+    .file-item:first-child {
+        border-top:
+            1px solid
+            rgba(60, 60, 67, 0.06) !important;
+
+        border-top-left-radius: 14px !important;
+        border-top-right-radius: 14px !important;
+    }
+
+
+    /* Last row */
+
+    .file-item:last-child {
+        border-bottom:
+            0 !important;
+
+        border-bottom-left-radius: 14px !important;
+        border-bottom-right-radius: 14px !important;
+    }
+
+
+    /* iOS pressed state */
+
+    .file-item:active,
+    .file-item.touch-active {
+        transform: none !important;
+
+        background:
+            rgba(0, 122, 255, 0.075) !important;
+    }
+
+
+    .file-item:hover {
+        background:
+            transparent !important;
+    }
+
+
+    /* -----------------------------------------------------
+       POSITION NUMBER
+       Quiet iOS-style index
+    ----------------------------------------------------- */
+
+    .position {
+        width: 28px !important;
+
+        min-width: 28px !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        color:
+            #a1a1a6 !important;
+
+        font-size:
+            12px !important;
+
+        font-weight:
+            500 !important;
+
+        line-height:
+            1 !important;
+
+        font-variant-numeric:
+            tabular-nums !important;
+    }
+
+
+    /* -----------------------------------------------------
+       FILE ICON
+       Cleaner icon container
+    ----------------------------------------------------- */
+
+    .file-icon {
+        width: 46px !important;
+        height: 46px !important;
+
+        min-width: 46px !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        border-radius:
+            13px !important;
+
+        background:
+            #f2f2f7 !important;
+
+        font-size:
+            27px !important;
+
+        box-shadow:
+            inset 0 0 0 1px
+            rgba(60, 60, 67, 0.035) !important;
+
+        transition:
+            transform 0.12s ease !important;
+    }
+
+
+    .folder-row .file-icon {
+        background:
+            #eaf3ff !important;
+    }
+
+
+    .file-item:active .file-icon {
+        transform:
+            scale(0.94) !important;
+    }
+
+
+    /* -----------------------------------------------------
+       FILE INFORMATION
+    ----------------------------------------------------- */
+
+    .file-info {
+        min-width: 0 !important;
+
+        width: 100% !important;
+
+        overflow: hidden !important;
+    }
+
+
+    .file-name {
+        width: 100% !important;
+
+        min-width: 0 !important;
+
+        display: block !important;
+
+        overflow: hidden !important;
+
+        text-overflow: ellipsis !important;
+
+        white-space: nowrap !important;
+
+        color:
+            #1c1c1e !important;
+
+        font-size:
+            16px !important;
+
+        font-weight:
+            600 !important;
+
+        line-height:
+            1.25 !important;
+    }
+
+
+    .file-type {
+        margin-top:
+            4px !important;
+
+        overflow: hidden !important;
+
+        text-overflow: ellipsis !important;
+
+        white-space: nowrap !important;
+
+        color:
+            #8e8e93 !important;
+
+        font-size:
+            11px !important;
+
+        line-height:
+            1.2 !important;
+    }
+
+
+    .recent-file-path,
+    .search-path {
+        margin-top:
+            3px !important;
+
+        overflow: hidden !important;
+
+        text-overflow: ellipsis !important;
+
+        white-space: nowrap !important;
+
+        color:
+            #8e8e93 !important;
+
+        font-size:
+            10px !important;
+
+        line-height:
+            1.2 !important;
+    }
+
+
+    /* -----------------------------------------------------
+       ACTION AREA
+       Keep all existing JS buttons functional,
+       but make the area visually lighter.
+    ----------------------------------------------------- */
+
+    .item-actions {
+        width: auto !important;
+
+        min-width: 38px !important;
+
+        max-width: none !important;
+
+        flex: 0 0 auto !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+
+        justify-content: flex-end !important;
+
+        gap: 2px !important;
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+
+        position: relative !important;
+
+        z-index: 100 !important;
+    }
+
+
+    .item-btn,
+    .item-more-btn {
+        width: 38px !important;
+        height: 38px !important;
+
+        min-width: 38px !important;
+        min-height: 38px !important;
+
+        flex:
+            0 0 38px !important;
+
+        padding: 0 !important;
+        margin: 0 !important;
+
+        border: 0 !important;
+
+        border-radius:
+            50% !important;
+
+        background:
+            transparent !important;
+
+        color:
+            #8e8e93 !important;
+
+        font-size:
+            17px !important;
+
+        box-shadow:
+            none !important;
+    }
+
+
+    /*
+       More button is the primary visible action.
+       Other existing actions remain functional.
+    */
+
+    .item-more-btn {
+        background:
+            #eef6ff !important;
+
+        border:
+            1px solid
+            #d7e8ff !important;
+
+        color:
+            #007aff !important;
+    }
+
+
+    .item-more-btn span {
+        font-size:
+            15px !important;
+
+        font-weight:
+            800 !important;
+    }
+
+
+    .item-btn:active,
+    .item-more-btn:active {
+        transform:
+            scale(0.90) !important;
+
+        background:
+            #e5efff !important;
+    }
+
+
+    /* -----------------------------------------------------
+       FAVORITE
+       ----------------------------------------------------- */
+
+    .file-item .item-actions
+    button[aria-label="Add Favorite"] {
+
+        width: 38px !important;
+        height: 38px !important;
+
+        min-width: 38px !important;
+        min-height: 38px !important;
+
+        flex-basis:
+            38px !important;
+
+        border-radius:
+            50% !important;
+
+        background:
+            transparent !important;
+
+        color:
+            #8e8e93 !important;
+
+        font-size:
+            18px !important;
+    }
+
+
+    /* -----------------------------------------------------
+       REORDER MODE
+       Keep existing reorder functionality,
+       but use the same iOS list proportions.
+    ----------------------------------------------------- */
+
+    .reorder-row {
+        grid-template-columns:
+            28px
+            46px
+            minmax(0, 1fr)
+            auto !important;
+
+        min-height:
+            68px !important;
+
+        padding:
+            8px 4px !important;
+
+        border-radius:
+            0 !important;
+
+        background:
+            transparent !important;
+
+        box-shadow:
+            none !important;
+    }
+
+
+    .reorder-buttons {
+        display: flex !important;
+
+        align-items: center !important;
+
+        gap: 4px !important;
+    }
+
+
+    .move-btn {
+        width: 36px !important;
+        height: 36px !important;
+
+        min-width: 36px !important;
+        min-height: 36px !important;
+
+        border:
+            1px solid
+            #e5e5ea !important;
+
+        border-radius:
+            50% !important;
+
+        background:
+            #ffffff !important;
+
+        color:
+            #007aff !important;
+
+        font-size:
+            16px !important;
+    }
+}
+
+
+/* =========================================================
+   STEP 24 — SMALL iPHONES
+========================================================= */
+
+@media (max-width: 430px) {
+
+    .file-item {
+        grid-template-columns:
+            24px
+            43px
+            minmax(0, 1fr)
+            auto !important;
+
+        column-gap:
+            8px !important;
+
+        min-height:
+            64px !important;
+    }
+
+
+    .position {
+        width:
+            24px !important;
+
+        min-width:
+            24px !important;
+
+        font-size:
+            11px !important;
+    }
+
+
+    .file-icon {
+        width:
+            43px !important;
+
+        height:
+            43px !important;
+
+        min-width:
+            43px !important;
+
+        border-radius:
+            12px !important;
+
+        font-size:
+            25px !important;
+    }
+
+
+    .file-name {
+        font-size:
+            15px !important;
+    }
+
+
+    .file-type {
+        font-size:
+            10px !important;
+    }
+
+
+    .item-btn,
+    .item-more-btn,
+    .file-item .item-actions
+    button[aria-label="Add Favorite"] {
+
+        width:
+            36px !important;
+
+        height:
+            36px !important;
+
+        min-width:
+            36px !important;
+
+        min-height:
+            36px !important;
+
+        flex-basis:
+            36px !important;
+    }
+
+
+    .item-actions {
+        gap:
+            1px !important;
+    }
+}
+
+
+/* =========================================================
+   STEP 24 — VERY SMALL iPHONES
+========================================================= */
+
+@media (max-width: 390px) {
+
+    .file-item {
+        grid-template-columns:
+            22px
+            40px
+            minmax(0, 1fr)
+            auto !important;
+
+        column-gap:
+            7px !important;
+
+        min-height:
+            62px !important;
+
+        padding:
+            7px 3px !important;
+    }
+
+
+    .position {
+        width:
+            22px !important;
+
+        min-width:
+            22px !important;
+
+        font-size:
+            10px !important;
+    }
+
+
+    .file-icon {
+        width:
+            40px !important;
+
+        height:
+            40px !important;
+
+        min-width:
+            40px !important;
+
+        border-radius:
+            11px !important;
+
+        font-size:
+            23px !important;
+    }
+
+
+    .file-name {
+        font-size:
+            14px !important;
+    }
+
+
+    .file-type {
+        font-size:
+            9px !important;
+    }
+
+
+    .item-btn,
+    .item-more-btn,
+    .file-item .item-actions
+    button[aria-label="Add Favorite"] {
+
+        width:
+            34px !important;
+
+        height:
+            34px !important;
+
+        min-width:
+            34px !important;
+
+        min-height:
+            34px !important;
+
+        flex-basis:
+            34px !important;
+    }
+}
