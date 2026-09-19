@@ -5779,3 +5779,111 @@ button:focus-visible {
         border-radius:10px !important;
     }
 }
+/* =====================================================
+   STEP 15 — iPHONE SAFE AREA / BOTTOM SPACE
+   CSS ONLY
+   No HTML / JS changes
+===================================================== */
+
+@media (max-width:700px) {
+
+    /* -------------------------------------------------
+       APP HEIGHT
+       Allow the PWA to use the full iPhone viewport.
+    ------------------------------------------------- */
+
+    html,
+    body {
+        min-height:100% !important;
+        min-height:100dvh !important;
+    }
+
+    .app {
+        min-height:100dvh !important;
+        box-sizing:border-box !important;
+    }
+
+
+    /* -------------------------------------------------
+       FILE LIST BOTTOM SPACE
+       Prevent the last item from hiding behind
+       the Paste FAB / iPhone home indicator.
+    ------------------------------------------------- */
+
+    .file-list {
+        padding-bottom:
+            calc(
+                88px +
+                env(safe-area-inset-bottom)
+            ) !important;
+    }
+
+
+    /* -------------------------------------------------
+       EMPTY STATE
+       Keep empty content above the bottom area.
+    ------------------------------------------------- */
+
+    .empty {
+        margin-bottom:
+            calc(
+                20px +
+                env(safe-area-inset-bottom)
+            ) !important;
+    }
+
+
+    /* -------------------------------------------------
+       PASTE FAB
+       Keep it above the iPhone home indicator.
+    ------------------------------------------------- */
+
+    .v4-paste-fab {
+        bottom:
+            calc(
+                14px +
+                env(safe-area-inset-bottom)
+            ) !important;
+    }
+
+
+    .paste-cancel {
+        bottom:
+            calc(
+                9px +
+                env(safe-area-inset-bottom)
+            ) !important;
+    }
+}
+
+
+/* =====================================================
+   STEP 15 — SMALL iPHONES
+===================================================== */
+
+@media (max-width:430px) {
+
+    .file-list {
+        padding-bottom:
+            calc(
+                84px +
+                env(safe-area-inset-bottom)
+            ) !important;
+    }
+}
+
+
+/* =====================================================
+   STEP 15 — VERY SMALL iPHONES
+===================================================== */
+
+@media (max-width:390px) {
+
+    .file-list {
+        padding-bottom:
+            calc(
+                82px +
+                env(safe-area-inset-bottom)
+            ) !important;
+    }
+}
