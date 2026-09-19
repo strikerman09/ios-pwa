@@ -1430,121 +1430,291 @@ button:focus-visible {
    19. CONTEXT ACTION POPUP
    ========================================================= */
 
-.touch-action-sheet {
-    position: fixed !important;
+/* =====================================================
+   STEP 25 — iPHONE ACTION SHEET
+   Mobile only
+   ===================================================== */
 
-    inset: 0 !important;
+@media (max-width: 700px) {
 
-    z-index: 2147483000 !important;
+    .touch-action-sheet {
+        position: fixed !important;
+        inset: 0 !important;
 
-    display: none !important;
+        z-index: 2147483000 !important;
 
-    pointer-events: none;
+        display: none !important;
+
+        pointer-events: none;
+
+        /* Keep the sheet above everything */
+        isolation: isolate;
+    }
+
+
+    .touch-action-sheet.show {
+        display: block !important;
+        pointer-events: auto !important;
+    }
+
+
+    /* -----------------------------------------------------
+       BACKDROP
+       ----------------------------------------------------- */
+
+    .touch-sheet-backdrop {
+        position: absolute !important;
+        inset: 0 !important;
+
+        background:
+            rgba(0, 0, 0, 0.28) !important;
+
+        backdrop-filter:
+            blur(10px) !important;
+
+        -webkit-backdrop-filter:
+            blur(10px) !important;
+
+        pointer-events: auto !important;
+
+        animation:
+            v4SheetBackdropIn
+            0.18s
+            ease-out !important;
+    }
+
+
+    /* -----------------------------------------------------
+       iOS BOTTOM SHEET
+       ----------------------------------------------------- */
+
+    .touch-sheet-card {
+        position: fixed !important;
+
+        left: 8px !important;
+        right: 8px !important;
+
+        bottom:
+            calc(8px + env(safe-area-inset-bottom)) !important;
+
+        top: auto !important;
+
+        width: auto !important;
+
+        max-width: none !important;
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+
+        overflow: hidden !important;
+
+        border:
+            1px solid
+            rgba(60, 60, 67, 0.12) !important;
+
+        border-radius:
+            22px !important;
+
+        background:
+            rgba(248, 248, 250, 0.96) !important;
+
+        box-shadow:
+            0 18px 55px
+            rgba(0, 0, 0, 0.28) !important;
+
+        backdrop-filter:
+            blur(24px) !important;
+
+        -webkit-backdrop-filter:
+            blur(24px) !important;
+
+        transform:
+            translateY(120%) !important;
+
+        pointer-events: auto !important;
+
+        animation:
+            v4SheetIn
+            0.24s
+            cubic-bezier(
+                0.22,
+                0.85,
+                0.25,
+                1
+            )
+            forwards !important;
+    }
+
+
+    /* -----------------------------------------------------
+       FILE NAME
+       ----------------------------------------------------- */
+
+    .touch-sheet-title {
+        box-sizing: border-box;
+
+        width: 100% !important;
+
+        min-height: 48px !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        padding:
+            10px 18px !important;
+
+        color:
+            #8e8e93 !important;
+
+        font-size:
+            13px !important;
+
+        font-weight:
+            600 !important;
+
+        text-align: center !important;
+
+        border-bottom:
+            1px solid
+            rgba(60, 60, 67, 0.12) !important;
+
+        white-space: nowrap !important;
+
+        overflow: hidden !important;
+
+        text-overflow: ellipsis !important;
+    }
+
+
+    /* -----------------------------------------------------
+       ACTION BUTTONS
+       ----------------------------------------------------- */
+
+    .touch-sheet-action,
+    .touch-sheet-cancel {
+        box-sizing: border-box;
+
+        display: flex !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        width: 100% !important;
+
+        min-height: 54px !important;
+
+        margin: 0 !important;
+
+        padding:
+            0 18px !important;
+
+        border: 0 !important;
+
+        border-bottom:
+            1px solid
+            rgba(60, 60, 67, 0.12) !important;
+
+        background:
+            rgba(255, 255, 255, 0.72) !important;
+
+        color:
+            #007aff !important;
+
+        font-size:
+            17px !important;
+
+        font-weight:
+            600 !important;
+
+        -webkit-tap-highlight-color:
+            transparent;
+    }
+
+
+    .touch-sheet-action:active {
+        background:
+            rgba(229, 229, 234, 0.90) !important;
+
+        transform:
+            scale(0.995);
+    }
+
+
+    /* -----------------------------------------------------
+       CANCEL
+       Separate iOS-style button
+       ----------------------------------------------------- */
+
+    .touch-sheet-cancel {
+        margin-top:
+            8px !important;
+
+        min-height:
+            56px !important;
+
+        border-top:
+            1px solid
+            rgba(60, 60, 67, 0.12) !important;
+
+        border-bottom:
+            0 !important;
+
+        border-radius:
+            0 0 22px 22px !important;
+
+        background:
+            rgba(255, 255, 255, 0.92) !important;
+
+        color:
+            #007aff !important;
+
+        font-weight:
+            700 !important;
+    }
+
+
+    .touch-sheet-cancel:active {
+        background:
+            #e5e5ea !important;
+
+        transform:
+            scale(0.995);
+    }
 }
 
-.touch-action-sheet.show {
-    display: block !important;
+
+/* =====================================================
+   STEP 25 — SHEET ANIMATION
+   ===================================================== */
+
+@keyframes v4SheetBackdropIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
-.touch-sheet-backdrop {
-    position: absolute !important;
 
-    inset: 0 !important;
+@keyframes v4SheetIn {
 
-    background: rgba(0, 0, 0, 0.28);
+    from {
+        opacity: 0;
+        transform:
+            translateY(120%);
+    }
 
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-
-    pointer-events: auto !important;
-}
-
-.touch-sheet-card {
-    position: fixed !important;
-
-    z-index: 2147483001 !important;
-
-    left: 50% !important;
-    top: 50% !important;
-
-    right: auto !important;
-    bottom: auto !important;
-
-    width: min(280px, calc(100vw - 20px));
-
-    margin: 0 !important;
-
-    border-radius: 16px;
-
-    overflow: hidden;
-
-    background: rgba(248, 248, 250, 0.98);
-
-    box-shadow:
-        0 12px 40px rgba(0, 0, 0, 0.25);
-
-    transform: translate(-50%, -50%) !important;
-
-    pointer-events: auto !important;
-
-    animation:
-        contextPopupInCenter 0.16s ease-out !important;
-}
-
-.touch-sheet-title {
-    padding: 11px 14px;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    color: #8e8e93;
-
-    text-align: center;
-
-    border-bottom: 1px solid #d1d1d6;
-
-    white-space: nowrap;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-}
-
-.touch-sheet-action,
-.touch-sheet-cancel {
-    display: block;
-
-    width: 100%;
-
-    min-height: 48px;
-
-    border: 0;
-
-    background: #fff;
-
-    color: #007aff;
-
-    font-size: 17px;
-
-    font-weight: 600;
-
-    border-bottom: 1px solid #d1d1d6;
-}
-
-.touch-sheet-action:active,
-.touch-sheet-cancel:active {
-    background: #e5e5ea;
-}
-
-.touch-sheet-cancel {
-    margin-top: 6px;
-
-    border-top: 1px solid #d1d1d6;
-
-    border-bottom: 0;
-
-    font-weight: 700;
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
 }
 
 
