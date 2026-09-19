@@ -5651,7 +5651,7 @@ button:focus-visible {
 
 
     .paste-cancel {
-        left: calc(50% + 67px) !important;
+        left: calc(50% + 80px) !important;
 
         bottom:
             calc(6px + env(safe-area-inset-bottom)) !important;
