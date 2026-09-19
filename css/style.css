@@ -5463,13 +5463,19 @@ button:focus-visible {
     }
 }
 /* =====================================================
-   STEP 13 — iPHONE PASTE FAB
-   CSS ONLY
+   STEP 13 — iPHONE PASTE BUTTON
+   CLEAN / SIMPLE VERSION
 ===================================================== */
 
 @media (max-width:700px) {
 
+    /* -------------------------------
+       PASTE BUTTON
+    -------------------------------- */
+
     .v4-paste-fab {
+        position: fixed !important;
+
         left: 50% !important;
         right: auto !important;
 
@@ -5477,13 +5483,14 @@ button:focus-visible {
             calc(14px + env(safe-area-inset-bottom)) !important;
 
         width: 138px !important;
-        min-width: 138px !important;
-
         height: 48px !important;
+        min-width: 138px !important;
         min-height: 48px !important;
 
-        padding: 0 18px !important;
+        margin: 0 !important;
+        padding: 0 !important;
 
+        border: 0 !important;
         border-radius: 24px !important;
 
         background: #007aff !important;
@@ -5491,14 +5498,14 @@ button:focus-visible {
 
         font-size: 15px !important;
         font-weight: 700 !important;
+        line-height: 1 !important;
 
         box-shadow:
-            0 7px 24px rgba(0,122,255,.28) !important;
+            0 6px 22px rgba(0,122,255,.30) !important;
 
         transform: translateX(-50%) !important;
 
         touch-action: manipulation !important;
-
         -webkit-tap-highlight-color: transparent !important;
 
         z-index: 2147483645 !important;
@@ -5511,15 +5518,14 @@ button:focus-visible {
         align-items: center !important;
         justify-content: center !important;
 
-        animation:
-            pasteFabIn .22s var(--ios-spring) both !important;
+        animation: none !important;
     }
 
 
     .v4-paste-fab:active {
         transform:
             translateX(-50%)
-            scale(.95) !important;
+            scale(.96) !important;
 
         background: #006fe6 !important;
     }
@@ -5535,35 +5541,43 @@ button:focus-visible {
     }
 
 
+    /* -------------------------------
+       CANCEL BUTTON
+    -------------------------------- */
+
     .paste-cancel {
-        left: calc(50% + 78px) !important;
+        position: fixed !important;
+
+        left: calc(50% + 90px) !important;
         right: auto !important;
 
         bottom:
             calc(8px + env(safe-area-inset-bottom)) !important;
 
-        width: 56px !important;
-        height: 56px !important;
+        width: 48px !important;
+        height: 48px !important;
+        min-width: 48px !important;
+        min-height: 48px !important;
 
-        min-width: 56px !important;
-        min-height: 56px !important;
+        margin: 0 !important;
+        padding: 0 !important;
 
+        border: 0 !important;
         border-radius: 50% !important;
 
         background: #007aff !important;
         color: #fff !important;
 
-        font-size: 27px !important;
+        font-size: 25px !important;
         line-height: 1 !important;
         font-weight: 400 !important;
 
         box-shadow:
-            0 7px 24px rgba(0,122,255,.28) !important;
+            0 6px 22px rgba(0,122,255,.30) !important;
 
         transform: translateX(-50%) !important;
 
         touch-action: manipulation !important;
-
         -webkit-tap-highlight-color: transparent !important;
 
         z-index: 2147483646 !important;
@@ -5581,7 +5595,7 @@ button:focus-visible {
     .paste-cancel:active {
         transform:
             translateX(-50%)
-            scale(.92) !important;
+            scale(.93) !important;
 
         background: #006fe6 !important;
         color: #fff !important;
@@ -5590,7 +5604,7 @@ button:focus-visible {
 
 
 /* =====================================================
-   STEP 13 — SMALL iPHONES
+   SMALL iPHONES
 ===================================================== */
 
 @media (max-width:430px) {
@@ -5612,24 +5626,24 @@ button:focus-visible {
 
 
     .paste-cancel {
-        left: calc(50% + 72px) !important;
+        left: calc(50% + 82px) !important;
 
         bottom:
             calc(7px + env(safe-area-inset-bottom)) !important;
 
-        width: 52px !important;
-        height: 52px !important;
+        width: 46px !important;
+        height: 46px !important;
 
-        min-width: 52px !important;
-        min-height: 52px !important;
+        min-width: 46px !important;
+        min-height: 46px !important;
 
-        font-size: 25px !important;
+        font-size: 24px !important;
     }
 }
 
 
 /* =====================================================
-   STEP 13 — VERY SMALL iPHONES
+   VERY SMALL iPHONES
 ===================================================== */
 
 @media (max-width:390px) {
@@ -5651,93 +5665,17 @@ button:focus-visible {
 
 
     .paste-cancel {
-        left: calc(50% + 80px) !important;
+        left: calc(50% + 75px) !important;
 
         bottom:
             calc(6px + env(safe-area-inset-bottom)) !important;
 
-        width: 48px !important;
-        height: 48px !important;
+        width: 44px !important;
+        height: 44px !important;
 
-        min-width: 48px !important;
-        min-height: 48px !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
 
         font-size: 23px !important;
-    }
-}
-
-
-/* =====================================================
-   STEP 13 — PASTE FAB ANIMATION
-===================================================== */
-
-@keyframes pasteFabIn {
-
-    from {
-        opacity: 0;
-        transform:
-            translateX(-50%)
-            translateY(10px)
-            scale(.94);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            translateX(-50%)
-            translateY(0)
-            scale(1);
-    }
-}
-/* =====================================================
-   STEP 13 FIX — PASTE / CANCEL POSITION
-===================================================== */
-
-@media (max-width:700px) {
-
-    .v4-paste-fab {
-        left: calc(50% - 32px) !important;
-        transform: translateX(-50%) !important;
-    }
-
-    .paste-cancel {
-        left: calc(50% + 78px) !important;
-        transform: translateX(-50%) !important;
-    }
-
-    .v4-paste-fab:active {
-        transform:
-            translateX(-50%)
-            scale(.95) !important;
-    }
-
-    .paste-cancel:active {
-        transform:
-            translateX(-50%)
-            scale(.92) !important;
-    }
-}
-
-
-@media (max-width:430px) {
-
-    .v4-paste-fab {
-        left: calc(50% - 30px) !important;
-    }
-
-    .paste-cancel {
-        left: calc(50% + 72px) !important;
-    }
-}
-
-
-@media (max-width:390px) {
-
-    .v4-paste-fab {
-        left: calc(50% - 28px) !important;
-    }
-
-    .paste-cancel {
-        left: calc(50% + 66px) !important;
     }
 }
