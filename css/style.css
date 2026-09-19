@@ -5689,3 +5689,55 @@ button:focus-visible {
             scale(1);
     }
 }
+/* =====================================================
+   STEP 13 FIX — PASTE / CANCEL POSITION
+===================================================== */
+
+@media (max-width:700px) {
+
+    .v4-paste-fab {
+        left: calc(50% - 32px) !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .paste-cancel {
+        left: calc(50% + 78px) !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .v4-paste-fab:active {
+        transform:
+            translateX(-50%)
+            scale(.95) !important;
+    }
+
+    .paste-cancel:active {
+        transform:
+            translateX(-50%)
+            scale(.92) !important;
+    }
+}
+
+
+@media (max-width:430px) {
+
+    .v4-paste-fab {
+        left: calc(50% - 30px) !important;
+    }
+
+    .paste-cancel {
+        left: calc(50% + 72px) !important;
+    }
+}
+
+
+@media (max-width:390px) {
+
+    .v4-paste-fab {
+        left: calc(50% - 28px) !important;
+    }
+
+    .paste-cancel {
+        left: calc(50% + 66px) !important;
+    }
+}
