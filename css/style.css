@@ -4043,3 +4043,273 @@ button:focus-visible {
             8px !important;
     }
 }
+/* =====================================================
+   STEP 6 — iPHONE ACTION BUTTONS
+   CSS ONLY
+===================================================== */
+
+@media (max-width: 700px) {
+
+    /* -------------------------------------------------
+       ACTION AREA
+    ------------------------------------------------- */
+
+    .item-actions {
+        width:
+            114px !important;
+
+        min-width:
+            114px !important;
+
+        max-width:
+            114px !important;
+
+        flex:
+            0 0 114px !important;
+
+        gap:
+            4px !important;
+
+        align-items:
+            center !important;
+
+        justify-content:
+            flex-end !important;
+    }
+
+
+    /* -------------------------------------------------
+       NORMAL ACTION BUTTON
+    ------------------------------------------------- */
+
+    .item-btn {
+        width:
+            34px !important;
+
+        height:
+            34px !important;
+
+        min-width:
+            34px !important;
+
+        min-height:
+            34px !important;
+
+        flex:
+            0 0 34px !important;
+
+        padding:
+            0 !important;
+
+        border-radius:
+            10px !important;
+
+        background:
+            transparent !important;
+
+        color:
+            var(--ios-blue) !important;
+
+        font-size:
+            16px !important;
+
+        line-height:
+            1 !important;
+
+        -webkit-tap-highlight-color:
+            transparent !important;
+
+        touch-action:
+            manipulation !important;
+
+        transition:
+            transform 0.15s ease,
+            background 0.15s ease !important;
+    }
+
+    .item-btn:active {
+        background:
+            var(--ios-blue-soft) !important;
+
+        transform:
+            scale(0.90) !important;
+    }
+
+
+    /* -------------------------------------------------
+       MORE BUTTON
+    ------------------------------------------------- */
+
+    .item-more-btn {
+        width:
+            34px !important;
+
+        height:
+            34px !important;
+
+        min-width:
+            34px !important;
+
+        min-height:
+            34px !important;
+
+        flex:
+            0 0 34px !important;
+
+        border-radius:
+            50% !important;
+
+        background:
+            #eef6ff !important;
+
+        border:
+            1px solid #cfe2ff !important;
+
+        color:
+            var(--ios-blue) !important;
+
+        font-size:
+            14px !important;
+
+        font-weight:
+            800 !important;
+
+        line-height:
+            1 !important;
+
+        -webkit-tap-highlight-color:
+            transparent !important;
+
+        touch-action:
+            manipulation !important;
+
+        transition:
+            transform 0.15s ease,
+            background 0.15s ease !important;
+    }
+
+    .item-more-btn:active {
+        background:
+            #dcecff !important;
+
+        transform:
+            scale(0.90) !important;
+    }
+
+    .item-more-btn span {
+        transform:
+            translateY(-1px) !important;
+
+        pointer-events:
+            none !important;
+    }
+}
+
+
+/* =====================================================
+   STEP 6 — SMALL iPHONES
+===================================================== */
+
+@media (max-width: 430px) {
+
+    .item-actions {
+        width:
+            108px !important;
+
+        min-width:
+            108px !important;
+
+        max-width:
+            108px !important;
+
+        flex-basis:
+            108px !important;
+
+        gap:
+            3px !important;
+    }
+
+    .item-btn,
+    .item-more-btn {
+        width:
+            32px !important;
+
+        height:
+            32px !important;
+
+        min-width:
+            32px !important;
+
+        min-height:
+            32px !important;
+
+        flex-basis:
+            32px !important;
+    }
+
+    .item-btn {
+        font-size:
+            15px !important;
+    }
+
+    .item-more-btn {
+        font-size:
+            13px !important;
+    }
+}
+
+
+/* =====================================================
+   STEP 6 — VERY SMALL iPHONES
+===================================================== */
+
+@media (max-width: 390px) {
+
+    .item-actions {
+        width:
+            102px !important;
+
+        min-width:
+            102px !important;
+
+        max-width:
+            102px !important;
+
+        flex-basis:
+            102px !important;
+
+        gap:
+            3px !important;
+    }
+
+    .item-btn,
+    .item-more-btn {
+        width:
+            30px !important;
+
+        height:
+            30px !important;
+
+        min-width:
+            30px !important;
+
+        min-height:
+            30px !important;
+
+        flex-basis:
+            30px !important;
+
+        border-radius:
+            9px !important;
+    }
+
+    .item-btn {
+        font-size:
+            14px !important;
+    }
+
+    .item-more-btn {
+        font-size:
+            12px !important;
+    }
+}
