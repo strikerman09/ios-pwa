@@ -5462,3 +5462,230 @@ button:focus-visible {
         border-radius:11px !important;
     }
 }
+/* =====================================================
+   STEP 13 — iPHONE PASTE FAB
+   CSS ONLY
+===================================================== */
+
+@media (max-width:700px) {
+
+    .v4-paste-fab {
+        left: 50% !important;
+        right: auto !important;
+
+        bottom:
+            calc(14px + env(safe-area-inset-bottom)) !important;
+
+        width: 138px !important;
+        min-width: 138px !important;
+
+        height: 48px !important;
+        min-height: 48px !important;
+
+        padding: 0 18px !important;
+
+        border-radius: 24px !important;
+
+        background: #007aff !important;
+        color: #fff !important;
+
+        font-size: 15px !important;
+        font-weight: 700 !important;
+
+        box-shadow:
+            0 7px 24px rgba(0,122,255,.28) !important;
+
+        transform: translateX(-50%) !important;
+
+        touch-action: manipulation !important;
+
+        -webkit-tap-highlight-color: transparent !important;
+
+        z-index: 2147483645 !important;
+    }
+
+
+    .v4-paste-fab.show {
+        display: flex !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        animation:
+            pasteFabIn .22s var(--ios-spring) both !important;
+    }
+
+
+    .v4-paste-fab:active {
+        transform:
+            translateX(-50%)
+            scale(.95) !important;
+
+        background: #006fe6 !important;
+    }
+
+
+    .paste-label {
+        display: inline-flex !important;
+
+        align-items: center;
+        justify-content: center;
+
+        white-space: nowrap;
+    }
+
+
+    .paste-cancel {
+        left: calc(50% + 78px) !important;
+        right: auto !important;
+
+        bottom:
+            calc(8px + env(safe-area-inset-bottom)) !important;
+
+        width: 56px !important;
+        height: 56px !important;
+
+        min-width: 56px !important;
+        min-height: 56px !important;
+
+        border-radius: 50% !important;
+
+        background: #007aff !important;
+        color: #fff !important;
+
+        font-size: 27px !important;
+        line-height: 1 !important;
+        font-weight: 400 !important;
+
+        box-shadow:
+            0 7px 24px rgba(0,122,255,.28) !important;
+
+        transform: translateX(-50%) !important;
+
+        touch-action: manipulation !important;
+
+        -webkit-tap-highlight-color: transparent !important;
+
+        z-index: 2147483646 !important;
+    }
+
+
+    .paste-cancel.show {
+        display: flex !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+
+    .paste-cancel:active {
+        transform:
+            translateX(-50%)
+            scale(.92) !important;
+
+        background: #006fe6 !important;
+        color: #fff !important;
+    }
+}
+
+
+/* =====================================================
+   STEP 13 — SMALL iPHONES
+===================================================== */
+
+@media (max-width:430px) {
+
+    .v4-paste-fab {
+        width: 128px !important;
+        min-width: 128px !important;
+
+        height: 46px !important;
+        min-height: 46px !important;
+
+        bottom:
+            calc(12px + env(safe-area-inset-bottom)) !important;
+
+        border-radius: 23px !important;
+
+        font-size: 14px !important;
+    }
+
+
+    .paste-cancel {
+        left: calc(50% + 72px) !important;
+
+        bottom:
+            calc(7px + env(safe-area-inset-bottom)) !important;
+
+        width: 52px !important;
+        height: 52px !important;
+
+        min-width: 52px !important;
+        min-height: 52px !important;
+
+        font-size: 25px !important;
+    }
+}
+
+
+/* =====================================================
+   STEP 13 — VERY SMALL iPHONES
+===================================================== */
+
+@media (max-width:390px) {
+
+    .v4-paste-fab {
+        width: 118px !important;
+        min-width: 118px !important;
+
+        height: 44px !important;
+        min-height: 44px !important;
+
+        bottom:
+            calc(10px + env(safe-area-inset-bottom)) !important;
+
+        border-radius: 22px !important;
+
+        font-size: 13px !important;
+    }
+
+
+    .paste-cancel {
+        left: calc(50% + 67px) !important;
+
+        bottom:
+            calc(6px + env(safe-area-inset-bottom)) !important;
+
+        width: 48px !important;
+        height: 48px !important;
+
+        min-width: 48px !important;
+        min-height: 48px !important;
+
+        font-size: 23px !important;
+    }
+}
+
+
+/* =====================================================
+   STEP 13 — PASTE FAB ANIMATION
+===================================================== */
+
+@keyframes pasteFabIn {
+
+    from {
+        opacity: 0;
+        transform:
+            translateX(-50%)
+            translateY(10px)
+            scale(.94);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(1);
+    }
+}
