@@ -36,6 +36,7 @@ html {
     min-height: 100dvh;
 
     scroll-behavior: smooth;
+}
 
 body {
     margin: 0;
