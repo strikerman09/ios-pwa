@@ -1431,15 +1431,16 @@ button:focus-visible {
    ========================================================= */
 
 /* =====================================================
-   STEP 25 — iPHONE CENTER ACTION POPUP
-   Mobile only
-   JS / HTML / desktop UI unchanged
+   STEP 25 — iOS CENTER ACTION POPUP
+   iPhone + iPad
+   Desktop UI is NOT changed
+   JS / HTML / File Management Logic is NOT changed
 ===================================================== */
 
-@media (max-width: 700px) {
+@media (max-width: 1024px) {
 
     /* -------------------------------------------------
-       POPUP CONTAINER
+       FULLSCREEN POPUP LAYER
     ------------------------------------------------- */
 
     .touch-action-sheet {
@@ -1454,7 +1455,6 @@ button:focus-visible {
 
         isolation: isolate;
     }
-
 
     .touch-action-sheet.show {
         display: block !important;
@@ -1475,44 +1475,48 @@ button:focus-visible {
             rgba(0, 0, 0, 0.30) !important;
 
         backdrop-filter:
-            blur(8px) !important;
+            blur(10px) !important;
 
         -webkit-backdrop-filter:
-            blur(8px) !important;
+            blur(10px) !important;
 
         pointer-events: auto !important;
 
         animation:
             v4PopupBackdropIn
             0.18s
-            ease-out both !important;
+            ease-out
+            both !important;
     }
 
 
     /* -------------------------------------------------
-       CENTERED POPUP
+       CENTER POPUP
 
        IMPORTANT:
-       Do NOT use bottom-sheet positioning here.
+       JavaScript positionTouchMenu()
+       controls:
 
-       Existing JS positionTouchMenu()
-       controls left / top / transform.
+           left
+           top
+           transform
+
+       Therefore we DO NOT set those properties here.
     ------------------------------------------------- */
 
     .touch-sheet-card {
         position: fixed !important;
 
+        box-sizing: border-box !important;
+
         width:
-            min(92vw, 380px) !important;
+            min(92vw, 420px) !important;
 
         max-width:
-            380px !important;
+            420px !important;
 
         max-height:
-            min(72dvh, 560px) !important;
-
-        box-sizing:
-            border-box !important;
+            min(72dvh, 600px) !important;
 
         margin:
             0 !important;
@@ -1553,28 +1557,27 @@ button:focus-visible {
             auto !important;
 
         /*
-           Do not set left/top/bottom/transform.
-           positionTouchMenu() already handles them.
-        */
+           DO NOT SET:
 
-        animation:
-            v4PopupIn
-            0.20s
-            cubic-bezier(.22, 1, .36, 1)
-            both !important;
+           left
+           top
+           right
+           bottom
+           transform
+
+           These are controlled by positionTouchMenu().
+        */
     }
 
 
     /* -------------------------------------------------
-       TITLE
+       POPUP TITLE
     ------------------------------------------------- */
 
     .touch-sheet-title {
-        box-sizing:
-            border-box !important;
+        box-sizing: border-box !important;
 
-        width:
-            100% !important;
+        width: 100% !important;
 
         min-height:
             46px !important;
@@ -1627,11 +1630,9 @@ button:focus-visible {
 
     .touch-sheet-action,
     .touch-sheet-cancel {
-        box-sizing:
-            border-box !important;
+        box-sizing: border-box !important;
 
-        width:
-            100% !important;
+        width: 100% !important;
 
         min-height:
             52px !important;
@@ -1683,7 +1684,6 @@ button:focus-visible {
             transparent !important;
     }
 
-
     .touch-sheet-action:active {
         background:
             rgba(229, 229, 234, 0.90) !important;
@@ -1694,7 +1694,7 @@ button:focus-visible {
 
 
     /* -------------------------------------------------
-       CANCEL
+       CANCEL BUTTON
     ------------------------------------------------- */
 
     .touch-sheet-cancel {
@@ -1721,7 +1721,6 @@ button:focus-visible {
             700 !important;
     }
 
-
     .touch-sheet-cancel:active {
         background:
             #e5e5ea !important;
@@ -1733,7 +1732,152 @@ button:focus-visible {
 
 
 /* =====================================================
-   STEP 25 — CENTER POPUP ANIMATION
+   STEP 25 — iPAD SIZE
+===================================================== */
+
+@media (min-width: 701px) and (max-width: 1024px) {
+
+    .touch-sheet-card {
+        width:
+            min(70vw, 440px) !important;
+
+        max-width:
+            440px !important;
+
+        max-height:
+            min(68dvh, 620px) !important;
+
+        padding:
+            10px !important;
+
+        border-radius:
+            24px !important;
+    }
+
+    .touch-sheet-title {
+        min-height:
+            50px !important;
+
+        font-size:
+            14px !important;
+    }
+
+    .touch-sheet-action,
+    .touch-sheet-cancel {
+        min-height:
+            56px !important;
+
+        font-size:
+            17px !important;
+    }
+
+    .touch-sheet-cancel {
+        margin-top:
+            10px !important;
+
+        border-radius:
+            16px !important;
+    }
+}
+
+
+/* =====================================================
+   STEP 25 — iPHONE SIZE
+===================================================== */
+
+@media (max-width: 430px) {
+
+    .touch-sheet-card {
+        width:
+            min(92vw, 380px) !important;
+
+        max-width:
+            380px !important;
+
+        max-height:
+            72dvh !important;
+
+        padding:
+            8px !important;
+
+        border-radius:
+            22px !important;
+    }
+
+    .touch-sheet-title {
+        min-height:
+            46px !important;
+
+        font-size:
+            13px !important;
+    }
+
+    .touch-sheet-action,
+    .touch-sheet-cancel {
+        min-height:
+            52px !important;
+
+        font-size:
+            16px !important;
+    }
+}
+
+
+/* =====================================================
+   STEP 25 — SMALL iPHONE
+===================================================== */
+
+@media (max-width: 390px) {
+
+    .touch-sheet-card {
+        width:
+            calc(100vw - 24px) !important;
+
+        max-width:
+            calc(100vw - 24px) !important;
+
+        max-height:
+            74dvh !important;
+
+        padding:
+            7px !important;
+
+        border-radius:
+            20px !important;
+    }
+
+    .touch-sheet-title {
+        min-height:
+            44px !important;
+
+        padding:
+            7px 12px !important;
+
+        font-size:
+            12px !important;
+    }
+
+    .touch-sheet-action,
+    .touch-sheet-cancel {
+        min-height:
+            50px !important;
+
+        font-size:
+            15px !important;
+    }
+}
+
+
+/* =====================================================
+   STEP 25 — POPUP ANIMATION
+
+   IMPORTANT:
+   Do NOT animate transform on the card.
+
+   positionTouchMenu() owns transform:
+       translate(-50%, -50%)
+
+   This prevents the popup from jumping/clipping.
 ===================================================== */
 
 @keyframes v4PopupBackdropIn {
@@ -1747,21 +1891,6 @@ button:focus-visible {
     }
 }
 
-
-@keyframes v4PopupIn {
-
-    from {
-        opacity: 0;
-        transform:
-            scale(0.94);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            scale(1);
-    }
-}
 
 
 /* =========================================================
