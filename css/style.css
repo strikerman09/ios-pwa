@@ -6687,3 +6687,181 @@ button:focus-visible {
         line-height:16px !important;
     }
 }
+/* =====================================================
+   STEP 20 — iPHONE FILE ACTION BUTTONS POLISH
+   CSS ONLY
+   No HTML / JS changes
+===================================================== */
+
+@media (max-width:700px) {
+
+    .file-item .item-actions {
+        flex:0 0 auto !important;
+        display:flex !important;
+        align-items:center !important;
+        justify-content:flex-end !important;
+        gap:3px !important;
+        margin-left:auto !important;
+    }
+
+    /* Details / More / Rename / Delete */
+    .file-item .item-actions .item-btn {
+        width:40px !important;
+        height:40px !important;
+        min-width:40px !important;
+        min-height:40px !important;
+        flex:0 0 40px !important;
+
+        padding:0 !important;
+        margin:0 !important;
+
+        display:inline-flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+
+        border:0 !important;
+        border-radius:11px !important;
+
+        background:#f2f2f7 !important;
+        color:#3a3a3c !important;
+
+        font-size:18px !important;
+        line-height:1 !important;
+
+        box-shadow:none !important;
+
+        -webkit-tap-highlight-color:transparent !important;
+        touch-action:manipulation !important;
+
+        transition:
+            transform .12s ease,
+            background .12s ease,
+            color .12s ease !important;
+    }
+
+    /* More button */
+    .file-item .item-actions .item-more-btn {
+        background:#eaf3ff !important;
+        color:#007aff !important;
+        font-weight:700 !important;
+    }
+
+    .file-item .item-actions .item-more-btn span {
+        display:block !important;
+        font-size:17px !important;
+        line-height:1 !important;
+        letter-spacing:-1px !important;
+        transform:translateY(-1px) !important;
+    }
+
+    /* Favorite button already has inline JS styles.
+       Override only its mobile sizing/shape. */
+    .file-item .item-actions button[aria-label="Add Favorite"] {
+        width:40px !important;
+        height:40px !important;
+        min-width:40px !important;
+        min-height:40px !important;
+        flex:0 0 40px !important;
+
+        padding:0 !important;
+        margin:0 !important;
+
+        display:inline-flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+
+        border:0 !important;
+        border-radius:11px !important;
+
+        background:#fff8df !important;
+
+        font-size:20px !important;
+        line-height:1 !important;
+
+        -webkit-tap-highlight-color:transparent !important;
+        touch-action:manipulation !important;
+    }
+
+    .file-item .item-actions .item-btn:active,
+    .file-item .item-actions button[aria-label="Add Favorite"]:active {
+        transform:scale(.90) !important;
+    }
+
+    /* Keep the row content from being squeezed too aggressively */
+    .file-item .file-info {
+        min-width:0 !important;
+    }
+
+    .file-item .file-name,
+    .file-item .file-type {
+        min-width:0 !important;
+    }
+}
+
+
+/* =====================================================
+   SMALL iPHONES
+===================================================== */
+
+@media (max-width:430px) {
+
+    .file-item .item-actions {
+        gap:2px !important;
+    }
+
+    .file-item .item-actions .item-btn,
+    .file-item .item-actions button[aria-label="Add Favorite"] {
+        width:36px !important;
+        height:36px !important;
+        min-width:36px !important;
+        min-height:36px !important;
+        flex-basis:36px !important;
+        border-radius:10px !important;
+    }
+
+    .file-item .item-actions .item-btn {
+        font-size:16px !important;
+    }
+
+    .file-item .item-actions .item-more-btn span {
+        font-size:15px !important;
+    }
+
+    .file-item .item-actions button[aria-label="Add Favorite"] {
+        font-size:18px !important;
+    }
+}
+
+
+/* =====================================================
+   VERY SMALL iPHONES
+===================================================== */
+
+@media (max-width:390px) {
+
+    .file-item .item-actions {
+        gap:1px !important;
+    }
+
+    .file-item .item-actions .item-btn,
+    .file-item .item-actions button[aria-label="Add Favorite"] {
+        width:33px !important;
+        height:33px !important;
+        min-width:33px !important;
+        min-height:33px !important;
+        flex-basis:33px !important;
+        border-radius:9px !important;
+    }
+
+    .file-item .item-actions .item-btn {
+        font-size:15px !important;
+    }
+
+    .file-item .item-actions .item-more-btn span {
+        font-size:14px !important;
+    }
+
+    .file-item .item-actions button[aria-label="Add Favorite"] {
+        font-size:17px !important;
+    }
+}
