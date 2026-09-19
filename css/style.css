@@ -5216,3 +5216,249 @@ button:focus-visible {
         font-size:9px !important;
     }
 }
+/* =====================================================
+   STEP 12 — iPHONE FILE DETAILS MODAL
+   CSS ONLY
+===================================================== */
+
+@media (max-width:700px) {
+
+    .file-details-modal {
+        padding:
+            calc(16px + env(safe-area-inset-top))
+            12px
+            calc(16px + env(safe-area-inset-bottom))
+            12px !important;
+
+        align-items:center !important;
+        justify-content:center !important;
+
+        background:rgba(0,0,0,.30) !important;
+
+        backdrop-filter:blur(10px) !important;
+        -webkit-backdrop-filter:blur(10px) !important;
+    }
+
+
+    .file-details-card {
+        width:100% !important;
+        max-width:420px !important;
+
+        max-height:
+            calc(100dvh - 32px - env(safe-area-inset-top) - env(safe-area-inset-bottom)) !important;
+
+        box-sizing:border-box !important;
+
+        overflow-y:auto !important;
+        overflow-x:hidden !important;
+
+        padding:18px 16px 16px !important;
+
+        border-radius:22px !important;
+
+        background:rgba(255,255,255,.97) !important;
+
+        box-shadow:
+            0 20px 60px rgba(0,0,0,.24) !important;
+
+        -webkit-overflow-scrolling:touch !important;
+    }
+
+
+    .file-details-card h3 {
+        margin:0 0 14px !important;
+
+        padding:0 8px !important;
+
+        font-size:18px !important;
+        line-height:1.3 !important;
+        font-weight:700 !important;
+
+        text-align:center !important;
+
+        color:#1c1c1e !important;
+
+        word-break:break-word !important;
+    }
+
+
+    .file-detail-row {
+        gap:4px !important;
+
+        padding:11px 2px !important;
+
+        border-bottom:
+            1px solid rgba(60,60,67,.10) !important;
+    }
+
+
+    .file-detail-row strong {
+        font-size:11px !important;
+        line-height:1.3 !important;
+
+        color:#8e8e93 !important;
+
+        opacity:1 !important;
+    }
+
+
+    .file-detail-row span {
+        font-size:14px !important;
+        line-height:1.45 !important;
+
+        color:#1c1c1e !important;
+
+        word-break:break-word !important;
+        overflow-wrap:anywhere !important;
+    }
+
+
+    .file-details-close {
+        width:100% !important;
+
+        min-height:46px !important;
+        height:46px !important;
+
+        margin-top:14px !important;
+
+        padding:0 14px !important;
+
+        border:0 !important;
+        border-radius:13px !important;
+
+        background:#007aff !important;
+        color:#fff !important;
+
+        font-size:15px !important;
+        font-weight:700 !important;
+
+        touch-action:manipulation !important;
+
+        -webkit-tap-highlight-color:transparent !important;
+
+        transition:
+            transform:.15s ease,
+            background:.15s ease !important;
+    }
+
+
+    .file-details-close:active {
+        transform:scale(.97) !important;
+
+        background:#006fe6 !important;
+    }
+}
+
+
+/* =====================================================
+   STEP 12 — SMALL iPHONES
+===================================================== */
+
+@media (max-width:430px) {
+
+    .file-details-modal {
+        padding:
+            calc(12px + env(safe-area-inset-top))
+            8px
+            calc(12px + env(safe-area-inset-bottom))
+            8px !important;
+    }
+
+
+    .file-details-card {
+        max-height:
+            calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom)) !important;
+
+        padding:16px 14px 14px !important;
+
+        border-radius:20px !important;
+    }
+
+
+    .file-details-card h3 {
+        margin-bottom:12px !important;
+        font-size:17px !important;
+    }
+
+
+    .file-detail-row {
+        padding:10px 2px !important;
+    }
+
+
+    .file-detail-row strong {
+        font-size:10px !important;
+    }
+
+
+    .file-detail-row span {
+        font-size:13px !important;
+    }
+
+
+    .file-details-close {
+        min-height:44px !important;
+        height:44px !important;
+
+        margin-top:12px !important;
+
+        border-radius:12px !important;
+
+        font-size:14px !important;
+    }
+}
+
+
+/* =====================================================
+   STEP 12 — VERY SMALL iPHONES
+===================================================== */
+
+@media (max-width:390px) {
+
+    .file-details-modal {
+        padding:
+            calc(10px + env(safe-area-inset-top))
+            6px
+            calc(10px + env(safe-area-inset-bottom))
+            6px !important;
+    }
+
+
+    .file-details-card {
+        max-height:
+            calc(100dvh - 20px - env(safe-area-inset-top) - env(safe-area-inset-bottom)) !important;
+
+        padding:14px 12px 12px !important;
+
+        border-radius:18px !important;
+    }
+
+
+    .file-details-card h3 {
+        font-size:16px !important;
+    }
+
+
+    .file-detail-row {
+        padding:9px 1px !important;
+    }
+
+
+    .file-detail-row strong {
+        font-size:9px !important;
+    }
+
+
+    .file-detail-row span {
+        font-size:12px !important;
+    }
+
+
+    .file-details-close {
+        min-height:42px !important;
+        height:42px !important;
+
+        font-size:13px !important;
+        border-radius:11px !important;
+    }
+}
