@@ -6544,3 +6544,146 @@ button:focus-visible {
         height:2px !important;
     }
 }
+/* =====================================================
+   STEP 19 — iPHONE TOOLBAR / ACTION PANEL POLISH
+   CSS ONLY
+   No HTML / JS changes
+===================================================== */
+
+@media (max-width:700px) {
+
+    .toolbar {
+        width:calc(100% - 16px) !important;
+        box-sizing:border-box !important;
+        margin:6px 8px 5px !important;
+        padding:7px !important;
+
+        display:grid !important;
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr)) !important;
+        gap:6px !important;
+
+        border-radius:17px !important;
+
+        background:
+            rgba(255,255,255,.82) !important;
+
+        border:
+            1px solid rgba(60,60,67,.09) !important;
+
+        box-shadow:
+            0 3px 12px
+            rgba(0,0,0,.055) !important;
+
+        backdrop-filter:
+            blur(16px) !important;
+        -webkit-backdrop-filter:
+            blur(16px) !important;
+
+        overflow:hidden !important;
+    }
+
+    .toolbar-btn {
+        min-width:0 !important;
+        width:100% !important;
+        height:46px !important;
+        min-height:46px !important;
+
+        margin:0 !important;
+        padding:4px 5px !important;
+
+        display:flex !important;
+        flex-direction:column !important;
+        align-items:center !important;
+        justify-content:center !important;
+        gap:2px !important;
+
+        border:0 !important;
+        border-radius:12px !important;
+
+        background:
+            #f2f2f7 !important;
+
+        color:
+            #007aff !important;
+
+        font-size:10px !important;
+        font-weight:600 !important;
+        line-height:1.15 !important;
+
+        box-shadow:none !important;
+
+        -webkit-tap-highlight-color:
+            transparent !important;
+
+        touch-action:manipulation !important;
+    }
+
+    .toolbar-btn span:first-child {
+        font-size:18px !important;
+        line-height:18px !important;
+    }
+
+    .toolbar-btn:active {
+        transform:scale(.94) !important;
+        background:#e5efff !important;
+        color:#007aff !important;
+    }
+
+    .toolbar-btn:disabled {
+        opacity:.38 !important;
+        transform:none !important;
+    }
+
+    /* Collapsed state remains clean */
+    .toolbar.menu-collapsed {
+        display:none !important;
+    }
+}
+
+@media (max-width:430px) {
+
+    .toolbar {
+        width:calc(100% - 14px) !important;
+        margin:5px 7px 4px !important;
+        padding:6px !important;
+        gap:5px !important;
+        border-radius:16px !important;
+    }
+
+    .toolbar-btn {
+        height:43px !important;
+        min-height:43px !important;
+        border-radius:11px !important;
+        font-size:9px !important;
+        gap:1px !important;
+    }
+
+    .toolbar-btn span:first-child {
+        font-size:17px !important;
+        line-height:17px !important;
+    }
+}
+
+@media (max-width:390px) {
+
+    .toolbar {
+        width:calc(100% - 12px) !important;
+        margin:4px 6px 3px !important;
+        padding:5px !important;
+        gap:4px !important;
+        border-radius:15px !important;
+    }
+
+    .toolbar-btn {
+        height:40px !important;
+        min-height:40px !important;
+        border-radius:10px !important;
+        font-size:8px !important;
+    }
+
+    .toolbar-btn span:first-child {
+        font-size:16px !important;
+        line-height:16px !important;
+    }
+}
