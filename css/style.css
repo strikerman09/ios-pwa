@@ -4581,3 +4581,11 @@ button:focus-visible {
             14px !important;
     }
 }
+/* =====================================================
+   REMOVE PASTE FROM ACTION POPUP
+   KEEP BOTTOM PASTE FAB
+===================================================== */
+
+#touchActionSheet #touchPasteAction {
+    display: none !important;
+}
