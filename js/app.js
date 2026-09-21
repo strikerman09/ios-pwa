@@ -4074,11 +4074,37 @@ const all =
 
 const results =
     all.filter(
-        item =>
-            item.id !== "root" &&
-            item.name
-                .toLowerCase()
-                .includes(search)
+        item => {
+
+            if (
+                item.id === "root"
+            ) {
+
+                return false;
+
+            }
+
+
+            const name =
+                (
+                    item.name ||
+                    ""
+                ).toLowerCase();
+
+
+            const searchText =
+                (
+                    item.searchText ||
+                    ""
+                ).toLowerCase();
+
+
+            return (
+                name.includes(search) ||
+                searchText.includes(search)
+            );
+
+        }
     );
 
 
