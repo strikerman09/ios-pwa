@@ -443,26 +443,165 @@ if (!root) {
 }
 
 /* =====================================================
+   REBUILD OLD PDF SEARCH INDEX
+===================================================== */
+
+async function rebuildOldPdfSearchIndex() {
+
+    if (!window.pdfjsLib) {
+
+        console.warn(
+            "PDF.js is not loaded. Old PDF indexing skipped."
+        );
+
+        return;
+
+    }
+
+    const allItems =
+        await getAllItems();
+
+    const oldPdfs =
+        allItems.filter(
+            item =>
+                item.type === "file" &&
+                (
+                    item.name ||
+                    ""
+                ).toLowerCase().endsWith(".pdf") &&
+                !(
+                    item.searchText &&
+                    item.searchText.trim()
+                )
+        );
+
+    if (!oldPdfs.length) {
+
+        return;
+
+    }
+
+    console.log(
+        "Old PDFs to index:",
+        oldPdfs.length
+    );
+
+    let processed = 0;
+
+    for (const item of oldPdfs) {
+
+        try {
+
+            if (!item.blob) {
+                continue;
+            }
+
+            const blob =
+                item.blob instanceof Blob
+                    ? item.blob
+                    : new Blob(
+                        [item.blob],
+                        {
+                            type:
+                                item.mime ||
+                                "application/pdf"
+                        }
+                    );
+
+            const arrayBuffer =
+                await blob.arrayBuffer();
+
+            const pdf =
+                await window.pdfjsLib.getDocument({
+                    data: arrayBuffer
+                }).promise;
+
+            let text = "";
+
+            for (
+                let pageNumber = 1;
+                pageNumber <= pdf.numPages;
+                pageNumber++
+            ) {
+
+                const page =
+                    await pdf.getPage(
+                        pageNumber
+                    );
+
+                const content =
+                    await page.getTextContent();
+
+                const pageText =
+                    content.items
+                        .map(
+                            item =>
+                                item.str || ""
+                        )
+                        .join(" ");
+
+                text +=
+                    pageText +
+                    "\n";
+            }
+
+            item.searchText =
+                text
+                    .replace(/\s+/g, " ")
+                    .trim();
+
+            await updateItem(item);
+
+            processed++;
+
+            console.log(
+                `PDF indexed ${processed}/${oldPdfs.length}:`,
+                item.name
+            );
+
+        } catch (error) {
+
+            console.error(
+                "Old PDF indexing failed:",
+                item.name,
+                error
+            );
+
+        }
+
+    }
+
+    console.log(
+        "Old PDF search indexing completed:",
+        processed,
+        "/",
+        oldPdfs.length
+    );
+
+}
+
+/* =====================================================
 INITIALIZE
 ===================================================== */
 
 async function initialize() {
 
+    try {
 
-try {
+        await openDB();
 
-    await openDB();
+        await createRootIfNeeded();
 
-    await createRootIfNeeded();
+        await rebuildOldPdfSearchIndex();
 
-    renderBreadcrumb();
+        renderBreadcrumb();
 
-    await displayCurrentFolder();
+        await displayCurrentFolder();
 
-    message.textContent =
-        "Mobile V4 အသင့်ဖြစ်ပါပြီ။";
+        message.textContent =
+            "Mobile V4 အသင့်ဖြစ်ပါပြီ။";
 
-} catch (error) {
+    } catch (error) {
 
     console.error(error);
 
