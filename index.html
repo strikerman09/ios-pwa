@@ -325,6 +325,16 @@
 
 
 <script src="./js/app.js"></script>
+<script type="module">
+    import * as pdfjsLib from "./js/pdf/pdf.mjs";
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "./js/pdf/pdf.worker.mjs";
+
+    window.pdfjsLib = pdfjsLib;
+
+    console.log("PDF.js loaded:", pdfjsLib.version);
+</script>
 
 </body>
 </html>
