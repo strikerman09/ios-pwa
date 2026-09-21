@@ -1594,6 +1594,100 @@ async () => {
 );
 
 /* =====================================================
+   EXTRACT PDF SEARCH TEXT
+===================================================== */
+
+async function extractPdfSearchText(file) {
+
+    if (
+        !file ||
+        !file.name.toLowerCase().endsWith(".pdf")
+    ) {
+
+        return "";
+
+    }
+
+
+    if (
+        !window.pdfjsLib
+    ) {
+
+        console.warn(
+            "PDF.js is not loaded."
+        );
+
+        return "";
+
+    }
+
+
+    try {
+
+        const arrayBuffer =
+            await file.arrayBuffer();
+
+
+        const pdf =
+            await window.pdfjsLib.getDocument({
+                data: arrayBuffer
+            }).promise;
+
+
+        let text = "";
+
+
+        for (
+            let pageNumber = 1;
+            pageNumber <= pdf.numPages;
+            pageNumber++
+        ) {
+
+            const page =
+                await pdf.getPage(
+                    pageNumber
+                );
+
+
+            const content =
+                await page.getTextContent();
+
+
+            const pageText =
+                content.items
+                    .map(
+                        item =>
+                            item.str || ""
+                    )
+                    .join(" ");
+
+
+            text +=
+                pageText +
+                "\n";
+
+        }
+
+
+        return text
+            .replace(/\s+/g, " ")
+            .trim();
+
+
+    } catch (error) {
+
+        console.error(
+            "PDF text extraction failed:",
+            error
+        );
+
+        return "";
+
+    }
+
+}
+
+/* =====================================================
 SAVE FILE
 ===================================================== */
 
@@ -1644,6 +1738,12 @@ const position =
     );
 
 
+const searchText =
+    await extractPdfSearchText(
+        file
+    );
+
+
 await addItem({
 
     id:
@@ -1667,6 +1767,9 @@ await addItem({
 
     blob:
         file,
+
+    searchText:
+        searchText,
 
     position:
         position,
