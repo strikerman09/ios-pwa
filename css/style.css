@@ -12873,6 +12873,155 @@ button:focus-visible {
     }
 }
 
+/* =========================================================
+   iPAD — 5 BUTTON ACTION PANEL
+   FORCE PANEL TO STAY INSIDE FILE ROW
+========================================================= */
+
+@media (min-width:701px) and (max-width:999px)
+       and (hover:none) and (pointer:coarse) {
+
+    .file-item {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+
+        display: flex;
+        align-items: center;
+
+        overflow: hidden;
+    }
+
+    .file-item .file-info {
+        flex: 1 1 auto;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .file-item .file-name,
+    .file-item .file-type {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    /* 5-button panel */
+    .file-item .item-actions {
+        flex: 0 0 250px;
+        width: 250px;
+        min-width: 250px;
+        max-width: 250px;
+
+        height: 54px;
+
+        margin-left: 8px;
+        margin-right: 8px;
+
+        padding: 5px;
+
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 4px;
+
+        box-sizing: border-box;
+
+        border-radius: 17px;
+        background: #f1f2f6;
+
+        overflow: hidden;
+    }
+
+    /* Every button gets equal space */
+    .file-item .item-actions .item-btn,
+    .file-item .item-actions button {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+
+        height: 42px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        border: 0 !important;
+        border-radius: 11px !important;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        box-sizing: border-box;
+
+        font-size: 19px;
+        line-height: 1;
+
+        overflow: hidden;
+    }
+
+    /* Favorite has inline width/height in app.js */
+    .file-item .item-actions button[aria-label="Add Favorite"] {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: 42px !important;
+        font-size: 19px !important;
+    }
+
+    /* Details */
+    .file-item .item-actions .item-btn:first-child {
+        background: #e8f1ff;
+        color: #007aff;
+    }
+
+    /* Favorite */
+    .file-item .item-actions button[aria-label="Add Favorite"] {
+        background: #fff4df !important;
+        color: #f59e0b !important;
+    }
+
+    /* More */
+    .file-item .item-actions .item-more-btn {
+        background: #ffffff;
+        color: #333;
+        box-shadow: 0 2px 5px rgba(0,0,0,.08);
+    }
+
+    /* Rename */
+    .file-item .item-actions .item-btn:nth-of-type(4) {
+        background: #eeeeef;
+        color: #555;
+    }
+
+    /* Delete */
+    .file-item .item-actions .item-btn:last-child {
+        background: #ffe9e9;
+        color: #ff3b30;
+    }
+
+    .file-item .item-actions button:active {
+        transform: scale(.94);
+    }
+}
+
+
+/* =========================================================
+   iPAD LANDSCAPE
+========================================================= */
+
+@media (min-width:701px) and (max-width:999px)
+       and (hover:none) and (pointer:coarse)
+       and (orientation:landscape) {
+
+    .file-item .item-actions {
+        flex-basis: 270px;
+        width: 270px;
+        min-width: 270px;
+        max-width: 270px;
+    }
+}
+
+
+
 
 
 
