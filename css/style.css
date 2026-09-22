@@ -10679,3 +10679,472 @@ button:focus-visible {
     }
 }
 
+/* =====================================================
+   NEXT-LEVEL iPAD NAVIGATION UI
+   Header + Search + Breadcrumb
+   Replace the previous iPad Header/Search/Breadcrumb CSS
+
+   Scope:
+   701px–999px
+   touch + coarse pointer only
+
+   iPhone and desktop are NOT affected.
+===================================================== */
+
+@media (min-width:701px) and (max-width:999px)
+       and (hover:none) and (pointer:coarse) {
+
+    /* =================================================
+       NAVIGATION SURFACE
+    ================================================= */
+
+    .header {
+        position:relative !important;
+        width:100% !important;
+        min-height:96px !important;
+        margin:0 !important;
+        padding:15px 20px 0 !important;
+
+        display:flex !important;
+        align-items:flex-start !important;
+        justify-content:space-between !important;
+
+        background:rgba(255,255,255,.86) !important;
+        border:0 !important;
+        border-bottom:1px solid rgba(60,60,67,.08) !important;
+        border-radius:0 !important;
+
+        box-shadow:none !important;
+
+        backdrop-filter:blur(24px) saturate(1.12) !important;
+        -webkit-backdrop-filter:blur(24px) saturate(1.12) !important;
+
+        z-index:20 !important;
+    }
+
+    /* =================================================
+       BRAND
+    ================================================= */
+
+    .brand {
+        min-width:0 !important;
+        display:flex !important;
+        align-items:center !important;
+        gap:13px !important;
+    }
+
+    .app-logo {
+        width:54px !important;
+        height:54px !important;
+        flex:0 0 54px !important;
+
+        border-radius:16px !important;
+
+        background:#f2f2f7 !important;
+
+        box-shadow:
+            0 2px 7px rgba(0,0,0,.08),
+            inset 0 1px 0 rgba(255,255,255,.9) !important;
+    }
+
+    .app-logo svg {
+        width:30px !important;
+        height:30px !important;
+    }
+
+    .brand-text {
+        min-width:0 !important;
+        padding-top:1px !important;
+    }
+
+    .brand-text h1 {
+        margin:0 !important;
+
+        color:#1c1c1e !important;
+
+        font-size:23px !important;
+        font-weight:700 !important;
+        line-height:27px !important;
+        letter-spacing:-.35px !important;
+
+        white-space:nowrap !important;
+        overflow:hidden !important;
+        text-overflow:ellipsis !important;
+    }
+
+    .brand-text p {
+        margin:4px 0 0 !important;
+
+        color:#8e8e93 !important;
+
+        font-size:11px !important;
+        font-weight:500 !important;
+        line-height:15px !important;
+
+        white-space:nowrap !important;
+        overflow:hidden !important;
+        text-overflow:ellipsis !important;
+    }
+
+    /* =================================================
+       MENU
+    ================================================= */
+
+    .header-menu {
+        width:46px !important;
+        height:46px !important;
+        min-width:46px !important;
+        min-height:46px !important;
+
+        margin:0 !important;
+
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+
+        border:0 !important;
+        border-radius:14px !important;
+
+        background:#f2f2f7 !important;
+        color:#1c1c1e !important;
+
+        box-shadow:none !important;
+
+        transition:
+            background .15s ease,
+            transform .12s ease !important;
+
+        -webkit-tap-highlight-color:transparent !important;
+    }
+
+    .header-menu:active {
+        transform:scale(.92) !important;
+        background:#e5e5ea !important;
+    }
+
+
+    /* =================================================
+       SEARCH — PRIMARY COMMAND
+    ================================================= */
+
+    .search-section {
+        position:relative !important;
+
+        width:100% !important;
+        max-width:none !important;
+
+        margin:0 !important;
+        padding:11px 20px 10px !important;
+
+        background:rgba(255,255,255,.86) !important;
+
+        border:0 !important;
+
+        z-index:19 !important;
+    }
+
+    .search-box {
+        width:100% !important;
+        max-width:none !important;
+
+        height:52px !important;
+        min-height:52px !important;
+
+        margin:0 !important;
+        padding:0 17px !important;
+
+        border:1px solid rgba(60,60,67,.09) !important;
+        border-radius:17px !important;
+
+        background:#f2f2f7 !important;
+
+        color:#1c1c1e !important;
+
+        font-size:16px !important;
+        font-weight:500 !important;
+
+        box-shadow:
+            inset 0 1px 1px rgba(0,0,0,.025) !important;
+
+        outline:none !important;
+
+        transition:
+            background .18s ease,
+            border-color .18s ease,
+            box-shadow .18s ease !important;
+    }
+
+    .search-box::placeholder {
+        color:#8e8e93 !important;
+        opacity:1 !important;
+    }
+
+    .search-box:focus {
+        background:#ffffff !important;
+
+        border-color:rgba(0,122,255,.32) !important;
+
+        box-shadow:
+            0 0 0 3px rgba(0,122,255,.10),
+            0 4px 14px rgba(0,0,0,.05) !important;
+    }
+
+
+    /* =================================================
+       LOCATION / BREADCRUMB
+    ================================================= */
+
+    .breadcrumb {
+        position:relative !important;
+
+        width:100% !important;
+        max-width:none !important;
+
+        min-height:52px !important;
+
+        margin:0 !important;
+        padding:0 20px !important;
+
+        display:flex !important;
+        align-items:center !important;
+        gap:7px !important;
+
+        background:rgba(255,255,255,.86) !important;
+
+        border:0 !important;
+        border-bottom:1px solid rgba(60,60,67,.08) !important;
+
+        border-radius:0 !important;
+
+        box-shadow:none !important;
+
+        overflow-x:auto !important;
+        overflow-y:hidden !important;
+
+        white-space:nowrap !important;
+
+        -webkit-overflow-scrolling:touch !important;
+        scrollbar-width:none !important;
+
+        z-index:18 !important;
+    }
+
+    .breadcrumb::-webkit-scrollbar {
+        display:none !important;
+    }
+
+    /* LOCATION label */
+    .breadcrumb::before {
+        content:"LOCATION" !important;
+
+        flex:0 0 auto !important;
+
+        margin-right:5px !important;
+
+        color:#8e8e93 !important;
+
+        font-size:9px !important;
+        font-weight:700 !important;
+
+        letter-spacing:.8px !important;
+    }
+
+    .breadcrumb .crumb {
+        flex:0 0 auto !important;
+
+        min-width:32px !important;
+        height:32px !important;
+
+        padding:0 11px !important;
+
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+
+        border-radius:10px !important;
+
+        background:transparent !important;
+
+        color:#636366 !important;
+
+        font-size:12px !important;
+        font-weight:600 !important;
+
+        white-space:nowrap !important;
+
+        transition:
+            background .15s ease,
+            color .15s ease,
+            transform .12s ease !important;
+    }
+
+    .breadcrumb .crumb:active {
+        transform:scale(.96) !important;
+        background:#f2f2f7 !important;
+    }
+
+    /* Current folder */
+    .breadcrumb .crumb:last-child {
+        max-width:38vw !important;
+
+        overflow:hidden !important;
+        text-overflow:ellipsis !important;
+
+        background:#eaf3ff !important;
+
+        color:#007aff !important;
+
+        font-weight:700 !important;
+    }
+
+    .breadcrumb .separator {
+        flex:0 0 auto !important;
+
+        color:#c7c7cc !important;
+
+        font-size:14px !important;
+        font-weight:400 !important;
+    }
+
+
+    /* =================================================
+       PORTRAIT iPAD
+    ================================================= */
+
+    @media (min-width:701px) and (max-width:899px)
+           and (orientation:portrait) {
+
+        .header {
+            min-height:90px !important;
+            padding:13px 17px 0 !important;
+        }
+
+        .app-logo {
+            width:50px !important;
+            height:50px !important;
+            flex-basis:50px !important;
+            border-radius:15px !important;
+        }
+
+        .brand {
+            gap:11px !important;
+        }
+
+        .brand-text h1 {
+            font-size:21px !important;
+            line-height:25px !important;
+        }
+
+        .brand-text p {
+            font-size:10px !important;
+            line-height:14px !important;
+        }
+
+        .header-menu {
+            width:44px !important;
+            height:44px !important;
+            min-width:44px !important;
+            min-height:44px !important;
+            border-radius:13px !important;
+        }
+
+        .search-section {
+            padding:
+                10px 17px 9px !important;
+        }
+
+        .search-box {
+            height:49px !important;
+            min-height:49px !important;
+            border-radius:16px !important;
+            font-size:15px !important;
+        }
+
+        .breadcrumb {
+            min-height:48px !important;
+            padding:0 17px !important;
+        }
+
+        .breadcrumb .crumb {
+            height:30px !important;
+            min-width:30px !important;
+            padding:0 9px !important;
+            font-size:11px !important;
+            border-radius:9px !important;
+        }
+    }
+
+
+    /* =================================================
+       LANDSCAPE iPAD
+    ================================================= */
+
+    @media (min-width:900px) and (max-width:999px)
+           and (orientation:landscape) {
+
+        .header {
+            min-height:100px !important;
+            padding:16px 24px 0 !important;
+        }
+
+        .app-logo {
+            width:58px !important;
+            height:58px !important;
+            flex-basis:58px !important;
+            border-radius:17px !important;
+        }
+
+        .app-logo svg {
+            width:32px !important;
+            height:32px !important;
+        }
+
+        .brand {
+            gap:14px !important;
+        }
+
+        .brand-text h1 {
+            font-size:24px !important;
+            line-height:29px !important;
+        }
+
+        .brand-text p {
+            font-size:12px !important;
+            line-height:16px !important;
+        }
+
+        .header-menu {
+            width:48px !important;
+            height:48px !important;
+            min-width:48px !important;
+            min-height:48px !important;
+            border-radius:15px !important;
+        }
+
+        .search-section {
+            padding:
+                12px 24px 10px !important;
+        }
+
+        .search-box {
+            height:53px !important;
+            min-height:53px !important;
+            border-radius:18px !important;
+            font-size:16px !important;
+        }
+
+        .breadcrumb {
+            min-height:54px !important;
+            padding:0 24px !important;
+        }
+
+        .breadcrumb .crumb {
+            height:34px !important;
+            min-width:34px !important;
+            padding:0 12px !important;
+            font-size:12px !important;
+            border-radius:10px !important;
+        }
+    }
+}
+
