@@ -9517,4 +9517,202 @@ button:focus-visible {
         min-height: 40px !important;
     }
 }
+/* =========================================================
+   IOS UI POLISH - FILE / FOLDER LIST
+   iPhone + iPad only
+   UI ONLY - DO NOT CHANGE LAYOUT / BREAKPOINTS
+========================================================= */
+
+@media (max-width: 700px) {
+
+    /* Main list background */
+    .file-list {
+        background: transparent;
+    }
+
+    /* File / Folder row */
+    .file-item {
+        background: rgba(255, 255, 255, 0.88);
+        border-bottom: 1px solid rgba(60, 60, 67, 0.10);
+        box-shadow: none;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+
+        transition:
+            background-color 0.18s ease,
+            transform 0.12s ease;
+    }
+
+    /* Folder / file icon */
+    .file-icon {
+        background: #f2f2f7;
+        box-shadow:
+            inset 0 0 0 1px rgba(60, 60, 67, 0.06),
+            0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Folder icon */
+    .file-item.folder-row .file-icon {
+        background: #eaf3ff;
+    }
+
+    /* File name */
+    .file-name {
+        color: #1c1c1e;
+        font-weight: 600;
+        letter-spacing: -0.15px;
+    }
+
+    /* File type */
+    .file-type {
+        color: #8e8e93;
+        font-weight: 400;
+    }
+
+    /* Search / recent path */
+    .recent-file-path,
+    .search-path {
+        color: #8e8e93;
+    }
+
+    /* Position number */
+    .position {
+        color: #a1a1a6;
+        font-weight: 500;
+    }
+
+    /* Normal action buttons */
+    .item-btn {
+        color: #636366;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+
+        transition:
+            background-color 0.15s ease,
+            transform 0.12s ease;
+    }
+
+    /* More button */
+    .item-more-btn {
+        color: #007aff;
+        background: #eef6ff;
+        border: 1px solid rgba(0, 122, 255, 0.12);
+        box-shadow: none;
+    }
+
+    /* Favorite button */
+    .item-btn[aria-label="Add Favorite"] {
+        color: #8e8e93;
+        background: transparent;
+        border: 0;
+    }
+
+    /* Selected / active row */
+    .file-item.active {
+        background: rgba(0, 122, 255, 0.08);
+    }
+
+    .file-item.active .file-icon {
+        box-shadow:
+            inset 0 0 0 1px rgba(0, 122, 255, 0.10),
+            0 2px 8px rgba(0, 122, 255, 0.08);
+    }
+
+    /* Touch feedback */
+    .file-item:active {
+        background: rgba(0, 122, 255, 0.06);
+        transform: scale(0.995);
+    }
+
+    .item-btn:active,
+    .item-more-btn:active {
+        transform: scale(0.90);
+    }
+}
+
+
+/* =========================================================
+   IPAD FILE LIST
+   UI POLISH ONLY
+========================================================= */
+
+@media (min-width: 701px) and (hover: none) and (pointer: coarse) {
+
+    .file-item {
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(60, 60, 67, 0.08);
+        box-shadow:
+            0 3px 12px rgba(0, 0, 0, 0.045);
+
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+
+        transition:
+            background-color 0.18s ease,
+            transform 0.12s ease,
+            box-shadow 0.18s ease;
+    }
+
+    .file-icon {
+        background: #f2f2f7;
+        box-shadow:
+            inset 0 0 0 1px rgba(60, 60, 67, 0.06),
+            0 2px 8px rgba(0, 0, 0, 0.045);
+    }
+
+    .file-item.folder-row .file-icon {
+        background: #eaf3ff;
+    }
+
+    .file-name {
+        color: #1c1c1e;
+        font-weight: 600;
+        letter-spacing: -0.15px;
+    }
+
+    .file-type,
+    .recent-file-path,
+    .search-path {
+        color: #8e8e93;
+    }
+
+    .position {
+        color: #a1a1a6;
+        font-weight: 500;
+    }
+
+    .item-btn {
+        color: #636366;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+
+        transition:
+            background-color 0.15s ease,
+            transform 0.12s ease;
+    }
+
+    .item-more-btn {
+        color: #007aff;
+        background: #eef6ff;
+        border: 1px solid rgba(0, 122, 255, 0.12);
+        box-shadow: none;
+    }
+
+    .file-item.active {
+        background: rgba(0, 122, 255, 0.075);
+        border-color: rgba(0, 122, 255, 0.14);
+    }
+
+    .file-item:active {
+        background: rgba(0, 122, 255, 0.06);
+        transform: scale(0.995);
+    }
+
+    .item-btn:active,
+    .item-more-btn:active {
+        transform: scale(0.92);
+    }
+}
 
