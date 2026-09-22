@@ -16322,6 +16322,67 @@ button:focus-visible {
     }
 }
 
+/* =====================================================
+   PORTRAIT — ACTION PANEL
+===================================================== */
+
+.file-list .file-item .item-actions {
+    top: 75px !important;
+    right: 12px !important;
+
+    width: 190px !important;
+    min-width: 190px !important;
+    max-width: 190px !important;
+
+    height: 62px !important;
+
+    margin: 0 !important;
+    padding: 5px !important;
+
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr)) !important;
+
+    gap: 4px !important;
+
+    box-sizing: border-box;
+
+    background: #f1f2f6 !important;
+
+    border-radius: 16px;
+
+    transform: none !important;
+
+    z-index: 20 !important;
+}
+
+
+/* =====================================================
+   LANDSCAPE — ACTION PANEL
+===================================================== */
+
+@media (min-width:701px) and (max-width:999px)
+       and (hover:none) and (pointer:coarse)
+       and (orientation:landscape) {
+
+    .file-list .file-item .item-actions {
+        top: 77px !important;
+        right: 13px !important;
+
+        width: 205px !important;
+        min-width: 205px !important;
+        max-width: 205px !important;
+
+        height: 66px !important;
+
+        padding: 5px !important;
+
+        gap: 4px !important;
+
+        border-radius: 17px;
+    }
+}
 
 
 
