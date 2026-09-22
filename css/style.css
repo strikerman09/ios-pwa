@@ -15811,6 +15811,517 @@ button:focus-visible {
     }
 }
 
+/* =========================================================
+   iPAD — FOLDER / FILE CARD
+   FINAL LAYOUT
+
+   TOP:
+      Number + Name
+      Type
+
+   SECOND ROW:
+      Icon LEFT
+      Action Panel RIGHT
+
+   Portrait  : 2 columns
+   Landscape : 3 columns
+========================================================= */
+
+@media (min-width:701px) and (max-width:999px)
+       and (hover:none) and (pointer:coarse) {
+
+    /* =====================================================
+       GRID
+    ===================================================== */
+
+    .file-list {
+        width: 100% !important;
+        box-sizing: border-box;
+
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 14px !important;
+        padding: 14px !important;
+    }
+
+
+    /* =====================================================
+       CARD
+    ===================================================== */
+
+    .file-list .file-item {
+        position: relative !important;
+
+        width: 100% !important;
+        min-width: 0 !important;
+
+        height: 180px !important;
+        min-height: 180px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        display: block !important;
+
+        box-sizing: border-box;
+
+        background: #ffffff !important;
+
+        border: 1px solid rgba(0,0,0,.055);
+
+        border-radius: 20px;
+
+        box-shadow:
+            0 3px 12px rgba(0,0,0,.055);
+
+        overflow: hidden !important;
+    }
+
+
+    /* =====================================================
+       NUMBER
+    ===================================================== */
+
+    .file-list .file-item .position {
+        position: absolute !important;
+
+        top: 11px !important;
+        left: 11px !important;
+
+        width: 25px !important;
+        min-width: 25px !important;
+        height: 25px !important;
+
+        padding: 0 5px !important;
+        margin: 0 !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        box-sizing: border-box;
+
+        border-radius: 8px;
+
+        background: #f1f2f6 !important;
+
+        color: #777 !important;
+
+        font-size: 11px !important;
+        font-weight: 600 !important;
+
+        line-height: 25px !important;
+
+        z-index: 40 !important;
+    }
+
+
+    /* =====================================================
+       TOP NAME + TYPE
+       EXPLICIT POSITION
+    ===================================================== */
+
+    .file-list .file-item .file-info {
+        position: absolute !important;
+
+        top: 9px !important;
+        left: 0 !important;
+
+        width: 100% !important;
+        height: 50px !important;
+
+        min-width: 0 !important;
+        min-height: 50px !important;
+
+        margin: 0 !important;
+
+        padding: 0 12px 0 45px !important;
+
+        box-sizing: border-box !important;
+
+        display: block !important;
+
+        overflow: hidden !important;
+
+        text-align: left !important;
+
+        z-index: 30 !important;
+    }
+
+
+    /* =====================================================
+       FOLDER / FILE NAME
+    ===================================================== */
+
+    .file-list .file-item .file-name {
+        position: relative !important;
+
+        display: block !important;
+
+        width: 100% !important;
+        height: 25px !important;
+
+        min-width: 0 !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        color: #1c1c1e !important;
+
+        font-size: 16px !important;
+        font-weight: 600 !important;
+
+        line-height: 25px !important;
+
+        overflow: hidden !important;
+
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+
+    .file-list .file-item .file-name-text {
+        display: block !important;
+
+        width: 100% !important;
+        height: 25px !important;
+
+        min-width: 0 !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        color: #1c1c1e !important;
+
+        overflow: hidden !important;
+
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+
+    /* =====================================================
+       TYPE
+       DIRECTLY UNDER NAME
+    ===================================================== */
+
+    .file-list .file-item .file-type {
+        position: relative !important;
+
+        display: block !important;
+
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+
+        width: 100% !important;
+        height: 17px !important;
+
+        min-width: 0 !important;
+
+        margin: 1px 0 0 !important;
+        padding: 0 !important;
+
+        color: #8a8a8f !important;
+
+        font-size: 11px !important;
+        line-height: 17px !important;
+
+        text-align: left !important;
+
+        overflow: hidden !important;
+
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+
+    /* =====================================================
+       SECOND ROW — ICON LEFT
+    ===================================================== */
+
+    .file-list .file-item .file-icon {
+        position: absolute !important;
+
+        left: 15px !important;
+        top: 75px !important;
+
+        width: 62px !important;
+        height: 62px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        box-sizing: border-box;
+
+        border-radius: 17px;
+
+        background: #f3f6fa !important;
+
+        color: #007aff;
+
+        font-size: 35px !important;
+
+        z-index: 5 !important;
+    }
+
+
+    /* =====================================================
+       SECOND ROW — ACTION PANEL RIGHT
+    ===================================================== */
+
+    .file-list .file-item .item-actions {
+        position: absolute !important;
+
+        top: 75px !important;
+        right: 12px !important;
+
+        left: auto !important;
+        bottom: auto !important;
+
+        width: 155px !important;
+        min-width: 155px !important;
+        max-width: 155px !important;
+
+        height: 62px !important;
+
+        margin: 0 !important;
+        padding: 5px !important;
+
+        display: grid !important;
+
+        grid-template-columns:
+            repeat(5, minmax(0, 1fr)) !important;
+
+        gap: 3px !important;
+
+        box-sizing: border-box;
+
+        background: #f1f2f6 !important;
+
+        border-radius: 16px;
+
+        transform: none !important;
+
+        z-index: 20 !important;
+    }
+
+
+    /* =====================================================
+       ACTION BUTTONS
+    ===================================================== */
+
+    .file-list .file-item .item-actions .item-btn,
+    .file-list .file-item .item-actions button {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+
+        height: 50px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        border: 0 !important;
+        border-radius: 10px !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        box-sizing: border-box;
+
+        background: transparent !important;
+
+        font-size: 17px !important;
+        line-height: 1 !important;
+    }
+
+
+    /* Favorite */
+    .file-list .file-item .item-actions
+    button[aria-label="Add Favorite"] {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: 50px !important;
+
+        background: transparent !important;
+
+        color: #f59e0b !important;
+
+        font-size: 18px !important;
+    }
+
+
+    /* Details */
+    .file-list .file-item .item-actions
+    .item-btn:first-child {
+        color: #007aff !important;
+    }
+
+
+    /* More */
+    .file-list .file-item .item-actions
+    .item-more-btn {
+        color: #333 !important;
+    }
+
+
+    /* Rename */
+    .file-list .file-item .item-actions
+    .item-btn:nth-of-type(4) {
+        color: #555 !important;
+    }
+
+
+    /* Delete */
+    .file-list .file-item .item-actions
+    .item-btn:last-child {
+        color: #ff3b30 !important;
+    }
+
+
+    /* Touch */
+    .file-list .file-item .item-actions button:active {
+        background: #e5e5ea !important;
+        transform: scale(.90);
+    }
+}
+
+
+/* =========================================================
+   iPAD LANDSCAPE
+   3 COLUMNS
+========================================================= */
+
+@media (min-width:701px) and (max-width:999px)
+       and (hover:none) and (pointer:coarse)
+       and (orientation:landscape) {
+
+    .file-list {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr)) !important;
+
+        gap: 16px !important;
+        padding: 16px !important;
+    }
+
+
+    .file-list .file-item {
+        height: 184px !important;
+        min-height: 184px !important;
+    }
+
+
+    /* TOP INFO */
+
+    .file-list .file-item .file-info {
+        top: 10px !important;
+
+        height: 51px !important;
+        min-height: 51px !important;
+
+        padding-left: 46px !important;
+    }
+
+
+    .file-list .file-item .file-name {
+        height: 26px !important;
+
+        font-size: 17px !important;
+        line-height: 26px !important;
+    }
+
+
+    .file-list .file-item .file-name-text {
+        height: 26px !important;
+    }
+
+
+    .file-list .file-item .file-type {
+        height: 17px !important;
+
+        margin-top: 1px !important;
+
+        font-size: 11px !important;
+        line-height: 17px !important;
+    }
+
+
+    /* NUMBER */
+
+    .file-list .file-item .position {
+        top: 11px !important;
+        left: 11px !important;
+    }
+
+
+    /* ICON */
+
+    .file-list .file-item .file-icon {
+        left: 16px !important;
+        top: 77px !important;
+
+        width: 66px !important;
+        height: 66px !important;
+
+        border-radius: 18px;
+
+        font-size: 38px !important;
+    }
+
+
+    /* ACTION PANEL */
+
+    .file-list .file-item .item-actions {
+        top: 77px !important;
+        right: 13px !important;
+
+        width: 170px !important;
+        min-width: 170px !important;
+        max-width: 170px !important;
+
+        height: 66px !important;
+
+        padding: 5px !important;
+
+        gap: 4px !important;
+
+        border-radius: 17px;
+    }
+
+
+    .file-list .file-item .item-actions .item-btn,
+    .file-list .file-item .item-actions button {
+        height: 54px !important;
+
+        font-size: 18px !important;
+    }
+
+
+    .file-list .file-item .item-actions
+    button[aria-label="Add Favorite"] {
+        height: 54px !important;
+
+        font-size: 19px !important;
+    }
+}
+
 
 
 
