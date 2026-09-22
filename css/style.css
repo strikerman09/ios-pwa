@@ -6890,11 +6890,12 @@ button:focus-visible {
     }
 }
 
-```css
+
+
 /* =====================================================
    STEP 19 — iPHONE TOOLBAR UI REDESIGN
-   Replace the existing STEP 19 block
-   HTML / JS unchanged
+   Unified iOS Command Panel
+   Replace existing STEP 19 only
 ===================================================== */
 
 @media (max-width:700px) {
@@ -6902,30 +6903,41 @@ button:focus-visible {
     .toolbar {
         width:calc(100% - 16px) !important;
         margin:6px 8px 5px !important;
-        padding:7px !important;
+        padding:6px !important;
 
         display:grid !important;
-        grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
-        gap:6px !important;
+        grid-template-columns:repeat(3, minmax(0,1fr)) !important;
+        gap:0 !important;
 
         border-radius:18px !important;
 
-        background:rgba(255,255,255,.88) !important;
+        background:
+            rgba(255,255,255,.90) !important;
 
-        border:1px solid rgba(60,60,67,.10) !important;
+        border:
+            1px solid rgba(60,60,67,.10) !important;
 
         box-shadow:
-            0 8px 24px rgba(0,0,0,.07),
-            inset 0 1px 0 rgba(255,255,255,.85) !important;
+            0 7px 22px rgba(0,0,0,.07),
+            inset 0 1px 0 rgba(255,255,255,.9) !important;
 
-        backdrop-filter:blur(20px) saturate(1.08) !important;
-        -webkit-backdrop-filter:blur(20px) saturate(1.08) !important;
+        backdrop-filter:
+            blur(20px) saturate(1.08) !important;
+
+        -webkit-backdrop-filter:
+            blur(20px) saturate(1.08) !important;
 
         overflow:hidden !important;
     }
 
 
+    /* -------------------------------------------------
+       Individual commands
+    ------------------------------------------------- */
+
     .toolbar-btn {
+        position:relative !important;
+
         width:100% !important;
         min-width:0 !important;
 
@@ -6937,13 +6949,14 @@ button:focus-visible {
 
         display:flex !important;
         flex-direction:column !important;
+
         align-items:center !important;
         justify-content:center !important;
 
         gap:3px !important;
 
-        border:1px solid transparent !important;
-        border-radius:13px !important;
+        border:0 !important;
+        border-radius:11px !important;
 
         background:transparent !important;
 
@@ -6951,21 +6964,61 @@ button:focus-visible {
 
         font-size:10px !important;
         font-weight:600 !important;
-        line-height:1.15 !important;
+        line-height:1.1 !important;
 
         box-shadow:none !important;
 
-        -webkit-tap-highlight-color:transparent !important;
-        touch-action:manipulation !important;
-
         transition:
             background .15s ease,
-            transform .12s ease,
-            border-color .15s ease !important;
+            transform .12s ease !important;
+
+        -webkit-tap-highlight-color:transparent !important;
+        touch-action:manipulation !important;
     }
 
 
-    /* SVG toolbar icons */
+    /* -------------------------------------------------
+       Very subtle vertical separation
+    ------------------------------------------------- */
+
+    .toolbar-btn:not(:nth-child(3n + 1))::before {
+        content:"";
+
+        position:absolute;
+        left:0;
+        top:10px;
+        bottom:10px;
+
+        width:1px;
+
+        background:
+            rgba(60,60,67,.07);
+    }
+
+
+    /* -------------------------------------------------
+       Row separation
+    ------------------------------------------------- */
+
+    .toolbar-btn:nth-child(n + 4)::after {
+        content:"";
+
+        position:absolute;
+
+        left:10px;
+        right:10px;
+        top:0;
+
+        height:1px;
+
+        background:
+            rgba(60,60,67,.07);
+    }
+
+
+    /* -------------------------------------------------
+       SVG icons
+    ------------------------------------------------- */
 
     .toolbar-btn .ios-menu-icon {
         width:20px !important;
@@ -6981,7 +7034,9 @@ button:focus-visible {
     }
 
 
-    /* Emoji icon such as Recent */
+    /* -------------------------------------------------
+       Emoji icon — Recent
+    ------------------------------------------------- */
 
     .toolbar-btn > span:first-child:not(.ios-menu-icon) {
         width:20px !important;
@@ -6996,9 +7051,13 @@ button:focus-visible {
     }
 
 
-    /* Labels */
+    /* -------------------------------------------------
+       Labels
+    ------------------------------------------------- */
 
     .toolbar-btn > span:last-child {
+        display:block !important;
+
         max-width:100% !important;
 
         overflow:hidden !important;
@@ -7013,37 +7072,40 @@ button:focus-visible {
     }
 
 
-    /* Touch feedback */
+    /* -------------------------------------------------
+       Touch feedback
+    ------------------------------------------------- */
 
     .toolbar-btn:active {
         transform:scale(.94) !important;
 
-        background:#eaf3ff !important;
-
-        border-color:rgba(0,122,255,.12) !important;
+        background:
+            rgba(0,122,255,.09) !important;
     }
 
 
-    .toolbar-btn:active .ios-menu-icon {
-        stroke:#0066d6 !important;
+    .toolbar-btn:active > span:last-child {
+        color:#007aff !important;
     }
 
 
-    /* Selected state */
+    /* -------------------------------------------------
+       Selected state
+    ------------------------------------------------- */
 
     .toolbar-btn.select-active {
-        background:#eaf3ff !important;
-
-        border-color:rgba(0,122,255,.18) !important;
+        background:
+            rgba(0,122,255,.09) !important;
     }
-
 
     .toolbar-btn.select-active > span:last-child {
         color:#007aff !important;
     }
 
 
-    /* Disabled */
+    /* -------------------------------------------------
+       Disabled
+    ------------------------------------------------- */
 
     .toolbar-btn:disabled {
         opacity:.35 !important;
@@ -7051,7 +7113,9 @@ button:focus-visible {
     }
 
 
-    /* Collapsed toolbar */
+    /* -------------------------------------------------
+       Collapsed
+    ------------------------------------------------- */
 
     .toolbar.menu-collapsed {
         display:none !important;
@@ -7059,9 +7123,9 @@ button:focus-visible {
 }
 
 
-/* -----------------------------------------------
-   Smaller iPhones
------------------------------------------------- */
+/* =====================================================
+   SMALL iPHONE
+===================================================== */
 
 @media (max-width:430px) {
 
@@ -7069,8 +7133,7 @@ button:focus-visible {
         width:calc(100% - 14px) !important;
         margin:5px 7px 4px !important;
 
-        padding:6px !important;
-        gap:5px !important;
+        padding:5px !important;
 
         border-radius:17px !important;
     }
@@ -7079,7 +7142,7 @@ button:focus-visible {
         height:43px !important;
         min-height:43px !important;
 
-        border-radius:12px !important;
+        border-radius:10px !important;
     }
 
     .toolbar-btn .ios-menu-icon {
@@ -7102,9 +7165,9 @@ button:focus-visible {
 }
 
 
-/* -----------------------------------------------
-   Very small iPhones
------------------------------------------------- */
+/* =====================================================
+   VERY SMALL iPHONE
+===================================================== */
 
 @media (max-width:390px) {
 
@@ -7112,8 +7175,7 @@ button:focus-visible {
         width:calc(100% - 12px) !important;
         margin:4px 6px 3px !important;
 
-        padding:5px !important;
-        gap:4px !important;
+        padding:4px !important;
 
         border-radius:16px !important;
     }
@@ -7122,7 +7184,7 @@ button:focus-visible {
         height:40px !important;
         min-height:40px !important;
 
-        border-radius:11px !important;
+        border-radius:9px !important;
     }
 
     .toolbar-btn .ios-menu-icon {
@@ -7143,6 +7205,8 @@ button:focus-visible {
         line-height:10px !important;
     }
 }
+
+
 
 
 
