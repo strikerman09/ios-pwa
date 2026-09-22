@@ -4461,6 +4461,23 @@ function positionTouchMenu(anchorEl, sheet) {
             "none";
     });
 }
+/* =========================================================
+   FIX — THREE-DOT POPUP POSITION
+   iPhone / iPad only
+   Desktop unchanged
+   ========================================================= */
+
+@media (max-width: 700px)
+and (hover: none)
+and (pointer: coarse) {
+
+    .touch-sheet-card {
+        position: fixed;
+        margin: 0;
+    }
+
+}
+
 
 
 
