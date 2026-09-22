@@ -3944,5 +3944,404 @@ and (pointer: coarse) {
     }
 }
 
+/* =========================================================
+   STEP 4 — IPHONE FILE ROWS
+   Native iOS Files-style list
+   iPhone only
+   Desktop + iPad unchanged
+   ========================================================= */
+
+@media (max-width: 700px)
+and (hover: none)
+and (pointer: coarse) {
+
+    /* -----------------------------------------------------
+       FILE LIST
+       ----------------------------------------------------- */
+
+    .file-list {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+
+    /* -----------------------------------------------------
+       FILE ROW
+       Flat iOS list row
+       ----------------------------------------------------- */
+
+    .file-item {
+        width: 100%;
+
+        min-height: 64px;
+
+        margin: 0;
+
+        padding:
+            8px 10px;
+
+        display: flex !important;
+        align-items: center;
+
+        gap: 10px;
+
+        border: 0;
+
+        border-radius: 0;
+
+        background:
+            rgba(255, 255, 255, .82);
+
+        box-shadow: none;
+
+        overflow: hidden;
+
+        transform: none !important;
+    }
+
+
+    /* iOS separator */
+
+    .file-item::after {
+        content: "";
+
+        position: absolute;
+
+        left: 76px;
+        right: 0;
+        bottom: 0;
+
+        height: 1px;
+
+        background:
+            rgba(60, 60, 67, .12);
+    }
+
+
+    /* Pressed row */
+
+    .file-item:active,
+    .file-item.touch-active {
+        background:
+            rgba(118, 118, 128, .12) !important;
+
+        transform: none !important;
+    }
+
+
+    /* -----------------------------------------------------
+       NUMBER
+       ----------------------------------------------------- */
+
+    .file-item .position {
+        width: 18px;
+        min-width: 18px;
+
+        flex: 0 0 18px;
+
+        color:
+            #8e8e93;
+
+        font-size: 11px;
+        font-weight: 500;
+
+        text-align: center;
+    }
+
+
+    /* -----------------------------------------------------
+       FILE ICON
+       ----------------------------------------------------- */
+
+    .file-item .file-icon {
+        width: 42px;
+        height: 42px;
+
+        min-width: 42px;
+        min-height: 42px;
+
+        flex: 0 0 42px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 10px;
+
+        background:
+            #f2f2f7;
+
+        color:
+            #007aff;
+
+        font-size: 24px;
+
+        box-shadow: none;
+
+        filter: none;
+    }
+
+
+    /* -----------------------------------------------------
+       FILE INFORMATION
+       ----------------------------------------------------- */
+
+    .file-item .file-info {
+        flex: 1 1 auto;
+
+        min-width: 0;
+
+        width: auto;
+
+        overflow: hidden;
+    }
+
+
+    .file-item .file-name {
+        margin: 0;
+
+        color:
+            #1c1c1e;
+
+        font-size: 15px;
+        line-height: 20px;
+
+        font-weight: 500;
+
+        letter-spacing: -.15px;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+
+        white-space: nowrap;
+    }
+
+
+    .file-item .file-type {
+        margin-top: 1px;
+
+        color:
+            #8e8e93;
+
+        font-size: 11px;
+        line-height: 15px;
+
+        font-weight: 400;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+
+        white-space: nowrap;
+    }
+
+
+    .file-item .recent-file-path,
+    .file-item .search-path {
+        margin-top: 1px;
+
+        color:
+            #8e8e93;
+
+        font-size: 10px;
+        line-height: 14px;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+
+        white-space: nowrap;
+    }
+
+
+    /* -----------------------------------------------------
+       ACTIONS
+       ----------------------------------------------------- */
+
+    .file-item .item-actions {
+        width: auto;
+        height: auto;
+
+        flex: 0 0 auto;
+
+        display: grid !important;
+
+        grid-template-columns:
+            repeat(5, 32px);
+
+        gap: 2px;
+
+        padding: 0;
+
+        border: 0;
+        border-radius: 0;
+
+        background: transparent;
+
+        box-shadow: none;
+
+        overflow: visible;
+    }
+
+
+    .file-item .item-actions > button {
+        width: 32px !important;
+        height: 32px !important;
+
+        min-width: 32px !important;
+        min-height: 32px !important;
+
+        padding: 0 !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        border: 0 !important;
+
+        border-radius: 8px !important;
+
+        background: transparent !important;
+
+        color:
+            #1c1c1e;
+
+        font-size: 17px !important;
+
+        box-shadow: none !important;
+    }
+
+
+    .file-item .item-actions > button:active {
+        background:
+            rgba(118, 118, 128, .12) !important;
+
+        transform: scale(.90);
+    }
+
+
+    /* More button */
+
+    .file-item .item-more-btn {
+        color:
+            #007aff !important;
+    }
+
+
+    .file-item .item-more-btn span {
+        font-size: 15px;
+        font-weight: 700;
+
+        letter-spacing: 1px;
+    }
+
+
+    /* -----------------------------------------------------
+       FOLDER ROW
+       ----------------------------------------------------- */
+
+    .file-item.folder-row .file-icon {
+        background:
+            rgba(0, 122, 255, .10);
+
+        color:
+            #007aff;
+    }
+
+
+    /* -----------------------------------------------------
+       SELECTED ROW
+       ----------------------------------------------------- */
+
+    .file-item.selected {
+        border: 0 !important;
+
+        background:
+            rgba(0, 122, 255, .08) !important;
+
+        box-shadow: none !important;
+    }
+
+
+    .file-item.selected::after {
+        display: none;
+    }
+
+
+    /* -----------------------------------------------------
+       SMALL IPHONE
+       Keep existing overall dimensions
+       ----------------------------------------------------- */
+
+    @media (max-width: 430px) {
+
+        .file-item {
+            min-height: 62px;
+
+            padding:
+                7px 8px;
+
+            gap: 8px;
+        }
+
+
+        .file-item::after {
+            left: 72px;
+        }
+
+
+        .file-item .position {
+            width: 17px;
+            min-width: 17px;
+            flex-basis: 17px;
+
+            font-size: 10px;
+        }
+
+
+        .file-item .file-icon {
+            width: 40px;
+            height: 40px;
+
+            min-width: 40px;
+            min-height: 40px;
+            flex-basis: 40px;
+
+            border-radius: 9px;
+
+            font-size: 22px;
+        }
+
+
+        .file-item .file-name {
+            font-size: 14px;
+            line-height: 19px;
+        }
+
+
+        .file-item .file-type {
+            font-size: 10px;
+        }
+
+
+        .file-item .item-actions {
+            grid-template-columns:
+                repeat(5, 30px);
+        }
+
+
+        .file-item .item-actions > button {
+            width: 30px !important;
+            height: 30px !important;
+
+            min-width: 30px !important;
+            min-height: 30px !important;
+        }
+    }
+}
+
+
 
 
