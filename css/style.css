@@ -4341,6 +4341,127 @@ and (pointer: coarse) {
         }
     }
 }
+function positionTouchMenu(anchorEl, sheet) {
+    const card = sheet
+        ? sheet.querySelector(".touch-sheet-card")
+        : null;
+
+    if (!card || !anchorEl) {
+        return;
+    }
+
+    requestAnimationFrame(() => {
+
+        const r =
+            anchorEl.getBoundingClientRect();
+
+        const w =
+            card.offsetWidth;
+
+        const h =
+            card.offsetHeight;
+
+        const gap = 8;
+        const margin = 10;
+
+        const vw =
+            window.innerWidth;
+
+        const vh =
+            window.innerHeight;
+
+        /* -----------------------------------------
+           Prefer showing the popup above the button
+        ----------------------------------------- */
+
+        let top =
+            r.top -
+            h -
+            gap;
+
+        /* If there is not enough room above,
+           show it below the button. */
+
+        if (top < margin) {
+
+            top =
+                r.bottom +
+                gap;
+
+        }
+
+        /* Keep popup inside bottom edge */
+
+        if (
+            top + h >
+            vh - margin
+        ) {
+
+            top =
+                Math.max(
+                    margin,
+                    vh - h - margin
+                );
+
+        }
+
+        /* -----------------------------------------
+           Align popup's right edge with button
+        ----------------------------------------- */
+
+        let left =
+            r.right -
+            w;
+
+        /* Keep inside left edge */
+
+        if (
+            left < margin
+        ) {
+
+            left =
+                margin;
+
+        }
+
+        /* Keep inside right edge */
+
+        if (
+            left + w >
+            vw - margin
+        ) {
+
+            left =
+                vw -
+                w -
+                margin;
+
+        }
+
+        /* -----------------------------------------
+           Apply calculated position
+        ----------------------------------------- */
+
+        card.style.left =
+            `${left}px`;
+
+        card.style.top =
+            `${top}px`;
+
+        card.style.right =
+            "auto";
+
+        card.style.bottom =
+            "auto";
+
+        card.style.margin =
+            "0";
+
+        card.style.transform =
+            "none";
+    });
+}
+
 
 
 
