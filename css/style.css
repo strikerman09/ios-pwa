@@ -10055,3 +10055,501 @@ button:focus-visible {
         background: #dcecff;
     }
 }
+
+/* =====================================================
+   iPAD FILE / FOLDER LIST — UI REDESIGN
+   Replace the existing iPad file-list styling section.
+   
+   Scope:
+   701px–999px
+   touch + coarse pointer only
+
+   iPhone and desktop are NOT affected.
+===================================================== */
+
+@media (min-width:701px) and (max-width:999px)
+       and (hover:none) and (pointer:coarse) {
+
+    /* -------------------------------------------------
+       LIST
+    ------------------------------------------------- */
+
+    .file-list {
+        width:100% !important;
+
+        padding:
+            8px 14px
+            calc(30px + env(safe-area-inset-bottom))
+            !important;
+
+        margin:0 !important;
+
+        background:transparent !important;
+    }
+
+
+    /* -------------------------------------------------
+       FILE / FOLDER ROW
+    ------------------------------------------------- */
+
+    .file-item {
+        position:relative !important;
+
+        width:100% !important;
+
+        min-height:78px !important;
+
+        margin:0 !important;
+
+        padding:10px 6px !important;
+
+        display:grid !important;
+
+        grid-template-columns:
+            32px
+            54px
+            minmax(0,1fr)
+            150px !important;
+
+        align-items:center !important;
+
+        column-gap:11px !important;
+
+        border:0 !important;
+
+        border-bottom:
+            1px solid rgba(60,60,67,.10) !important;
+
+        border-radius:0 !important;
+
+        background:transparent !important;
+
+        box-shadow:none !important;
+
+        overflow:visible !important;
+
+        transition:
+            background .16s ease,
+            transform .12s ease !important;
+
+        -webkit-tap-highlight-color:transparent !important;
+
+        touch-action:manipulation !important;
+    }
+
+
+    /* First row */
+    .file-item:first-child {
+        border-top:
+            1px solid rgba(60,60,67,.10) !important;
+
+        border-radius:
+            15px 15px 0 0 !important;
+    }
+
+
+    /* Last row */
+    .file-item:last-child {
+        border-bottom:0 !important;
+
+        border-radius:
+            0 0 15px 15px !important;
+    }
+
+
+    /* -------------------------------------------------
+       TOUCH STATE
+    ------------------------------------------------- */
+
+    .file-item:active {
+        background:
+            rgba(0,122,255,.07) !important;
+
+        transform:
+            scale(.998) !important;
+    }
+
+    .file-item.selected,
+    .file-item.active {
+        background:
+            rgba(0,122,255,.08) !important;
+    }
+
+
+    /* -------------------------------------------------
+       NUMBER
+    ------------------------------------------------- */
+
+    .file-item > :first-child {
+        width:32px !important;
+
+        display:flex !important;
+
+        align-items:center !important;
+        justify-content:center !important;
+
+        color:#8e8e93 !important;
+
+        font-size:13px !important;
+        font-weight:500 !important;
+
+        line-height:1 !important;
+
+        white-space:nowrap !important;
+    }
+
+
+    /* -------------------------------------------------
+       ICON
+    ------------------------------------------------- */
+
+    .file-item .file-icon,
+    .file-item .folder-icon,
+    .file-item > .icon,
+    .file-item .item-icon {
+        width:54px !important;
+        height:54px !important;
+
+        flex:0 0 54px !important;
+
+        display:flex !important;
+
+        align-items:center !important;
+        justify-content:center !important;
+
+        border-radius:15px !important;
+
+        background:#f2f2f7 !important;
+
+        color:#007aff !important;
+
+        font-size:30px !important;
+
+        line-height:1 !important;
+
+        overflow:hidden !important;
+    }
+
+
+    /* Folder */
+    .file-item.folder-row .file-icon,
+    .file-item.folder-row .folder-icon,
+    .file-item.folder .file-icon,
+    .file-item.folder .folder-icon {
+        background:#eaf3ff !important;
+
+        color:#007aff !important;
+    }
+
+
+    /* -------------------------------------------------
+       INFORMATION
+    ------------------------------------------------- */
+
+    .file-item .file-info,
+    .file-item .item-info {
+        min-width:0 !important;
+
+        display:flex !important;
+
+        flex-direction:column !important;
+
+        justify-content:center !important;
+
+        gap:3px !important;
+    }
+
+
+    /* Filename */
+    .file-item .file-name,
+    .file-item .item-name,
+    .file-item .name {
+        min-width:0 !important;
+
+        color:#1c1c1e !important;
+
+        font-size:17px !important;
+
+        font-weight:600 !important;
+
+        line-height:21px !important;
+
+        white-space:nowrap !important;
+
+        overflow:hidden !important;
+
+        text-overflow:ellipsis !important;
+    }
+
+
+    /* Type / size */
+    .file-item .file-type,
+    .file-item .file-meta,
+    .file-item .item-type,
+    .file-item .item-meta {
+        color:#8e8e93 !important;
+
+        font-size:12px !important;
+
+        font-weight:500 !important;
+
+        line-height:15px !important;
+
+        white-space:nowrap !important;
+
+        overflow:hidden !important;
+
+        text-overflow:ellipsis !important;
+    }
+
+
+    /* Path */
+    .file-item .file-path,
+    .file-item .item-path {
+        color:#aeaeb2 !important;
+
+        font-size:11px !important;
+
+        line-height:14px !important;
+
+        white-space:nowrap !important;
+
+        overflow:hidden !important;
+
+        text-overflow:ellipsis !important;
+    }
+
+
+    /* -------------------------------------------------
+       ACTION AREA
+    ------------------------------------------------- */
+
+    .file-item .file-actions,
+    .file-item .item-actions,
+    .file-item .actions {
+        width:150px !important;
+
+        min-width:150px !important;
+
+        display:flex !important;
+
+        align-items:center !important;
+
+        justify-content:flex-end !important;
+
+        gap:5px !important;
+
+        flex:0 0 150px !important;
+    }
+
+
+    /* Action buttons */
+    .file-item .file-actions button,
+    .file-item .item-actions button,
+    .file-item .actions button,
+    .file-item .favorite-btn,
+    .file-item .more-btn {
+        width:43px !important;
+        height:43px !important;
+
+        min-width:43px !important;
+        min-height:43px !important;
+
+        padding:0 !important;
+        margin:0 !important;
+
+        display:flex !important;
+
+        align-items:center !important;
+        justify-content:center !important;
+
+        border:0 !important;
+
+        border-radius:12px !important;
+
+        background:transparent !important;
+
+        color:#8e8e93 !important;
+
+        font-size:19px !important;
+
+        box-shadow:none !important;
+
+        -webkit-tap-highlight-color:transparent !important;
+
+        transition:
+            background .15s ease,
+            color .15s ease,
+            transform .12s ease !important;
+    }
+
+
+    /* More */
+    .file-item .more-btn {
+        background:#eef6ff !important;
+
+        color:#007aff !important;
+    }
+
+
+    /* Favorite */
+    .file-item .favorite-btn {
+        color:#8e8e93 !important;
+    }
+
+
+    /* Press */
+    .file-item .file-actions button:active,
+    .file-item .item-actions button:active,
+    .file-item .actions button:active,
+    .file-item .favorite-btn:active,
+    .file-item .more-btn:active {
+        transform:scale(.91) !important;
+
+        background:
+            rgba(0,122,255,.10) !important;
+
+        color:#007aff !important;
+    }
+}
+
+
+/* =====================================================
+   iPAD PORTRAIT
+===================================================== */
+
+@media (min-width:701px) and (max-width:999px)
+       and (orientation:portrait)
+       and (hover:none) and (pointer:coarse) {
+
+    .file-item {
+        min-height:76px !important;
+
+        grid-template-columns:
+            30px
+            52px
+            minmax(0,1fr)
+            144px !important;
+
+        column-gap:10px !important;
+    }
+
+    .file-item > :first-child {
+        width:30px !important;
+    }
+
+    .file-item .file-icon,
+    .file-item .folder-icon,
+    .file-item > .icon,
+    .file-item .item-icon {
+        width:52px !important;
+        height:52px !important;
+
+        flex-basis:52px !important;
+
+        border-radius:14px !important;
+
+        font-size:28px !important;
+    }
+
+    .file-item .file-actions,
+    .file-item .item-actions,
+    .file-item .actions {
+        width:144px !important;
+        min-width:144px !important;
+
+        flex-basis:144px !important;
+    }
+}
+
+
+/* =====================================================
+   iPAD LANDSCAPE
+===================================================== */
+
+@media (min-width:900px) and (max-width:999px)
+       and (orientation:landscape)
+       and (hover:none) and (pointer:coarse) {
+
+    .file-list {
+        padding-left:18px !important;
+        padding-right:18px !important;
+    }
+
+    .file-item {
+        min-height:82px !important;
+
+        grid-template-columns:
+            34px
+            56px
+            minmax(0,1fr)
+            156px !important;
+
+        column-gap:12px !important;
+
+        padding-left:7px !important;
+        padding-right:7px !important;
+    }
+
+    .file-item > :first-child {
+        width:34px !important;
+
+        font-size:14px !important;
+    }
+
+    .file-item .file-icon,
+    .file-item .folder-icon,
+    .file-item > .icon,
+    .file-item .item-icon {
+        width:56px !important;
+        height:56px !important;
+
+        flex-basis:56px !important;
+
+        border-radius:15px !important;
+
+        font-size:31px !important;
+    }
+
+    .file-item .file-name,
+    .file-item .item-name,
+    .file-item .name {
+        font-size:18px !important;
+        line-height:22px !important;
+    }
+
+    .file-item .file-type,
+    .file-item .file-meta,
+    .file-item .item-type,
+    .file-item .item-meta {
+        font-size:12px !important;
+        line-height:15px !important;
+    }
+
+    .file-item .file-actions,
+    .file-item .item-actions,
+    .file-item .actions {
+        width:156px !important;
+        min-width:156px !important;
+
+        flex-basis:156px !important;
+    }
+
+    .file-item .file-actions button,
+    .file-item .item-actions button,
+    .file-item .actions button,
+    .file-item .favorite-btn,
+    .file-item .more-btn {
+        width:44px !important;
+        height:44px !important;
+
+        min-width:44px !important;
+        min-height:44px !important;
+
+        border-radius:12px !important;
+
+        font-size:20px !important;
+    }
+}
+
+
