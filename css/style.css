@@ -12500,6 +12500,222 @@ button:focus-visible {
         }
     }
 }
+/* =====================================================
+   iPAD FILE ROW ACTION PANEL
+   5 BUTTONS — DETAILS / FAVORITE / MORE / RENAME / DELETE
+
+   Replace previous iPad action-rail CSS completely.
+===================================================== */
+
+@media (min-width:701px) and (max-width:999px)
+       and (hover:none) and (pointer:coarse) {
+
+    /* ================================================
+       ACTION PANEL
+    ================================================ */
+
+    .file-item .item-actions {
+        flex:0 0 270px !important;
+        width:270px !important;
+        min-width:270px !important;
+        height:58px !important;
+
+        margin-left:16px !important;
+        padding:6px !important;
+
+        display:grid !important;
+        grid-template-columns:
+            repeat(5, 1fr) !important;
+        gap:4px !important;
+
+        align-items:center !important;
+
+        background:#f2f2f7 !important;
+        border:1px solid rgba(60,60,67,.09) !important;
+        border-radius:18px !important;
+
+        box-shadow:
+            inset 0 1px 0 rgba(255,255,255,.9) !important;
+
+        overflow:hidden !important;
+    }
+
+
+    /* ================================================
+       FIVE BUTTONS
+    ================================================ */
+
+    .file-item .item-actions button {
+        width:100% !important;
+        height:44px !important;
+        min-width:0 !important;
+        min-height:44px !important;
+
+        margin:0 !important;
+        padding:0 !important;
+
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+
+        border:0 !important;
+        border-radius:13px !important;
+
+        background:transparent !important;
+        color:#636366 !important;
+
+        font-family:inherit !important;
+        font-size:20px !important;
+        line-height:1 !important;
+
+        -webkit-tap-highlight-color:transparent !important;
+        touch-action:manipulation !important;
+
+        transition:
+            transform .12s ease,
+            background .12s ease !important;
+    }
+
+
+    /* ================================================
+       DETAILS
+    ================================================ */
+
+    .file-item .item-actions .item-btn:first-child {
+        color:#007aff !important;
+    }
+
+
+    /* ================================================
+       FAVORITE
+    ================================================ */
+
+    .file-item .item-actions button[aria-label="Add Favorite"] {
+        color:#ff9f0a !important;
+        font-size:21px !important;
+    }
+
+
+    /* ================================================
+       MORE
+    ================================================ */
+
+    .file-item .item-actions .item-more-btn {
+        background:#ffffff !important;
+        color:#1c1c1e !important;
+
+        box-shadow:
+            0 1px 5px rgba(0,0,0,.08) !important;
+    }
+
+    .file-item .item-actions .item-more-btn span {
+        display:block !important;
+        transform:translateY(-2px) !important;
+        font-size:16px !important;
+        letter-spacing:1px !important;
+    }
+
+
+    /* ================================================
+       RENAME
+    ================================================ */
+
+    .file-item .item-actions .item-btn:nth-of-type(2) {
+        color:#636366 !important;
+    }
+
+
+    /* ================================================
+       DELETE
+    ================================================ */
+
+    .file-item .item-actions .item-btn:last-child {
+        color:#ff3b30 !important;
+    }
+
+
+    /* ================================================
+       TOUCH FEEDBACK
+    ================================================ */
+
+    .file-item .item-actions button:active {
+        transform:scale(.88) !important;
+        background:rgba(0,122,255,.11) !important;
+    }
+
+    .file-item .item-actions .item-more-btn:active {
+        background:#e5e5ea !important;
+    }
+
+    .file-item .item-actions .item-btn:last-child:active {
+        background:rgba(255,59,48,.11) !important;
+    }
+
+
+    /* ================================================
+       PORTRAIT
+    ================================================ */
+
+    @media (min-width:701px) and (max-width:899px)
+           and (orientation:portrait) {
+
+        .file-item .item-actions {
+            flex-basis:250px !important;
+            width:250px !important;
+            min-width:250px !important;
+
+            height:54px !important;
+            margin-left:10px !important;
+            padding:5px !important;
+
+            border-radius:16px !important;
+        }
+
+        .file-item .item-actions button {
+            height:42px !important;
+            min-height:42px !important;
+            border-radius:12px !important;
+            font-size:19px !important;
+        }
+
+        .file-item .item-actions button[aria-label="Add Favorite"] {
+            font-size:20px !important;
+        }
+    }
+
+
+    /* ================================================
+       LANDSCAPE
+    ================================================ */
+
+    @media (min-width:900px) and (max-width:999px)
+           and (orientation:landscape) {
+
+        .file-item .item-actions {
+            flex-basis:290px !important;
+            width:290px !important;
+            min-width:290px !important;
+
+            height:62px !important;
+            margin-left:18px !important;
+            padding:7px !important;
+
+            border-radius:19px !important;
+        }
+
+        .file-item .item-actions button {
+            height:48px !important;
+            min-height:48px !important;
+            border-radius:14px !important;
+            font-size:21px !important;
+        }
+
+        .file-item .item-actions button[aria-label="Add Favorite"] {
+            font-size:22px !important;
+        }
+    }
+}
+
 
 
 
