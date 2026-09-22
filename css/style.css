@@ -11148,3 +11148,775 @@ button:focus-visible {
     }
 }
 
+/* =====================================================
+   iPAD BIG UI REDESIGN
+   Navigation Header + Search + Location
+   + Separate Command Dock
+
+   IMPORTANT:
+   Replace the previous iPad header/search/breadcrumb
+   AND previous iPad toolbar redesign sections.
+
+   HTML / JavaScript IDs remain unchanged.
+   iPhone and desktop are NOT affected.
+===================================================== */
+
+@media (min-width:701px) and (max-width:999px)
+       and (hover:none) and (pointer:coarse) {
+
+    /* =================================================
+       APP LAYOUT
+       Turn the top area into a real iPad interface
+    ================================================= */
+
+    .app {
+        position:relative !important;
+    }
+
+    /* =================================================
+       1. HEADER — LARGE APP IDENTITY
+    ================================================= */
+
+    .header {
+        position:relative !important;
+
+        width:100% !important;
+        min-height:112px !important;
+
+        margin:0 !important;
+        padding:18px 24px 14px !important;
+
+        display:flex !important;
+        align-items:flex-start !important;
+        justify-content:space-between !important;
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(255,255,255,.96),
+                rgba(248,248,250,.90)
+            ) !important;
+
+        border:0 !important;
+        border-bottom:
+            1px solid rgba(60,60,67,.08) !important;
+
+        border-radius:0 !important;
+
+        box-shadow:
+            0 8px 24px rgba(0,0,0,.055) !important;
+
+        backdrop-filter:
+            blur(28px) saturate(1.12) !important;
+
+        -webkit-backdrop-filter:
+            blur(28px) saturate(1.12) !important;
+
+        z-index:30 !important;
+    }
+
+    .brand {
+        min-width:0 !important;
+
+        display:flex !important;
+        align-items:center !important;
+
+        gap:15px !important;
+    }
+
+    .app-logo {
+        width:62px !important;
+        height:62px !important;
+        flex:0 0 62px !important;
+
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+
+        border-radius:18px !important;
+
+        background:
+            linear-gradient(
+                145deg,
+                #f7f7fa,
+                #e9e9ee
+            ) !important;
+
+        box-shadow:
+            0 5px 14px rgba(0,0,0,.10),
+            inset 0 1px 0 rgba(255,255,255,.95) !important;
+    }
+
+    .app-logo svg {
+        width:38px !important;
+        height:38px !important;
+    }
+
+    .brand-text {
+        min-width:0 !important;
+    }
+
+    .brand-text h1 {
+        margin:0 !important;
+
+        color:#1c1c1e !important;
+
+        font-size:27px !important;
+        font-weight:750 !important;
+        line-height:31px !important;
+
+        letter-spacing:-.6px !important;
+
+        white-space:nowrap !important;
+        overflow:hidden !important;
+        text-overflow:ellipsis !important;
+    }
+
+    .brand-text p {
+        margin:6px 0 0 !important;
+
+        color:#8e8e93 !important;
+
+        font-size:12px !important;
+        font-weight:500 !important;
+        line-height:16px !important;
+
+        letter-spacing:.1px !important;
+    }
+
+    /* =================================================
+       HEADER MENU — FLOATING COMMAND
+    ================================================= */
+
+    .header-menu {
+        width:50px !important;
+        height:50px !important;
+
+        min-width:50px !important;
+        min-height:50px !important;
+
+        margin:0 !important;
+
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+
+        border:0 !important;
+        border-radius:16px !important;
+
+        background:#f1f1f6 !important;
+
+        color:#1c1c1e !important;
+
+        box-shadow:
+            0 3px 10px rgba(0,0,0,.06) !important;
+
+        transition:
+            transform .12s ease,
+            background .15s ease !important;
+
+        -webkit-tap-highlight-color:transparent !important;
+    }
+
+    .header-menu:active {
+        transform:scale(.90) !important;
+        background:#e2e2e7 !important;
+    }
+
+
+    /* =================================================
+       2. SEARCH — HERO COMMAND FIELD
+    ================================================= */
+
+    .search-section {
+        position:relative !important;
+
+        width:100% !important;
+        max-width:none !important;
+
+        margin:0 !important;
+
+        padding:
+            16px 24px 15px !important;
+
+        background:#f8f8fa !important;
+
+        border:0 !important;
+
+        z-index:25 !important;
+    }
+
+    .search-box {
+        width:100% !important;
+        max-width:none !important;
+
+        height:58px !important;
+        min-height:58px !important;
+
+        margin:0 !important;
+
+        padding:
+            0 20px !important;
+
+        border:
+            1px solid rgba(60,60,67,.10) !important;
+
+        border-radius:19px !important;
+
+        background:#ffffff !important;
+
+        color:#1c1c1e !important;
+
+        font-size:17px !important;
+        font-weight:500 !important;
+
+        outline:none !important;
+
+        box-shadow:
+            0 5px 18px rgba(0,0,0,.07),
+            inset 0 1px 0 rgba(255,255,255,.95) !important;
+
+        transition:
+            box-shadow .18s ease,
+            border-color .18s ease,
+            transform .15s ease !important;
+    }
+
+    .search-box::placeholder {
+        color:#8e8e93 !important;
+        opacity:1 !important;
+    }
+
+    .search-box:focus {
+        border-color:
+            rgba(0,122,255,.35) !important;
+
+        box-shadow:
+            0 0 0 4px rgba(0,122,255,.10),
+            0 7px 22px rgba(0,0,0,.08) !important;
+    }
+
+
+    /* =================================================
+       3. LOCATION BAR
+       Not a card anymore — navigation strip
+    ================================================= */
+
+    .breadcrumb {
+        position:relative !important;
+
+        width:100% !important;
+        max-width:none !important;
+
+        min-height:56px !important;
+
+        margin:0 !important;
+
+        padding:
+            0 24px !important;
+
+        display:flex !important;
+        align-items:center !important;
+
+        gap:6px !important;
+
+        background:#f8f8fa !important;
+
+        border:0 !important;
+        border-bottom:
+            1px solid rgba(60,60,67,.10) !important;
+
+        border-radius:0 !important;
+
+        box-shadow:none !important;
+
+        overflow-x:auto !important;
+        overflow-y:hidden !important;
+
+        white-space:nowrap !important;
+
+        scrollbar-width:none !important;
+
+        -webkit-overflow-scrolling:touch !important;
+    }
+
+    .breadcrumb::-webkit-scrollbar {
+        display:none !important;
+    }
+
+    /* LOCATION label */
+    .breadcrumb::before {
+        content:"LOCATION" !important;
+
+        flex:0 0 auto !important;
+
+        margin-right:8px !important;
+
+        color:#aeaeb2 !important;
+
+        font-size:9px !important;
+        font-weight:800 !important;
+
+        letter-spacing:1px !important;
+    }
+
+    .breadcrumb .crumb {
+        position:relative !important;
+
+        flex:0 0 auto !important;
+
+        height:36px !important;
+        min-width:36px !important;
+
+        padding:
+            0 12px !important;
+
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+
+        border-radius:11px !important;
+
+        background:transparent !important;
+
+        color:#636366 !important;
+
+        font-size:13px !important;
+        font-weight:600 !important;
+
+        white-space:nowrap !important;
+
+        transition:
+            background .15s ease,
+            color .15s ease,
+            transform .12s ease !important;
+    }
+
+    .breadcrumb .crumb:active {
+        transform:scale(.95) !important;
+        background:#e5e5ea !important;
+    }
+
+    /* Current location becomes a destination pill */
+    .breadcrumb .crumb:last-child {
+        max-width:42vw !important;
+
+        overflow:hidden !important;
+        text-overflow:ellipsis !important;
+
+        background:#007aff !important;
+
+        color:#ffffff !important;
+
+        font-weight:700 !important;
+
+        box-shadow:
+            0 3px 9px rgba(0,122,255,.20) !important;
+    }
+
+    .breadcrumb .separator {
+        flex:0 0 auto !important;
+
+        color:#c7c7cc !important;
+
+        font-size:15px !important;
+        font-weight:400 !important;
+    }
+
+
+    /* =================================================
+       4. COMMAND DOCK
+       BIG STRUCTURAL CHANGE
+
+       No individual cards.
+       Commands sit inside a dedicated dock.
+    ================================================= */
+
+    .toolbar {
+        position:relative !important;
+
+        width:calc(100% - 32px) !important;
+
+        margin:
+            16px 16px 14px !important;
+
+        padding:
+            8px !important;
+
+        display:grid !important;
+
+        grid-template-columns:
+            repeat(9, minmax(0, 1fr)) !important;
+
+        gap:0 !important;
+
+        background:
+            rgba(255,255,255,.94) !important;
+
+        border:
+            1px solid rgba(60,60,67,.10) !important;
+
+        border-radius:22px !important;
+
+        box-shadow:
+            0 9px 28px rgba(0,0,0,.085),
+            inset 0 1px 0 rgba(255,255,255,.95) !important;
+
+        backdrop-filter:
+            blur(24px) saturate(1.10) !important;
+
+        -webkit-backdrop-filter:
+            blur(24px) saturate(1.10) !important;
+
+        overflow:hidden !important;
+
+        z-index:20 !important;
+    }
+
+    .toolbar-btn {
+        position:relative !important;
+
+        width:100% !important;
+        min-width:0 !important;
+
+        height:68px !important;
+        min-height:68px !important;
+
+        margin:0 !important;
+        padding:7px 4px !important;
+
+        display:flex !important;
+        flex-direction:column !important;
+        align-items:center !important;
+        justify-content:center !important;
+
+        gap:5px !important;
+
+        border:0 !important;
+        border-radius:15px !important;
+
+        background:transparent !important;
+
+        color:#007aff !important;
+
+        box-shadow:none !important;
+
+        font-size:10px !important;
+        font-weight:600 !important;
+        line-height:12px !important;
+
+        transition:
+            background .15s ease,
+            transform .12s ease !important;
+
+        -webkit-tap-highlight-color:transparent !important;
+        touch-action:manipulation !important;
+    }
+
+    /* Vertical command separators */
+    .toolbar-btn:not(:first-child)::before {
+        content:"" !important;
+
+        position:absolute !important;
+
+        left:0 !important;
+        top:13px !important;
+        bottom:13px !important;
+
+        width:1px !important;
+
+        background:
+            rgba(60,60,67,.08) !important;
+    }
+
+    .toolbar-btn .ios-menu-icon {
+        width:25px !important;
+        height:25px !important;
+
+        flex:0 0 auto !important;
+
+        stroke:#007aff !important;
+        stroke-width:1.8 !important;
+
+        stroke-linecap:round !important;
+        stroke-linejoin:round !important;
+    }
+
+    .toolbar-btn > span:first-child:not(.ios-menu-icon) {
+        width:25px !important;
+        height:25px !important;
+
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+
+        font-size:20px !important;
+        line-height:25px !important;
+    }
+
+    .toolbar-btn > span:last-child {
+        display:block !important;
+
+        width:100% !important;
+
+        overflow:hidden !important;
+
+        text-overflow:ellipsis !important;
+
+        white-space:nowrap !important;
+
+        color:#1c1c1e !important;
+
+        font-size:10px !important;
+        font-weight:600 !important;
+        line-height:12px !important;
+    }
+
+    .toolbar-btn:active {
+        transform:scale(.94) !important;
+
+        background:
+            rgba(0,122,255,.09) !important;
+    }
+
+    .toolbar-btn:active > span:last-child {
+        color:#007aff !important;
+    }
+
+    .toolbar-btn.select-active {
+        background:
+            rgba(0,122,255,.10) !important;
+    }
+
+    .toolbar-btn.select-active > span:last-child {
+        color:#007aff !important;
+    }
+
+    .toolbar-btn:disabled {
+        opacity:.30 !important;
+        transform:none !important;
+    }
+
+
+    /* =================================================
+       5. CONTENT TRANSITION
+       Make file list feel like content below navigation
+    ================================================= */
+
+    .message {
+        margin-top:4px !important;
+    }
+
+    .file-list {
+        position:relative !important;
+
+        margin-top:0 !important;
+    }
+
+
+    /* =================================================
+       PORTRAIT iPAD
+    ================================================= */
+
+    @media (min-width:701px) and (max-width:899px)
+           and (orientation:portrait) {
+
+        .header {
+            min-height:104px !important;
+            padding:
+                15px 17px 12px !important;
+        }
+
+        .app-logo {
+            width:56px !important;
+            height:56px !important;
+            flex-basis:56px !important;
+            border-radius:17px !important;
+        }
+
+        .app-logo svg {
+            width:34px !important;
+            height:34px !important;
+        }
+
+        .brand {
+            gap:12px !important;
+        }
+
+        .brand-text h1 {
+            font-size:23px !important;
+            line-height:28px !important;
+        }
+
+        .brand-text p {
+            margin-top:4px !important;
+            font-size:10px !important;
+        }
+
+        .header-menu {
+            width:46px !important;
+            height:46px !important;
+            min-width:46px !important;
+            min-height:46px !important;
+            border-radius:14px !important;
+        }
+
+        .search-section {
+            padding:
+                13px 17px 12px !important;
+        }
+
+        .search-box {
+            height:53px !important;
+            min-height:53px !important;
+            border-radius:18px !important;
+            font-size:16px !important;
+        }
+
+        .breadcrumb {
+            min-height:51px !important;
+            padding:0 17px !important;
+        }
+
+        .breadcrumb .crumb {
+            height:33px !important;
+            min-width:33px !important;
+            padding:0 10px !important;
+            font-size:12px !important;
+        }
+
+        .toolbar {
+            width:calc(100% - 24px) !important;
+            margin:
+                13px 12px 12px !important;
+            padding:6px !important;
+            border-radius:19px !important;
+        }
+
+        .toolbar-btn {
+            height:62px !important;
+            min-height:62px !important;
+            border-radius:13px !important;
+        }
+
+        .toolbar-btn .ios-menu-icon {
+            width:22px !important;
+            height:22px !important;
+        }
+
+        .toolbar-btn > span:first-child:not(.ios-menu-icon) {
+            width:22px !important;
+            height:22px !important;
+            font-size:18px !important;
+            line-height:22px !important;
+        }
+
+        .toolbar-btn > span:last-child {
+            font-size:9px !important;
+            line-height:11px !important;
+        }
+    }
+
+
+    /* =================================================
+       LANDSCAPE iPAD
+    ================================================= */
+
+    @media (min-width:900px) and (max-width:999px)
+           and (orientation:landscape) {
+
+        .header {
+            min-height:118px !important;
+            padding:
+                19px 24px 15px !important;
+        }
+
+        .app-logo {
+            width:66px !important;
+            height:66px !important;
+            flex-basis:66px !important;
+            border-radius:19px !important;
+        }
+
+        .app-logo svg {
+            width:40px !important;
+            height:40px !important;
+        }
+
+        .brand {
+            gap:16px !important;
+        }
+
+        .brand-text h1 {
+            font-size:29px !important;
+            line-height:34px !important;
+        }
+
+        .brand-text p {
+            font-size:12px !important;
+            line-height:16px !important;
+        }
+
+        .header-menu {
+            width:52px !important;
+            height:52px !important;
+            min-width:52px !important;
+            min-height:52px !important;
+            border-radius:16px !important;
+        }
+
+        .search-section {
+            padding:
+                16px 24px 14px !important;
+        }
+
+        .search-box {
+            height:61px !important;
+            min-height:61px !important;
+            border-radius:20px !important;
+            font-size:17px !important;
+        }
+
+        .breadcrumb {
+            min-height:58px !important;
+            padding:0 24px !important;
+        }
+
+        .breadcrumb .crumb {
+            height:37px !important;
+            min-width:37px !important;
+            padding:0 13px !important;
+            font-size:13px !important;
+        }
+
+        .toolbar {
+            width:calc(100% - 36px) !important;
+            margin:
+                17px 18px 15px !important;
+            border-radius:23px !important;
+        }
+
+        .toolbar-btn {
+            height:72px !important;
+            min-height:72px !important;
+        }
+
+        .toolbar-btn .ios-menu-icon {
+            width:27px !important;
+            height:27px !important;
+        }
+
+        .toolbar-btn > span:first-child:not(.ios-menu-icon) {
+            width:27px !important;
+            height:27px !important;
+            font-size:21px !important;
+            line-height:27px !important;
+        }
+
+        .toolbar-btn > span:last-child {
+            font-size:10px !important;
+        }
+    }
+}
+
+
