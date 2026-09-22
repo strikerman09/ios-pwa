@@ -13028,7 +13028,7 @@ button:focus-visible {
        and (hover:none) and (pointer:coarse) {
 
     .file-item .item-actions {
-        transform: translateX(-90px);
+        transform: translateX(-80px);
 
         position: relative;
         z-index: 5;
