@@ -3826,5 +3826,123 @@ and (pointer: coarse) {
         }
     }
 }
+/* =========================================================
+   STEP 3 — IPHONE NATIVE iOS BREADCRUMB / LOCATION
+   iPhone only
+   Desktop + iPad unchanged
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .breadcrumb {
+        width: 100%;
+
+        margin: 4px 0 8px;
+        padding: 0 12px;
+
+        min-height: 34px;
+
+        display: flex;
+        align-items: center;
+
+        background: transparent;
+
+        border: 0;
+        border-radius: 0;
+
+        box-shadow: none;
+
+        color: #8e8e93;
+
+        font-size: 14px;
+        font-weight: 500;
+
+        line-height: 20px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        white-space: nowrap;
+
+        -webkit-overflow-scrolling: touch;
+
+        scrollbar-width: none;
+    }
+
+
+    .breadcrumb::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    /* Breadcrumb links */
+
+    .breadcrumb a {
+        color: #007aff;
+
+        text-decoration: none;
+
+        font-weight: 600;
+    }
+
+
+    .breadcrumb a:active {
+        opacity: .55;
+    }
+
+
+    /* Current location */
+
+    .breadcrumb span,
+    .breadcrumb .current {
+        color: #8e8e93;
+
+        font-weight: 500;
+    }
+
+
+    /* Separators */
+
+    .breadcrumb .separator,
+    .breadcrumb::before {
+        color: #c7c7cc;
+    }
+
+
+    /* Prevent breadcrumb from becoming a large card */
+
+    .breadcrumb > * {
+        flex: 0 0 auto;
+    }
+
+
+    /* Small iPhone */
+
+    @media (max-width: 430px) {
+
+        .breadcrumb {
+            padding-left: 10px;
+            padding-right: 10px;
+
+            margin-top: 3px;
+            margin-bottom: 7px;
+
+            min-height: 32px;
+
+            font-size: 13px;
+        }
+    }
+
+
+    /* Very small iPhone */
+
+    @media (max-width: 390px) {
+
+        .breadcrumb {
+            font-size: 12.5px;
+        }
+    }
+}
+
 
 
