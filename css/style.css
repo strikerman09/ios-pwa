@@ -12263,5 +12263,244 @@ button:focus-visible {
     }
 }
 
+/* =====================================================
+   iPAD FILE ROW ACTION RAIL
+   Replace ONLY previous iPad action-button styling.
+
+   Actual JS structure:
+   .item-actions
+     .item-btn        Details
+     favorite button Favorite
+     .item-more-btn   More
+     .item-btn        Rename
+     .item-btn        Delete
+
+   No HTML / JavaScript changes.
+   iPhone + desktop unaffected.
+===================================================== */
+
+@media (min-width:701px) and (max-width:999px)
+       and (hover:none) and (pointer:coarse) {
+
+    /* -----------------------------------------------
+       ACTION ZONE
+    ----------------------------------------------- */
+
+    .file-item .item-actions {
+        flex:0 0 auto !important;
+
+        min-width:188px !important;
+        height:52px !important;
+
+        margin-left:14px !important;
+        padding:5px !important;
+
+        display:flex !important;
+        align-items:center !important;
+        justify-content:flex-end !important;
+        gap:3px !important;
+
+        background:#f2f2f7 !important;
+        border:1px solid rgba(60,60,67,.08) !important;
+        border-radius:16px !important;
+
+        box-shadow:
+            inset 0 1px 0 rgba(255,255,255,.85) !important;
+
+        overflow:hidden !important;
+    }
+
+
+    /* -----------------------------------------------
+       ALL ACTION BUTTONS
+    ----------------------------------------------- */
+
+    .file-item .item-actions button {
+        position:relative !important;
+
+        width:42px !important;
+        height:42px !important;
+        min-width:42px !important;
+        min-height:42px !important;
+
+        margin:0 !important;
+        padding:0 !important;
+
+        display:inline-flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+
+        border:0 !important;
+        border-radius:12px !important;
+
+        background:transparent !important;
+        color:#636366 !important;
+
+        font-family:inherit !important;
+        font-size:20px !important;
+        line-height:1 !important;
+
+        cursor:pointer !important;
+        -webkit-tap-highlight-color:transparent !important;
+        touch-action:manipulation !important;
+
+        transition:
+            transform .12s ease,
+            background .12s ease,
+            color .12s ease !important;
+    }
+
+
+    /* -----------------------------------------------
+       DETAILS
+    ----------------------------------------------- */
+
+    .file-item .item-actions .item-btn:first-child {
+        color:#007aff !important;
+    }
+
+
+    /* -----------------------------------------------
+       FAVORITE
+       Favorite button has no class in JS,
+       so target the button after Details.
+    ----------------------------------------------- */
+
+    .file-item .item-actions .item-btn + button {
+        font-size:19px !important;
+    }
+
+
+    /* -----------------------------------------------
+       MORE
+    ----------------------------------------------- */
+
+    .file-item .item-actions .item-more-btn {
+        background:#ffffff !important;
+        color:#1c1c1e !important;
+
+        box-shadow:
+            0 1px 4px rgba(0,0,0,.08) !important;
+    }
+
+    .file-item .item-actions .item-more-btn span {
+        display:block !important;
+
+        transform:
+            translateY(-2px) !important;
+
+        letter-spacing:1px !important;
+        font-size:15px !important;
+        line-height:1 !important;
+    }
+
+
+    /* -----------------------------------------------
+       RENAME
+    ----------------------------------------------- */
+
+    .file-item .item-actions .item-btn:nth-of-type(2) {
+        color:#636366 !important;
+    }
+
+
+    /* -----------------------------------------------
+       DELETE
+    ----------------------------------------------- */
+
+    .file-item .item-actions .item-btn:last-child {
+        color:#ff3b30 !important;
+    }
+
+
+    /* -----------------------------------------------
+       TOUCH FEEDBACK
+    ----------------------------------------------- */
+
+    .file-item .item-actions button:active {
+        transform:scale(.88) !important;
+        background:rgba(0,122,255,.12) !important;
+    }
+
+    .file-item .item-actions .item-more-btn:active {
+        background:#e5e5ea !important;
+    }
+
+    .file-item .item-actions .item-btn:last-child:active {
+        background:rgba(255,59,48,.12) !important;
+    }
+
+
+    /* -----------------------------------------------
+       FAVORITE ACTIVE
+       Existing ⭐ remains visible.
+    ----------------------------------------------- */
+
+    .file-item .item-actions button[aria-label="Add Favorite"] {
+        color:#ff9f0a !important;
+    }
+
+
+    /* -----------------------------------------------
+       PORTRAIT
+    ----------------------------------------------- */
+
+    @media (min-width:701px) and (max-width:899px)
+           and (orientation:portrait) {
+
+        .file-item .item-actions {
+            min-width:168px !important;
+            height:48px !important;
+            margin-left:9px !important;
+            padding:4px !important;
+            border-radius:14px !important;
+        }
+
+        .file-item .item-actions button {
+            width:38px !important;
+            height:38px !important;
+            min-width:38px !important;
+            min-height:38px !important;
+            border-radius:11px !important;
+            font-size:18px !important;
+        }
+
+        .file-item .item-actions .item-more-btn span {
+            font-size:14px !important;
+        }
+    }
+
+
+    /* -----------------------------------------------
+       LANDSCAPE
+    ----------------------------------------------- */
+
+    @media (min-width:900px) and (max-width:999px)
+           and (orientation:landscape) {
+
+        .file-item .item-actions {
+            min-width:198px !important;
+            height:56px !important;
+            margin-left:16px !important;
+            padding:6px !important;
+            border-radius:17px !important;
+        }
+
+        .file-item .item-actions button {
+            width:44px !important;
+            height:44px !important;
+            min-width:44px !important;
+            min-height:44px !important;
+            border-radius:13px !important;
+            font-size:21px !important;
+        }
+
+        .file-item .item-actions .item-more-btn span {
+            font-size:16px !important;
+        }
+    }
+}
+
+
 
 
