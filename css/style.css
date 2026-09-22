@@ -13125,7 +13125,7 @@ button:focus-visible {
        and (orientation:landscape) {
 
     .file-item .item-actions {
-        transform: translateX(-60px);
+        transform: translateX(-90px);
 
         flex-basis: 270px;
         width: 270px;
