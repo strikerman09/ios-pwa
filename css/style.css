@@ -6889,6 +6889,7 @@ button:focus-visible {
         height:2px !important;
     }
 }
+
 /* =====================================================
    STEP 19 — iPHONE TOOLBAR / ACTION PANEL POLISH
    CSS ONLY
@@ -6911,22 +6912,23 @@ button:focus-visible {
         border-radius:17px !important;
 
         background:
-            rgba(255,255,255,.82) !important;
+            rgba(255,255,255,.86) !important;
 
         border:
-            1px solid rgba(60,60,67,.09) !important;
+            1px solid rgba(60,60,67,.10) !important;
 
         box-shadow:
-            0 3px 12px
-            rgba(0,0,0,.055) !important;
+            0 4px 14px
+            rgba(0,0,0,.06) !important;
 
         backdrop-filter:
-            blur(16px) !important;
+            blur(18px) saturate(1.05) !important;
         -webkit-backdrop-filter:
-            blur(16px) !important;
+            blur(18px) saturate(1.05) !important;
 
         overflow:hidden !important;
     }
+
 
     .toolbar-btn {
         min-width:0 !important;
@@ -6943,11 +6945,11 @@ button:focus-visible {
         justify-content:center !important;
         gap:2px !important;
 
-        border:0 !important;
+        border:1px solid rgba(60,60,67,.06) !important;
         border-radius:12px !important;
 
         background:
-            #f2f2f7 !important;
+            rgba(242,242,247,.92) !important;
 
         color:
             #007aff !important;
@@ -6956,35 +6958,86 @@ button:focus-visible {
         font-weight:600 !important;
         line-height:1.15 !important;
 
-        box-shadow:none !important;
+        box-shadow:
+            inset 0 1px 0 rgba(255,255,255,.75) !important;
 
         -webkit-tap-highlight-color:
             transparent !important;
 
         touch-action:manipulation !important;
+
+        transition:
+            transform .12s ease,
+            background .12s ease,
+            border-color .12s ease,
+            box-shadow .12s ease !important;
     }
+
 
     .toolbar-btn span:first-child {
         font-size:18px !important;
         line-height:18px !important;
     }
 
-    .toolbar-btn:active {
-        transform:scale(.94) !important;
-        background:#e5efff !important;
-        color:#007aff !important;
+
+    /* SVG icons */
+    .toolbar-btn .ios-menu-icon {
+        width:19px !important;
+        height:19px !important;
+
+        stroke:#007aff !important;
+        stroke-width:1.9 !important;
     }
 
+
+    /* Press feedback */
+    .toolbar-btn:active {
+        transform:scale(.94) !important;
+
+        background:
+            #e5efff !important;
+
+        border-color:
+            rgba(0,122,255,.16) !important;
+
+        color:
+            #007aff !important;
+
+        box-shadow:
+            inset 0 1px 3px rgba(0,122,255,.08) !important;
+    }
+
+
+    /* Disabled button */
     .toolbar-btn:disabled {
         opacity:.38 !important;
         transform:none !important;
+        box-shadow:none !important;
     }
 
-    /* Collapsed state remains clean */
+
+    /* Existing active/selected state */
+    .toolbar-btn.select-active {
+        background:
+            #eaf3ff !important;
+
+        border-color:
+            rgba(0,122,255,.22) !important;
+
+        color:
+            #007aff !important;
+
+        box-shadow:
+            inset 0 0 0 1px rgba(0,122,255,.08) !important;
+    }
+
+
+    /* Collapsed state remains unchanged */
     .toolbar.menu-collapsed {
         display:none !important;
     }
 }
+
 
 @media (max-width:430px) {
 
@@ -7010,6 +7063,7 @@ button:focus-visible {
     }
 }
 
+
 @media (max-width:390px) {
 
     .toolbar {
@@ -7032,6 +7086,8 @@ button:focus-visible {
         line-height:16px !important;
     }
 }
+
+
 /* =====================================================
    STEP 20 — iPHONE FILE ACTION BUTTONS POLISH
    CSS ONLY
