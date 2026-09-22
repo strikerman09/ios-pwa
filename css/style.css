@@ -1,12 +1,16 @@
+
 /* =========================================================
    MY FILE MANAGER
-   CONSOLIDATED CSS
+   iOS / iPadOS UI REDESIGN
    =========================================================
-   HTML / JS STRUCTURE:
-   - DO NOT CHANGE
-   - CSS ONLY
-   - Keeps existing IDs and JS classes
-   - Responsive: Desktop / iPad / iPhone
+   IMPORTANT
+   ---------------------------------------------------------
+   HTML / JS STRUCTURE: UNCHANGED
+   DESKTOP: PRESERVED
+   iPHONE + iPAD: iOS-STYLE REDESIGN
+
+   Existing classes / IDs are preserved.
+   No JavaScript changes are required.
    ========================================================= */
 
 
@@ -29,10 +33,30 @@
     --border: rgba(60, 60, 67, 0.12);
 
     --shadow:
-        0 2px 10px rgba(0, 0, 0, 0.06);
+        0 2px 10px rgba(0, 0, 0, .06);
 
     --shadow-strong:
-        0 10px 30px rgba(0, 0, 0, 0.10);
+        0 10px 30px rgba(0, 0, 0, .10);
+
+    /* iOS mobile system colors */
+    --ios-blue: #007aff;
+    --ios-green: #34c759;
+    --ios-red: #ff3b30;
+    --ios-orange: #ff9500;
+
+    --ios-bg: #f2f2f7;
+    --ios-grouped: #ffffff;
+    --ios-secondary-bg: #e5e5ea;
+    --ios-tertiary-bg: #f2f2f7;
+
+    --ios-label: #1c1c1e;
+    --ios-secondary-label: #8e8e93;
+
+    --ios-separator:
+        rgba(60, 60, 67, .12);
+
+    --ios-blue-tint:
+        rgba(0, 122, 255, .10);
 }
 
 
@@ -111,7 +135,10 @@ textarea {
 }
 
 button:focus-visible {
-    outline: 3px solid rgba(0, 122, 255, .22);
+    outline:
+        3px solid
+        rgba(0, 122, 255, .22);
+
     outline-offset: 2px;
 }
 
@@ -141,6 +168,7 @@ button:focus-visible {
 
 /* =========================================================
    4. HEADER
+   DESKTOP BASE
    ========================================================= */
 
 .header {
@@ -156,10 +184,15 @@ button:focus-visible {
 
     padding: 12px 14px;
 
-    background: rgba(255, 255, 255, .92);
+    background:
+        rgba(255, 255, 255, .92);
 
-    border: 1px solid var(--line);
-    border-radius: 22px 22px 0 0;
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:
+        22px 22px 0 0;
 
     box-shadow: var(--shadow);
 
@@ -193,7 +226,8 @@ button:focus-visible {
     background: var(--blue);
 
     box-shadow:
-        0 5px 15px rgba(0, 122, 255, .24);
+        0 5px 15px
+        rgba(0, 122, 255, .24);
 
     overflow: hidden;
 }
@@ -308,6 +342,7 @@ button:focus-visible {
 
 /* =========================================================
    6. TOOLBAR
+   DESKTOP BASE
    ========================================================= */
 
 .toolbar {
@@ -343,7 +378,6 @@ button:focus-visible {
     min-width: 0;
 
     height: 60px;
-    min-height: 0;
 
     display: flex;
     flex-direction: column;
@@ -354,7 +388,10 @@ button:focus-visible {
 
     padding: 3px;
 
-    border: 1px solid var(--line);
+    border:
+        1px solid
+        var(--line);
+
     border-radius: 15px;
 
     background: #fff;
@@ -362,7 +399,8 @@ button:focus-visible {
     color: var(--blue);
 
     box-shadow:
-        0 1px 5px rgba(0, 0, 0, .055);
+        0 1px 5px
+        rgba(0, 0, 0, .055);
 
     font-size: 21px;
 
@@ -422,7 +460,8 @@ button:focus-visible {
 
     box-shadow:
         inset 0 0 0 2px var(--blue),
-        0 2px 8px rgba(0, 0, 0, .06) !important;
+        0 2px 8px
+        rgba(0, 0, 0, .06) !important;
 }
 
 
@@ -467,7 +506,10 @@ button:focus-visible {
 
     padding: 0 16px;
 
-    border: 1px solid rgba(60, 60, 67, .08);
+    border:
+        1px solid
+        rgba(60, 60, 67, .08);
+
     border-radius: 15px;
 
     background: #e5e5ea;
@@ -479,7 +521,8 @@ button:focus-visible {
     outline: none;
 
     box-shadow:
-        inset 0 1px 1px rgba(0, 0, 0, .025);
+        inset 0 1px 1px
+        rgba(0, 0, 0, .025);
 
     transition:
         background .15s ease,
@@ -498,7 +541,8 @@ button:focus-visible {
         rgba(0, 122, 255, .35);
 
     box-shadow:
-        0 0 0 3px rgba(0, 122, 255, .10);
+        0 0 0 3px
+        rgba(0, 122, 255, .10);
 
     outline: none;
 }
@@ -620,7 +664,7 @@ button:focus-visible {
 
     border-radius: 50%;
 
-    background: #34c759;
+    background: var(--ios-green);
 }
 
 
@@ -633,7 +677,10 @@ button:focus-visible {
 
     padding: 11px 12px;
 
-    border: 1px solid #bfdbfe;
+    border:
+        1px solid
+        #bfdbfe;
+
     border-radius: 14px;
 
     background: #eff6ff;
@@ -655,7 +702,10 @@ button:focus-visible {
 
     padding: 12px;
 
-    border: 1px solid #cfe2ff;
+    border:
+        1px solid
+        #cfe2ff;
+
     border-radius: 16px;
 
     background: #eef6ff;
@@ -728,7 +778,8 @@ button:focus-visible {
 
 
 /* =========================================================
-   13. DEFAULT DESKTOP FILE ROW
+   13. FILE ITEM
+   DESKTOP
    ========================================================= */
 
 .file-item {
@@ -756,7 +807,10 @@ button:focus-visible {
 
     overflow: hidden;
 
-    border: 1px solid var(--line);
+    border:
+        1px solid
+        var(--line);
+
     border-radius: 18px;
 
     background: #fff;
@@ -793,7 +847,7 @@ button:focus-visible {
 
 
 /* =========================================================
-   14. POSITION NUMBER
+   14. POSITION
    ========================================================= */
 
 .position {
@@ -968,7 +1022,8 @@ button:focus-visible {
     font-size: 20px;
 
     box-shadow:
-        0 1px 3px rgba(0, 0, 0, .05);
+        0 1px 3px
+        rgba(0, 0, 0, .05);
 
     transition:
         transform .12s ease,
@@ -995,7 +1050,6 @@ button:focus-visible {
 
 /* =========================================================
    FAVORITE BUTTON
-   JS CREATES IT WITHOUT A CLASS
    ========================================================= */
 
 .item-actions > button:not(.item-btn) {
@@ -1020,7 +1074,8 @@ button:focus-visible {
     font-size: 21px !important;
 
     box-shadow:
-        0 1px 3px rgba(0, 0, 0, .05);
+        0 1px 3px
+        rgba(0, 0, 0, .05);
 }
 
 
@@ -1129,7 +1184,10 @@ button:focus-visible {
     align-items: center;
     justify-content: center;
 
-    border: 2px solid #c7c7cc;
+    border:
+        2px solid
+        #c7c7cc;
+
     border-radius: 50%;
 
     background: #fff;
@@ -1164,79 +1222,49 @@ button:focus-visible {
 
 /* =========================================================
    21. TOUCH ACTION SHEET
+   CLEAN iOS VERSION
    ========================================================= */
 
-/* =========================================================
-   THREE-DOT ACTION POPUP
-   NEW END-OF-FILE OVERRIDE
-   ========================================================= */
+.touch-action-sheet {
+    position: fixed;
 
-#touchActionSheet {
-    position: fixed !important;
-    inset: 0 !important;
+    inset: 0;
 
-    width: 100% !important;
-    height: 100dvh !important;
+    z-index: 1000;
 
-    z-index: 2147483000 !important;
+    display: none;
 
-    display: none !important;
-
-    align-items: center !important;
-    justify-content: center !important;
+    align-items: center;
+    justify-content: center;
 
     padding:
         calc(16px + env(safe-area-inset-top))
         16px
-        calc(16px + env(safe-area-inset-bottom)) !important;
+        calc(16px + env(safe-area-inset-bottom));
 
-    margin: 0 !important;
+    background:
+        rgba(0, 0, 0, .28);
 
-    box-sizing: border-box !important;
-
-    background: rgba(0, 0, 0, .30) !important;
-
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
-#touchActionSheet.show {
-    display: flex !important;
+.touch-action-sheet.show {
+    display: flex;
 }
 
+.touch-sheet-backdrop {
+    position: absolute;
 
-/* ---------------------------------------------------------
-   BACKDROP
-   --------------------------------------------------------- */
+    inset: 0;
 
-#touchActionSheet .touch-sheet-backdrop {
-    position: absolute !important;
-
-    inset: 0 !important;
-
-    width: 100% !important;
-    height: 100% !important;
-
-    background: transparent !important;
+    background: transparent;
 }
 
+.touch-sheet-card {
+    position: relative;
 
-/* ---------------------------------------------------------
-   POPUP CARD
-   --------------------------------------------------------- */
-
-#touchActionSheet .touch-sheet-card {
-    position: relative !important;
-
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    bottom: auto !important;
-
-    transform: none !important;
-
-    width: min(92vw, 380px) !important;
-    max-width: 380px !important;
+    width: min(92vw, 380px);
 
     max-height:
         calc(
@@ -1244,114 +1272,91 @@ button:focus-visible {
             - 32px
             - env(safe-area-inset-top)
             - env(safe-area-inset-bottom)
-        ) !important;
+        );
 
-    margin: 0 !important;
+    overflow-y: auto;
 
-    padding: 10px !important;
+    padding: 10px;
 
-    box-sizing: border-box !important;
+    border-radius: 22px;
 
-    overflow-y: auto !important;
-
-    border-radius: 22px !important;
-
-    background: rgba(255, 255, 255, .98) !important;
+    background:
+        rgba(255, 255, 255, .96);
 
     box-shadow:
         0 20px 60px
-        rgba(0, 0, 0, .22) !important;
+        rgba(0, 0, 0, .22);
 
-    z-index: 2 !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }
 
+.touch-sheet-title {
+    padding: 10px 12px;
 
-/* ---------------------------------------------------------
-   TITLE
-   --------------------------------------------------------- */
+    color: var(--text);
 
-#touchActionSheet .touch-sheet-title {
-    padding: 10px 12px !important;
+    font-size: 16px;
+    font-weight: 700;
 
-    color: var(--text) !important;
+    overflow: hidden;
 
-    font-size: 16px !important;
-    font-weight: 700 !important;
+    text-overflow: ellipsis;
 
-    overflow: hidden !important;
-
-    text-overflow: ellipsis !important;
-
-    white-space: nowrap !important;
+    white-space: nowrap;
 }
 
+.touch-sheet-action {
+    width: 100%;
 
-/* ---------------------------------------------------------
-   ACTION BUTTONS
-   --------------------------------------------------------- */
+    min-height: 48px;
 
-#touchActionSheet .touch-sheet-action {
-    width: 100% !important;
+    margin-top: 6px;
 
-    min-height: 48px !important;
+    padding: 0 14px;
 
-    margin-top: 6px !important;
+    border: 0;
 
-    padding: 0 14px !important;
+    border-radius: 13px;
 
-    border: 0 !important;
+    background: #f2f2f7;
 
-    border-radius: 13px !important;
+    color: var(--text);
 
-    background: #f2f2f7 !important;
+    font-size: 15px;
+    font-weight: 600;
 
-    color: var(--text) !important;
-
-    font-size: 15px !important;
-    font-weight: 600 !important;
-
-    text-align: left !important;
+    text-align: left;
 }
 
-#touchActionSheet .touch-sheet-action:active {
-    background: var(--blue-soft) !important;
+.touch-sheet-action:active {
+    background: var(--blue-soft);
 
-    color: var(--blue) !important;
+    color: var(--blue);
 }
 
+.touch-sheet-cancel {
+    width: 100%;
 
-/* ---------------------------------------------------------
-   CANCEL
-   --------------------------------------------------------- */
+    min-height: 48px;
 
-#touchActionSheet .touch-sheet-cancel {
-    width: 100% !important;
+    margin-top: 8px;
 
-    min-height: 48px !important;
+    border: 0;
 
-    margin-top: 8px !important;
+    border-radius: 13px;
 
-    border: 0 !important;
+    background: #e5e5ea;
 
-    border-radius: 13px !important;
+    color: var(--text);
 
-    background: #e5e5ea !important;
-
-    color: var(--text) !important;
-
-    font-size: 15px !important;
-    font-weight: 700 !important;
+    font-size: 15px;
+    font-weight: 700;
 }
 
-
-/* ---------------------------------------------------------
-   IMPORTANT:
-   JS positionTouchMenu() normally sets left/top/transform.
-   This override intentionally disables that positioning
-   so the popup is centered by the parent flex container.
-   --------------------------------------------------------- */
-
-
+.touch-sheet-cancel:active {
+    background: #d1d1d6;
+}
 
 
 /* =========================================================
@@ -1376,6 +1381,7 @@ button:focus-visible {
     padding: 0 17px;
 
     border: 0;
+
     border-radius: 25px;
 
     background: var(--blue);
@@ -1425,6 +1431,7 @@ button:focus-visible {
     padding: 0;
 
     border: 0;
+
     border-radius: 50%;
 
     background: #fff;
@@ -1459,10 +1466,11 @@ button:focus-visible {
 
     padding: 20px;
 
-    background: rgba(0, 0, 0, .30);
+    background:
+        rgba(0, 0, 0, .30);
 
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .file-details-card {
@@ -1537,6 +1545,7 @@ button:focus-visible {
     margin-top: 15px;
 
     border: 0;
+
     border-radius: 13px;
 
     background: var(--blue);
@@ -1579,7 +1588,10 @@ button:focus-visible {
 
     gap: 8px;
 
-    border: 1px solid var(--line);
+    border:
+        1px solid
+        var(--line);
+
     border-radius: 16px;
 
     background: #fff;
@@ -1605,6 +1617,7 @@ button:focus-visible {
     padding: 0;
 
     border: 0;
+
     border-radius: 11px;
 
     background: #f2f2f7;
@@ -1622,7 +1635,7 @@ button:focus-visible {
 
 
 /* =========================================================
-   25. V11 DIAGNOSTIC ELEMENTS
+   25. DIAGNOSTIC
    ========================================================= */
 
 .v11-row {
@@ -1646,6 +1659,9 @@ button:focus-visible {
    26. iPAD
    701px - 999px
    TOUCH / COARSE POINTER
+
+   iPad layout dimensions are preserved.
+   Visual language is redesigned.
    ========================================================= */
 
 @media
@@ -1659,14 +1675,36 @@ and (pointer: coarse) {
             calc(8px + env(safe-area-inset-top))
             10px
             calc(22px + env(safe-area-inset-bottom));
+
+        background:
+            #f2f2f7;
     }
+
+
+    /* -----------------------------------------------------
+       HEADER
+       ----------------------------------------------------- */
 
     .header {
         min-height: 88px;
 
         padding: 13px 16px;
 
-        border-radius: 24px 24px 0 0;
+        border:
+            0;
+
+        border-radius:
+            18px 18px 0 0;
+
+        background:
+            rgba(255, 255, 255, .86);
+
+        box-shadow:
+            0 1px 0
+            rgba(60, 60, 67, .08);
+
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
     }
 
     .app-logo {
@@ -1674,14 +1712,27 @@ and (pointer: coarse) {
         height: 58px;
 
         flex-basis: 58px;
+
+        border-radius: 16px;
+
+        box-shadow:
+            0 4px 12px
+            rgba(0, 122, 255, .18);
     }
 
     .brand-text h1 {
         font-size: 25px;
+
+        font-weight: 700;
+
+        letter-spacing: -.45px;
     }
 
     .brand-text p {
         font-size: 14px;
+
+        color:
+            var(--ios-secondary-label);
     }
 
     .header-menu {
@@ -1690,6 +1741,9 @@ and (pointer: coarse) {
 
         min-width: 56px;
         min-height: 56px;
+
+        background:
+            #e5e5ea;
     }
 
 
@@ -1703,9 +1757,13 @@ and (pointer: coarse) {
 
         gap: 0;
 
-        padding: 8px 10px;
+        padding: 7px 10px;
 
-        background: rgba(242, 242, 247, .96);
+        background:
+            rgba(242, 242, 247, .88);
+
+        border:
+            0;
 
         border-bottom:
             1px solid
@@ -1713,7 +1771,10 @@ and (pointer: coarse) {
 
         box-shadow:
             0 2px 8px
-            rgba(0, 0, 0, .05);
+            rgba(0, 0, 0, .035);
+
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
     }
 
     .toolbar-btn {
@@ -1746,11 +1807,32 @@ and (pointer: coarse) {
     }
 
     .toolbar-btn:active {
-        background: var(--blue-soft);
+        transform: none;
+
+        background:
+            rgba(0, 122, 255, .08);
     }
 
     .toolbar-btn span {
         font-size: 10px;
+
+        color:
+            var(--ios-secondary-label);
+    }
+
+    .toolbar-btn svg,
+    .ios-menu-icon {
+        stroke:
+            var(--ios-blue);
+    }
+
+    .toolbar-btn.select-active {
+        background:
+            rgba(0, 122, 255, .10) !important;
+
+        box-shadow:
+            inset 0 -2px 0
+            var(--ios-blue) !important;
     }
 
 
@@ -1760,14 +1842,37 @@ and (pointer: coarse) {
 
     .search-section {
         padding: 9px 12px;
+
+        background:
+            #f2f2f7;
     }
 
     .search-box {
         height: 52px;
 
-        border-radius: 16px;
+        padding:
+            0 16px;
+
+        border: 0;
+
+        border-radius: 14px;
+
+        background:
+            #e5e5ea;
+
+        box-shadow: none;
 
         font-size: 16px;
+    }
+
+    .search-box:focus {
+        background: #fff;
+
+        border: 0;
+
+        box-shadow:
+            0 0 0 2px
+            rgba(0, 122, 255, .14);
     }
 
 
@@ -1783,16 +1888,57 @@ and (pointer: coarse) {
         margin-right: 12px;
 
         min-height: 42px;
+
+        padding:
+            3px 0;
     }
 
     .crumb {
         min-height: 40px;
         height: 40px;
 
-        border-radius: 12px;
+        padding:
+            6px 13px;
 
-        padding-left: 13px;
-        padding-right: 13px;
+        border-radius: 11px;
+
+        background:
+            rgba(0, 122, 255, .08);
+
+        color:
+            var(--ios-blue);
+    }
+
+    .crumb.current {
+        background:
+            #e5e5ea;
+
+        color:
+            var(--ios-label);
+    }
+
+
+    /* -----------------------------------------------------
+       iPAD STATUS
+       ----------------------------------------------------- */
+
+    .message {
+        color:
+            var(--ios-secondary-label);
+
+        font-size: 13px;
+    }
+
+    .upload-status {
+        border: 0;
+
+        border-radius: 14px;
+
+        background:
+            rgba(0, 122, 255, .08);
+
+        color:
+            #075fbd;
     }
 
 
@@ -1831,9 +1977,28 @@ and (pointer: coarse) {
 
         position: relative;
 
-        border-radius: 19px;
+        border:
+            1px solid
+            rgba(60, 60, 67, .08);
+
+        border-radius: 18px;
+
+        background:
+            rgba(255, 255, 255, .96);
+
+        box-shadow:
+            0 1px 3px
+            rgba(0, 0, 0, .045);
 
         overflow: hidden;
+    }
+
+    .file-item:active,
+    .file-item.touch-active {
+        transform: scale(.985) !important;
+
+        background:
+            #f7f7fa !important;
     }
 
 
@@ -1852,7 +2017,8 @@ and (pointer: coarse) {
 
         z-index: 40;
 
-        color: var(--secondary);
+        color:
+            var(--ios-secondary-label);
 
         font-size: 12px;
     }
@@ -1893,15 +2059,10 @@ and (pointer: coarse) {
 
         font-size: 15px;
 
-        font-weight: 700;
+        font-weight: 650;
 
-        color: var(--text);
-
-        overflow: hidden;
-
-        text-overflow: ellipsis;
-
-        white-space: nowrap;
+        color:
+            var(--ios-label);
     }
 
     .file-item .file-type {
@@ -1915,13 +2076,8 @@ and (pointer: coarse) {
 
         font-size: 11px;
 
-        color: var(--secondary);
-
-        overflow: hidden;
-
-        text-overflow: ellipsis;
-
-        white-space: nowrap;
+        color:
+            var(--ios-secondary-label);
     }
 
     .file-item .recent-file-path,
@@ -1934,19 +2090,13 @@ and (pointer: coarse) {
 
         line-height: 16px;
 
-        color: var(--secondary);
-
-        overflow: hidden;
-
-        text-overflow: ellipsis;
-
-        white-space: nowrap;
+        color:
+            var(--ios-secondary-label);
     }
 
 
     /* -----------------------------------------------------
-       ICON
-       LEFT SIDE OF SECOND ROW
+       iPAD ICON
        ----------------------------------------------------- */
 
     .file-item .file-icon {
@@ -1965,7 +2115,11 @@ and (pointer: coarse) {
 
         border-radius: 15px;
 
-        background: #f2f2f7;
+        background:
+            #f2f2f7;
+
+        color:
+            var(--ios-blue);
 
         font-size: 32px;
 
@@ -1974,8 +2128,7 @@ and (pointer: coarse) {
 
 
     /* -----------------------------------------------------
-       ACTION PANEL
-       RIGHT SIDE OF SECOND ROW
+       iPAD ACTION PANEL
        ----------------------------------------------------- */
 
     .file-list .file-item .item-actions {
@@ -2002,7 +2155,10 @@ and (pointer: coarse) {
 
         border-radius: 16px;
 
-        background: #f1f2f6;
+        background:
+            #f2f2f7;
+
+        box-shadow: none;
 
         transform: none !important;
 
@@ -2019,6 +2175,19 @@ and (pointer: coarse) {
         min-height: 0 !important;
 
         border-radius: 11px !important;
+
+        background:
+            #fff !important;
+
+        color:
+            var(--ios-label);
+    }
+
+    .file-list .file-item
+    .item-actions
+    .item-more-btn {
+        color:
+            var(--ios-blue) !important;
     }
 
 
@@ -2040,23 +2209,68 @@ and (pointer: coarse) {
 
 
     /* -----------------------------------------------------
-       STATUS
+       REORDER
        ----------------------------------------------------- */
 
-    .message,
-    .upload-status,
     .reorder-bar {
         margin-left: 12px;
         margin-right: 12px;
+
+        border: 0;
+
+        border-radius: 15px;
+
+        background:
+            rgba(0, 122, 255, .08);
     }
 
 
     /* -----------------------------------------------------
-       TOUCH ACTION SHEET
+       ACTION SHEET
        ----------------------------------------------------- */
+
+    .touch-action-sheet {
+        padding:
+            calc(18px + env(safe-area-inset-top))
+            18px
+            calc(18px + env(safe-area-inset-bottom));
+
+        background:
+            rgba(0, 0, 0, .24);
+
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+    }
 
     .touch-sheet-card {
         width: min(72vw, 430px);
+
+        border-radius: 24px;
+
+        padding: 10px;
+
+        background:
+            rgba(255, 255, 255, .96);
+
+        box-shadow:
+            0 24px 70px
+            rgba(0, 0, 0, .22);
+    }
+
+    .touch-sheet-title {
+        padding:
+            11px 13px;
+
+        font-size: 16px;
+    }
+
+    .touch-sheet-action,
+    .touch-sheet-cancel {
+        min-height: 48px;
+
+        border-radius: 13px;
+
+        font-size: 15px;
     }
 }
 
@@ -2136,8 +2350,12 @@ and (orientation: landscape) {
 
 
 /* =========================================================
-   28. iPHONE / SMALL TOUCH DEVICES
+   28. iPHONE
    <= 700px
+   TOUCH / COARSE POINTER
+
+   Existing dimensions are preserved.
+   Visual design is changed to iOS language.
    ========================================================= */
 
 @media
@@ -2150,6 +2368,9 @@ and (pointer: coarse) {
             calc(4px + env(safe-area-inset-top))
             4px
             calc(18px + env(safe-area-inset-bottom));
+
+        background:
+            #f2f2f7;
     }
 
 
@@ -2160,9 +2381,27 @@ and (pointer: coarse) {
     .header {
         min-height: 74px;
 
-        padding: 9px 10px;
+        padding:
+            9px 10px;
 
-        border-radius: 19px 19px 0 0;
+        border:
+            0;
+
+        border-radius:
+            18px 18px 0 0;
+
+        background:
+            rgba(255, 255, 255, .86);
+
+        box-shadow:
+            0 1px 0
+            rgba(60, 60, 67, .08);
+
+        backdrop-filter:
+            blur(22px);
+
+        -webkit-backdrop-filter:
+            blur(22px);
     }
 
     .brand {
@@ -2176,6 +2415,10 @@ and (pointer: coarse) {
         flex-basis: 47px;
 
         border-radius: 14px;
+
+        box-shadow:
+            0 4px 12px
+            rgba(0, 122, 255, .18);
     }
 
     .app-logo svg {
@@ -2185,13 +2428,19 @@ and (pointer: coarse) {
 
     .brand-text h1 {
         font-size: 18px;
-        letter-spacing: -.2px;
+
+        font-weight: 700;
+
+        letter-spacing: -.25px;
     }
 
     .brand-text p {
         margin-top: 3px;
 
         font-size: 10px;
+
+        color:
+            var(--ios-secondary-label);
     }
 
     .header-menu {
@@ -2200,45 +2449,133 @@ and (pointer: coarse) {
 
         min-width: 46px;
         min-height: 46px;
-    }
 
-    .header-menu .menu-line {
-        width: 19px;
+        background:
+            #e5e5ea;
     }
 
 
     /* -----------------------------------------------------
-       TOOLBAR
+       iPHONE TOOLBAR
+       GROUPED iOS COMMAND PANEL
        ----------------------------------------------------- */
 
     .toolbar {
         grid-template-columns:
             repeat(3, minmax(0, 1fr));
 
-        gap: 6px;
+        gap: 1px;
 
-        padding: 6px 7px;
+        padding:
+            7px;
 
-        background: var(--bg);
+        background:
+            #f2f2f7;
+
+        border:
+            0;
+
+        box-shadow: none;
+
+        position: sticky;
+        top: 0;
+
+        backdrop-filter:
+            blur(18px);
+
+        -webkit-backdrop-filter:
+            blur(18px);
     }
 
     .toolbar-btn {
         height: 59px;
 
-        border-radius: 15px;
+        border:
+            0;
+
+        border-radius: 0;
+
+        background:
+            rgba(255, 255, 255, .96);
+
+        box-shadow: none;
 
         font-size: 21px;
+
+        position: relative;
+    }
+
+    .toolbar-btn:nth-child(1) {
+        border-radius:
+            13px 0 0 13px;
+    }
+
+    .toolbar-btn:nth-child(3) {
+        border-radius:
+            0 13px 13px 0;
+    }
+
+    .toolbar-btn:nth-child(4) {
+        border-radius:
+            13px 0 0 13px;
+    }
+
+    .toolbar-btn:nth-child(6) {
+        border-radius:
+            0 13px 13px 0;
+    }
+
+    .toolbar-btn:nth-child(7) {
+        border-radius:
+            13px 0 0 13px;
+    }
+
+    .toolbar-btn:nth-child(9) {
+        border-radius:
+            0 13px 13px 0;
+    }
+
+    .toolbar-btn:nth-child(-n+3),
+    .toolbar-btn:nth-child(n+4) {
+        box-shadow:
+            inset 0 0 0 1px
+            rgba(60, 60, 67, .035);
     }
 
     .toolbar-btn svg,
     .ios-menu-icon {
         width: 23px;
         height: 23px;
+
+        stroke:
+            var(--ios-blue);
     }
 
     .toolbar-btn span {
         font-size: 10px;
+
         line-height: 12px;
+
+        font-weight: 600;
+
+        color:
+            var(--ios-secondary-label);
+    }
+
+    .toolbar-btn:active {
+        transform: none;
+
+        background:
+            rgba(0, 122, 255, .10);
+    }
+
+    .toolbar-btn.select-active {
+        background:
+            rgba(0, 122, 255, .10) !important;
+
+        box-shadow:
+            inset 0 0 0 2px
+            var(--ios-blue) !important;
     }
 
 
@@ -2249,6 +2586,9 @@ and (pointer: coarse) {
     .search-section {
         padding:
             5px 7px 6px;
+
+        background:
+            #f2f2f7;
     }
 
     .search-box {
@@ -2257,9 +2597,32 @@ and (pointer: coarse) {
         padding:
             0 14px;
 
-        border-radius: 15px;
+        border:
+            0;
+
+        border-radius: 14px;
+
+        background:
+            #e5e5ea;
+
+        box-shadow: none;
 
         font-size: 15px;
+
+        color:
+            var(--ios-label);
+    }
+
+    .search-box:focus {
+        background:
+            #fff;
+
+        border:
+            0;
+
+        box-shadow:
+            0 0 0 2px
+            rgba(0, 122, 255, .12);
     }
 
 
@@ -2276,7 +2639,15 @@ and (pointer: coarse) {
         margin:
             4px 7px 0;
 
-        padding: 3px 0;
+        padding:
+            3px 0;
+    }
+
+    .breadcrumb > span {
+        font-size: 13px;
+
+        color:
+            var(--ios-secondary-label);
     }
 
     .crumb {
@@ -2288,12 +2659,28 @@ and (pointer: coarse) {
 
         border-radius: 10px;
 
+        background:
+            rgba(0, 122, 255, .08);
+
+        color:
+            var(--ios-blue);
+
         font-size: 12px;
+    }
+
+    .crumb.current {
+        background:
+            #e5e5ea;
+
+        color:
+            var(--ios-label);
+
+        font-weight: 600;
     }
 
 
     /* -----------------------------------------------------
-       STATUS
+       MESSAGE
        ----------------------------------------------------- */
 
     .message {
@@ -2305,8 +2692,23 @@ and (pointer: coarse) {
         padding:
             7px 4px;
 
+        color:
+            var(--ios-secondary-label);
+
         font-size: 10px;
     }
+
+    .message::before {
+        width: 6px;
+        height: 6px;
+
+        margin-right: 6px;
+    }
+
+
+    /* -----------------------------------------------------
+       UPLOAD STATUS
+       ----------------------------------------------------- */
 
     .upload-status {
         width: calc(100% - 14px);
@@ -2317,7 +2719,16 @@ and (pointer: coarse) {
         padding:
             9px 10px;
 
+        border:
+            0;
+
         border-radius: 13px;
+
+        background:
+            rgba(0, 122, 255, .08);
+
+        color:
+            #075fbd;
 
         font-size: 10px;
     }
@@ -2334,11 +2745,15 @@ and (pointer: coarse) {
                 84px +
                 env(safe-area-inset-bottom)
             );
+
+        background:
+            #f2f2f7;
     }
 
 
     /* -----------------------------------------------------
        FILE ROW
+       iOS SETTINGS / FILES STYLE
        ----------------------------------------------------- */
 
     .file-item {
@@ -2358,7 +2773,27 @@ and (pointer: coarse) {
 
         gap: 9px;
 
-        border-radius: 16px;
+        border:
+            0;
+
+        border-radius: 15px;
+
+        background:
+            rgba(255, 255, 255, .98);
+
+        box-shadow:
+            0 1px 2px
+            rgba(0, 0, 0, .035);
+
+        overflow: hidden;
+    }
+
+    .file-item:active,
+    .file-item.touch-active {
+        transform: scale(.985) !important;
+
+        background:
+            #f7f7fa !important;
     }
 
 
@@ -2371,12 +2806,17 @@ and (pointer: coarse) {
 
         flex: 0 0 22px;
 
+        color:
+            #aeaeb2;
+
         font-size: 10px;
+
+        font-weight: 500;
     }
 
 
     /* -----------------------------------------------------
-       ICON
+       FILE ICON
        ----------------------------------------------------- */
 
     .file-item .file-icon {
@@ -2390,14 +2830,22 @@ and (pointer: coarse) {
 
         flex: 0 0 42px;
 
-        border-radius: 12px;
+        border-radius: 11px;
+
+        background:
+            #f2f2f7;
+
+        color:
+            var(--ios-blue);
 
         font-size: 23px;
+
+        box-shadow: none;
     }
 
 
     /* -----------------------------------------------------
-       INFO
+       FILE INFO
        ----------------------------------------------------- */
 
     .file-item .file-info {
@@ -2423,20 +2871,32 @@ and (pointer: coarse) {
 
     .file-item .file-name {
         width: 100%;
+
         height: auto;
 
         font-size: 14px;
+
         line-height: 1.3;
 
         font-weight: 600;
+
+        color:
+            var(--ios-label);
     }
 
     .file-item .file-type {
         width: 100%;
+
         height: auto;
 
+        margin: 0;
+
         font-size: 10px;
+
         line-height: 1.3;
+
+        color:
+            var(--ios-secondary-label);
     }
 
     .file-item .recent-file-path,
@@ -2444,12 +2904,17 @@ and (pointer: coarse) {
         margin-top: 1px;
 
         font-size: 9px;
+
         line-height: 1.3;
+
+        color:
+            var(--ios-secondary-label);
     }
 
 
     /* -----------------------------------------------------
-       MOBILE ACTIONS
+       ACTION BUTTONS
+       iOS QUIET CONTROL GROUP
        ----------------------------------------------------- */
 
     .file-item .item-actions {
@@ -2482,15 +2947,35 @@ and (pointer: coarse) {
         min-width: 38px !important;
         min-height: 38px !important;
 
-        border-radius: 10px !important;
+        border:
+            0 !important;
 
-        background: #f2f2f7 !important;
+        border-radius:
+            10px !important;
+
+        background:
+            #f2f2f7 !important;
+
+        color:
+            var(--ios-label);
 
         box-shadow: none !important;
     }
 
+    .file-item .item-actions > button:active {
+        transform: scale(.91);
+
+        background:
+            #e5e5ea !important;
+    }
+
     .file-item .item-btn {
         font-size: 17px;
+    }
+
+    .file-item .item-more-btn {
+        color:
+            var(--ios-blue) !important;
     }
 
     .file-item .item-more-btn span {
@@ -2499,7 +2984,51 @@ and (pointer: coarse) {
 
 
     /* -----------------------------------------------------
-       PASTE
+       SEARCH RESULT
+       ----------------------------------------------------- */
+
+    .search-result .item-actions {
+        display: none !important;
+    }
+
+
+    /* -----------------------------------------------------
+       SELECTION
+       ----------------------------------------------------- */
+
+    .selection-bar {
+        margin:
+            0 7px 7px;
+
+        padding:
+            9px 11px;
+
+        border-radius:
+            13px;
+
+        background:
+            rgba(0, 122, 255, .09);
+
+        color:
+            var(--ios-blue);
+
+        font-size: 13px;
+    }
+
+    .file-item.selected {
+        border:
+            2px solid
+            var(--ios-blue) !important;
+
+        background:
+            rgba(0, 122, 255, .06) !important;
+
+        box-shadow: none !important;
+    }
+
+
+    /* -----------------------------------------------------
+       PASTE FAB
        ----------------------------------------------------- */
 
     .v4-paste-fab {
@@ -2513,11 +3042,19 @@ and (pointer: coarse) {
 
         min-height: 47px;
 
-        padding: 0 15px;
+        padding:
+            0 15px;
 
         border-radius: 24px;
 
+        background:
+            var(--ios-blue);
+
         font-size: 13px;
+
+        box-shadow:
+            0 7px 20px
+            rgba(0, 122, 255, .24);
     }
 
     .paste-cancel {
@@ -2535,38 +3072,113 @@ and (pointer: coarse) {
         min-height: 28px;
 
         font-size: 17px;
+
+        background:
+            #fff;
+
+        box-shadow:
+            0 2px 8px
+            rgba(0, 0, 0, .12);
     }
 
 
     /* -----------------------------------------------------
-       ACTION SHEET
+       iOS ACTION SHEET
        ----------------------------------------------------- */
 
     .touch-action-sheet {
         padding:
-            calc(12px + env(safe-area-inset-top))
+            calc(
+                12px +
+                env(safe-area-inset-top)
+            )
             10px
-            calc(12px + env(safe-area-inset-bottom));
+            calc(
+                12px +
+                env(safe-area-inset-bottom)
+            );
+
+        background:
+            rgba(0, 0, 0, .24);
+
+        backdrop-filter:
+            blur(16px);
+
+        -webkit-backdrop-filter:
+            blur(16px);
     }
 
     .touch-sheet-card {
         width: 100%;
+
         max-width: 420px;
 
-        border-radius: 20px;
-
         padding: 9px;
+
+        border-radius: 21px;
+
+        background:
+            rgba(255, 255, 255, .96);
+
+        box-shadow:
+            0 24px 70px
+            rgba(0, 0, 0, .22);
+
+        backdrop-filter:
+            blur(20px);
+
+        -webkit-backdrop-filter:
+            blur(20px);
     }
 
     .touch-sheet-title {
+        padding:
+            10px 12px;
+
+        color:
+            var(--ios-label);
+
         font-size: 15px;
+
+        font-weight: 600;
     }
 
-    .touch-sheet-action,
+    .touch-sheet-action {
+        min-height: 46px;
+
+        margin-top: 5px;
+
+        border-radius: 12px;
+
+        background:
+            #f2f2f7;
+
+        color:
+            var(--ios-label);
+
+        font-size: 14px;
+    }
+
+    .touch-sheet-action:active {
+        background:
+            rgba(0, 122, 255, .10);
+
+        color:
+            var(--ios-blue);
+    }
+
     .touch-sheet-cancel {
         min-height: 46px;
 
+        margin-top: 7px;
+
         border-radius: 12px;
+
+        background:
+            #e5e5ea;
+
+        color:
+            var(--ios-label);
 
         font-size: 14px;
     }
@@ -2578,13 +3190,29 @@ and (pointer: coarse) {
 
     .file-details-modal {
         padding:
-            calc(12px + env(safe-area-inset-top))
+            calc(
+                12px +
+                env(safe-area-inset-top)
+            )
             8px
-            calc(12px + env(safe-area-inset-bottom));
+            calc(
+                12px +
+                env(safe-area-inset-bottom)
+            );
+
+        background:
+            rgba(0, 0, 0, .28);
+
+        backdrop-filter:
+            blur(14px);
+
+        -webkit-backdrop-filter:
+            blur(14px);
     }
 
     .file-details-card {
         width: 100%;
+
         max-width: 420px;
 
         max-height:
@@ -2598,7 +3226,14 @@ and (pointer: coarse) {
         padding:
             16px 14px 14px;
 
-        border-radius: 20px;
+        border-radius: 21px;
+
+        background:
+            rgba(255, 255, 255, .97);
+
+        box-shadow:
+            0 24px 70px
+            rgba(0, 0, 0, .22);
     }
 
     .file-details-card h3 {
@@ -2606,15 +3241,26 @@ and (pointer: coarse) {
     }
 
     .file-detail-row {
-        padding: 10px 2px;
+        padding:
+            10px 2px;
+
+        border-bottom:
+            1px solid
+            rgba(60, 60, 67, .10);
     }
 
     .file-detail-row strong {
         font-size: 10px;
+
+        color:
+            var(--ios-secondary-label);
     }
 
     .file-detail-row span {
         font-size: 13px;
+
+        color:
+            var(--ios-label);
     }
 
     .file-details-close {
@@ -2624,6 +3270,9 @@ and (pointer: coarse) {
         margin-top: 12px;
 
         border-radius: 12px;
+
+        background:
+            var(--ios-blue);
 
         font-size: 14px;
     }
@@ -2639,11 +3288,19 @@ and (pointer: coarse) {
 
         padding: 10px;
 
+        border:
+            0;
+
         border-radius: 14px;
+
+        background:
+            rgba(0, 122, 255, .08);
     }
 
     .reorder-actions button {
         min-height: 42px;
+
+        border-radius: 11px;
 
         font-size: 13px;
     }
@@ -2653,6 +3310,8 @@ and (pointer: coarse) {
 /* =========================================================
    29. SMALL iPHONE
    <= 430px
+
+   Dimensions preserved.
    ========================================================= */
 
 @media
@@ -2675,6 +3334,8 @@ and (pointer: coarse) {
             7px 8px;
 
         gap: 8px;
+
+        border-radius: 14px;
     }
 
     .file-item .position {
@@ -2693,7 +3354,7 @@ and (pointer: coarse) {
 
         flex-basis: 40px;
 
-        border-radius: 11px;
+        border-radius: 10px;
 
         font-size: 22px;
     }
@@ -2733,6 +3394,8 @@ and (pointer: coarse) {
 /* =========================================================
    30. VERY SMALL iPHONE
    <= 390px
+
+   Dimensions preserved.
    ========================================================= */
 
 @media
@@ -2752,6 +3415,8 @@ and (pointer: coarse) {
         height: 44px;
 
         flex-basis: 44px;
+
+        border-radius: 13px;
     }
 
     .brand-text h1 {
@@ -2771,7 +3436,7 @@ and (pointer: coarse) {
     }
 
     .toolbar {
-        gap: 5px;
+        gap: 1px;
 
         padding:
             5px 6px;
@@ -2780,9 +3445,23 @@ and (pointer: coarse) {
     .toolbar-btn {
         height: 56px;
 
-        border-radius: 14px;
+        border-radius: 0;
 
         font-size: 20px;
+    }
+
+    .toolbar-btn:nth-child(1),
+    .toolbar-btn:nth-child(4),
+    .toolbar-btn:nth-child(7) {
+        border-radius:
+            12px 0 0 12px;
+    }
+
+    .toolbar-btn:nth-child(3),
+    .toolbar-btn:nth-child(6),
+    .toolbar-btn:nth-child(9) {
+        border-radius:
+            0 12px 12px 0;
     }
 
     .toolbar-btn span {
@@ -2797,7 +3476,7 @@ and (pointer: coarse) {
     .search-box {
         height: 46px;
 
-        border-radius: 14px;
+        border-radius: 13px;
 
         font-size: 14px;
     }
@@ -2849,7 +3528,7 @@ and (pointer: coarse) {
 
         gap: 7px;
 
-        border-radius: 14px;
+        border-radius: 13px;
     }
 
     .file-item .position {
@@ -2868,7 +3547,7 @@ and (pointer: coarse) {
 
         flex-basis: 38px;
 
-        border-radius: 10px;
+        border-radius: 9px;
 
         font-size: 20px;
     }
@@ -2914,7 +3593,7 @@ and (pointer: coarse) {
 
 
 /* =========================================================
-   31. SAFE AREA / BOTTOM SPACE
+   31. SAFE AREA
    ========================================================= */
 
 @media (max-width: 700px) {
@@ -2947,17 +3626,19 @@ and (pointer: coarse) {
     *,
     *::before,
     *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
+        animation-duration:
+            .01ms !important;
 
-        scroll-behavior: auto !important;
+        animation-iteration-count:
+            1 !important;
 
-        transition-duration: .01ms !important;
+        scroll-behavior:
+            auto !important;
+
+        transition-duration:
+            .01ms !important;
     }
 }
-
-
-
 
 
 /* =========================================================
