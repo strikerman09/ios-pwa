@@ -14065,6 +14065,415 @@ button:focus-visible {
     }
 }
 
+/* =========================================================
+   iPAD — RESPONSIVE FOLDER / FILE CARDS
+   Equal card proportions
+   Portrait  : 2 columns
+   Landscape : 3 columns
+========================================================= */
+
+@media (min-width:701px) and (max-width:999px)
+       and (hover:none) and (pointer:coarse) {
+
+    /* =====================================================
+       GRID
+    ===================================================== */
+
+    .file-list {
+        width: 100%;
+        box-sizing: border-box;
+
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 14px;
+        padding: 14px;
+    }
+
+
+    /* =====================================================
+       CARD
+    ===================================================== */
+
+    .file-list .file-item {
+        position: relative;
+
+        width: 100%;
+        min-width: 0;
+
+        aspect-ratio: 1.25 / 1;
+
+        padding: 16px;
+
+        box-sizing: border-box;
+
+        display: flex;
+        flex-direction: column;
+
+        background: #ffffff;
+
+        border: 1px solid rgba(0,0,0,.055);
+
+        border-radius: 22px;
+
+        box-shadow:
+            0 3px 12px rgba(0,0,0,.055);
+
+        overflow: hidden;
+    }
+
+
+    /* =====================================================
+       NUMBER
+    ===================================================== */
+
+    .file-list .file-item .position {
+        position: absolute;
+
+        top: 12px;
+        left: 13px;
+
+        min-width: 27px;
+        height: 27px;
+
+        padding: 0 7px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 9px;
+
+        background: #f1f2f6;
+
+        color: #777;
+
+        font-size: 12px;
+        font-weight: 600;
+
+        z-index: 3;
+    }
+
+
+    /* =====================================================
+       CONTENT AREA
+    ===================================================== */
+
+    .file-list .file-item .file-icon {
+        width: 68px;
+        height: 68px;
+
+        margin: auto auto 9px auto;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        flex-shrink: 0;
+
+        border-radius: 19px;
+
+        background: #f3f6fa;
+
+        font-size: 38px;
+    }
+
+
+    /* =====================================================
+       FILE INFORMATION
+    ===================================================== */
+
+    .file-list .file-item .file-info {
+        width: 100%;
+        min-width: 0;
+
+        margin: 0;
+
+        padding: 0 4px 47px 4px;
+
+        box-sizing: border-box;
+
+        text-align: center;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    /* =====================================================
+       NAME
+    ===================================================== */
+
+    .file-list .file-item .file-name {
+        width: 100%;
+        min-width: 0;
+
+        margin: 0;
+
+        color: #1c1c1e;
+
+        font-size: 16px;
+        font-weight: 600;
+
+        line-height: 1.3;
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+
+        overflow: hidden;
+
+        white-space: normal;
+
+        text-overflow: ellipsis;
+    }
+
+
+    .file-list .file-item .file-name-text {
+        width: 100%;
+        min-width: 0;
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+
+        overflow: hidden;
+
+        white-space: normal;
+
+        text-overflow: ellipsis;
+    }
+
+
+    /* =====================================================
+       TYPE / META
+    ===================================================== */
+
+    .file-list .file-item .file-type {
+        width: 100%;
+        min-width: 0;
+
+        margin-top: 4px;
+
+        color: #8a8a8f;
+
+        font-size: 12px;
+
+        line-height: 1.3;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+
+    /* =====================================================
+       COMPACT FLOATING ACTIONS
+    ===================================================== */
+
+    .file-list .file-item .item-actions {
+        position: absolute;
+
+        left: 12px;
+        right: 12px;
+        bottom: 10px;
+
+        width: auto;
+        min-width: 0;
+        max-width: none;
+
+        height: 34px;
+
+        padding: 0;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(5, minmax(0, 1fr));
+
+        gap: 5px;
+
+        box-sizing: border-box;
+
+        background: transparent;
+
+        border: 0;
+
+        transform: none;
+
+        z-index: 10;
+    }
+
+
+    /* =====================================================
+       BUTTONS
+    ===================================================== */
+
+    .file-list .file-item .item-actions .item-btn,
+    .file-list .file-item .item-actions button {
+
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+
+        height: 32px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        border: 0 !important;
+
+        border-radius: 10px !important;
+
+        background: #f5f5f7;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        box-sizing: border-box;
+
+        font-size: 16px;
+
+        line-height: 1;
+    }
+
+
+    /* Favorite inline style */
+    .file-list .file-item .item-actions
+    button[aria-label="Add Favorite"] {
+
+        width: 100% !important;
+        min-width: 0 !important;
+
+        height: 32px !important;
+
+        background: #f5f5f7 !important;
+
+        font-size: 17px !important;
+    }
+
+
+    /* Details */
+    .file-list .file-item .item-actions
+    .item-btn:first-child {
+        color: #007aff;
+    }
+
+
+    /* Favorite */
+    .file-list .file-item .item-actions
+    button[aria-label="Add Favorite"] {
+        color: #f59e0b !important;
+    }
+
+
+    /* More */
+    .file-list .file-item .item-actions
+    .item-more-btn {
+        color: #333;
+    }
+
+
+    /* Rename */
+    .file-list .file-item .item-actions
+    .item-btn:nth-of-type(4) {
+        color: #555;
+    }
+
+
+    /* Delete */
+    .file-list .file-item .item-actions
+    .item-btn:last-child {
+        color: #ff3b30;
+    }
+
+
+    /* =====================================================
+       TOUCH
+    ===================================================== */
+
+    .file-list .file-item .item-actions button:active {
+        transform: scale(.90);
+
+        background: #e9e9ed !important;
+    }
+}
+
+
+/* =========================================================
+   iPAD LANDSCAPE
+   3 EQUAL COLUMNS
+========================================================= */
+
+@media (min-width:701px) and (max-width:999px)
+       and (hover:none) and (pointer:coarse)
+       and (orientation:landscape) {
+
+    .file-list {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 16px;
+        padding: 16px;
+    }
+
+
+    .file-list .file-item {
+        aspect-ratio: 1.45 / 1;
+
+        padding: 18px;
+
+        border-radius: 23px;
+    }
+
+
+    .file-list .file-item .file-icon {
+        width: 74px;
+        height: 74px;
+
+        border-radius: 20px;
+
+        font-size: 41px;
+    }
+
+
+    .file-list .file-item .file-name {
+        font-size: 17px;
+    }
+
+
+    .file-list .file-item .item-actions {
+        left: 14px;
+        right: 14px;
+        bottom: 11px;
+
+        gap: 6px;
+    }
+
+
+    .file-list .file-item .item-actions .item-btn,
+    .file-list .file-item .item-actions button {
+
+        height: 34px !important;
+
+        border-radius: 10px !important;
+
+        font-size: 17px;
+    }
+
+
+    .file-list .file-item .item-actions
+    button[aria-label="Add Favorite"] {
+
+        height: 34px !important;
+
+        font-size: 18px !important;
+    }
+}
+
+
 
 
 
