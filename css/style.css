@@ -1,131 +1,71 @@
-/* =========================================================
+/* =====================================================
    MY FILE MANAGER
-   CONSOLIDATED RESPONSIVE UI
-   =========================================================
-   DESKTOP
-   ---------------------------------------------------------
-   Existing desktop layout preserved.
-
-   iPHONE
-   ---------------------------------------------------------
-   Futuristic left navigation drawer.
-   Drawer overlays content.
-   Main content remains full width.
-
-   iPAD
-   ---------------------------------------------------------
-   Futuristic native-style workspace with collapsible
-   LEFT SIDEBAR.
-
-   IMPORTANT
-   ---------------------------------------------------------
-   ☰ SHOW  -> navigation visible
-   ☰ HIDE  -> navigation completely hidden
-   MAIN    -> full available width
-
-   JS / IndexedDB / PDF.js / storage:
-   UNCHANGED
-   ========================================================= */
+   FUTURISTIC iOS / iPAD / DESKTOP UI
+   ===================================================== */
 
 
-/* =========================================================
+/* =====================================================
    1. ROOT
-   ========================================================= */
+   ===================================================== */
 
 :root {
+    --bg: #05070b;
+    --surface: rgba(17, 22, 31, 0.88);
+    --surface-strong: rgba(22, 28, 39, 0.96);
+    --surface-soft: rgba(255, 255, 255, 0.045);
+
+    --text: #f5f7fb;
+    --text-secondary: #9ca7b8;
+    --text-muted: #687386;
 
     --blue: #007aff;
-    --blue-soft: #eaf3ff;
-    --blue-light: #f4f8ff;
+    --cyan: #45d9ff;
+    --blue-soft: rgba(0, 122, 255, 0.16);
 
-    --bg: #f2f2f7;
-    --card: #ffffff;
+    --border: rgba(255, 255, 255, 0.09);
+    --separator: rgba(255, 255, 255, 0.07);
 
-    --text: #1c1c1e;
-    --secondary: #8e8e93;
-    --line: #e5e5ea;
+    --danger: #ff453a;
+    --success: #30d158;
+    --warning: #ffd60a;
 
-    --border: rgba(60, 60, 67, .12);
+    --radius: 18px;
 
     --shadow:
-        0 2px 10px rgba(0, 0, 0, .06);
+        0 18px 45px rgba(0, 0, 0, 0.28);
 
-    --shadow-strong:
-        0 10px 30px rgba(0, 0, 0, .10);
-
-    --ios-blue: #007aff;
-    --ios-green: #34c759;
-    --ios-red: #ff3b30;
-    --ios-orange: #ff9500;
-
-    --ios-bg: #f2f2f7;
-    --ios-grouped: #ffffff;
-    --ios-secondary-bg: #e5e5ea;
-    --ios-tertiary-bg: #f2f2f7;
-
-    --ios-label: #1c1c1e;
-    --ios-secondary-label: #8e8e93;
-
-    --ios-separator:
-        rgba(60, 60, 67, .12);
-
-    --ios-blue-tint:
-        rgba(0, 122, 255, .10);
-
-
-    /* FUTURISTIC */
-
-    --future-bg: #080b12;
-
-    --future-surface:
-        rgba(18, 23, 34, .88);
-
-    --future-surface-strong:
-        rgba(15, 20, 30, .96);
-
-    --future-text: #f5f7fb;
-
-    --future-muted: #7f8ba0;
-
-    --future-blue: #18a8ff;
-
-    --future-cyan: #53e6ff;
-
-    --future-green: #39e58c;
-
-    --future-red: #ff5c70;
-
-    --future-line:
-        rgba(255, 255, 255, .08);
-
-    --future-blue-line:
-        rgba(83, 230, 255, .22);
-
-    --future-glow:
-        0 0 24px rgba(24, 168, 255, .22);
-
-    --future-shadow:
-        0 24px 60px rgba(0, 0, 0, .55);
+    --header-height: 76px;
 }
 
 
-/* =========================================================
+/* =====================================================
    2. RESET
-   ========================================================= */
+   ===================================================== */
 
 * {
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
 }
 
-html,
-body {
-
-    margin: 0;
-    padding: 0;
-
+html {
     width: 100%;
     min-height: 100%;
+    background: var(--bg);
+}
+
+body {
+    width: 100%;
+    min-height: 100dvh;
+    margin: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(0, 122, 255, 0.10),
+            transparent 38%
+        ),
+        var(--bg);
+
+    color: var(--text);
 
     font-family:
         -apple-system,
@@ -133,82 +73,35 @@ body {
         "SF Pro Display",
         "SF Pro Text",
         "Segoe UI",
-        Arial,
+        "Noto Sans Myanmar",
         sans-serif;
 
-    background: var(--bg);
-    color: var(--text);
-}
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 
-body {
-
-    min-height: 100dvh;
-
-    overscroll-behavior-y: none;
-
-    -webkit-user-select: none;
-    user-select: none;
-
-    -webkit-touch-callout: none;
-
-    touch-action: pan-y;
+    overflow-x: hidden;
 }
 
 button,
-input,
-textarea {
-    font-family: inherit;
+input {
+    font: inherit;
 }
 
 button {
-
-    -webkit-appearance: none;
-    appearance: none;
-
-    cursor: pointer;
-
-    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
-input,
-textarea {
-
-    -webkit-appearance: none;
-    appearance: none;
-
-    -webkit-user-select: text;
-    user-select: text;
-}
-
-.file-name,
-.file-type,
-.breadcrumb {
-
-    -webkit-user-select: text;
-    user-select: text;
-}
-
-button:focus-visible {
-
-    outline:
-        3px solid rgba(0, 122, 255, .22);
-
-    outline-offset: 2px;
-}
-
-.hidden {
-    display: none !important;
+input {
+    outline: none;
 }
 
 
-/* =========================================================
+/* =====================================================
    3. APP
-   ========================================================= */
+   ===================================================== */
 
 .app {
-
     width: 100%;
-
     min-height: 100dvh;
 
     padding:
@@ -222,82 +115,73 @@ button:focus-visible {
 }
 
 
-/* =========================================================
+/* =====================================================
    4. HEADER
-   ========================================================= */
+   ===================================================== */
 
 .header {
-
     position: relative;
 
+    width: 100%;
+    height: var(--header-height);
+
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
-    gap: 14px;
-
-    min-height: 82px;
-
-    padding: 12px 14px;
+    padding: 0 18px;
 
     background:
-        rgba(255, 255, 255, .92);
+        linear-gradient(
+            135deg,
+            rgba(24, 31, 43, 0.96),
+            rgba(8, 12, 19, 0.96)
+        );
 
-    border:
-        1px solid var(--line);
-
-    border-radius:
-        22px 22px 0 0;
+    border: 1px solid var(--border);
+    border-radius: 20px;
 
     box-shadow: var(--shadow);
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
-    overflow: hidden;
+    z-index: 4000;
 }
 
 .brand {
-
-    display: flex;
-
-    align-items: center;
-
     min-width: 0;
 
+    display: flex;
+    align-items: center;
     gap: 13px;
 }
 
 .app-logo {
-
-    width: 54px;
-    height: 54px;
-
-    flex: 0 0 54px;
+    width: 46px;
+    height: 46px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    border-radius: 16px;
+    flex: 0 0 46px;
 
-    background: var(--blue);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 122, 255, 0.28),
+            rgba(69, 217, 255, 0.08)
+        );
+
+    border: 1px solid rgba(69, 217, 255, 0.18);
 
     box-shadow:
-        0 5px 15px rgba(0, 122, 255, .24);
-
-    overflow: hidden;
+        0 0 22px rgba(0, 122, 255, 0.12);
 }
 
 .app-logo svg {
-
-    width: 43px;
-    height: 43px;
-
-    display: block;
+    width: 25px;
+    height: 25px;
 }
 
 .brand-text {
@@ -305,646 +189,362 @@ button:focus-visible {
 }
 
 .brand-text h1 {
-
     margin: 0;
-
-    font-size: 24px;
-    line-height: 1.15;
-
-    font-weight: 700;
-
-    letter-spacing: -.4px;
 
     color: var(--text);
 
-    white-space: nowrap;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.15;
 
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .brand-text p {
-
     margin: 5px 0 0;
 
-    font-size: 13px;
-    line-height: 1.25;
+    color: var(--text-secondary);
 
-    color: var(--secondary);
+    font-size: 11px;
+    line-height: 1;
 
-    white-space: nowrap;
+    letter-spacing: 0.04em;
 }
 
 
-/* =========================================================
-   5. THREE-LINE MENU BUTTON
-   ========================================================= */
+/* =====================================================
+   5. THREE-LINE MENU
+   ===================================================== */
 
 .header-menu {
+    width: 44px;
+    height: 44px;
 
-    flex: 0 0 auto;
-
-    width: 52px;
-    height: 52px;
-
-    min-width: 52px;
-    min-height: 52px;
+    flex: 0 0 44px;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
     justify-content: center;
-
     gap: 5px;
 
     padding: 0;
 
-    border: 0;
+    border: 1px solid var(--border);
+    border-radius: 13px;
 
-    border-radius: 50%;
-
-    background: #e7e7ec;
-
-    transition:
-        transform .15s ease,
-        background .15s ease;
-}
-
-.header-menu .menu-line {
-
-    display: block;
-
-    width: 21px;
-    height: 2.5px;
-
-    border-radius: 4px;
-
-    background: var(--blue);
-
-    transition:
-        transform .18s ease,
-        opacity .18s ease;
-}
-
-.header-menu:active {
-    transform: scale(.93);
-}
-
-
-/* X WHEN OPEN */
-
-.header-menu.is-open .menu-line:nth-child(1) {
-
-    transform:
-        translateY(7.5px)
-        rotate(45deg);
-}
-
-.header-menu.is-open .menu-line:nth-child(2) {
-    opacity: 0;
-}
-
-.header-menu.is-open .menu-line:nth-child(3) {
-
-    transform:
-        translateY(-7.5px)
-        rotate(-45deg);
-}
-
-
-/* =========================================================
-   6. DESKTOP TOOLBAR
-   ========================================================= */
-
-.toolbar {
-
-    width: 100%;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(9, minmax(0, 1fr));
-
-    gap: 6px;
-
-    padding: 8px 10px;
-
-    background: var(--bg);
-
-    position: sticky;
-
-    top: 0;
-
-    z-index: 100;
-
-    overflow: hidden;
-
-    transition:
-        max-height .22s ease,
-        opacity .18s ease,
-        transform .22s ease,
-        padding .22s ease;
-}
-
-.toolbar-btn {
-
-    width: 100%;
-    min-width: 0;
-
-    height: 60px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 3px;
-
-    padding: 3px;
-
-    border:
-        1px solid var(--line);
-
-    border-radius: 15px;
-
-    background: #fff;
-
-    color: var(--blue);
-
-    box-shadow:
-        0 1px 5px rgba(0, 0, 0, .055);
-
-    font-size: 21px;
-
-    transition:
-        transform .14s ease,
-        background .14s ease;
-}
-
-.toolbar-btn svg,
-.ios-menu-icon {
-
-    width: 24px;
-    height: 24px;
-
-    flex: 0 0 auto;
-
-    fill: none;
-
-    stroke: var(--blue);
-
-    stroke-width: 1.9;
-
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.toolbar-btn span {
-
-    max-width: 100%;
-
-    font-size: 10px;
-    line-height: 12px;
-
-    font-weight: 600;
-
-    color: var(--blue);
-
-    white-space: nowrap;
-
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.toolbar-btn:active {
-
-    transform: scale(.95);
-
-    background: var(--blue-soft);
-}
-
-.toolbar-btn:disabled {
-
-    opacity: .35;
-
-    transform: none;
-
-    cursor: default;
-}
-
-.toolbar-btn.select-active {
-
-    background: #e5efff !important;
-
-    box-shadow:
-        inset 0 0 0 2px var(--blue),
-        0 2px 8px rgba(0, 0, 0, .06)
-        !important;
-}
-
-
-/* =========================================================
-   7. COMMON TOOLBAR COLLAPSE
-   ========================================================= */
-
-.toolbar.menu-collapsed {
-
-    max-height: 0 !important;
-
-    min-height: 0 !important;
-
-    height: 0 !important;
-
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-
-    opacity: 0 !important;
-
-    pointer-events: none !important;
-
-    overflow: hidden !important;
-
-    transform:
-        translateY(-8px);
-}
-
-
-/* =========================================================
-   8. SEARCH
-   ========================================================= */
-
-.search-section {
-
-    width: 100%;
-
-    padding: 7px 10px;
-
-    background: var(--bg);
-}
-
-.search-box {
-
-    width: 100%;
-
-    height: 50px;
-
-    padding: 0 16px;
-
-    border:
-        1px solid rgba(60, 60, 67, .08);
-
-    border-radius: 15px;
-
-    background: #e5e5ea;
+    background: rgba(255, 255, 255, 0.045);
 
     color: var(--text);
 
-    font-size: 16px;
+    cursor: pointer;
 
-    outline: none;
+    z-index: 4500;
+}
 
-    box-shadow:
-        inset 0 1px 1px rgba(0, 0, 0, .025);
+.header-menu:active {
+    transform: scale(0.94);
+}
+
+.menu-line {
+    width: 19px;
+    height: 2px;
+
+    display: block;
+
+    border-radius: 10px;
+
+    background: currentColor;
+}
+
+
+/* =====================================================
+   6. DESKTOP TOOLBAR
+   ===================================================== */
+
+.toolbar {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns:
+        repeat(9, minmax(0, 1fr));
+
+    gap: 7px;
+
+    margin-top: 8px;
+    padding: 8px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 17px;
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 
     transition:
-        background .15s ease,
-        border-color .15s ease,
-        box-shadow .15s ease;
+        opacity 0.22s ease,
+        transform 0.22s ease;
+}
+
+.toolbar-btn {
+    min-width: 0;
+    min-height: 44px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    color: var(--text-secondary);
+
+    cursor: pointer;
+
+    transition:
+        background 0.18s ease,
+        color 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.18s ease;
+}
+
+.toolbar-btn:hover {
+    color: var(--text);
+
+    background: rgba(0, 122, 255, 0.10);
+
+    border-color: rgba(0, 122, 255, 0.28);
+}
+
+.toolbar-btn:active {
+    transform: scale(0.97);
+}
+
+.toolbar-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+
+/* =====================================================
+   7. TOOLBAR COLLAPSE
+   ===================================================== */
+
+.toolbar.menu-collapsed {
+    display: none;
+}
+
+
+/* =====================================================
+   8. SEARCH
+   ===================================================== */
+
+.search-section {
+    width: 100%;
+    margin-top: 9px;
+}
+
+.search-box {
+    width: 100%;
+    height: 50px;
+
+    padding: 0 17px;
+
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    background:
+        rgba(255, 255, 255, 0.055);
+
+    color: var(--text);
+
+    font-size: 15px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+
+    transition:
+        border-color 0.18s ease,
+        background 0.18s ease,
+        box-shadow 0.18s ease;
 }
 
 .search-box::placeholder {
-    color: var(--secondary);
+    color: var(--text-muted);
 }
 
 .search-box:focus {
+    border-color: rgba(0, 122, 255, 0.55);
 
-    background: #fff;
-
-    border-color:
-        rgba(0, 122, 255, .35);
+    background:
+        rgba(255, 255, 255, 0.07);
 
     box-shadow:
-        0 0 0 3px rgba(0, 122, 255, .10);
+        0 0 0 3px rgba(0, 122, 255, 0.10);
 }
 
 
-/* =========================================================
+/* =====================================================
    9. BREADCRUMB
-   ========================================================= */
+   ===================================================== */
 
 .breadcrumb {
+    width: 100%;
 
-    width:
-        calc(100% - 20px);
-
-    max-width:
-        calc(100% - 20px);
-
-    min-width: 0;
-
-    min-height: 40px;
-
-    margin:
-        7px 10px 0;
-
-    padding: 3px 0;
+    min-height: 42px;
 
     display: flex;
-
     align-items: center;
 
-    gap: 5px;
+    margin-top: 8px;
+    padding: 0 13px;
 
     overflow-x: auto;
-    overflow-y: hidden;
-
     white-space: nowrap;
 
-    flex-wrap: nowrap;
+    color: var(--text-secondary);
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    border: 1px solid var(--border);
+    border-radius: 13px;
 
     scrollbar-width: none;
-
-    -webkit-overflow-scrolling: touch;
 }
 
 .breadcrumb::-webkit-scrollbar {
     display: none;
 }
 
-.breadcrumb > * {
-    flex: 0 0 auto;
-}
 
-.breadcrumb > span {
+/* =====================================================
+   10. MESSAGE
+   ===================================================== */
 
-    color: var(--secondary);
-
-    font-size: 14px;
-}
-
-.crumb {
+.message {
+    width: 100%;
 
     min-height: 38px;
-    height: 38px;
 
-    max-width: 70vw;
+    display: flex;
+    align-items: center;
 
-    padding: 6px 12px;
+    margin-top: 8px;
+    padding: 0 13px;
 
-    border: 0;
+    color: var(--text-secondary);
 
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   11. UPLOAD STATUS
+   ===================================================== */
+
+.upload-status {
+    width: 100%;
+
+    margin-top: 8px;
+    padding: 10px 13px;
+
+    color: var(--text-secondary);
+
+    background:
+        rgba(0, 122, 255, 0.07);
+
+    border: 1px solid rgba(0, 122, 255, 0.16);
+
+    border-radius: 12px;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   12. REORDER BAR
+   ===================================================== */
+
+.reorder-bar {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 8px;
+    padding: 9px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.reorder-bar.hidden {
+    display: none;
+}
+
+.reorder-bar button {
+    min-height: 40px;
+
+    padding: 0 14px;
+
+    border: 1px solid var(--border);
     border-radius: 11px;
 
     background:
-        var(--blue-soft);
-
-    color: var(--blue);
-
-    font-size: 14px;
-    line-height: 26px;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-
-    white-space: nowrap;
-}
-
-.crumb:active {
-    background: #dcecff;
-}
-
-.crumb.current {
-
-    background: #e5e5ea;
+        rgba(255, 255, 255, 0.045);
 
     color: var(--text);
 
-    font-weight: 700;
+    cursor: pointer;
 }
 
 
-/* =========================================================
-   10. MESSAGE
-   ========================================================= */
-
-.message {
-
-    margin:
-        3px 10px 7px;
-
-    padding:
-        7px 4px;
-
-    background:
-        transparent;
-
-    color:
-        #6d6d72;
-
-    font-size: 13px;
-
-    line-height: 1.35;
-}
-
-.message::before {
-
-    content: "";
-
-    display: inline-block;
-
-    width: 7px;
-    height: 7px;
-
-    margin-right: 7px;
-
-    vertical-align: middle;
-
-    border-radius: 50%;
-
-    background:
-        var(--ios-green);
-}
-
-
-/* =========================================================
-   11. UPLOAD STATUS
-   ========================================================= */
-
-.upload-status {
-
-    margin:
-        0 10px 8px;
-
-    padding:
-        11px 12px;
-
-    border:
-        1px solid #bfdbfe;
-
-    border-radius: 14px;
-
-    background:
-        #eff6ff;
-
-    color:
-        #1e40af;
-
-    font-size: 13px;
-
-    line-height: 1.35;
-}
-
-
-/* =========================================================
-   12. REORDER BAR
-   ========================================================= */
-
-.reorder-bar {
-
-    margin:
-        0 10px 10px;
-
-    padding:
-        12px;
-
-    border:
-        1px solid #cfe2ff;
-
-    border-radius:
-        16px;
-
-    background:
-        #eef6ff;
-}
-
-.reorder-info {
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    gap:
-        3px;
-
-    margin-bottom:
-        8px;
-}
-
-.reorder-info strong {
-
-    color:
-        var(--blue);
-
-    font-size:
-        14px;
-}
-
-.reorder-info span {
-
-    color:
-        #6d6d72;
-
-    font-size:
-        12px;
-}
-
-.reorder-actions {
-
-    display:
-        flex;
-
-    gap:
-        8px;
-}
-
-.reorder-actions button {
-
-    flex:
-        1;
-
-    min-height:
-        44px;
-
-    border:
-        0;
-
-    border-radius:
-        12px;
-
-    font-size:
-        14px;
-
-    font-weight:
-        700;
-}
-
-.save-btn {
-
-    background:
-        var(--blue);
-
-    color:
-        #fff;
-}
-
-.cancel-btn {
-
-    background:
-        #8e8e93;
-
-    color:
-        #fff;
-}
-
-.save-btn:active,
-.cancel-btn:active {
-    transform: scale(.97);
-}
-
-
-/* =========================================================
+/* =====================================================
    13. FILE LIST
-   ========================================================= */
+   ===================================================== */
 
 .file-list {
-
     width: 100%;
 
-    padding:
-        0 10px 24px;
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 9px;
+
+    overflow: hidden;
+
+    background:
+        rgba(13, 17, 24, 0.72);
+
+    border: 1px solid var(--border);
+    border-radius: 17px;
+
+    box-shadow:
+        0 14px 34px rgba(0, 0, 0, 0.20);
 }
 
 
-/* =========================================================
+/* =====================================================
    14. FILE ITEM
-   DESKTOP
-   ========================================================= */
+   ===================================================== */
 
 .file-item {
-
     position: relative;
 
     width: 100%;
-
     min-height: 72px;
 
-    margin:
-        0 0 8px;
-
-    padding:
-        9px 10px;
-
-    display: grid !important;
+    display: grid;
 
     grid-template-columns:
         30px
@@ -954,3004 +554,943 @@ button:focus-visible {
 
     align-items: center;
 
-    gap: 9px;
+    gap: 10px;
 
-    overflow: hidden;
-
-    border:
-        1px solid var(--line);
-
-    border-radius:
-        18px;
+    padding: 8px 12px;
 
     background:
-        #fff;
+        rgba(255, 255, 255, 0.018);
 
-    box-shadow:
-        var(--shadow);
+    border-bottom: 1px solid var(--separator);
+
+    cursor: pointer;
 
     transition:
-        transform .15s ease,
-        background .15s ease,
-        box-shadow .15s ease;
+        background 0.18s ease,
+        box-shadow 0.18s ease;
+}
 
-    touch-action:
-        manipulation;
+.file-item:last-child {
+    border-bottom: 0;
 }
 
 .file-item:hover {
-    background: #fff;
+    background:
+        rgba(0, 122, 255, 0.055);
 }
 
 .file-item:active {
-
-    transform:
-        scale(.992);
-
     background:
-        #f7faff;
-}
-
-.file-item.touch-active {
-
-    transform:
-        scale(.992) !important;
-
-    background:
-        #f7faff !important;
+        rgba(0, 122, 255, 0.09);
 }
 
 .folder-row {
-    cursor: pointer;
+    background:
+        rgba(0, 122, 255, 0.025);
 }
 
 
-/* =========================================================
+/* =====================================================
    15. POSITION
-   ========================================================= */
+   ===================================================== */
 
 .position {
+    color: var(--text-muted);
 
-    width: 30px;
+    font-size: 12px;
+    text-align: center;
 
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    color:
-        var(--secondary);
-
-    font-size:
-        13px;
-
-    font-weight:
-        600;
-
-    text-align:
-        center;
-
-    font-variant-numeric:
-        tabular-nums;
+    user-select: none;
 }
 
 
-/* =========================================================
+/* =====================================================
    16. FILE ICON
-   ========================================================= */
+   ===================================================== */
 
 .file-icon {
-
-    width: 50px;
-    height: 50px;
+    width: 46px;
+    height: 46px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    border-radius:
-        14px;
+    border-radius: 13px;
 
     background:
-        #f2f2f7;
+        rgba(255, 255, 255, 0.045);
 
-    color:
-        var(--blue);
+    border: 1px solid var(--border);
 
-    font-size:
-        29px;
+    font-size: 22px;
 
-    overflow:
-        hidden;
-
-    -webkit-user-drag:
-        none;
-}
-
-.folder-item .file-icon,
-.reorder-row .file-icon {
-
-    filter:
-        drop-shadow(
-            0 3px 4px
-            rgba(0, 122, 255, .12)
-        );
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 
-/* =========================================================
+/* =====================================================
    17. FILE INFO
-   ========================================================= */
+   ===================================================== */
 
 .file-info {
+    min-width: 0;
 
-    min-width:
-        0 !important;
+    display: flex;
+    flex-direction: column;
 
-    width:
-        auto;
-
-    overflow:
-        hidden;
+    gap: 4px;
 }
 
 .file-name {
+    min-width: 0;
 
-    display:
-        block;
+    color: var(--text);
 
-    width:
-        100%;
-
-    min-width:
-        0;
-
-    margin:
-        0;
-
-    color:
-        var(--text);
-
-    font-size:
-        16px;
-
-    line-height:
-        1.3;
-
-    font-weight:
-        600;
-
-    overflow:
-        hidden;
-
-    text-overflow:
-        ellipsis;
-
-    white-space:
-        nowrap;
+    font-size: 15px;
+    font-weight: 600;
 }
 
 .file-name-text {
-    display: inline;
+    display: block;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .file-type {
+    color: var(--text-muted);
 
-    margin-top:
-        3px;
-
-    color:
-        var(--secondary);
-
-    font-size:
-        12px;
-
-    line-height:
-        1.3;
-
-    overflow:
-        hidden;
-
-    text-overflow:
-        ellipsis;
-
-    white-space:
-        nowrap;
-}
-
-.recent-file-path,
-.search-path {
-
-    margin-top:
-        3px;
-
-    color:
-        #8e8e93;
-
-    font-size:
-        11px;
-
-    line-height:
-        1.3;
-
-    overflow:
-        hidden;
-
-    text-overflow:
-        ellipsis;
-
-    white-space:
-        nowrap;
+    font-size: 11px;
 }
 
 
-/* =========================================================
+/* =====================================================
    18. ITEM ACTIONS
-   ========================================================= */
+   ===================================================== */
 
 .item-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 
-    width:
-        180px;
-
-    height:
-        54px;
-
-    display:
-        grid;
-
-    grid-template-columns:
-        repeat(5, minmax(0, 1fr));
-
-    gap:
-        4px;
-
-    padding:
-        4px;
-
-    border-radius:
-        15px;
-
-    background:
-        #f1f2f6;
-
-    overflow:
-        hidden;
+    gap: 5px;
 }
 
-.item-btn,
-.item-actions > button {
+.item-btn {
+    width: 36px;
+    height: 36px;
 
-    width:
-        100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    height:
-        100%;
+    padding: 0;
 
-    min-width:
-        0;
-
-    min-height:
-        0;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    padding:
-        0;
-
-    border:
-        0;
-
-    border-radius:
-        11px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
 
     background:
-        #fff;
+        rgba(255, 255, 255, 0.035);
 
-    color:
-        var(--text);
+    color: var(--text-secondary);
 
-    font-size:
-        20px;
-
-    box-shadow:
-        0 1px 3px
-        rgba(0, 0, 0, .05);
+    cursor: pointer;
 
     transition:
-        transform .12s ease,
-        background .12s ease;
+        background 0.18s ease,
+        color 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.18s ease;
 }
 
-.item-btn:active,
-.item-actions > button:active {
-
-    transform:
-        scale(.91);
+.item-btn:hover {
+    color: var(--text);
 
     background:
-        var(--blue-soft);
+        rgba(0, 122, 255, 0.10);
+
+    border-color:
+        rgba(0, 122, 255, 0.25);
+}
+
+.item-btn:active {
+    transform: scale(0.92);
 }
 
 .item-more-btn {
-    color:
-        var(--blue) !important;
+    color: var(--cyan);
 }
 
 .item-more-btn span {
-
-    font-size:
-        17px;
-
-    font-weight:
-        800;
-
-    letter-spacing:
-        1px;
-}
-
-.item-actions > button:not(.item-btn) {
-
-    width:
-        100% !important;
-
-    height:
-        100% !important;
-
-    min-width:
-        0 !important;
-
-    min-height:
-        0 !important;
-
-    padding:
-        0 !important;
-
-    display:
-        flex !important;
-
-    align-items:
-        center !important;
-
-    justify-content:
-        center !important;
-
-    border:
-        0 !important;
-
-    border-radius:
-        11px !important;
-
-    background:
-        #fff !important;
-
-    font-size:
-        21px !important;
-
-    box-shadow:
-        0 1px 3px
-        rgba(0, 0, 0, .05);
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 
 
-/* =========================================================
+/* =====================================================
    19. SEARCH RESULT
-   ========================================================= */
+   ===================================================== */
 
 .search-result {
-    cursor:
-        pointer;
+    background:
+        rgba(0, 122, 255, 0.075);
+
+    border-left:
+        2px solid var(--blue);
 }
 
-.search-result .item-actions {
-    display:
-        none;
-}
 
-
-/* =========================================================
+/* =====================================================
    20. EMPTY
-   ========================================================= */
+   ===================================================== */
 
 .empty {
+    min-height: 180px;
 
-    width:
-        100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    min-height:
-        220px;
+    padding: 30px;
 
-    display:
-        flex;
+    color: var(--text-muted);
 
-    flex-direction:
-        column;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    gap:
-        10px;
-
-    padding:
-        30px 20px;
-
-    color:
-        var(--secondary);
-
-    text-align:
-        center;
-}
-
-.empty-icon {
-
-    font-size:
-        48px;
-
-    opacity:
-        .75;
+    text-align: center;
 }
 
 
-/* =========================================================
+/* =====================================================
    21. SELECTION
-   ========================================================= */
-
-.selection-bar {
-
-    display:
-        none;
-
-    align-items:
-        center;
-
-    justify-content:
-        space-between;
-
-    gap:
-        10px;
-
-    margin:
-        0 10px 8px;
-
-    padding:
-        10px 12px;
-
-    border-radius:
-        14px;
-
-    background:
-        var(--blue-soft);
-
-    color:
-        var(--blue);
-
-    font-size:
-        14px;
-
-    font-weight:
-        600;
-}
-
-.selection-bar.active {
-    display:
-        flex;
-}
-
-.selection-actions {
-
-    display:
-        flex;
-
-    gap:
-        6px;
-}
-
-.selection-action {
-
-    min-height:
-        38px;
-
-    padding:
-        6px 10px;
-
-    border:
-        0;
-
-    border-radius:
-        10px;
-
-    background:
-        #fff;
-
-    color:
-        var(--blue);
-
-    font-weight:
-        700;
-}
-
-.selection-check {
-
-    width:
-        26px;
-
-    height:
-        26px;
-
-    flex:
-        0 0 26px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    border:
-        2px solid #c7c7cc;
-
-    border-radius:
-        50%;
-
-    background:
-        #fff;
-
-    color:
-        #fff;
-}
+   ===================================================== */
 
 .file-item.selected {
-
-    border-color:
-        var(--blue) !important;
-
     background:
-        #eef5ff !important;
+        rgba(0, 122, 255, 0.12);
 
     box-shadow:
-        0 2px 10px
-        rgba(0, 122, 255, .13)
-        !important;
-}
-
-.file-item.selected .selection-check {
-
-    border-color:
-        var(--blue);
-
-    background:
-        var(--blue);
-}
-
-.select-mode .file-item {
-    cursor:
-        pointer;
-}
-
-.select-mode .file-item .item-actions {
-    display:
-        none;
+        inset 3px 0 0 var(--blue);
 }
 
 
-/* =========================================================
+/* =====================================================
    22. TOUCH ACTION SHEET
-   ========================================================= */
+   ===================================================== */
 
 .touch-action-sheet {
+    position: fixed;
+    inset: 0;
 
-    position:
-        fixed;
-
-    inset:
-        0;
-
-    z-index:
-        5000;
-
-    display:
-        none;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
+    display: none;
+    align-items: center;
+    justify-content: center;
 
     padding:
-        calc(16px + env(safe-area-inset-top))
-        16px
-        calc(16px + env(safe-area-inset-bottom));
+        20px
+        calc(20px + env(safe-area-inset-right))
+        calc(20px + env(safe-area-inset-bottom))
+        calc(20px + env(safe-area-inset-left));
 
-    background:
-        rgba(0, 0, 0, .28);
-
-    backdrop-filter:
-        blur(12px);
-
-    -webkit-backdrop-filter:
-        blur(12px);
+    z-index: 6000;
 }
 
 .touch-action-sheet.show {
-    display:
-        flex;
+    display: flex;
 }
 
 .touch-sheet-backdrop {
-
-    position:
-        absolute;
-
-    inset:
-        0;
+    position: absolute;
+    inset: 0;
 
     background:
-        transparent;
+        rgba(0, 0, 0, 0.60);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .touch-sheet-card {
+    position: relative;
 
-    position:
-        relative;
+    width: min(420px, 100%);
 
-    width:
-        min(92vw, 380px);
-
-    max-height:
-        calc(
-            100dvh
-            - 32px
-            - env(safe-area-inset-top)
-            - env(safe-area-inset-bottom)
-        );
-
-    overflow-y:
-        auto;
-
-    padding:
-        10px;
-
-    border-radius:
-        22px;
+    overflow: hidden;
 
     background:
-        rgba(255, 255, 255, .96);
+        rgba(25, 30, 40, 0.96);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.11);
+
+    border-radius: 20px;
 
     box-shadow:
-        0 20px 60px
-        rgba(0, 0, 0, .22);
+        0 25px 70px rgba(0, 0, 0, 0.45);
 }
 
 .touch-sheet-title {
+    padding: 16px 18px;
 
-    padding:
-        8px 10px 12px;
+    color: var(--text-secondary);
 
-    color:
-        var(--text);
+    font-size: 13px;
 
-    font-size:
-        16px;
-
-    font-weight:
-        700;
-
-    text-align:
-        center;
+    border-bottom:
+        1px solid var(--separator);
 }
 
 .touch-sheet-action,
 .touch-sheet-cancel {
+    width: 100%;
+    min-height: 52px;
 
-    width:
-        100%;
+    border: 0;
+    border-bottom:
+        1px solid var(--separator);
 
-    min-height:
-        48px;
+    background: transparent;
 
-    margin:
-        3px 0;
+    color: var(--text);
 
-    border:
-        0;
-
-    border-radius:
-        13px;
-
-    background:
-        #f2f2f7;
-
-    color:
-        var(--text);
-
-    font-size:
-        15px;
-
-    font-weight:
-        600;
+    cursor: pointer;
 }
 
-.touch-sheet-action:active,
-.touch-sheet-cancel:active {
-
+.touch-sheet-action:hover {
     background:
-        #e5e5ea;
-
-    transform:
-        scale(.98);
+        rgba(0, 122, 255, 0.10);
 }
 
 .touch-sheet-cancel {
-
-    margin-top:
-        8px;
-
-    color:
-        var(--ios-red);
-
-    background:
-        #fff1f0;
+    color: var(--danger);
+    border-bottom: 0;
 }
 
 
-/* =========================================================
+/* =====================================================
    23. PASTE FAB
-   ========================================================= */
+   ===================================================== */
 
 .v4-paste-fab {
+    position: fixed;
 
-    position:
-        fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    right:
-        18px;
+    min-width: 150px;
+    min-height: 50px;
+
+    padding:
+        0 20px;
+
+    border:
+        1px solid rgba(69, 217, 255, 0.28);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 122, 255, 0.92),
+            rgba(20, 145, 255, 0.82)
+        );
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 650;
+
+    box-shadow:
+        0 12px 30px rgba(0, 122, 255, 0.28),
+        0 0 20px rgba(69, 217, 255, 0.08);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    cursor: pointer;
+
+    z-index: 5000;
+
+    left: 50%;
+    right: auto;
 
     bottom:
         calc(
-            18px +
+            24px +
             env(safe-area-inset-bottom)
         );
 
-    z-index:
-        1200;
-
-    width:
-        58px;
-
-    height:
-        58px;
-
-    min-width:
-        58px;
-
-    min-height:
-        58px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    padding:
-        0;
-
-    border:
-        0;
-
-    border-radius:
-        18px;
-
-    background:
-        var(--blue);
-
-    color:
-        #fff;
-
-    box-shadow:
-        0 8px 28px
-        rgba(0, 122, 255, .28);
-
-    font-size:
-        15px;
-
-    font-weight:
-        700;
+    transform: translateX(-50%);
 }
 
 .v4-paste-fab:active {
-
     transform:
-        scale(.93);
+        translateX(-50%)
+        scale(0.95);
 }
 
 .paste-label {
-    display:
-        block;
+    white-space: nowrap;
 }
 
+
+/* =====================================================
+   24. PASTE CANCEL X
+   ===================================================== */
+
 .paste-cancel {
+    position: fixed;
 
-    position:
-        fixed;
+    width: 34px;
+    height: 34px;
 
-    right:
-        14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    margin: 0;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.16);
+
+    border-radius: 50%;
+
+    background:
+        rgba(24, 29, 38, 0.92);
+
+    color: #ffffff;
+
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 1;
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.32),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    cursor: pointer;
+
+    z-index: 5001;
+
+    left: 50%;
+    right: auto;
 
     bottom:
         calc(
-            82px +
+            84px +
             env(safe-area-inset-bottom)
         );
 
-    z-index:
-        1201;
+    transform: translateX(-50%);
+}
 
-    width:
-        32px;
-
-    height:
-        32px;
-
-    border:
-        0;
-
-    border-radius:
-        50%;
-
-    background:
-        #555;
-
-    color:
-        #fff;
-
-    font-size:
-        20px;
-
-    line-height:
-        32px;
-
-    text-align:
-        center;
+.paste-cancel:active {
+    transform:
+        translateX(-50%)
+        scale(0.90);
 }
 
 
-/* =========================================================
-   24. FILE DETAILS MODAL
-   ========================================================= */
+/* =====================================================
+   25. FILE DETAILS MODAL
+   ===================================================== */
 
 .file-details-modal {
+    position: fixed;
+    inset: 0;
 
-    position:
-        fixed;
+    z-index: 7000;
+}
 
-    inset:
-        0;
-
-    z-index:
-        2500;
-
-    display:
-        none;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    padding:
-        20px;
+.file-details-modal .modal-backdrop {
+    position: absolute;
+    inset: 0;
 
     background:
-        rgba(0, 0, 0, .35);
+        rgba(0, 0, 0, 0.62);
 
-    backdrop-filter:
-        blur(12px);
-
-    -webkit-backdrop-filter:
-        blur(12px);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
 }
 
-.file-details-modal.show {
-    display:
-        flex;
-}
+.file-details-modal .modal-card {
+    position: relative;
 
-.file-details-card {
-
-    width:
-        min(560px, calc(100vw - 40px));
-
-    max-height:
-        calc(100dvh - 40px);
-
-    overflow:
-        auto;
-
-    padding:
-        20px;
-
-    border:
-        1px solid var(--line);
-
-    border-radius:
-        22px;
-
-    background:
-        #fff;
-
-    box-shadow:
-        var(--shadow-strong);
-}
-
-.file-details-card h3 {
+    width: min(520px, calc(100% - 32px));
 
     margin:
-        0 0 16px;
+        12vh auto 0;
 
-    color:
-        var(--text);
-
-    font-size:
-        20px;
-}
-
-.file-detail-row {
-
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    gap:
-        15px;
-
-    padding:
-        11px 0;
-
-    border-bottom:
-        1px solid var(--line);
-}
-
-.file-detail-row strong {
-
-    color:
-        var(--secondary);
-
-    font-size:
-        13px;
-}
-
-.file-detail-row span {
-
-    color:
-        var(--text);
-
-    font-size:
-        13px;
-
-    text-align:
-        right;
-
-    word-break:
-        break-word;
-}
-
-.file-details-close {
-
-    width:
-        100%;
-
-    min-height:
-        46px;
-
-    margin-top:
-        16px;
-
-    border:
-        0;
-
-    border-radius:
-        13px;
+    padding: 22px;
 
     background:
-        var(--blue);
+        rgba(22, 27, 36, 0.97);
 
-    color:
-        #fff;
+    border:
+        1px solid var(--border);
 
-    font-size:
-        15px;
+    border-radius: 21px;
 
-    font-weight:
-        700;
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.48);
 }
 
 
-/* =========================================================
-   25. REORDER ROW
-   ========================================================= */
+/* =====================================================
+   26. REORDER ROW
+   ===================================================== */
 
 .reorder-row {
-
-    position:
-        relative;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        10px;
-
-    min-height:
-        64px;
-
-    padding:
-        8px 10px;
-
-    margin-bottom:
-        6px;
-
-    border:
-        1px solid var(--line);
-
-    border-radius:
-        14px;
-
-    background:
-        #fff;
+    cursor: grab;
 }
 
-.reorder-row .file-info {
-    flex:
-        1 1 auto;
-}
-
-.reorder-buttons {
-
-    display:
-        flex;
-
-    gap:
-        5px;
-
-    flex:
-        0 0 auto;
-}
-
-.reorder-buttons button {
-
-    width:
-        38px;
-
-    height:
-        38px;
-
-    border:
-        0;
-
-    border-radius:
-        10px;
-
-    background:
-        #f2f2f7;
-
-    color:
-        var(--blue);
-
-    font-size:
-        18px;
+.reorder-row:active {
+    cursor: grabbing;
 }
 
 
-/* =========================================================
-   26. iPHONE
-   FUTURISTIC LEFT DRAWER
-   ========================================================= */
+/* =====================================================
+   27. iPHONE
+   Sidebar hidden by default.
+   Files remain full width.
+   ===================================================== */
 
-@media
-(max-width: 700px)
-and (hover: none)
-and (pointer: coarse) {
+@media (max-width: 700px) and (hover: none) and (pointer: coarse) {
 
-    html,
-    body {
-
-        width:
-            100%;
-
-        min-height:
-            100dvh;
-
-        background:
-            var(--future-bg);
+    :root {
+        --mobile-header-height: 68px;
     }
-
-    body {
-        overflow-x:
-            hidden;
-    }
-
-
-    /* -----------------------------------------------------
-       APP
-
-       IMPORTANT:
-       No grid here.
-
-       The main content is ALWAYS full width.
-       The navigation drawer overlays it.
-       ----------------------------------------------------- */
 
     .app {
-
-        position:
-            relative;
-
-        width:
-            100%;
-
-        min-height:
-            100dvh;
-
-        padding:
-            env(safe-area-inset-top)
-            0
-            env(safe-area-inset-bottom);
-
-        background:
-            var(--future-bg);
-
-        overflow-x:
-            hidden;
+        padding-left: 5px;
+        padding-right: 5px;
     }
-
-
-    /* -----------------------------------------------------
-       HEADER
-       ----------------------------------------------------- */
 
     .header {
-
-        position:
-            relative;
-
-        z-index:
-            3200;
-
-        min-height:
-            68px;
-
-        height:
-            68px;
-
-        padding:
-            8px 10px;
-
-        border:
-            0;
-
-        border-bottom:
-            1px solid
-            rgba(83,230,255,.10);
-
-        border-radius:
-            0;
-
-        background:
-            rgba(8,11,18,.90);
-
-        box-shadow:
-            0 8px 30px
-            rgba(0,0,0,.25);
-
-        backdrop-filter:
-            blur(24px);
-
-        -webkit-backdrop-filter:
-            blur(24px);
-    }
-
-    .brand {
-
-        gap:
-            9px;
-    }
-
-    .app-logo {
-
-        width:
-            40px;
-
-        height:
-            40px;
-
-        flex-basis:
-            40px;
-
-        border-radius:
-            12px;
-
-        background:
-            linear-gradient(
-                145deg,
-                #23c7ff,
-                #0878ff
-            );
-
-        box-shadow:
-            0 0 22px
-            rgba(24,168,255,.28);
-    }
-
-    .app-logo svg {
-
-        width:
-            31px;
-
-        height:
-            31px;
-    }
-
-    .brand-text h1 {
-
-        font-size:
-            17px;
-
-        color:
-            #f5f7fb;
-
-        letter-spacing:
-            -.2px;
-    }
-
-    .brand-text p {
-
-        margin-top:
-            2px;
-
-        font-size:
-            8px;
-
-        color:
-            #718097;
-
-        letter-spacing:
-            .7px;
-
-        text-transform:
-            uppercase;
-    }
-
-
-    /* -----------------------------------------------------
-       MENU BUTTON
-       ----------------------------------------------------- */
-
-    .header-menu {
-
-        width:
-            40px;
-
-        height:
-            40px;
-
-        min-width:
-            40px;
-
-        min-height:
-            40px;
-
-        border-radius:
-            12px;
-
-        background:
-            rgba(255,255,255,.055);
-
-        border:
-            1px solid
-            rgba(83,230,255,.16);
-
-        box-shadow:
-            0 0 16px
-            rgba(24,168,255,.08);
-    }
-
-    .header-menu .menu-line {
-
-        width:
-            17px;
-
-        height:
-            2px;
-
-        background:
-            var(--future-cyan);
-
-        box-shadow:
-            0 0 6px
-            rgba(83,230,255,.45);
-    }
-
-
-    /* -----------------------------------------------------
-       MOBILE NAVIGATION DRAWER
-
-       This is the major change.
-
-       The drawer is NOT part of the document width.
-
-       Therefore:
-       - search stays full width
-       - breadcrumb stays full width
-       - file list stays full width
-       ----------------------------------------------------- */
-
-    .toolbar {
-
-        position:
-            fixed;
-
-        top:
-            calc(
-                68px +
-                env(safe-area-inset-top)
-            );
-
-        left:
-            0;
-
-        bottom:
-            0;
-
-        z-index:
-            3000;
-
-        width:
-            min(285px, 82vw);
-
-        height:
-            auto;
-
-        min-height:
-            0;
-
-        max-height:
-            none;
-
-        margin:
-            0;
-
-        padding:
-            15px 10px
-            calc(
-                18px +
-                env(safe-area-inset-bottom)
-            );
-
-        display:
-            flex;
-
-        flex-direction:
-            column;
-
-        gap:
-            6px;
-
-        background:
-            linear-gradient(
-                180deg,
-                rgba(12,16,25,.98),
-                rgba(7,10,17,.99)
-            );
-
-        border:
-            0;
-
-        border-right:
-            1px solid
-            rgba(83,230,255,.18);
-
-        border-top:
-            1px solid
-            rgba(83,230,255,.10);
-
-        border-radius:
-            0 20px 20px 0;
-
-        box-shadow:
-            18px 0 50px
-            rgba(0,0,0,.52),
-            0 0 35px
-            rgba(24,168,255,.08);
-
-        backdrop-filter:
-            blur(28px)
-            saturate(150%);
-
-        -webkit-backdrop-filter:
-            blur(28px)
-            saturate(150%);
-
-        overflow-y:
-            auto;
-
-        overflow-x:
-            hidden;
-
-        opacity:
-            1;
-
-        transform:
-            translateX(0);
-
-        pointer-events:
-            auto;
-
-        transition:
-            transform .24s cubic-bezier(.22,.61,.36,1),
-            opacity .20s ease;
-
-        overscroll-behavior:
-            contain;
-    }
-
-
-    /* -----------------------------------------------------
-       NAVIGATION OPEN INDICATOR
-       ----------------------------------------------------- */
-
-    .toolbar::before {
-
-        content:
-            "NAVIGATION";
-
-        display:
-            block;
-
-        flex:
-            0 0 auto;
-
-        padding:
-            2px 12px 9px;
-
-        color:
-            #607088;
-
-        font-size:
-            8px;
-
-        font-weight:
-            700;
-
-        letter-spacing:
-            1.8px;
-    }
-
-
-    /* -----------------------------------------------------
-       NAVIGATION BUTTONS
-       ----------------------------------------------------- */
-
-    .toolbar-btn {
-
-        flex:
-            0 0 54px;
-
-        width:
-            100%;
-
-        height:
-            54px;
-
-        min-height:
-            54px;
-
-        display:
-            grid;
-
-        grid-template-columns:
-            32px
-            minmax(0,1fr);
-
-        align-items:
-            center;
-
-        gap:
-            9px;
+        height: var(--mobile-header-height);
 
         padding:
             0 12px;
 
-        border:
-            1px solid
-            transparent;
-
-        border-radius:
-            13px;
-
-        background:
-            transparent;
-
-        color:
-            var(--future-cyan);
-
-        box-shadow:
-            none;
-
-        text-align:
-            left;
-
-        font-size:
-            20px;
+        border-radius: 17px;
     }
 
-    .toolbar-btn svg,
-    .ios-menu-icon {
+    .app-logo {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
 
-        width:
-            22px;
-
-        height:
-            22px;
-
-        stroke:
-            var(--future-cyan);
-
-        filter:
-            drop-shadow(
-                0 0 5px
-                rgba(83,230,255,.35)
-            );
+        border-radius: 12px;
     }
 
-    .toolbar-btn span {
-
-        color:
-            #b7c3d4;
-
-        font-size:
-            12px;
-
-        line-height:
-            15px;
-
-        font-weight:
-            600;
-
-        text-align:
-            left;
+    .brand-text h1 {
+        font-size: 16px;
     }
 
-    .toolbar-btn:active {
-
-        background:
-            rgba(24,168,255,.13);
-
-        border-color:
-            rgba(83,230,255,.17);
-
-        transform:
-            scale(.985);
-    }
-
-    .toolbar-btn.select-active {
-
-        background:
-            rgba(24,168,255,.15)
-            !important;
-
-        border-color:
-            rgba(83,230,255,.28)
-            !important;
-
-        box-shadow:
-            inset 0 0 0 1px
-            rgba(83,230,255,.14),
-            0 0 18px
-            rgba(24,168,255,.07)
-            !important;
+    .brand-text p {
+        font-size: 10px;
     }
 
 
-    /* -----------------------------------------------------
-       HIDE NAVIGATION
+    /* ---------------------------------------------
+       MOBILE SIDEBAR
+       --------------------------------------------- */
 
-       IMPORTANT:
-       We do NOT use width: 0.
-
-       The drawer simply moves outside the viewport.
-
-       Main content never loses width.
-       ----------------------------------------------------- */
-
-    .toolbar.menu-collapsed {
-
-        position:
-            fixed;
+    .toolbar {
+        position: fixed;
 
         top:
             calc(
-                68px +
-                env(safe-area-inset-top)
+                env(safe-area-inset-top) +
+                var(--mobile-header-height)
             );
 
-        left:
-            0;
+        left: 0;
 
-        bottom:
-            0;
-
-        width:
-            min(285px, 82vw);
-
+        width: 252px;
         height:
-            auto;
-
-        min-height:
-            0;
-
-        max-height:
-            none;
-
-        padding:
-            15px 10px
             calc(
-                18px +
-                env(safe-area-inset-bottom)
+                100dvh -
+                env(safe-area-inset-top) -
+                var(--mobile-header-height)
             );
 
-        margin:
-            0;
+        display: flex;
 
-        border:
-            0;
+        flex-direction: column;
 
-        border-right:
-            1px solid
-            rgba(83,230,255,.18);
+        gap: 7px;
 
-        opacity:
-            0;
-
-        pointer-events:
-            none;
-
-        overflow:
-            hidden;
-
-        transform:
-            translateX(-105%);
-
-        background:
-            linear-gradient(
-                180deg,
-                rgba(12,16,25,.98),
-                rgba(7,10,17,.99)
-            );
-    }
-
-
-    /* -----------------------------------------------------
-       DRAWER SHADOW / SCREEN DIMMER
-
-       Uses :has() only for the mobile visual layer.
-       ----------------------------------------------------- */
-
-    .app::after {
-
-        content:
-            "";
-
-        position:
-            fixed;
-
-        inset:
-            0;
-
-        z-index:
-            2900;
-
-        pointer-events:
-            auto;
-
-        background:
-            rgba(0,0,0,.38);
-
-        backdrop-filter:
-            blur(2px);
-
-        -webkit-backdrop-filter:
-            blur(2px);
-
-        opacity:
-            1;
-
-        visibility:
-            visible;
-
-        transition:
-            opacity .20s ease,
-            visibility .20s ease;
-    }
-
-    .app:has(.toolbar.menu-collapsed)::after {
-
-        opacity:
-            0;
-
-        visibility:
-            hidden;
-
-        pointer-events:
-            none;
-    }
-
-
-    /* -----------------------------------------------------
-       MAIN SEARCH AREA
-
-       ALWAYS FULL WIDTH
-       ----------------------------------------------------- */
-
-    .search-section {
-
-        position:
-            relative;
-
-        z-index:
-            10;
-
-        width:
-            100%;
-
-        display:
-            block;
+        margin: 0;
 
         padding:
-            9px 8px 6px;
-
-        margin:
-            0;
-
-        background:
-            var(--future-bg);
-    }
-
-    .search-section::before {
-
-        content:
-            "⌕";
-
-        position:
-            absolute;
-
-        left:
-            22px;
-
-        top:
-            14px;
-
-        z-index:
-            2;
-
-        color:
-            var(--future-cyan);
-
-        font-size:
-            21px;
-
-        line-height:
-            1;
-    }
-
-    .search-box {
-
-        width:
-            100%;
-
-        height:
-            45px;
-
-        padding:
-            0 14px 0 40px;
-
-        border:
-            1px solid
-            rgba(255,255,255,.08);
-
-        border-radius:
-            13px;
-
-        background:
-            rgba(255,255,255,.055);
-
-        color:
-            #fff;
-
-        font-size:
-            15px;
-
-        box-shadow:
-            inset 0 1px 0
-            rgba(255,255,255,.025);
-    }
-
-    .search-box::placeholder {
-        color:
-            #78859a;
-    }
-
-    .search-box:focus {
-
-        background:
-            rgba(255,255,255,.075);
-
-        border-color:
-            rgba(83,230,255,.32);
-
-        box-shadow:
-            0 0 0 3px
-            rgba(24,168,255,.08),
-            0 0 20px
-            rgba(24,168,255,.06);
-    }
-
-
-    /* -----------------------------------------------------
-       BREADCRUMB
-       ----------------------------------------------------- */
-
-    .breadcrumb {
-
-        position:
-            relative;
-
-        z-index:
-            10;
-
-        width:
-            calc(100% - 16px);
-
-        max-width:
-            calc(100% - 16px);
-
-        min-height:
-            36px;
-
-        margin:
-            5px 8px 0;
-
-        padding:
-            3px 0;
-
-        background:
-            transparent;
-
-        color:
-            #78859a;
-    }
-
-    .breadcrumb > span {
-
-        color:
-            #78859a;
-
-        font-size:
-            10px;
-    }
-
-    .crumb {
-
-        min-height:
-            32px;
-
-        height:
-            32px;
-
-        max-width:
-            70vw;
-
-        padding:
-            4px 10px;
-
-        border:
-            1px solid
-            rgba(83,230,255,.10);
-
-        border-radius:
-            9px;
-
-        background:
-            rgba(24,168,255,.07);
-
-        color:
-            var(--future-cyan);
-
-        font-size:
-            11px;
-
-        line-height:
-            24px;
-    }
-
-    .crumb.current {
-
-        background:
-            rgba(255,255,255,.06);
-
-        color:
-            #cbd4e2;
-
-        border-color:
-            rgba(255,255,255,.07);
-    }
-
-
-    /* -----------------------------------------------------
-       MESSAGE
-       ----------------------------------------------------- */
-
-    .message {
-
-        position:
-            relative;
-
-        z-index:
-            10;
-
-        margin:
-            2px 8px 5px;
-
-        padding:
-            5px 2px;
-
-        color:
-            #718097;
-
-        font-size:
-            10px;
-
-        background:
-            transparent;
-    }
-
-    .message::before {
-
-        width:
-            6px;
-
-        height:
-            6px;
-
-        margin-right:
-            6px;
-
-        background:
-            var(--future-green);
-
-        box-shadow:
-            0 0 7px
-            rgba(57,229,140,.35);
-    }
-
-
-    /* -----------------------------------------------------
-       UPLOAD STATUS
-       ----------------------------------------------------- */
-
-    .upload-status {
-
-        position:
-            relative;
-
-        z-index:
-            10;
-
-        margin:
-            0 8px 6px;
-
-        padding:
-            9px 10px;
-
-        border:
-            1px solid
-            rgba(83,230,255,.15);
-
-        border-radius:
-            12px;
-
-        background:
-            rgba(24,168,255,.07);
-
-        color:
-            #b9dff1;
-
-        font-size:
-            10px;
-    }
-
-
-    /* -----------------------------------------------------
-       REORDER BAR
-       ----------------------------------------------------- */
-
-    .reorder-bar {
-
-        position:
-            relative;
-
-        z-index:
-            10;
-
-        margin:
-            0 8px 7px;
-
-        padding:
-            10px;
-
-        border:
-            1px solid
-            rgba(83,230,255,.16);
-
-        border-radius:
-            13px;
-
-        background:
-            rgba(24,168,255,.07);
-    }
-
-    .reorder-info strong {
-        color:
-            var(--future-cyan);
-    }
-
-    .reorder-info span {
-        color:
-            #718097;
-    }
-
-
-    /* -----------------------------------------------------
-       FILE LIST
-
-       ALWAYS FULL WIDTH
-       ----------------------------------------------------- */
-
-    .file-list {
-
-        position:
-            relative;
-
-        z-index:
-            10;
-
-        width:
-            100%;
-
-        min-width:
-            0;
-
-        padding:
-            0 8px
+            14px 10px
             calc(
                 20px +
                 env(safe-area-inset-bottom)
             );
 
-        margin:
-            0;
+        overflow-y: auto;
 
         background:
-            var(--future-bg);
+            rgba(9, 13, 21, 0.97);
 
-        border-top:
-            1px solid
-            rgba(255,255,255,.06);
+        border:
+            1px solid rgba(255, 255, 255, 0.09);
 
-        overflow-x:
-            hidden;
+        border-left: 0;
+
+        border-radius:
+            0 22px 22px 0;
+
+        box-shadow:
+            20px 0 50px rgba(0, 0, 0, 0.35);
+
+        backdrop-filter: blur(28px);
+        -webkit-backdrop-filter: blur(28px);
+
+        transform: translateX(0);
+
+        opacity: 1;
+
+        pointer-events: auto;
+
+        z-index: 3500;
+
+        transition:
+            transform 0.24s ease,
+            opacity 0.20s ease;
+    }
+
+    .toolbar.menu-collapsed {
+        display: flex !important;
+
+        width: 252px !important;
+        height:
+            calc(
+                100dvh -
+                env(safe-area-inset-top) -
+                var(--mobile-header-height)
+            ) !important;
+
+        max-height: none !important;
+
+        margin: 0 !important;
+
+        padding:
+            14px 10px
+            calc(
+                20px +
+                env(safe-area-inset-bottom)
+            ) !important;
+
+        overflow-y: auto !important;
+
+        opacity: 0 !important;
+
+        pointer-events: none !important;
+
+        transform: translateX(-105%);
+    }
+
+    .toolbar-btn {
+        width: 100%;
+        min-height: 48px;
+
+        flex: 0 0 48px;
+
+        display: flex;
+        align-items: center;
+
+        padding: 0 15px;
+
+        text-align: left;
+
+        border-radius: 13px;
+
+        background:
+            rgba(255, 255, 255, 0.035);
+
+        color: var(--text-secondary);
+
+        font-size: 14px;
     }
 
 
-    /* -----------------------------------------------------
+    /* ---------------------------------------------
+       SIDEBAR OVERLAY
+       --------------------------------------------- */
+
+    .app:has(.toolbar:not(.menu-collapsed))::after {
+        content: "";
+
+        position: fixed;
+
+        inset: 0;
+
+        background:
+            rgba(0, 0, 0, 0.30);
+
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+
+        z-index: 3000;
+
+        pointer-events: none;
+    }
+
+    .app:has(.toolbar.menu-collapsed)::after {
+        display: none;
+    }
+
+
+    /* ---------------------------------------------
+       FULL-WIDTH MAIN CONTENT
+       --------------------------------------------- */
+
+    .search-section,
+    .breadcrumb,
+    .message,
+    .upload-status,
+    .reorder-bar,
+    .file-list {
+        width: 100% !important;
+
+        max-width: none !important;
+
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .search-section {
+        margin-top: 8px;
+    }
+
+    .search-box {
+        height: 48px;
+
+        border-radius: 14px;
+
+        font-size: 14px;
+    }
+
+    .breadcrumb {
+        min-height: 42px;
+
+        border-radius: 13px;
+
+        font-size: 13px;
+    }
+
+
+    /* ---------------------------------------------
        MOBILE FILE ROW
-       ----------------------------------------------------- */
+       --------------------------------------------- */
+
+    .file-list {
+        border-radius: 16px;
+    }
 
     .file-item {
-
-        width:
-            100%;
-
-        min-height:
-            62px;
-
-        margin:
-            0;
-
-        padding:
-            7px 4px;
-
-        display:
-            flex !important;
-
-        align-items:
-            center;
-
-        gap:
-            7px;
-
-        border:
-            0;
-
-        border-bottom:
-            1px solid
-            rgba(255,255,255,.065);
-
-        border-radius:
-            0;
-
-        background:
-            transparent;
-
-        box-shadow:
-            none;
-
-        color:
-            var(--future-text);
-
-        transform:
-            none !important;
-    }
-
-    .file-item:active,
-    .file-item.touch-active {
-
-        background:
-            rgba(24,168,255,.07)
-            !important;
-
-        transform:
-            none !important;
-    }
-
-    .file-item .position {
-
-        width:
-            18px;
-
-        min-width:
-            18px;
-
-        flex-basis:
-            18px;
-
-        color:
-            #4f5c70;
-
-        font-size:
-            9px;
-    }
-
-    .file-item .file-icon {
-
-        width:
-            40px;
-
-        height:
-            40px;
-
-        min-width:
-            40px;
-
-        min-height:
-            40px;
-
-        flex-basis:
-            40px;
-
-        border-radius:
-            11px;
-
-        background:
-            linear-gradient(
-                145deg,
-                rgba(24,168,255,.17),
-                rgba(83,230,255,.035)
-            );
-
-        border:
-            1px solid
-            rgba(83,230,255,.13);
-
-        color:
-            var(--future-cyan);
-
-        font-size:
-            22px;
-
-        box-shadow:
-            inset 0 0 15px
-            rgba(24,168,255,.035);
-    }
-
-    .file-item.folder-row .file-icon {
-
-        background:
-            linear-gradient(
-                145deg,
-                rgba(24,168,255,.23),
-                rgba(24,168,255,.055)
-            );
-
-        border-color:
-            rgba(24,168,255,.25);
-
-        box-shadow:
-            0 0 15px
-            rgba(24,168,255,.08);
-    }
-
-    .file-item .file-info {
-
-        position:
-            static;
-
-        flex:
-            1 1 auto;
-
-        width:
-            auto;
-
-        height:
-            auto;
-
-        min-width:
-            0;
-
-        padding:
-            0;
-
-        display:
-            flex !important;
-
-        flex-direction:
-            column;
-
-        justify-content:
-            center;
-
-        gap:
-            2px;
-    }
-
-    .file-item .file-name {
-
-        color:
-            #f5f7fb;
-
-        font-size:
-            14px;
-
-        line-height:
-            19px;
-
-        font-weight:
-            600;
-    }
-
-    .file-item .file-type {
-
-        margin:
-            0;
-
-        color:
-            #718097;
-
-        font-size:
-            9px;
-
-        line-height:
-            13px;
-    }
-
-    .file-item .recent-file-path,
-    .file-item .search-path {
-
-        margin-top:
-            0;
-
-        color:
-            #58667a;
-
-        font-size:
-            8px;
-
-        line-height:
-            12px;
-    }
-
-
-    /* -----------------------------------------------------
-       MOBILE ITEM ACTIONS
-       ----------------------------------------------------- */
-
-    .file-item .item-actions {
-
-        width:
-            auto;
-
-        height:
-            auto;
-
-        flex:
-            0 0 auto;
-
-        display:
-            grid !important;
+        min-height: 67px;
 
         grid-template-columns:
-            repeat(5, 28px);
+            28px
+            45px
+            minmax(0, 1fr)
+            auto;
 
-        gap:
-            1px;
-
-        padding:
-            0;
-
-        border:
-            0;
-
-        background:
-            transparent;
-
-        box-shadow:
-            none;
-
-        overflow:
-            visible;
-    }
-
-    .file-item .item-actions > button {
-
-        width:
-            28px !important;
-
-        height:
-            32px !important;
-
-        min-width:
-            28px !important;
-
-        min-height:
-            32px !important;
+        gap: 8px;
 
         padding:
-            0 !important;
-
-        border:
-            0 !important;
-
-        border-radius:
-            8px !important;
-
-        background:
-            transparent !important;
-
-        color:
-            #8290a5;
-
-        box-shadow:
-            none !important;
-
-        font-size:
-            14px !important;
+            8px 9px;
     }
 
-    .file-item .item-more-btn {
+    .position {
+        font-size: 11px;
+    }
 
-        color:
-            var(--future-cyan)
-            !important;
+    .file-icon {
+        width: 42px;
+        height: 42px;
+
+        border-radius: 12px;
+
+        font-size: 20px;
+    }
+
+    .file-name {
+        font-size: 14px;
+    }
+
+    .file-type {
+        font-size: 10px;
+    }
+
+    .item-actions {
+        gap: 3px;
+    }
+
+    .item-btn {
+        width: 34px;
+        height: 34px;
+
+        border-radius: 9px;
     }
 
 
-    /* -----------------------------------------------------
-       PASTE FAB
-       ----------------------------------------------------- */
+    /* ---------------------------------------------
+       MOBILE PASTE
+       --------------------------------------------- */
 
-    .v4-paste-fab {
-
-        right:
-            14px;
+    #v4PasteFab {
+        left: 50% !important;
+        right: auto !important;
 
         bottom:
             calc(
-                16px +
+                24px +
                 env(safe-area-inset-bottom)
-            );
+            ) !important;
 
-        width:
-            54px;
-
-        height:
-            54px;
-
-        min-width:
-            54px;
-
-        min-height:
-            54px;
-
-        border:
-            1px solid
-            rgba(83,230,255,.38);
-
-        border-radius:
-            17px;
-
-        background:
-            linear-gradient(
-                145deg,
-                #18a8ff,
-                #0878ff
-            );
-
-        box-shadow:
-            0 0 0 5px
-            rgba(24,168,255,.06),
-            0 10px 30px
-            rgba(0,0,0,.50),
-            0 0 22px
-            rgba(24,168,255,.24);
+        transform:
+            translateX(-50%) !important;
     }
 
-    .paste-cancel {
+    #v4PasteFab:active {
+        transform:
+            translateX(-50%)
+            scale(0.95) !important;
+    }
 
-        right:
-            11px;
+    #v4PasteCancel {
+        left: 50% !important;
+        right: auto !important;
 
         bottom:
             calc(
-                77px +
+                84px +
                 env(safe-area-inset-bottom)
-            );
+            ) !important;
+
+        transform:
+            translateX(-50%) !important;
     }
 
-
-    /* -----------------------------------------------------
-       MOBILE ACTION SHEET
-       ----------------------------------------------------- */
-
-    .touch-action-sheet {
-
-        padding:
-            16px;
-
-        background:
-            rgba(0,0,0,.48);
-
-        backdrop-filter:
-            blur(18px);
-
-        -webkit-backdrop-filter:
-            blur(18px);
-    }
-
-    .touch-sheet-card {
-
-        width:
-            min(
-                360px,
-                calc(100vw - 32px)
-            );
-
-        padding:
-            9px;
-
-        border:
-            1px solid
-            rgba(83,230,255,.20);
-
-        border-radius:
-            20px;
-
-        background:
-            rgba(15,20,30,.97);
-
-        box-shadow:
-            0 28px 70px
-            rgba(0,0,0,.65),
-            0 0 30px
-            rgba(24,168,255,.08);
-    }
-
-    .touch-sheet-title {
-
-        color:
-            #fff;
-
-        font-size:
-            15px;
-    }
-
-    .touch-sheet-action {
-
-        color:
-            #cfefff;
-
-        background:
-            rgba(255,255,255,.055);
-    }
-
-    .touch-sheet-cancel {
-
-        color:
-            var(--future-cyan);
-
-        background:
-            rgba(83,230,255,.06);
-    }
-
-
-    /* -----------------------------------------------------
-       DETAILS MODAL
-       ----------------------------------------------------- */
-
-    .file-details-card {
-
-        width:
-            min(
-                560px,
-                calc(100vw - 32px)
-            );
-
-        max-height:
-            calc(100dvh - 32px);
-
-        background:
-            rgba(15,20,30,.97);
-
-        border:
-            1px solid
-            rgba(83,230,255,.18);
-
-        color:
-            #fff;
-    }
-
-    .file-details-card h3 {
-
-        color:
-            #fff;
-    }
-
-    .file-detail-row {
-
-        border-bottom:
-            1px solid
-            var(--future-line);
-    }
-
-    .file-detail-row strong {
-
-        color:
-            #778296;
-    }
-
-    .file-detail-row span {
-
-        color:
-            #dce8f5;
-    }
-
-    .file-details-close {
-
-        background:
-            linear-gradient(
-                145deg,
-                #18a8ff,
-                #0878ff
-            );
-    }
-
-
-    /* -----------------------------------------------------
-       SMALL iPHONE
-       ----------------------------------------------------- */
-
-    @media (max-width: 430px) {
-
-        .header {
-
-            min-height:
-                62px;
-
-            height:
-                62px;
-
-            padding:
-                6px 8px;
-        }
-
-        .app-logo {
-
-            width:
-                37px;
-
-            height:
-                37px;
-
-            flex-basis:
-                37px;
-
-            border-radius:
-                11px;
-        }
-
-        .app-logo svg {
-
-            width:
-                29px;
-
-            height:
-                29px;
-        }
-
-        .brand-text h1 {
-
-            font-size:
-                16px;
-        }
-
-        .brand-text p {
-
-            font-size:
-                7px;
-        }
-
-        .header-menu {
-
-            width:
-                37px;
-
-            height:
-                37px;
-
-            min-width:
-                37px;
-
-            min-height:
-                37px;
-        }
-
-        .header-menu .menu-line {
-
-            width:
-                16px;
-
-            height:
-                2px;
-        }
-
-
-        /* Drawer follows the smaller header */
-
-        .toolbar {
-
-            top:
-                calc(
-                    62px +
-                    env(safe-area-inset-top)
-                );
-
-            width:
-                min(275px, 84vw);
-        }
-
-        .toolbar.menu-collapsed {
-
-            top:
-                calc(
-                    62px +
-                    env(safe-area-inset-top)
-                );
-
-            width:
-                min(275px, 84vw);
-        }
-
-
-        .toolbar-btn {
-
-            flex-basis:
-                52px;
-
-            height:
-                52px;
-
-            min-height:
-                52px;
-        }
-
-        .toolbar-btn span {
-
-            font-size:
-                11px;
-        }
-
-        .search-box {
-
-            height:
-                43px;
-
-            font-size:
-                14px;
-        }
-
-        .search-section::before {
-
-            left:
-                21px;
-
-            top:
-                13px;
-        }
-
-        .file-item {
-
-            min-height:
-                58px;
-
-            padding:
-                6px 3px;
-
-            gap:
-                5px;
-        }
-
-        .file-item .position {
-
-            width:
-                16px;
-
-            min-width:
-                16px;
-
-            flex-basis:
-                16px;
-
-            font-size:
-                8px;
-        }
-
-        .file-item .file-icon {
-
-            width:
-                37px;
-
-            height:
-                37px;
-
-            min-width:
-                37px;
-
-            min-height:
-                37px;
-
-            flex-basis:
-                37px;
-
-            border-radius:
-                10px;
-
-            font-size:
-                20px;
-        }
-
-        .file-item .file-name {
-
-            font-size:
-                13px;
-        }
-
-        .file-item .file-type {
-
-            font-size:
-                8px;
-        }
-
-        .file-item .recent-file-path,
-        .file-item .search-path {
-
-            font-size:
-                7px;
-        }
-
-        .file-item .item-actions {
-
-            grid-template-columns:
-                repeat(5, 25px);
-        }
-
-        .file-item .item-actions > button {
-
-            width:
-                25px !important;
-
-            height:
-                29px !important;
-
-            min-width:
-                25px !important;
-
-            min-height:
-                29px !important;
-
-            font-size:
-                13px !important;
-        }
-    }
-
-
-    /* -----------------------------------------------------
-       VERY SMALL iPHONE
-       ----------------------------------------------------- */
-
-    @media (max-width: 390px) {
-
-        .toolbar {
-
-            width:
-                min(265px, 86vw);
-
-            padding:
-                13px 8px
-                calc(
-                    15px +
-                    env(safe-area-inset-bottom)
-                );
-        }
-
-        .toolbar.menu-collapsed {
-
-            width:
-                min(265px, 86vw);
-
-            padding:
-                13px 8px
-                calc(
-                    15px +
-                    env(safe-area-inset-bottom)
-                );
-        }
-
-        .toolbar-btn {
-
-            flex-basis:
-                49px;
-
-            height:
-                49px;
-
-            min-height:
-                49px;
-
-            border-radius:
-                11px;
-        }
-
-        .toolbar-btn span {
-
-            font-size:
-                10px;
-        }
-
-        .file-item .item-actions {
-
-            grid-template-columns:
-                repeat(5, 23px);
-        }
-
-        .file-item .item-actions > button {
-
-            width:
-                23px !important;
-
-            height:
-                28px !important;
-
-            min-width:
-                23px !important;
-
-            min-height:
-                28px !important;
-
-            font-size:
-                12px !important;
-        }
+    #v4PasteCancel:active {
+        transform:
+            translateX(-50%)
+            scale(0.90) !important;
     }
 }
 
 
-/* =========================================================
-   27. iPAD FUTURISTIC WORKSPACE
-   ONLY iPAD / TOUCH TABLETS
-   ========================================================= */
+/* =====================================================
+   28. SMALL iPHONE
+   ===================================================== */
 
-@media
-(min-width: 701px)
-and (max-width: 1366px)
-and (hover: none)
-and (pointer: coarse) {
+@media (max-width: 430px) and (hover: none) and (pointer: coarse) {
 
-    html,
-    body {
-
-        width:
-            100%;
-
-        height:
-            100%;
-
-        min-height:
-            100dvh;
-
-        background:
-            var(--future-bg);
-
-        color:
-            var(--future-text);
+    :root {
+        --mobile-header-height: 62px;
     }
 
-    body {
-
-        overflow:
-            hidden;
+    .header {
+        height: 62px;
     }
 
+    .app-logo {
+        width: 38px;
+        height: 38px;
+        flex-basis: 38px;
+    }
 
-    /* -----------------------------------------------------
-       MAIN iPAD WORKSPACE
-       ----------------------------------------------------- */
+    .brand-text h1 {
+        font-size: 15px;
+    }
+
+    .header-menu {
+        width: 42px;
+        height: 42px;
+        flex-basis: 42px;
+    }
+
+    .file-item {
+        grid-template-columns:
+            25px
+            43px
+            minmax(0, 1fr)
+            auto;
+
+        gap: 7px;
+
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+
+    .file-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .item-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .v4-paste-fab {
+        min-width: 142px;
+        min-height: 48px;
+    }
+}
+
+
+/* =====================================================
+   29. VERY SMALL iPHONE
+   ===================================================== */
+
+@media (max-width: 390px) and (hover: none) and (pointer: coarse) {
+
+    .brand-text p {
+        display: none;
+    }
+
+    .file-item {
+        grid-template-columns:
+            23px
+            41px
+            minmax(0, 1fr)
+            auto;
+
+        gap: 6px;
+    }
+
+    .file-name {
+        font-size: 13px;
+    }
+
+    .item-btn {
+        width: 31px;
+        height: 31px;
+    }
+}
+
+
+/* =====================================================
+   30. iPAD FUTURISTIC WORKSPACE
+   ===================================================== */
+
+@media (min-width: 701px) and (max-width: 1366px)
+       and (hover: none) and (pointer: coarse) {
 
     .app {
-
-        width:
-            100%;
-
-        height:
-            100dvh;
-
-        min-height:
-            100dvh;
-
-        display:
-            grid;
+        display: grid;
 
         grid-template-columns:
             255px
@@ -3964,1612 +1503,216 @@ and (pointer: coarse) {
             auto
             minmax(0, 1fr);
 
+        column-gap: 10px;
+
+        min-height: 100dvh;
+
         padding:
-            env(safe-area-inset-top)
-            0
-            env(safe-area-inset-bottom);
-
-        background:
-            radial-gradient(
-                circle at 85% 0%,
-                rgba(24,168,255,.12),
-                transparent 32%
-            ),
-            var(--future-bg);
-
-        overflow:
-            hidden;
-
-        transition:
-            grid-template-columns .24s ease;
+            calc(6px + env(safe-area-inset-top))
+            8px
+            calc(20px + env(safe-area-inset-bottom));
     }
-
-
-    /* -----------------------------------------------------
-       HEADER
-       ----------------------------------------------------- */
 
     .header {
+        grid-column: 1 / -1;
+        grid-row: 1;
 
-        grid-column:
-            1 / -1;
-
-        grid-row:
-            1;
-
-        width:
-            100%;
-
-        min-height:
-            76px;
-
-        height:
-            76px;
-
-        padding:
-            10px 18px;
-
-        border:
-            0;
-
-        border-bottom:
-            1px solid
-            var(--future-line);
-
-        border-radius:
-            0;
-
-        background:
-            rgba(8,11,18,.84);
-
-        box-shadow:
-            0 12px 35px
-            rgba(0,0,0,.25);
-
-        backdrop-filter:
-            blur(24px)
-            saturate(150%);
-
-        -webkit-backdrop-filter:
-            blur(24px)
-            saturate(150%);
-
-        z-index:
-            3000;
+        height: 76px;
     }
-
-    .brand {
-
-        gap:
-            11px;
-    }
-
-    .app-logo {
-
-        width:
-            43px;
-
-        height:
-            43px;
-
-        flex-basis:
-            43px;
-
-        border-radius:
-            13px;
-
-        background:
-            linear-gradient(
-                145deg,
-                #23c7ff,
-                #0878ff
-            );
-
-        box-shadow:
-            0 0 24px
-            rgba(24,168,255,.25);
-    }
-
-    .app-logo svg {
-
-        width:
-            34px;
-
-        height:
-            34px;
-    }
-
-    .brand-text h1 {
-
-        color:
-            #fff;
-
-        font-size:
-            20px;
-    }
-
-    .brand-text p {
-
-        color:
-            var(--future-muted);
-
-        font-size:
-            9px;
-
-        letter-spacing:
-            1px;
-
-        text-transform:
-            uppercase;
-    }
-
-
-    /* -----------------------------------------------------
-       THREE-LINE BUTTON
-       ----------------------------------------------------- */
-
-    .header-menu {
-
-        width:
-            44px;
-
-        height:
-            44px;
-
-        min-width:
-            44px;
-
-        min-height:
-            44px;
-
-        border-radius:
-            13px;
-
-        background:
-            rgba(255,255,255,.055);
-
-        border:
-            1px solid
-            rgba(83,230,255,.16);
-
-        box-shadow:
-            0 0 15px
-            rgba(24,168,255,.06);
-    }
-
-    .header-menu .menu-line {
-
-        background:
-            var(--future-cyan);
-
-        box-shadow:
-            0 0 7px
-            rgba(83,230,255,.45);
-    }
-
-
-    /* -----------------------------------------------------
-       LEFT SIDEBAR
-       ----------------------------------------------------- */
 
     .toolbar {
+        grid-column: 1;
+        grid-row: 2 / 6;
 
-        grid-column:
-            1;
+        width: 100%;
+        height: 100%;
 
-        grid-row:
-            2 / 6;
+        display: flex;
+        flex-direction: column;
 
-        position:
-            relative;
+        gap: 7px;
 
-        top:
-            auto;
-
-        left:
-            auto;
-
-        right:
-            auto;
-
-        width:
-            100%;
-
-        height:
-            auto;
-
-        min-height:
-            0;
-
-        max-height:
-            none;
-
-        padding:
-            15px 10px;
-
-        display:
-            flex;
-
-        flex-direction:
-            column;
-
-        gap:
-            6px;
-
-        border:
-            0;
-
-        border-right:
-            1px solid
-            var(--future-line);
-
-        border-radius:
-            0;
+        margin-top: 0;
+        padding: 10px;
 
         background:
-            rgba(12,16,25,.76);
+            rgba(13, 18, 27, 0.90);
 
-        backdrop-filter:
-            blur(24px);
-
-        -webkit-backdrop-filter:
-            blur(24px);
-
-        overflow-y:
-            auto;
-
-        overflow-x:
-            hidden;
-
-        z-index:
-            2000;
-
-        opacity:
-            1;
-
-        transform:
-            translateX(0);
-
-        pointer-events:
-            auto;
-
-        transition:
-            opacity .20s ease,
-            transform .24s ease;
+        border-radius: 18px;
     }
-
-
-    /* -----------------------------------------------------
-       SIDEBAR BUTTONS
-       ----------------------------------------------------- */
 
     .toolbar-btn {
+        width: 100%;
+        min-height: 48px;
 
-        flex:
-            0 0 54px;
+        flex: 0 0 48px;
 
-        width:
-            100%;
+        text-align: left;
 
-        height:
-            54px;
+        padding: 0 14px;
+    }
 
-        min-height:
-            54px;
+    .search-section {
+        grid-column: 2;
+        grid-row: 2;
 
-        display:
-            grid;
+        width: 100%;
 
-        grid-template-columns:
-            30px
-            minmax(0,1fr);
+        position: relative;
 
-        align-items:
-            center;
+        margin-top: 0;
+    }
 
-        gap:
-            9px;
+    .breadcrumb {
+        grid-column: 2;
+        grid-row: 3;
+
+        width: 100%;
+
+        margin-top: 8px;
+    }
+
+    .message {
+        grid-column: 2;
+        grid-row: 4;
+
+        width: 100%;
+
+        margin-top: 8px;
+    }
+
+    .upload-status {
+        grid-column: 2;
+        grid-row: 4;
+
+        width: 100%;
+    }
+
+    .reorder-bar {
+        grid-column: 2;
+        grid-row: 4;
+
+        width: 100%;
+    }
+
+    .file-list {
+        grid-column: 2;
+        grid-row: 5;
+
+        width: 100%;
+        min-height: 0;
+
+        margin-top: 8px;
+
+        overflow-y: auto;
+    }
+
+    .toolbar.menu-collapsed {
+        display: flex;
+
+        width: 0;
+
+        min-width: 0;
 
         padding:
-            0 12px;
+            10px 0;
 
-        border:
-            1px solid
-            transparent;
+        overflow: hidden;
 
-        border-radius:
-            13px;
+        opacity: 0;
 
-        background:
-            transparent;
-
-        color:
-            var(--future-cyan);
-
-        box-shadow:
-            none;
-
-        text-align:
-            left;
+        pointer-events: none;
     }
-
-    .toolbar-btn svg,
-    .ios-menu-icon {
-
-        width:
-            23px;
-
-        height:
-            23px;
-
-        stroke:
-            var(--future-cyan);
-
-        filter:
-            drop-shadow(
-                0 0 5px
-                rgba(83,230,255,.35)
-            );
-    }
-
-    .toolbar-btn span {
-
-        color:
-            #aeb9ca;
-
-        font-size:
-            11px;
-
-        line-height:
-            14px;
-
-        text-align:
-            left;
-    }
-
-    .toolbar-btn:active,
-    .toolbar-btn.touch-active {
-
-        background:
-            rgba(24,168,255,.12);
-
-        border-color:
-            rgba(83,230,255,.16);
-
-        transform:
-            scale(.985);
-    }
-
-
-    /* -----------------------------------------------------
-       SIDEBAR HIDDEN
-       ----------------------------------------------------- */
 
     .app:has(.toolbar.menu-collapsed) {
-
         grid-template-columns:
             0
             minmax(0, 1fr);
     }
 
-    .app:has(.toolbar.menu-collapsed) .toolbar {
-
-        width:
-            0 !important;
-
-        min-width:
-            0 !important;
-
-        max-width:
-            0 !important;
-
-        height:
-            0 !important;
-
-        min-height:
-            0 !important;
-
-        max-height:
-            none !important;
-
-        padding:
-            0 !important;
-
-        margin:
-            0 !important;
-
-        border:
-            0 !important;
-
-        opacity:
-            0 !important;
-
-        transform:
-            translateX(-100%);
-
-        pointer-events:
-            none !important;
-
-        overflow:
-            hidden !important;
-    }
-
-
-    /* -----------------------------------------------------
-       MAIN SEARCH AREA
-       ----------------------------------------------------- */
-
-    .search-section {
-
-        grid-column:
-            2;
-
-        grid-row:
-            2;
-
-        width:
-            100%;
-
-        padding:
-            13px 20px 7px;
-
-        margin:
-            0;
-
-        background:
-            transparent;
-
-        min-width:
-            0;
-
-        position:
-            relative;
-    }
-
-    .search-section::before {
-
-        content:
-            "⌕";
-
-        position:
-            absolute;
-
-        left:
-            34px;
-
-        top:
-            18px;
-
-        z-index:
-            2;
-
-        color:
-            var(--future-cyan);
-
-        font-size:
-            21px;
-    }
-
-    .search-box {
-
-        width:
-            100%;
-
-        height:
-            47px;
-
-        padding:
-            0 15px 0 43px;
-
-        border:
-            1px solid
-            rgba(255,255,255,.08);
-
-        border-radius:
-            14px;
-
-        background:
-            rgba(255,255,255,.055);
-
-        color:
-            #fff;
-
-        font-size:
-            15px;
-    }
-
-    .search-box::placeholder {
-        color:
-            #7f8ba0;
-    }
-
-    .search-box:focus {
-
-        border-color:
-            rgba(83,230,255,.35);
-
-        background:
-            rgba(255,255,255,.075);
-
-        box-shadow:
-            0 0 0 3px
-            rgba(24,168,255,.08);
-    }
-
-
-    /* -----------------------------------------------------
-       SEARCH FULL WIDTH WHEN SIDEBAR HIDDEN
-       ----------------------------------------------------- */
-
     .app:has(.toolbar.menu-collapsed)
-    .search-section {
-
-        grid-column:
-            1 / -1;
-
-        width:
-            100%;
-
-        padding-left:
-            20px;
-
-        padding-right:
-            20px;
-    }
-
-
-    /* -----------------------------------------------------
-       BREADCRUMB
-       ----------------------------------------------------- */
-
-    .breadcrumb {
-
-        grid-column:
-            2;
-
-        grid-row:
-            3;
-
-        width:
-            calc(100% - 40px);
-
-        max-width:
-            none;
-
-        min-height:
-            34px;
-
-        margin:
-            0 20px;
-
-        padding:
-            4px 0;
-
-        color:
-            var(--future-muted);
-
-        background:
-            transparent;
-
-        min-width:
-            0;
-    }
-
-    .breadcrumb > span {
-
-        color:
-            var(--future-muted);
-
-        font-size:
-            11px;
-    }
-
-    .crumb {
-
-        min-height:
-            30px;
-
-        height:
-            30px;
-
-        padding:
-            4px 9px;
-
-        border-radius:
-            9px;
-
-        background:
-            rgba(24,168,255,.08);
-
-        color:
-            var(--future-cyan);
-
-        font-size:
-            11px;
-    }
-
-    .crumb.current {
-
-        background:
-            rgba(255,255,255,.07);
-
-        color:
-            #cbd4e2;
-    }
-
-
-    /* -----------------------------------------------------
-       BREADCRUMB FULL WIDTH
-       ----------------------------------------------------- */
-
+    .search-section,
     .app:has(.toolbar.menu-collapsed)
-    .breadcrumb {
-
-        grid-column:
-            1 / -1;
-
-        width:
-            calc(100% - 40px);
-
-        margin-left:
-            20px;
-
-        margin-right:
-            20px;
-    }
-
-
-    /* -----------------------------------------------------
-       MESSAGE / STATUS
-       ----------------------------------------------------- */
-
-    .message,
-    .upload-status,
-    .reorder-bar {
-
-        grid-column:
-            2;
-
-        width:
-            calc(100% - 40px);
-
-        margin-left:
-            20px;
-
-        margin-right:
-            20px;
-
-        min-width:
-            0;
-    }
-
-    .message {
-
-        grid-row:
-            4;
-
-        margin-top:
-            0;
-
-        margin-bottom:
-            3px;
-
-        padding:
-            3px 0;
-
-        color:
-            #647187;
-
-        font-size:
-            9px;
-    }
-
-    .message::before {
-
-        width:
-            6px;
-
-        height:
-            6px;
-
-        background:
-            var(--future-green);
-    }
-
-    .upload-status {
-
-        grid-row:
-            4;
-
-        margin-top:
-            0;
-
-        margin-bottom:
-            4px;
-    }
-
-    .reorder-bar {
-
-        grid-row:
-            4;
-
-        margin-top:
-            0;
-
-        margin-bottom:
-            4px;
-    }
-
-
-    /* -----------------------------------------------------
-       STATUS FULL WIDTH
-       ----------------------------------------------------- */
-
+    .breadcrumb,
     .app:has(.toolbar.menu-collapsed)
     .message,
     .app:has(.toolbar.menu-collapsed)
     .upload-status,
     .app:has(.toolbar.menu-collapsed)
-    .reorder-bar {
-
-        grid-column:
-            1 / -1;
-
-        width:
-            calc(100% - 40px);
-
-        margin-left:
-            20px;
-
-        margin-right:
-            20px;
-    }
-
-
-    /* -----------------------------------------------------
-       FILE LIST
-       ----------------------------------------------------- */
-
-    .file-list {
-
-        grid-column:
-            2;
-
-        grid-row:
-            5;
-
-        width:
-            calc(100% - 40px);
-
-        min-width:
-            0;
-
-        min-height:
-            0;
-
-        margin:
-            6px 20px 0;
-
-        padding:
-            0 0
-            calc(
-                20px +
-                env(safe-area-inset-bottom)
-            );
-
-        background:
-            transparent;
-
-        border-top:
-            1px solid
-            var(--future-line);
-
-        border-radius:
-            0;
-
-        overflow-y:
-            auto;
-
-        overflow-x:
-            hidden;
-
-        -webkit-overflow-scrolling:
-            touch;
-    }
-
-
-    /* -----------------------------------------------------
-       FILE LIST FULL WIDTH
-       ----------------------------------------------------- */
-
+    .reorder-bar,
     .app:has(.toolbar.menu-collapsed)
     .file-list {
-
-        grid-column:
-            1 / -1;
-
-        width:
-            calc(100% - 40px);
-
-        margin-left:
-            20px;
-
-        margin-right:
-            20px;
-    }
-
-
-    /* -----------------------------------------------------
-       iPAD FILE ROW
-       ----------------------------------------------------- */
-
-    .file-item {
-
-        position:
-            relative;
-
-        width:
-            100%;
-
-        min-height:
-            70px;
-
-        margin:
-            0;
-
-        padding:
-            10px 2px;
-
-        display:
-            flex !important;
-
-        align-items:
-            center;
-
-        gap:
-            10px;
-
-        border:
-            0;
-
-        border-bottom:
-            1px solid
-            var(--future-line);
-
-        border-radius:
-            0;
-
-        background:
-            transparent;
-
-        box-shadow:
-            none;
-
-        color:
-            var(--future-text);
-
-        transform:
-            none !important;
-    }
-
-    .file-item:active,
-    .file-item.touch-active {
-
-        background:
-            rgba(24,168,255,.07)
-            !important;
-
-        transform:
-            none !important;
-    }
-
-    .file-item .position {
-
-        width:
-            25px;
-
-        min-width:
-            25px;
-
-        flex-basis:
-            25px;
-
-        color:
-            #536074;
-
-        font-size:
-            10px;
-    }
-
-    .file-item .file-icon {
-
-        position:
-            static;
-
-        width:
-            44px;
-
-        height:
-            44px;
-
-        min-width:
-            44px;
-
-        min-height:
-            44px;
-
-        flex-basis:
-            44px;
-
-        border-radius:
-            12px;
-
-        background:
-            linear-gradient(
-                145deg,
-                rgba(24,168,255,.18),
-                rgba(83,230,255,.035)
-            );
-
-        border:
-            1px solid
-            rgba(83,230,255,.15);
-
-        color:
-            var(--future-cyan);
-
-        font-size:
-            23px;
-    }
-
-    .file-item.folder-row .file-icon {
-
-        background:
-            linear-gradient(
-                145deg,
-                rgba(24,168,255,.25),
-                rgba(24,168,255,.06)
-            );
-
-        border-color:
-            rgba(24,168,255,.30);
-    }
-
-    .file-item .file-info {
-
-        position:
-            static;
-
-        width:
-            auto;
-
-        height:
-            auto;
-
-        flex:
-            1 1 auto;
-
-        min-width:
-            0;
-
-        padding:
-            0;
-
-        display:
-            flex !important;
-
-        flex-direction:
-            column;
-
-        justify-content:
-            center;
-
-        gap:
-            2px;
-    }
-
-    .file-item .file-name {
-
-        color:
-            #f5f7fb;
-
-        font-size:
-            15px;
-
-        line-height:
-            20px;
-
-        font-weight:
-            600;
-    }
-
-    .file-item .file-type {
-
-        margin:
-            0;
-
-        color:
-            #778296;
-
-        font-size:
-            10px;
-
-        line-height:
-            14px;
-    }
-
-    .file-item .recent-file-path,
-    .file-item .search-path {
-
-        margin-top:
-            1px;
-
-        color:
-            #647187;
-
-        font-size:
-            9px;
-
-        line-height:
-            13px;
-    }
-
-
-    /* -----------------------------------------------------
-       iPAD FILE ACTIONS
-       ----------------------------------------------------- */
-
-    .file-item .item-actions {
-
-        width:
-            auto;
-
-        height:
-            auto;
-
-        flex:
-            0 0 auto;
-
-        display:
-            grid !important;
-
-        grid-template-columns:
-            repeat(5, 32px);
-
-        gap:
-            2px;
-
-        padding:
-            0;
-
-        border:
-            0;
-
-        background:
-            transparent;
-
-        box-shadow:
-            none;
-
-        overflow:
-            visible;
-    }
-
-    .file-item .item-actions > button {
-
-        width:
-            32px !important;
-
-        height:
-            34px !important;
-
-        min-width:
-            32px !important;
-
-        min-height:
-            34px !important;
-
-        border:
-            0 !important;
-
-        border-radius:
-            8px !important;
-
-        background:
-            transparent !important;
-
-        color:
-            #8290a5;
-
-        box-shadow:
-            none !important;
-
-        font-size:
-            16px !important;
-    }
-
-    .file-item .item-more-btn {
-
-        color:
-            var(--future-cyan)
-            !important;
-    }
-
-
-    /* -----------------------------------------------------
-       PASTE FAB
-       ----------------------------------------------------- */
-
-    .v4-paste-fab {
-
-        right:
-            22px;
-
-        bottom:
-            calc(
-                20px +
-                env(safe-area-inset-bottom)
-            );
-
-        width:
-            58px;
-
-        height:
-            58px;
-
-        min-width:
-            58px;
-
-        min-height:
-            58px;
-
-        padding:
-            0;
-
-        border:
-            1px solid
-            rgba(83,230,255,.45);
-
-        border-radius:
-            18px;
-
-        background:
-            linear-gradient(
-                145deg,
-                #18a8ff,
-                #0878ff
-            );
-
-        color:
-            #fff;
-
-        box-shadow:
-            0 0 0 5px
-            rgba(24,168,255,.07),
-            0 10px 35px
-            rgba(0,0,0,.50),
-            0 0 25px
-            rgba(24,168,255,.28);
-    }
-
-
-    /* -----------------------------------------------------
-       ACTION POPUP
-       ----------------------------------------------------- */
-
-    .touch-action-sheet {
-
-        padding:
-            16px;
-
-        background:
-            rgba(0,0,0,.42);
-
-        backdrop-filter:
-            blur(18px);
-
-        -webkit-backdrop-filter:
-            blur(18px);
-    }
-
-    .touch-sheet-card {
-
-        position:
-            fixed;
-
-        width:
-            min(
-                360px,
-                calc(100vw - 32px)
-            );
-
-        margin:
-            0;
-
-        padding:
-            9px;
-
-        border:
-            1px solid
-            rgba(83,230,255,.22);
-
-        border-radius:
-            21px;
-
-        background:
-            rgba(15,20,30,.97);
-
-        box-shadow:
-            0 28px 70px
-            rgba(0,0,0,.65),
-            0 0 35px
-            rgba(24,168,255,.08);
-
-        backdrop-filter:
-            blur(28px);
-
-        -webkit-backdrop-filter:
-            blur(28px);
-    }
-
-    .touch-sheet-title {
-
-        color:
-            #fff;
-
-        font-size:
-            15px;
-    }
-
-    .touch-sheet-action {
-
-        color:
-            #cfefff;
-
-        background:
-            rgba(255,255,255,.055);
-    }
-
-    .touch-sheet-cancel {
-
-        color:
-            var(--future-cyan);
-
-        background:
-            rgba(83,230,255,.06);
-    }
-
-
-    /* -----------------------------------------------------
-       DETAILS MODAL
-       ----------------------------------------------------- */
-
-    .file-details-card {
-
-        width:
-            min(
-                560px,
-                calc(100vw - 60px)
-            );
-
-        background:
-            rgba(15,20,30,.97);
-
-        border:
-            1px solid
-            rgba(83,230,255,.18);
-
-        color:
-            #fff;
-    }
-
-    .file-details-card h3 {
-
-        color:
-            #fff;
-    }
-
-    .file-detail-row {
-
-        border-bottom:
-            1px solid
-            var(--future-line);
-    }
-
-    .file-detail-row strong {
-
-        color:
-            #778296;
-    }
-
-    .file-detail-row span {
-
-        color:
-            #dce8f5;
-    }
-
-    .file-details-close {
-
-        background:
-            linear-gradient(
-                145deg,
-                #18a8ff,
-                #0878ff
-            );
+        grid-column: 1 / -1;
     }
 }
 
 
-/* =========================================================
-   28. iPAD LANDSCAPE
-   ========================================================= */
+/* =====================================================
+   31. iPAD LANDSCAPE
+   ===================================================== */
 
-@media
-(min-width: 701px)
-and (max-width: 1366px)
-and (hover: none)
-and (pointer: coarse)
-and (orientation: landscape) {
+@media (min-width: 1000px) and (max-width: 1366px)
+       and (hover: none) and (pointer: coarse) {
 
     .app {
-
         grid-template-columns:
             270px
-            minmax(0,1fr);
-    }
-
-    .app:has(.toolbar.menu-collapsed) {
-
-        grid-template-columns:
-            0
-            minmax(0,1fr);
-    }
-
-    .toolbar {
-
-        padding:
-            16px 12px;
-    }
-
-    .toolbar-btn {
-
-        flex-basis:
-            55px;
-
-        height:
-            55px;
-
-        min-height:
-            55px;
-    }
-
-    .search-section {
-
-        padding-left:
-            24px;
-
-        padding-right:
-            24px;
-    }
-
-    .app:has(.toolbar.menu-collapsed)
-    .search-section {
-
-        padding-left:
-            24px;
-
-        padding-right:
-            24px;
-    }
-
-    .breadcrumb {
-
-        width:
-            calc(100% - 48px);
-
-        margin-left:
-            24px;
-
-        margin-right:
-            24px;
-    }
-
-    .app:has(.toolbar.menu-collapsed)
-    .breadcrumb {
-
-        width:
-            calc(100% - 48px);
-
-        margin-left:
-            24px;
-
-        margin-right:
-            24px;
-    }
-
-    .message,
-    .upload-status,
-    .reorder-bar {
-
-        width:
-            calc(100% - 48px);
-
-        margin-left:
-            24px;
-
-        margin-right:
-            24px;
-    }
-
-    .app:has(.toolbar.menu-collapsed)
-    .message,
-    .app:has(.toolbar.menu-collapsed)
-    .upload-status,
-    .app:has(.toolbar.menu-collapsed)
-    .reorder-bar {
-
-        width:
-            calc(100% - 48px);
-
-        margin-left:
-            24px;
-
-        margin-right:
-            24px;
-    }
-
-    .file-list {
-
-        width:
-            calc(100% - 48px);
-
-        margin-left:
-            24px;
-
-        margin-right:
-            24px;
-    }
-
-    .app:has(.toolbar.menu-collapsed)
-    .file-list {
-
-        width:
-            calc(100% - 48px);
-
-        margin-left:
-            24px;
-
-        margin-right:
-            24px;
+            minmax(0, 1fr);
     }
 }
 
 
-/* =========================================================
-   29. iPAD PORTRAIT
-   ========================================================= */
+/* =====================================================
+   32. iPAD PORTRAIT
+   ===================================================== */
 
-@media
-(min-width: 701px)
-and (max-width: 1366px)
-and (hover: none)
-and (pointer: coarse)
-and (orientation: portrait) {
+@media (min-width: 701px) and (max-width: 999px)
+       and (hover: none) and (pointer: coarse) {
 
     .app {
-
         grid-template-columns:
             235px
-            minmax(0,1fr);
-    }
-
-    .app:has(.toolbar.menu-collapsed) {
-
-        grid-template-columns:
-            0
-            minmax(0,1fr);
-    }
-
-    .toolbar {
-
-        padding:
-            14px 9px;
-    }
-
-    .toolbar-btn {
-
-        flex-basis:
-            52px;
-
-        height:
-            52px;
-
-        min-height:
-            52px;
-    }
-
-    .toolbar-btn span {
-
-        font-size:
-            10px;
+            minmax(0, 1fr);
     }
 }
 
 
-/* =========================================================
-   30. SAFETY
-   ========================================================= */
+/* =====================================================
+   33. SAFETY
+   ===================================================== */
 
-@media (max-width: 1366px) {
+button,
+.file-item {
+    touch-action: manipulation;
+}
 
-    html,
-    body {
+@supports (-webkit-touch-callout: none) {
 
-        min-height:
-            100dvh;
-    }
-
-    .app {
-
-        min-height:
-            100dvh;
+    input,
+    button {
+        -webkit-appearance: none;
     }
 }
 
 
-/* =========================================================
-   31. REDUCED MOTION
-   ========================================================= */
+/* =====================================================
+   34. REDUCED MOTION
+   ===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
     *,
     *::before,
     *::after {
+        scroll-behavior: auto !important;
+
+        transition-duration:
+            0.01ms !important;
 
         animation-duration:
-            .01ms !important;
+            0.01ms !important;
 
         animation-iteration-count:
             1 !important;
-
-        scroll-behavior:
-            auto !important;
-
-        transition-duration:
-            .01ms !important;
     }
 }
-/* =====================================================
-   PASTE CANCEL X — HIDDEN BY DEFAULT
-   ===================================================== */
-
-#v4PasteCancel {
-    display: none !important;
-}
-
-#v4PasteCancel.show {
-    display: flex !important;
-}
-/* =====================================================
-   PASTE CONTROLS — POSITION FIX ONLY
-   ===================================================== */
-
-#v4PasteFab {
-    position: fixed !important;
-    right: 18px !important;
-    bottom: calc(24px + env(safe-area-inset-bottom)) !important;
-
-    z-index: 5000 !important;
-}
-
-#v4PasteCancel {
-    position: fixed !important;
-    right: 18px !important;
-    bottom: calc(82px + env(safe-area-inset-bottom)) !important;
-
-    z-index: 5001 !important;
-}
-/* =========================================================
-   END
-   ========================================================= */
