@@ -4528,27 +4528,25 @@ and (pointer: coarse) {
    iPHONE
 ========================================================= */
 
-@media (max-width:700px)
-and (hover:none)
+/* =========================================================
+   iPAD
+   FUTURISTIC TWO-PANE WORKSPACE
+========================================================= */
+
+@media (min-width:701px)
+and (max-width:1366px)
 and (pointer:coarse) {
 
     html,
     body {
         background:
-            radial-gradient(
-                circle at 90% 0%,
-                rgba(24,168,255,0.13),
-                transparent 34%
-            ),
-            radial-gradient(
-                circle at 0% 55%,
-                rgba(83,230,255,0.06),
-                transparent 30%
-            ),
             var(--future-bg) !important;
 
-        color:var(--future-text) !important;
+        color:
+            var(--future-text) !important;
     }
+
+    /* keep the rest of the existing iPad CSS exactly as it is */
 
 
     body {
