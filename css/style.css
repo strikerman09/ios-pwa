@@ -1,16 +1,12 @@
-
 /* =========================================================
    MY FILE MANAGER
-   iOS / iPadOS UI REDESIGN
-   =========================================================
-   IMPORTANT
+   CONSOLIDATED RESPONSIVE UI
    ---------------------------------------------------------
-   HTML / JS STRUCTURE: UNCHANGED
-   DESKTOP: PRESERVED
-   iPHONE + iPAD: iOS-STYLE REDESIGN
-
-   Existing classes / IDs are preserved.
-   No JavaScript changes are required.
+   DESKTOP  : Original light UI
+   iPHONE   : Futuristic mobile UI
+   iPAD     : Futuristic workspace UI
+   OFFLINE  : No external resources
+   JS/DB    : No changes required
    ========================================================= */
 
 
@@ -19,6 +15,11 @@
    ========================================================= */
 
 :root {
+
+    /* -----------------------------------------------------
+       Original / desktop colors
+    ----------------------------------------------------- */
+
     --blue: #007aff;
     --blue-soft: #eaf3ff;
     --blue-light: #f4f8ff;
@@ -30,15 +31,22 @@
     --secondary: #8e8e93;
     --line: #e5e5ea;
 
-    --border: rgba(60, 60, 67, 0.12);
+    --border:
+        rgba(60, 60, 67, .12);
 
     --shadow:
-        0 2px 10px rgba(0, 0, 0, .06);
+        0 2px 10px
+        rgba(0, 0, 0, .06);
 
     --shadow-strong:
-        0 10px 30px rgba(0, 0, 0, .10);
+        0 10px 30px
+        rgba(0, 0, 0, .10);
 
-    /* iOS mobile system colors */
+
+    /* -----------------------------------------------------
+       iOS system colors
+    ----------------------------------------------------- */
+
     --ios-blue: #007aff;
     --ios-green: #34c759;
     --ios-red: #ff3b30;
@@ -57,6 +65,45 @@
 
     --ios-blue-tint:
         rgba(0, 122, 255, .10);
+
+
+    /* -----------------------------------------------------
+       Futuristic mobile / iPad colors
+    ----------------------------------------------------- */
+
+    --future-bg: #080b12;
+
+    --future-surface:
+        rgba(18, 23, 34, .88);
+
+    --future-surface-strong:
+        rgba(15, 20, 30, .96);
+
+    --future-text: #f5f7fb;
+
+    --future-muted: #7f8ba0;
+
+    --future-blue: #18a8ff;
+
+    --future-cyan: #53e6ff;
+
+    --future-green: #39e58c;
+
+    --future-red: #ff5c70;
+
+    --future-line:
+        rgba(255, 255, 255, .08);
+
+    --future-blue-line:
+        rgba(83, 230, 255, .22);
+
+    --future-glow:
+        0 0 24px
+        rgba(24, 168, 255, .22);
+
+    --future-shadow:
+        0 24px 60px
+        rgba(0, 0, 0, .55);
 }
 
 
@@ -66,11 +113,14 @@
 
 * {
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
+
+    -webkit-tap-highlight-color:
+        transparent;
 }
 
 html,
 body {
+
     margin: 0;
     padding: 0;
 
@@ -91,16 +141,23 @@ body {
 }
 
 body {
+
     min-height: 100dvh;
 
-    overscroll-behavior-y: none;
+    overscroll-behavior-y:
+        none;
 
-    -webkit-user-select: none;
-    user-select: none;
+    -webkit-user-select:
+        none;
 
-    -webkit-touch-callout: none;
+    user-select:
+        none;
 
-    touch-action: pan-y;
+    -webkit-touch-callout:
+        none;
+
+    touch-action:
+        pan-y;
 }
 
 button,
@@ -110,36 +167,48 @@ textarea {
 }
 
 button {
+
     -webkit-appearance: none;
     appearance: none;
 
     cursor: pointer;
 
-    touch-action: manipulation;
+    touch-action:
+        manipulation;
 }
 
 input,
 textarea {
+
     -webkit-appearance: none;
     appearance: none;
 
-    -webkit-user-select: text;
-    user-select: text;
+    -webkit-user-select:
+        text;
+
+    user-select:
+        text;
 }
 
 .file-name,
 .file-type,
 .breadcrumb {
-    -webkit-user-select: text;
-    user-select: text;
+
+    -webkit-user-select:
+        text;
+
+    user-select:
+        text;
 }
 
 button:focus-visible {
+
     outline:
         3px solid
         rgba(0, 122, 255, .22);
 
-    outline-offset: 2px;
+    outline-offset:
+        2px;
 }
 
 .hidden {
@@ -149,20 +218,32 @@ button:focus-visible {
 
 /* =========================================================
    3. APP
+   DESKTOP BASE
    ========================================================= */
 
 .app {
+
     width: 100%;
-    min-height: 100dvh;
+
+    min-height:
+        100dvh;
 
     padding:
-        calc(6px + env(safe-area-inset-top))
+        calc(
+            6px +
+            env(safe-area-inset-top)
+        )
         6px
-        calc(20px + env(safe-area-inset-bottom));
+        calc(
+            20px +
+            env(safe-area-inset-bottom)
+        );
 
-    background: var(--bg);
+    background:
+        var(--bg);
 
-    overflow-x: hidden;
+    overflow-x:
+        hidden;
 }
 
 
@@ -172,17 +253,23 @@ button:focus-visible {
    ========================================================= */
 
 .header {
+
     position: relative;
 
     display: flex;
+
     align-items: center;
-    justify-content: space-between;
+
+    justify-content:
+        space-between;
 
     gap: 14px;
 
-    min-height: 82px;
+    min-height:
+        82px;
 
-    padding: 12px 14px;
+    padding:
+        12px 14px;
 
     background:
         rgba(255, 255, 255, .92);
@@ -194,16 +281,23 @@ button:focus-visible {
     border-radius:
         22px 22px 0 0;
 
-    box-shadow: var(--shadow);
+    box-shadow:
+        var(--shadow);
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter:
+        blur(18px);
 
-    overflow: hidden;
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    overflow:
+        hidden;
 }
 
 .brand {
+
     display: flex;
+
     align-items: center;
 
     min-width: 0;
@@ -212,27 +306,34 @@ button:focus-visible {
 }
 
 .app-logo {
+
     width: 54px;
     height: 54px;
 
-    flex: 0 0 54px;
+    flex:
+        0 0 54px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    border-radius: 16px;
+    border-radius:
+        16px;
 
-    background: var(--blue);
+    background:
+        var(--blue);
 
     box-shadow:
         0 5px 15px
         rgba(0, 122, 255, .24);
 
-    overflow: hidden;
+    overflow:
+        hidden;
 }
 
 .app-logo svg {
+
     width: 43px;
     height: 43px;
 
@@ -240,35 +341,55 @@ button:focus-visible {
 }
 
 .brand-text {
+
     min-width: 0;
 }
 
 .brand-text h1 {
+
     margin: 0;
 
-    font-size: 24px;
-    line-height: 1.15;
+    font-size:
+        24px;
 
-    font-weight: 700;
+    line-height:
+        1.15;
 
-    letter-spacing: -.4px;
+    font-weight:
+        700;
 
-    color: var(--text);
+    letter-spacing:
+        -.4px;
 
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    color:
+        var(--text);
+
+    white-space:
+        nowrap;
+
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
 }
 
 .brand-text p {
-    margin: 5px 0 0;
 
-    font-size: 13px;
-    line-height: 1.25;
+    margin:
+        5px 0 0;
 
-    color: var(--secondary);
+    font-size:
+        13px;
 
-    white-space: nowrap;
+    line-height:
+        1.25;
+
+    color:
+        var(--secondary);
+
+    white-space:
+        nowrap;
 }
 
 
@@ -277,27 +398,48 @@ button:focus-visible {
    ========================================================= */
 
 .header-menu {
-    flex: 0 0 auto;
 
-    width: 52px;
-    height: 52px;
+    flex:
+        0 0 auto;
 
-    min-width: 52px;
-    min-height: 52px;
+    width:
+        52px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    height:
+        52px;
 
-    gap: 5px;
+    min-width:
+        52px;
 
-    padding: 0;
+    min-height:
+        52px;
 
-    border: 0;
-    border-radius: 50%;
+    display:
+        flex;
 
-    background: #e7e7ec;
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        5px;
+
+    padding:
+        0;
+
+    border:
+        0;
+
+    border-radius:
+        50%;
+
+    background:
+        #e7e7ec;
 
     transition:
         transform .15s ease,
@@ -305,35 +447,46 @@ button:focus-visible {
 }
 
 .header-menu .menu-line {
-    display: block;
 
-    width: 21px;
-    height: 2.5px;
+    display:
+        block;
 
-    border-radius: 4px;
+    width:
+        21px;
 
-    background: var(--blue);
+    height:
+        2.5px;
 
-    transition:
-        transform .18s ease,
-        opacity .18s ease;
+    border-radius:
+        4px;
+
+    background:
+        var(--blue);
 }
 
 .header-menu:active {
-    transform: scale(.93);
+    transform:
+        scale(.93);
 }
 
-.header-menu.is-open .menu-line:nth-child(1) {
+.header-menu.is-open
+.menu-line:nth-child(1) {
+
     transform:
         translateY(7.5px)
         rotate(45deg);
 }
 
-.header-menu.is-open .menu-line:nth-child(2) {
-    opacity: 0;
+.header-menu.is-open
+.menu-line:nth-child(2) {
+
+    opacity:
+        0;
 }
 
-.header-menu.is-open .menu-line:nth-child(3) {
+.header-menu.is-open
+.menu-line:nth-child(3) {
+
     transform:
         translateY(-7.5px)
         rotate(-45deg);
@@ -342,29 +495,42 @@ button:focus-visible {
 
 /* =========================================================
    6. TOOLBAR
-   DESKTOP BASE
    ========================================================= */
 
 .toolbar {
-    width: 100%;
 
-    display: grid;
+    width:
+        100%;
+
+    display:
+        grid;
 
     grid-template-columns:
-        repeat(9, minmax(0, 1fr));
+        repeat(
+            9,
+            minmax(0, 1fr)
+        );
 
-    gap: 6px;
+    gap:
+        6px;
 
-    padding: 8px 10px;
+    padding:
+        8px 10px;
 
-    background: var(--bg);
+    background:
+        var(--bg);
 
-    position: sticky;
-    top: 0;
+    position:
+        sticky;
 
-    z-index: 100;
+    top:
+        0;
 
-    overflow: hidden;
+    z-index:
+        100;
+
+    overflow:
+        hidden;
 
     transition:
         max-height .22s ease,
@@ -374,35 +540,53 @@ button:focus-visible {
 }
 
 .toolbar-btn {
-    width: 100%;
-    min-width: 0;
 
-    height: 60px;
+    width:
+        100%;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    min-width:
+        0;
 
-    gap: 3px;
+    height:
+        60px;
 
-    padding: 3px;
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        3px;
+
+    padding:
+        3px;
 
     border:
         1px solid
         var(--line);
 
-    border-radius: 15px;
+    border-radius:
+        15px;
 
-    background: #fff;
+    background:
+        #fff;
 
-    color: var(--blue);
+    color:
+        var(--blue);
 
     box-shadow:
         0 1px 5px
         rgba(0, 0, 0, .055);
 
-    font-size: 21px;
+    font-size:
+        21px;
 
     transition:
         transform .14s ease,
@@ -411,80 +595,121 @@ button:focus-visible {
 
 .toolbar-btn svg,
 .ios-menu-icon {
-    width: 24px;
-    height: 24px;
 
-    flex: 0 0 auto;
+    width:
+        24px;
 
-    fill: none;
+    height:
+        24px;
 
-    stroke: var(--blue);
+    flex:
+        0 0 auto;
 
-    stroke-width: 1.9;
+    fill:
+        none;
 
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    stroke:
+        var(--blue);
+
+    stroke-width:
+        1.9;
+
+    stroke-linecap:
+        round;
+
+    stroke-linejoin:
+        round;
 }
 
 .toolbar-btn span {
-    max-width: 100%;
 
-    font-size: 10px;
-    line-height: 12px;
+    max-width:
+        100%;
 
-    font-weight: 600;
+    font-size:
+        10px;
 
-    color: var(--blue);
+    line-height:
+        12px;
 
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-weight:
+        600;
+
+    color:
+        var(--blue);
+
+    white-space:
+        nowrap;
+
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
 }
 
 .toolbar-btn:active {
-    transform: scale(.95);
 
-    background: var(--blue-soft);
+    transform:
+        scale(.95);
+
+    background:
+        var(--blue-soft);
 }
 
 .toolbar-btn:disabled {
-    opacity: .35;
 
-    transform: none;
+    opacity:
+        .35;
 
-    cursor: default;
+    transform:
+        none;
+
+    cursor:
+        default;
 }
 
 .toolbar-btn.select-active {
-    background: #e5efff !important;
+
+    background:
+        #e5efff !important;
 
     box-shadow:
-        inset 0 0 0 2px var(--blue),
+        inset 0 0 0 2px
+        var(--blue),
         0 2px 8px
-        rgba(0, 0, 0, .06) !important;
+        rgba(0, 0, 0, .06)
+        !important;
 }
 
-
-/* =========================================================
-   TOOLBAR COLLAPSED
-   ========================================================= */
-
 .toolbar.menu-collapsed {
-    max-height: 0 !important;
-    min-height: 0 !important;
 
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    max-height:
+        0 !important;
 
-    margin: 0 !important;
+    min-height:
+        0 !important;
 
-    opacity: 0;
+    padding-top:
+        0 !important;
 
-    pointer-events: none;
+    padding-bottom:
+        0 !important;
 
-    overflow: hidden !important;
+    margin:
+        0 !important;
 
-    transform: translateY(-8px);
+    opacity:
+        0;
+
+    pointer-events:
+        none;
+
+    overflow:
+        hidden !important;
+
+    transform:
+        translateY(-8px);
 }
 
 
@@ -493,32 +718,46 @@ button:focus-visible {
    ========================================================= */
 
 .search-section {
-    width: 100%;
 
-    padding: 7px 10px;
+    width:
+        100%;
 
-    background: var(--bg);
+    padding:
+        7px 10px;
+
+    background:
+        var(--bg);
 }
 
 .search-box {
-    width: 100%;
-    height: 50px;
 
-    padding: 0 16px;
+    width:
+        100%;
+
+    height:
+        50px;
+
+    padding:
+        0 16px;
 
     border:
         1px solid
         rgba(60, 60, 67, .08);
 
-    border-radius: 15px;
+    border-radius:
+        15px;
 
-    background: #e5e5ea;
+    background:
+        #e5e5ea;
 
-    color: var(--text);
+    color:
+        var(--text);
 
-    font-size: 16px;
+    font-size:
+        16px;
 
-    outline: none;
+    outline:
+        none;
 
     box-shadow:
         inset 0 1px 1px
@@ -531,11 +770,14 @@ button:focus-visible {
 }
 
 .search-box::placeholder {
-    color: var(--secondary);
+    color:
+        var(--secondary);
 }
 
 .search-box:focus {
-    background: #fff;
+
+    background:
+        #fff;
 
     border-color:
         rgba(0, 122, 255, .35);
@@ -544,7 +786,8 @@ button:focus-visible {
         0 0 0 3px
         rgba(0, 122, 255, .10);
 
-    outline: none;
+    outline:
+        none;
 }
 
 
@@ -553,82 +796,129 @@ button:focus-visible {
    ========================================================= */
 
 .breadcrumb {
-    width: calc(100% - 20px);
-    max-width: calc(100% - 20px);
 
-    min-width: 0;
+    width:
+        calc(100% - 20px);
 
-    min-height: 40px;
+    max-width:
+        calc(100% - 20px);
 
-    margin: 7px 10px 0;
+    min-width:
+        0;
 
-    padding: 3px 0;
+    min-height:
+        40px;
 
-    display: flex;
-    align-items: center;
+    margin:
+        7px 10px 0;
 
-    gap: 5px;
+    padding:
+        3px 0;
 
-    overflow-x: auto;
-    overflow-y: hidden;
+    display:
+        flex;
 
-    white-space: nowrap;
-    flex-wrap: nowrap;
+    align-items:
+        center;
 
-    scrollbar-width: none;
+    gap:
+        5px;
 
-    -webkit-overflow-scrolling: touch;
+    overflow-x:
+        auto;
+
+    overflow-y:
+        hidden;
+
+    white-space:
+        nowrap;
+
+    flex-wrap:
+        nowrap;
+
+    scrollbar-width:
+        none;
+
+    -webkit-overflow-scrolling:
+        touch;
 }
 
 .breadcrumb::-webkit-scrollbar {
-    display: none;
+    display:
+        none;
 }
 
 .breadcrumb > * {
-    flex: 0 0 auto;
+    flex:
+        0 0 auto;
 }
 
 .breadcrumb > span {
-    color: var(--secondary);
 
-    font-size: 14px;
+    color:
+        var(--secondary);
+
+    font-size:
+        14px;
 }
 
 .crumb {
-    min-height: 38px;
-    height: 38px;
 
-    max-width: 70vw;
+    min-height:
+        38px;
 
-    padding: 6px 12px;
+    height:
+        38px;
 
-    border: 0;
-    border-radius: 11px;
+    max-width:
+        70vw;
 
-    background: var(--blue-soft);
+    padding:
+        6px 12px;
 
-    color: var(--blue);
+    border:
+        0;
 
-    font-size: 14px;
-    line-height: 26px;
+    border-radius:
+        11px;
 
-    overflow: hidden;
+    background:
+        var(--blue-soft);
 
-    text-overflow: ellipsis;
+    color:
+        var(--blue);
 
-    white-space: nowrap;
+    font-size:
+        14px;
+
+    line-height:
+        26px;
+
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
 }
 
 .crumb:active {
-    background: #dcecff;
+    background:
+        #dcecff;
 }
 
 .crumb.current {
-    background: #e5e5ea;
 
-    color: var(--text);
+    background:
+        #e5e5ea;
 
-    font-weight: 700;
+    color:
+        var(--text);
+
+    font-weight:
+        700;
 }
 
 
@@ -637,34 +927,51 @@ button:focus-visible {
    ========================================================= */
 
 .message {
-    margin: 3px 10px 7px;
 
-    padding: 7px 4px;
+    margin:
+        3px 10px 7px;
 
-    background: transparent;
+    padding:
+        7px 4px;
 
-    color: #6d6d72;
+    background:
+        transparent;
 
-    font-size: 13px;
+    color:
+        #6d6d72;
 
-    line-height: 1.35;
+    font-size:
+        13px;
+
+    line-height:
+        1.35;
 }
 
 .message::before {
-    content: "";
 
-    display: inline-block;
+    content:
+        "";
 
-    width: 7px;
-    height: 7px;
+    display:
+        inline-block;
 
-    margin-right: 7px;
+    width:
+        7px;
 
-    vertical-align: middle;
+    height:
+        7px;
 
-    border-radius: 50%;
+    margin-right:
+        7px;
 
-    background: var(--ios-green);
+    vertical-align:
+        middle;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--ios-green);
 }
 
 
@@ -673,23 +980,31 @@ button:focus-visible {
    ========================================================= */
 
 .upload-status {
-    margin: 0 10px 8px;
 
-    padding: 11px 12px;
+    margin:
+        0 10px 8px;
+
+    padding:
+        11px 12px;
 
     border:
         1px solid
         #bfdbfe;
 
-    border-radius: 14px;
+    border-radius:
+        14px;
 
-    background: #eff6ff;
+    background:
+        #eff6ff;
 
-    color: #1e40af;
+    color:
+        #1e40af;
 
-    font-size: 13px;
+    font-size:
+        13px;
 
-    line-height: 1.35;
+    line-height:
+        1.35;
 }
 
 
@@ -698,71 +1013,110 @@ button:focus-visible {
    ========================================================= */
 
 .reorder-bar {
-    margin: 0 10px 10px;
 
-    padding: 12px;
+    margin:
+        0 10px 10px;
+
+    padding:
+        12px;
 
     border:
         1px solid
         #cfe2ff;
 
-    border-radius: 16px;
+    border-radius:
+        16px;
 
-    background: #eef6ff;
+    background:
+        #eef6ff;
 }
 
 .reorder-info {
-    display: flex;
-    flex-direction: column;
 
-    gap: 3px;
+    display:
+        flex;
 
-    margin-bottom: 8px;
+    flex-direction:
+        column;
+
+    gap:
+        3px;
+
+    margin-bottom:
+        8px;
 }
 
 .reorder-info strong {
-    color: var(--blue);
 
-    font-size: 14px;
+    color:
+        var(--blue);
+
+    font-size:
+        14px;
 }
 
 .reorder-info span {
-    color: #6d6d72;
 
-    font-size: 12px;
+    color:
+        #6d6d72;
+
+    font-size:
+        12px;
 }
 
 .reorder-actions {
-    display: flex;
 
-    gap: 8px;
+    display:
+        flex;
+
+    gap:
+        8px;
 }
 
 .reorder-actions button {
-    flex: 1;
 
-    min-height: 44px;
+    flex:
+        1;
 
-    border: 0;
-    border-radius: 12px;
+    min-height:
+        44px;
 
-    font-size: 14px;
-    font-weight: 700;
+    border:
+        0;
+
+    border-radius:
+        12px;
+
+    font-size:
+        14px;
+
+    font-weight:
+        700;
 }
 
 .save-btn {
-    background: var(--blue);
-    color: #fff;
+
+    background:
+        var(--blue);
+
+    color:
+        #fff;
 }
 
 .cancel-btn {
-    background: #8e8e93;
-    color: #fff;
+
+    background:
+        #8e8e93;
+
+    color:
+        #fff;
 }
 
 .save-btn:active,
 .cancel-btn:active {
-    transform: scale(.97);
+
+    transform:
+        scale(.97);
 }
 
 
@@ -771,9 +1125,12 @@ button:focus-visible {
    ========================================================= */
 
 .file-list {
-    width: 100%;
 
-    padding: 0 10px 24px;
+    width:
+        100%;
+
+    padding:
+        0 10px 24px;
 }
 
 
@@ -783,17 +1140,24 @@ button:focus-visible {
    ========================================================= */
 
 .file-item {
-    position: relative;
 
-    width: 100%;
+    position:
+        relative;
 
-    min-height: 72px;
+    width:
+        100%;
 
-    margin: 0 0 8px;
+    min-height:
+        72px;
 
-    padding: 9px 10px;
+    margin:
+        0 0 8px;
 
-    display: grid !important;
+    padding:
+        9px 10px;
+
+    display:
+        grid !important;
 
     grid-template-columns:
         30px
@@ -801,48 +1165,63 @@ button:focus-visible {
         minmax(0, 1fr)
         180px;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 9px;
+    gap:
+        9px;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
     border:
         1px solid
         var(--line);
 
-    border-radius: 18px;
+    border-radius:
+        18px;
 
-    background: #fff;
+    background:
+        #fff;
 
-    box-shadow: var(--shadow);
+    box-shadow:
+        var(--shadow);
 
     transition:
         transform .15s ease,
         background .15s ease,
         box-shadow .15s ease;
 
-    touch-action: manipulation;
+    touch-action:
+        manipulation;
 }
 
 .file-item:hover {
-    background: #fff;
+    background:
+        #fff;
 }
 
 .file-item:active {
-    transform: scale(.992);
 
-    background: #f7faff;
+    transform:
+        scale(.992);
+
+    background:
+        #f7faff;
 }
 
 .file-item.touch-active {
-    transform: scale(.992) !important;
 
-    background: #f7faff !important;
+    transform:
+        scale(.992) !important;
+
+    background:
+        #f7faff !important;
 }
 
 .folder-row {
-    cursor: pointer;
+    cursor:
+        pointer;
 }
 
 
@@ -851,50 +1230,79 @@ button:focus-visible {
    ========================================================= */
 
 .position {
-    width: 30px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width:
+        30px;
 
-    color: var(--secondary);
+    display:
+        flex;
 
-    font-size: 13px;
-    font-weight: 600;
+    align-items:
+        center;
 
-    text-align: center;
+    justify-content:
+        center;
 
-    font-variant-numeric: tabular-nums;
+    color:
+        var(--secondary);
+
+    font-size:
+        13px;
+
+    font-weight:
+        600;
+
+    text-align:
+        center;
+
+    font-variant-numeric:
+        tabular-nums;
 }
 
 
 /* =========================================================
-   15. ICON
+   15. FILE ICON
    ========================================================= */
 
 .file-icon {
-    width: 50px;
-    height: 50px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width:
+        50px;
 
-    border-radius: 14px;
+    height:
+        50px;
 
-    background: #f2f2f7;
+    display:
+        flex;
 
-    color: var(--blue);
+    align-items:
+        center;
 
-    font-size: 29px;
+    justify-content:
+        center;
 
-    overflow: hidden;
+    border-radius:
+        14px;
 
-    -webkit-user-drag: none;
+    background:
+        #f2f2f7;
+
+    color:
+        var(--blue);
+
+    font-size:
+        29px;
+
+    overflow:
+        hidden;
+
+    -webkit-user-drag:
+        none;
 }
 
 .folder-item .file-icon,
 .reorder-row .file-icon {
+
     filter:
         drop-shadow(
             0 3px 4px
@@ -908,68 +1316,105 @@ button:focus-visible {
    ========================================================= */
 
 .file-info {
-    min-width: 0 !important;
 
-    width: auto;
+    min-width:
+        0 !important;
 
-    overflow: hidden;
+    width:
+        auto;
+
+    overflow:
+        hidden;
 }
 
 .file-name {
-    display: block;
 
-    width: 100%;
-    min-width: 0;
+    display:
+        block;
 
-    margin: 0;
+    width:
+        100%;
 
-    color: var(--text);
+    min-width:
+        0;
 
-    font-size: 16px;
-    line-height: 1.3;
+    margin:
+        0;
 
-    font-weight: 600;
+    color:
+        var(--text);
 
-    overflow: hidden;
+    font-size:
+        16px;
 
-    text-overflow: ellipsis;
+    line-height:
+        1.3;
 
-    white-space: nowrap;
+    font-weight:
+        600;
+
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
 }
 
 .file-name-text {
-    display: inline;
+    display:
+        inline;
 }
 
 .file-type {
-    margin-top: 3px;
 
-    color: var(--secondary);
+    margin-top:
+        3px;
 
-    font-size: 12px;
-    line-height: 1.3;
+    color:
+        var(--secondary);
 
-    overflow: hidden;
+    font-size:
+        12px;
 
-    text-overflow: ellipsis;
+    line-height:
+        1.3;
 
-    white-space: nowrap;
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
 }
 
 .recent-file-path,
 .search-path {
-    margin-top: 3px;
 
-    color: #8e8e93;
+    margin-top:
+        3px;
 
-    font-size: 11px;
-    line-height: 1.3;
+    color:
+        #8e8e93;
 
-    overflow: hidden;
+    font-size:
+        11px;
 
-    text-overflow: ellipsis;
+    line-height:
+        1.3;
 
-    white-space: nowrap;
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
 }
 
 
@@ -978,48 +1423,79 @@ button:focus-visible {
    ========================================================= */
 
 .item-actions {
-    width: 180px;
 
-    height: 54px;
+    width:
+        180px;
 
-    display: grid;
+    height:
+        54px;
+
+    display:
+        grid;
 
     grid-template-columns:
-        repeat(5, minmax(0, 1fr));
+        repeat(
+            5,
+            minmax(0, 1fr)
+        );
 
-    gap: 4px;
+    gap:
+        4px;
 
-    padding: 4px;
+    padding:
+        4px;
 
-    border-radius: 15px;
+    border-radius:
+        15px;
 
-    background: #f1f2f6;
+    background:
+        #f1f2f6;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 }
 
 .item-btn,
 .item-actions > button {
-    width: 100%;
-    height: 100%;
 
-    min-width: 0;
-    min-height: 0;
+    width:
+        100%;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height:
+        100%;
 
-    padding: 0;
+    min-width:
+        0;
 
-    border: 0;
-    border-radius: 11px;
+    min-height:
+        0;
 
-    background: #fff;
+    display:
+        flex;
 
-    color: var(--text);
+    align-items:
+        center;
 
-    font-size: 20px;
+    justify-content:
+        center;
+
+    padding:
+        0;
+
+    border:
+        0;
+
+    border-radius:
+        11px;
+
+    background:
+        #fff;
+
+    color:
+        var(--text);
+
+    font-size:
+        20px;
 
     box-shadow:
         0 1px 3px
@@ -1032,46 +1508,73 @@ button:focus-visible {
 
 .item-btn:active,
 .item-actions > button:active {
-    transform: scale(.91);
 
-    background: var(--blue-soft);
+    transform:
+        scale(.91);
+
+    background:
+        var(--blue-soft);
 }
 
 .item-more-btn {
-    color: var(--blue) !important;
+
+    color:
+        var(--blue) !important;
 }
 
 .item-more-btn span {
-    font-size: 17px;
-    font-weight: 800;
-    letter-spacing: 1px;
+
+    font-size:
+        17px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        1px;
 }
 
 
-/* =========================================================
-   FAVORITE BUTTON
-   ========================================================= */
+/* Favorite button */
 
-.item-actions > button:not(.item-btn) {
-    width: 100% !important;
-    height: 100% !important;
+.item-actions >
+button:not(.item-btn) {
 
-    min-width: 0 !important;
-    min-height: 0 !important;
+    width:
+        100% !important;
 
-    padding: 0 !important;
+    height:
+        100% !important;
 
-    display: flex !important;
+    min-width:
+        0 !important;
 
-    align-items: center !important;
-    justify-content: center !important;
+    min-height:
+        0 !important;
 
-    border: 0 !important;
-    border-radius: 11px !important;
+    padding:
+        0 !important;
 
-    background: #fff !important;
+    display:
+        flex !important;
 
-    font-size: 21px !important;
+    align-items:
+        center !important;
+
+    justify-content:
+        center !important;
+
+    border:
+        0 !important;
+
+    border-radius:
+        11px !important;
+
+    background:
+        #fff !important;
+
+    font-size:
+        21px !important;
 
     box-shadow:
         0 1px 3px
@@ -1084,11 +1587,13 @@ button:focus-visible {
    ========================================================= */
 
 .search-result {
-    cursor: pointer;
+    cursor:
+        pointer;
 }
 
 .search-result .item-actions {
-    display: none;
+    display:
+        none;
 }
 
 
@@ -1097,29 +1602,45 @@ button:focus-visible {
    ========================================================= */
 
 .empty {
-    width: 100%;
 
-    min-height: 220px;
+    width:
+        100%;
 
-    display: flex;
-    flex-direction: column;
+    min-height:
+        220px;
 
-    align-items: center;
-    justify-content: center;
+    display:
+        flex;
 
-    gap: 10px;
+    flex-direction:
+        column;
 
-    padding: 30px 20px;
+    align-items:
+        center;
 
-    color: var(--secondary);
+    justify-content:
+        center;
 
-    text-align: center;
+    gap:
+        10px;
+
+    padding:
+        30px 20px;
+
+    color:
+        var(--secondary);
+
+    text-align:
+        center;
 }
 
 .empty-icon {
-    font-size: 48px;
 
-    opacity: .75;
+    font-size:
+        48px;
+
+    opacity:
+        .75;
 }
 
 
@@ -1128,143 +1649,223 @@ button:focus-visible {
    ========================================================= */
 
 .selection-bar {
-    display: none;
 
-    align-items: center;
-    justify-content: space-between;
+    display:
+        none;
 
-    gap: 10px;
+    align-items:
+        center;
 
-    margin: 0 10px 8px;
+    justify-content:
+        space-between;
 
-    padding: 10px 12px;
+    gap:
+        10px;
 
-    border-radius: 14px;
+    margin:
+        0 10px 8px;
 
-    background: var(--blue-soft);
+    padding:
+        10px 12px;
 
-    color: var(--blue);
+    border-radius:
+        14px;
 
-    font-size: 14px;
-    font-weight: 600;
+    background:
+        var(--blue-soft);
+
+    color:
+        var(--blue);
+
+    font-size:
+        14px;
+
+    font-weight:
+        600;
 }
 
 .selection-bar.active {
-    display: flex;
+    display:
+        flex;
 }
 
 .selection-actions {
-    display: flex;
 
-    gap: 6px;
+    display:
+        flex;
+
+    gap:
+        6px;
 }
 
 .selection-action {
-    min-height: 38px;
 
-    padding: 6px 10px;
+    min-height:
+        38px;
 
-    border: 0;
-    border-radius: 10px;
+    padding:
+        6px 10px;
 
-    background: #fff;
+    border:
+        0;
 
-    color: var(--blue);
+    border-radius:
+        10px;
 
-    font-weight: 700;
+    background:
+        #fff;
+
+    color:
+        var(--blue);
+
+    font-weight:
+        700;
 }
 
 .selection-check {
-    width: 26px;
-    height: 26px;
 
-    flex: 0 0 26px;
+    width:
+        26px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height:
+        26px;
+
+    flex:
+        0 0 26px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
 
     border:
         2px solid
         #c7c7cc;
 
-    border-radius: 50%;
+    border-radius:
+        50%;
 
-    background: #fff;
+    background:
+        #fff;
 
-    color: #fff;
+    color:
+        #fff;
 }
 
 .file-item.selected {
-    border-color: var(--blue) !important;
 
-    background: #eef5ff !important;
+    border-color:
+        var(--blue) !important;
+
+    background:
+        #eef5ff !important;
 
     box-shadow:
         0 2px 10px
-        rgba(0, 122, 255, .13) !important;
+        rgba(0, 122, 255, .13)
+        !important;
 }
 
-.file-item.selected .selection-check {
-    border-color: var(--blue);
+.file-item.selected
+.selection-check {
 
-    background: var(--blue);
+    border-color:
+        var(--blue);
+
+    background:
+        var(--blue);
 }
 
 .select-mode .file-item {
-    cursor: pointer;
+    cursor:
+        pointer;
 }
 
-.select-mode .file-item .item-actions {
-    display: none;
+.select-mode
+.file-item
+.item-actions {
+
+    display:
+        none;
 }
 
 
 /* =========================================================
    21. TOUCH ACTION SHEET
-   CLEAN iOS VERSION
    ========================================================= */
 
 .touch-action-sheet {
-    position: fixed;
 
-    inset: 0;
+    position:
+        fixed;
 
-    z-index: 1000;
+    inset:
+        0;
 
-    display: none;
+    z-index:
+        1000;
 
-    align-items: center;
-    justify-content: center;
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
 
     padding:
-        calc(16px + env(safe-area-inset-top))
+        calc(
+            16px +
+            env(safe-area-inset-top)
+        )
         16px
-        calc(16px + env(safe-area-inset-bottom));
+        calc(
+            16px +
+            env(safe-area-inset-bottom)
+        );
 
     background:
         rgba(0, 0, 0, .28);
 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
 }
 
 .touch-action-sheet.show {
-    display: flex;
+    display:
+        flex;
 }
 
 .touch-sheet-backdrop {
-    position: absolute;
 
-    inset: 0;
+    position:
+        absolute;
 
-    background: transparent;
+    inset:
+        0;
+
+    background:
+        transparent;
 }
 
 .touch-sheet-card {
-    position: relative;
 
-    width: min(92vw, 380px);
+    position:
+        relative;
+
+    width:
+        min(
+            92vw,
+            380px
+        );
 
     max-height:
         calc(
@@ -1274,11 +1875,14 @@ button:focus-visible {
             - env(safe-area-inset-bottom)
         );
 
-    overflow-y: auto;
+    overflow-y:
+        auto;
 
-    padding: 10px;
+    padding:
+        10px;
 
-    border-radius: 22px;
+    border-radius:
+        22px;
 
     background:
         rgba(255, 255, 255, .96);
@@ -1287,75 +1891,89 @@ button:focus-visible {
         0 20px 60px
         rgba(0, 0, 0, .22);
 
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
 }
 
 .touch-sheet-title {
-    padding: 10px 12px;
 
-    color: var(--text);
+    padding:
+        10px 12px;
 
-    font-size: 16px;
-    font-weight: 700;
+    color:
+        var(--text);
 
-    overflow: hidden;
+    font-size:
+        15px;
 
-    text-overflow: ellipsis;
-
-    white-space: nowrap;
+    font-weight:
+        700;
 }
 
 .touch-sheet-action {
-    width: 100%;
 
-    min-height: 48px;
+    width:
+        100%;
 
-    margin-top: 6px;
+    min-height:
+        46px;
 
-    padding: 0 14px;
+    margin-top:
+        5px;
 
-    border: 0;
+    border:
+        0;
 
-    border-radius: 13px;
+    border-radius:
+        12px;
 
-    background: #f2f2f7;
+    background:
+        #f2f2f7;
 
-    color: var(--text);
+    color:
+        var(--text);
 
-    font-size: 15px;
-    font-weight: 600;
-
-    text-align: left;
+    font-size:
+        14px;
 }
 
 .touch-sheet-action:active {
-    background: var(--blue-soft);
 
-    color: var(--blue);
+    background:
+        var(--blue-soft);
+
+    color:
+        var(--blue);
 }
 
 .touch-sheet-cancel {
-    width: 100%;
 
-    min-height: 48px;
+    width:
+        100%;
 
-    margin-top: 8px;
+    min-height:
+        46px;
 
-    border: 0;
+    margin-top:
+        7px;
 
-    border-radius: 13px;
+    border:
+        0;
 
-    background: #e5e5ea;
+    border-radius:
+        12px;
 
-    color: var(--text);
+    background:
+        #e5e5ea;
 
-    font-size: 15px;
-    font-weight: 700;
-}
+    color:
+        var(--text);
 
-.touch-sheet-cancel:active {
-    background: #d1d1d6;
+    font-size:
+        14px;
 }
 
 
@@ -1364,9 +1982,12 @@ button:focus-visible {
    ========================================================= */
 
 .v4-paste-fab {
-    position: fixed;
 
-    right: 18px;
+    position:
+        fixed;
+
+    right:
+        18px;
 
     bottom:
         calc(
@@ -1374,77 +1995,87 @@ button:focus-visible {
             env(safe-area-inset-bottom)
         );
 
-    z-index: 900;
+    z-index:
+        900;
 
-    min-height: 50px;
+    min-height:
+        48px;
 
-    padding: 0 17px;
+    padding:
+        0 17px;
 
-    border: 0;
+    border:
+        0;
 
-    border-radius: 25px;
+    border-radius:
+        24px;
 
-    background: var(--blue);
+    background:
+        var(--blue);
 
-    color: #fff;
+    color:
+        #fff;
 
-    font-size: 14px;
-    font-weight: 700;
+    font-size:
+        13px;
+
+    font-weight:
+        700;
 
     box-shadow:
-        0 7px 22px
-        rgba(0, 122, 255, .30);
-
-    display: none;
-}
-
-.v4-paste-fab.show {
-    display: block;
-}
-
-.v4-paste-fab:active {
-    transform: scale(.95);
+        0 7px 20px
+        rgba(0, 122, 255, .24);
 }
 
 .paste-label {
-    white-space: nowrap;
+    pointer-events:
+        none;
 }
 
 .paste-cancel {
-    position: fixed;
 
-    right: 14px;
+    position:
+        fixed;
+
+    right:
+        9px;
 
     bottom:
         calc(
-            8px +
+            7px +
             env(safe-area-inset-bottom)
         );
 
-    z-index: 901;
+    z-index:
+        901;
 
-    width: 30px;
-    height: 30px;
+    width:
+        28px;
 
-    min-height: 30px;
+    height:
+        28px;
 
-    padding: 0;
+    min-height:
+        28px;
 
-    border: 0;
+    border:
+        0;
 
-    border-radius: 50%;
+    border-radius:
+        50%;
 
-    background: #fff;
+    background:
+        #fff;
 
-    color: var(--text);
+    color:
+        #333;
 
-    font-size: 19px;
+    font-size:
+        17px;
 
-    display: none;
-}
-
-.paste-cancel.show {
-    display: block;
+    box-shadow:
+        0 2px 8px
+        rgba(0, 0, 0, .12);
 }
 
 
@@ -1453,65 +2084,101 @@ button:focus-visible {
    ========================================================= */
 
 .file-details-modal {
-    position: fixed;
 
-    inset: 0;
+    position:
+        fixed;
 
-    z-index: 1100;
+    inset:
+        0;
 
-    display: flex;
+    z-index:
+        1100;
 
-    align-items: center;
-    justify-content: center;
+    display:
+        flex;
 
-    padding: 20px;
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        calc(
+            12px +
+            env(safe-area-inset-top)
+        )
+        12px
+        calc(
+            12px +
+            env(safe-area-inset-bottom)
+        );
 
     background:
-        rgba(0, 0, 0, .30);
+        rgba(0, 0, 0, .28);
 
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
 }
 
 .file-details-card {
-    width: min(92vw, 460px);
 
-    max-height: 90dvh;
+    width:
+        min(
+            92vw,
+            520px
+        );
 
-    overflow-y: auto;
-    overflow-x: hidden;
+    max-height:
+        calc(
+            100dvh
+            - 24px
+            - env(safe-area-inset-top)
+            - env(safe-area-inset-bottom)
+        );
 
-    padding: 20px;
+    overflow:
+        auto;
 
-    border-radius: 22px;
+    padding:
+        16px 14px 14px;
 
-    background: #fff;
+    border-radius:
+        21px;
+
+    background:
+        rgba(255, 255, 255, .97);
 
     box-shadow:
-        0 20px 60px
+        0 24px 70px
         rgba(0, 0, 0, .22);
 }
 
 .file-details-card h3 {
-    margin: 0 0 15px;
 
-    color: var(--text);
+    margin-top:
+        0;
 
-    font-size: 19px;
-    line-height: 1.3;
-
-    text-align: center;
-
-    word-break: break-word;
+    font-size:
+        17px;
 }
 
 .file-detail-row {
-    display: flex;
-    flex-direction: column;
 
-    gap: 4px;
+    display:
+        flex;
 
-    padding: 11px 2px;
+    justify-content:
+        space-between;
+
+    gap:
+        12px;
+
+    padding:
+        10px 2px;
 
     border-bottom:
         1px solid
@@ -1519,45 +2186,57 @@ button:focus-visible {
 }
 
 .file-detail-row strong {
-    color: var(--secondary);
 
-    font-size: 11px;
+    font-size:
+        10px;
+
+    color:
+        var(--secondary);
 }
 
 .file-detail-row span {
-    color: var(--text);
 
-    font-size: 14px;
-    line-height: 1.45;
+    font-size:
+        13px;
 
-    word-break: break-word;
+    color:
+        var(--text);
 
-    overflow-wrap: anywhere;
+    text-align:
+        right;
+
+    overflow-wrap:
+        anywhere;
 }
 
 .file-details-close {
-    width: 100%;
 
-    height: 46px;
+    width:
+        100%;
 
-    min-height: 46px;
+    height:
+        44px;
 
-    margin-top: 15px;
+    min-height:
+        44px;
 
-    border: 0;
+    margin-top:
+        12px;
 
-    border-radius: 13px;
+    border:
+        0;
 
-    background: var(--blue);
+    border-radius:
+        12px;
 
-    color: #fff;
+    background:
+        var(--blue);
 
-    font-size: 15px;
-    font-weight: 700;
-}
+    color:
+        #fff;
 
-.file-details-close:active {
-    transform: scale(.97);
+    font-size:
+        14px;
 }
 
 
@@ -1566,71 +2245,76 @@ button:focus-visible {
    ========================================================= */
 
 .reorder-row {
-    position: relative;
 
-    width: 100%;
+    position:
+        relative;
 
-    min-height: 70px;
-
-    margin-bottom: 8px;
-
-    padding: 8px 10px;
-
-    display: grid;
+    display:
+        grid;
 
     grid-template-columns:
-        42px
-        48px
+        36px
+        50px
         minmax(0, 1fr)
-        100px;
+        auto;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 8px;
+    gap:
+        10px;
+
+    min-height:
+        62px;
+
+    margin-bottom:
+        6px;
+
+    padding:
+        8px 10px;
 
     border:
         1px solid
         var(--line);
 
-    border-radius: 16px;
+    border-radius:
+        14px;
 
-    background: #fff;
-
-    box-shadow: var(--shadow);
+    background:
+        #fff;
 }
 
 .reorder-buttons {
-    display: flex;
 
-    gap: 4px;
+    display:
+        flex;
 
-    justify-content: flex-end;
+    gap:
+        4px;
 }
 
 .move-btn {
-    width: 44px;
-    height: 44px;
 
-    min-width: 44px;
-    min-height: 44px;
+    width:
+        34px;
 
-    padding: 0;
+    height:
+        34px;
 
-    border: 0;
+    min-width:
+        34px;
 
-    border-radius: 11px;
+    border:
+        0;
 
-    background: #f2f2f7;
+    border-radius:
+        9px;
 
-    color: var(--blue);
+    background:
+        #f2f2f7;
 
-    font-size: 18px;
-}
-
-.move-btn:active {
-    background: var(--blue-soft);
-
-    transform: scale(.93);
+    color:
+        var(--blue);
 }
 
 
@@ -1638,1401 +2322,1329 @@ button:focus-visible {
    25. DIAGNOSTIC
    ========================================================= */
 
-.v11-row {
-    width: 100%;
-}
-
 .v11-diag-head {
-    font-weight: 700;
+
+    padding:
+        8px 10px;
+
+    border-radius:
+        10px 10px 0 0;
+
+    background:
+        #eef6ff;
+
+    color:
+        var(--blue);
+
+    font-weight:
+        700;
 }
 
 .v11-diag-body {
-    color: var(--secondary);
+
+    padding:
+        10px;
+
+    background:
+        #fff;
+
+    color:
+        var(--text);
+
+    font-size:
+        12px;
 }
 
 .v11-diag-foot {
-    color: var(--secondary);
+
+    padding:
+        8px 10px;
+
+    border-radius:
+        0 0 10px 10px;
+
+    background:
+        #f2f2f7;
+
+    color:
+        var(--secondary);
+
+    font-size:
+        11px;
 }
 
 
 /* =========================================================
-   26. iPAD
-   701px - 999px
-   TOUCH / COARSE POINTER
-
-   iPad layout dimensions are preserved.
-   Visual language is redesigned.
+   26. DESKTOP
+   ---------------------------------------------------------
+   1367px+
+   No futuristic UI.
+   Original desktop system remains.
    ========================================================= */
 
-@media
-(min-width: 701px)
-and (max-width: 999px)
-and (hover: none)
-and (pointer: coarse) {
+@media (min-width: 1367px) {
+
+    html,
+    body {
+        background:
+            var(--bg);
+        color:
+            var(--text);
+    }
 
     .app {
-        padding:
-            calc(8px + env(safe-area-inset-top))
-            10px
-            calc(22px + env(safe-area-inset-bottom));
-
         background:
-            #f2f2f7;
-    }
-
-
-    /* -----------------------------------------------------
-       HEADER
-       ----------------------------------------------------- */
-
-    .header {
-        min-height: 88px;
-
-        padding: 13px 16px;
-
-        border:
-            0;
-
-        border-radius:
-            18px 18px 0 0;
-
-        background:
-            rgba(255, 255, 255, .86);
-
-        box-shadow:
-            0 1px 0
-            rgba(60, 60, 67, .08);
-
-        backdrop-filter: blur(22px);
-        -webkit-backdrop-filter: blur(22px);
-    }
-
-    .app-logo {
-        width: 58px;
-        height: 58px;
-
-        flex-basis: 58px;
-
-        border-radius: 16px;
-
-        box-shadow:
-            0 4px 12px
-            rgba(0, 122, 255, .18);
-    }
-
-    .brand-text h1 {
-        font-size: 25px;
-
-        font-weight: 700;
-
-        letter-spacing: -.45px;
-    }
-
-    .brand-text p {
-        font-size: 14px;
-
-        color:
-            var(--ios-secondary-label);
-    }
-
-    .header-menu {
-        width: 56px;
-        height: 56px;
-
-        min-width: 56px;
-        min-height: 56px;
-
-        background:
-            #e5e5ea;
-    }
-
-
-    /* -----------------------------------------------------
-       iPAD TOOLBAR
-       ----------------------------------------------------- */
-
-    .toolbar {
-        grid-template-columns:
-            repeat(9, minmax(0, 1fr));
-
-        gap: 0;
-
-        padding: 7px 10px;
-
-        background:
-            rgba(242, 242, 247, .88);
-
-        border:
-            0;
-
-        border-bottom:
-            1px solid
-            rgba(60, 60, 67, .10);
-
-        box-shadow:
-            0 2px 8px
-            rgba(0, 0, 0, .035);
-
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
-    }
-
-    .toolbar-btn {
-        height: 58px;
-
-        border: 0;
-
-        border-radius: 0;
-
-        background: transparent;
-
-        box-shadow: none;
-
-        position: relative;
-    }
-
-    .toolbar-btn:not(:last-child)::after {
-        content: "";
-
-        position: absolute;
-
-        right: 0;
-        top: 14px;
-        bottom: 14px;
-
-        width: 1px;
-
-        background:
-            rgba(60, 60, 67, .12);
-    }
-
-    .toolbar-btn:active {
-        transform: none;
-
-        background:
-            rgba(0, 122, 255, .08);
-    }
-
-    .toolbar-btn span {
-        font-size: 10px;
-
-        color:
-            var(--ios-secondary-label);
-    }
-
-    .toolbar-btn svg,
-    .ios-menu-icon {
-        stroke:
-            var(--ios-blue);
-    }
-
-    .toolbar-btn.select-active {
-        background:
-            rgba(0, 122, 255, .10) !important;
-
-        box-shadow:
-            inset 0 -2px 0
-            var(--ios-blue) !important;
-    }
-
-
-    /* -----------------------------------------------------
-       iPAD SEARCH
-       ----------------------------------------------------- */
-
-    .search-section {
-        padding: 9px 12px;
-
-        background:
-            #f2f2f7;
-    }
-
-    .search-box {
-        height: 52px;
-
-        padding:
-            0 16px;
-
-        border: 0;
-
-        border-radius: 14px;
-
-        background:
-            #e5e5ea;
-
-        box-shadow: none;
-
-        font-size: 16px;
-    }
-
-    .search-box:focus {
-        background: #fff;
-
-        border: 0;
-
-        box-shadow:
-            0 0 0 2px
-            rgba(0, 122, 255, .14);
-    }
-
-
-    /* -----------------------------------------------------
-       iPAD BREADCRUMB
-       ----------------------------------------------------- */
-
-    .breadcrumb {
-        width: calc(100% - 24px);
-        max-width: calc(100% - 24px);
-
-        margin-left: 12px;
-        margin-right: 12px;
-
-        min-height: 42px;
-
-        padding:
-            3px 0;
-    }
-
-    .crumb {
-        min-height: 40px;
-        height: 40px;
-
-        padding:
-            6px 13px;
-
-        border-radius: 11px;
-
-        background:
-            rgba(0, 122, 255, .08);
-
-        color:
-            var(--ios-blue);
-    }
-
-    .crumb.current {
-        background:
-            #e5e5ea;
-
-        color:
-            var(--ios-label);
-    }
-
-
-    /* -----------------------------------------------------
-       iPAD STATUS
-       ----------------------------------------------------- */
-
-    .message {
-        color:
-            var(--ios-secondary-label);
-
-        font-size: 13px;
-    }
-
-    .upload-status {
-        border: 0;
-
-        border-radius: 14px;
-
-        background:
-            rgba(0, 122, 255, .08);
-
-        color:
-            #075fbd;
-    }
-
-
-    /* -----------------------------------------------------
-       iPAD FILE GRID
-       PORTRAIT = 2 COLUMNS
-       ----------------------------------------------------- */
-
-    .file-list {
-        display: grid;
-
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-        gap: 10px;
-
-        padding:
-            0 12px
-            calc(
-                30px +
-                env(safe-area-inset-bottom)
-            );
-    }
-
-    .file-item {
-        width: 100%;
-
-        height: 180px;
-        min-height: 180px;
-
-        margin: 0;
-
-        padding: 0;
-
-        display: block !important;
-
-        position: relative;
-
-        border:
-            1px solid
-            rgba(60, 60, 67, .08);
-
-        border-radius: 18px;
-
-        background:
-            rgba(255, 255, 255, .96);
-
-        box-shadow:
-            0 1px 3px
-            rgba(0, 0, 0, .045);
-
-        overflow: hidden;
-    }
-
-    .file-item:active,
-    .file-item.touch-active {
-        transform: scale(.985) !important;
-
-        background:
-            #f7f7fa !important;
-    }
-
-
-    /* -----------------------------------------------------
-       NUMBER
-       ----------------------------------------------------- */
-
-    .file-item .position {
-        position: absolute;
-
-        left: 12px;
-        top: 10px;
-
-        width: 27px;
-        height: 25px;
-
-        z-index: 40;
-
-        color:
-            var(--ios-secondary-label);
-
-        font-size: 12px;
-    }
-
-
-    /* -----------------------------------------------------
-       NAME + TYPE
-       ----------------------------------------------------- */
-
-    .file-item .file-info {
-        position: absolute;
-
-        left: 0;
-        right: 0;
-        top: 7px;
-
-        width: 100%;
-        height: 54px;
-
-        margin: 0;
-
-        padding:
-            0 12px 0 44px;
-
-        display: block !important;
-
-        z-index: 30;
-
-        overflow: hidden;
-    }
-
-    .file-item .file-name {
-        width: 100%;
-
-        height: 25px;
-
-        line-height: 25px;
-
-        font-size: 15px;
-
-        font-weight: 650;
-
-        color:
-            var(--ios-label);
-    }
-
-    .file-item .file-type {
-        width: 100%;
-
-        height: 19px;
-
-        margin: 0;
-
-        line-height: 19px;
-
-        font-size: 11px;
-
-        color:
-            var(--ios-secondary-label);
-    }
-
-    .file-item .recent-file-path,
-    .file-item .search-path {
-        width: 100%;
-
-        margin-top: 0;
-
-        font-size: 10px;
-
-        line-height: 16px;
-
-        color:
-            var(--ios-secondary-label);
-    }
-
-
-    /* -----------------------------------------------------
-       iPAD ICON
-       ----------------------------------------------------- */
-
-    .file-item .file-icon {
-        position: absolute;
-
-        left: 15px;
-        top: 75px;
-
-        width: 62px;
-        height: 62px;
-
-        min-width: 62px;
-        min-height: 62px;
-
-        margin: 0;
-
-        border-radius: 15px;
-
-        background:
-            #f2f2f7;
-
-        color:
-            var(--ios-blue);
-
-        font-size: 32px;
-
-        z-index: 10;
-    }
-
-
-    /* -----------------------------------------------------
-       iPAD ACTION PANEL
-       ----------------------------------------------------- */
-
-    .file-list .file-item .item-actions {
-        position: absolute;
-
-        right: 12px;
-        top: 75px;
-
-        width: 190px;
-        min-width: 190px;
-        max-width: 190px;
-
-        height: 62px;
-
-        margin: 0;
-        padding: 5px;
-
-        display: grid !important;
-
-        grid-template-columns:
-            repeat(5, minmax(0, 1fr));
-
-        gap: 4px;
-
-        border-radius: 16px;
-
-        background:
-            #f2f2f7;
-
-        box-shadow: none;
-
-        transform: none !important;
-
-        z-index: 20;
-
-        overflow: hidden;
-    }
-
-    .file-list .file-item .item-actions > button {
-        width: 100% !important;
-        height: 100% !important;
-
-        min-width: 0 !important;
-        min-height: 0 !important;
-
-        border-radius: 11px !important;
-
-        background:
-            #fff !important;
-
-        color:
-            var(--ios-label);
-    }
-
-    .file-list .file-item
-    .item-actions
-    .item-more-btn {
-        color:
-            var(--ios-blue) !important;
-    }
-
-
-    /* -----------------------------------------------------
-       SEARCH RESULT CARD
-       ----------------------------------------------------- */
-
-    .search-result .file-icon {
-        top: 76px;
-    }
-
-    .search-result .file-info {
-        padding-left: 44px;
-    }
-
-    .search-result .item-actions {
-        display: none !important;
-    }
-
-
-    /* -----------------------------------------------------
-       REORDER
-       ----------------------------------------------------- */
-
-    .reorder-bar {
-        margin-left: 12px;
-        margin-right: 12px;
-
-        border: 0;
-
-        border-radius: 15px;
-
-        background:
-            rgba(0, 122, 255, .08);
-    }
-
-
-    /* -----------------------------------------------------
-       ACTION SHEET
-       ----------------------------------------------------- */
-
-    .touch-action-sheet {
-        padding:
-            calc(18px + env(safe-area-inset-top))
-            18px
-            calc(18px + env(safe-area-inset-bottom));
-
-        background:
-            rgba(0, 0, 0, .24);
-
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-    }
-
-    .touch-sheet-card {
-        width: min(72vw, 430px);
-
-        border-radius: 24px;
-
-        padding: 10px;
-
-        background:
-            rgba(255, 255, 255, .96);
-
-        box-shadow:
-            0 24px 70px
-            rgba(0, 0, 0, .22);
-    }
-
-    .touch-sheet-title {
-        padding:
-            11px 13px;
-
-        font-size: 16px;
-    }
-
-    .touch-sheet-action,
-    .touch-sheet-cancel {
-        min-height: 48px;
-
-        border-radius: 13px;
-
-        font-size: 15px;
+            var(--bg);
     }
 }
 
 
 /* =========================================================
-   27. iPAD LANDSCAPE
+   27. iPHONE + SMALL TOUCH DEVICES
+   ---------------------------------------------------------
+   0 - 700px
    ========================================================= */
 
-@media
-(min-width: 701px)
-and (max-width: 999px)
-and (hover: none)
-and (pointer: coarse)
-and (orientation: landscape) {
+@media (max-width: 700px) {
 
-    .file-list {
-        grid-template-columns:
-            repeat(3, minmax(0, 1fr));
+    html,
+    body {
 
-        gap: 11px;
+        width:
+            100%;
 
-        padding-left: 13px;
-        padding-right: 13px;
+        min-height:
+            100dvh;
+
+        background:
+            var(--future-bg) !important;
+
+        color:
+            var(--future-text) !important;
     }
 
-    .file-item {
-        height: 184px;
-        min-height: 184px;
+    body {
+        overflow-x:
+            hidden;
     }
 
-    .file-item .file-icon {
-        left: 16px;
-        top: 77px;
 
-        width: 66px;
-        height: 66px;
-
-        min-width: 66px;
-        min-height: 66px;
-
-        border-radius: 16px;
-
-        font-size: 34px;
-    }
-
-    .file-list .file-item .item-actions {
-        right: 13px;
-        top: 77px;
-
-        width: 205px;
-        min-width: 205px;
-        max-width: 205px;
-
-        height: 66px;
-
-        padding: 5px;
-
-        gap: 4px;
-
-        border-radius: 17px;
-    }
-
-    .file-item .file-info {
-        top: 8px;
-
-        height: 55px;
-    }
-
-    .file-item .file-name {
-        font-size: 15px;
-    }
-
-    .touch-sheet-card {
-        width: min(54vw, 440px);
-    }
-}
-
-
-/* =========================================================
-   28. iPHONE
-   <= 700px
-   TOUCH / COARSE POINTER
-
-   Existing dimensions are preserved.
-   Visual design is changed to iOS language.
-   ========================================================= */
-
-@media
-(max-width: 700px)
-and (hover: none)
-and (pointer: coarse) {
+    /* -----------------------------------------------------
+       APP
+    ----------------------------------------------------- */
 
     .app {
-        padding:
-            calc(4px + env(safe-area-inset-top))
-            4px
-            calc(18px + env(safe-area-inset-bottom));
 
-        background:
-            #f2f2f7;
-    }
+        width:
+            100%;
 
-
-    /* -----------------------------------------------------
-       HEADER
-       ----------------------------------------------------- */
-
-    .header {
-        min-height: 74px;
+        min-height:
+            100dvh;
 
         padding:
-            9px 10px;
-
-        border:
-            0;
-
-        border-radius:
-            18px 18px 0 0;
-
-        background:
-            rgba(255, 255, 255, .86);
-
-        box-shadow:
-            0 1px 0
-            rgba(60, 60, 67, .08);
-
-        backdrop-filter:
-            blur(22px);
-
-        -webkit-backdrop-filter:
-            blur(22px);
-    }
-
-    .brand {
-        gap: 9px;
-    }
-
-    .app-logo {
-        width: 47px;
-        height: 47px;
-
-        flex-basis: 47px;
-
-        border-radius: 14px;
-
-        box-shadow:
-            0 4px 12px
-            rgba(0, 122, 255, .18);
-    }
-
-    .app-logo svg {
-        width: 37px;
-        height: 37px;
-    }
-
-    .brand-text h1 {
-        font-size: 18px;
-
-        font-weight: 700;
-
-        letter-spacing: -.25px;
-    }
-
-    .brand-text p {
-        margin-top: 3px;
-
-        font-size: 10px;
-
-        color:
-            var(--ios-secondary-label);
-    }
-
-    .header-menu {
-        width: 46px;
-        height: 46px;
-
-        min-width: 46px;
-        min-height: 46px;
-
-        background:
-            #e5e5ea;
-    }
-
-
-    /* -----------------------------------------------------
-       iPHONE TOOLBAR
-       GROUPED iOS COMMAND PANEL
-       ----------------------------------------------------- */
-
-    .toolbar {
-        grid-template-columns:
-            repeat(3, minmax(0, 1fr));
-
-        gap: 1px;
-
-        padding:
-            7px;
-
-        background:
-            #f2f2f7;
-
-        border:
-            0;
-
-        box-shadow: none;
-
-        position: sticky;
-        top: 0;
-
-        backdrop-filter:
-            blur(18px);
-
-        -webkit-backdrop-filter:
-            blur(18px);
-    }
-
-    .toolbar-btn {
-        height: 59px;
-
-        border:
-            0;
-
-        border-radius: 0;
-
-        background:
-            rgba(255, 255, 255, .96);
-
-        box-shadow: none;
-
-        font-size: 21px;
-
-        position: relative;
-    }
-
-    .toolbar-btn:nth-child(1) {
-        border-radius:
-            13px 0 0 13px;
-    }
-
-    .toolbar-btn:nth-child(3) {
-        border-radius:
-            0 13px 13px 0;
-    }
-
-    .toolbar-btn:nth-child(4) {
-        border-radius:
-            13px 0 0 13px;
-    }
-
-    .toolbar-btn:nth-child(6) {
-        border-radius:
-            0 13px 13px 0;
-    }
-
-    .toolbar-btn:nth-child(7) {
-        border-radius:
-            13px 0 0 13px;
-    }
-
-    .toolbar-btn:nth-child(9) {
-        border-radius:
-            0 13px 13px 0;
-    }
-
-    .toolbar-btn:nth-child(-n+3),
-    .toolbar-btn:nth-child(n+4) {
-        box-shadow:
-            inset 0 0 0 1px
-            rgba(60, 60, 67, .035);
-    }
-
-    .toolbar-btn svg,
-    .ios-menu-icon {
-        width: 23px;
-        height: 23px;
-
-        stroke:
-            var(--ios-blue);
-    }
-
-    .toolbar-btn span {
-        font-size: 10px;
-
-        line-height: 12px;
-
-        font-weight: 600;
-
-        color:
-            var(--ios-secondary-label);
-    }
-
-    .toolbar-btn:active {
-        transform: none;
-
-        background:
-            rgba(0, 122, 255, .10);
-    }
-
-    .toolbar-btn.select-active {
-        background:
-            rgba(0, 122, 255, .10) !important;
-
-        box-shadow:
-            inset 0 0 0 2px
-            var(--ios-blue) !important;
-    }
-
-
-    /* -----------------------------------------------------
-       SEARCH
-       ----------------------------------------------------- */
-
-    .search-section {
-        padding:
-            5px 7px 6px;
-
-        background:
-            #f2f2f7;
-    }
-
-    .search-box {
-        height: 48px;
-
-        padding:
-            0 14px;
-
-        border:
-            0;
-
-        border-radius: 14px;
-
-        background:
-            #e5e5ea;
-
-        box-shadow: none;
-
-        font-size: 15px;
-
-        color:
-            var(--ios-label);
-    }
-
-    .search-box:focus {
-        background:
-            #fff;
-
-        border:
-            0;
-
-        box-shadow:
-            0 0 0 2px
-            rgba(0, 122, 255, .12);
-    }
-
-
-    /* -----------------------------------------------------
-       BREADCRUMB
-       ----------------------------------------------------- */
-
-    .breadcrumb {
-        width: calc(100% - 14px);
-        max-width: calc(100% - 14px);
-
-        min-height: 38px;
-
-        margin:
-            4px 7px 0;
-
-        padding:
-            3px 0;
-    }
-
-    .breadcrumb > span {
-        font-size: 13px;
-
-        color:
-            var(--ios-secondary-label);
-    }
-
-    .crumb {
-        min-height: 36px;
-        height: 36px;
-
-        padding:
-            5px 10px;
-
-        border-radius: 10px;
-
-        background:
-            rgba(0, 122, 255, .08);
-
-        color:
-            var(--ios-blue);
-
-        font-size: 12px;
-    }
-
-    .crumb.current {
-        background:
-            #e5e5ea;
-
-        color:
-            var(--ios-label);
-
-        font-weight: 600;
-    }
-
-
-    /* -----------------------------------------------------
-       MESSAGE
-       ----------------------------------------------------- */
-
-    .message {
-        width: calc(100% - 14px);
-
-        margin:
-            3px 7px 6px;
-
-        padding:
-            7px 4px;
-
-        color:
-            var(--ios-secondary-label);
-
-        font-size: 10px;
-    }
-
-    .message::before {
-        width: 6px;
-        height: 6px;
-
-        margin-right: 6px;
-    }
-
-
-    /* -----------------------------------------------------
-       UPLOAD STATUS
-       ----------------------------------------------------- */
-
-    .upload-status {
-        width: calc(100% - 14px);
-
-        margin:
-            3px 7px 6px;
-
-        padding:
-            9px 10px;
-
-        border:
-            0;
-
-        border-radius: 13px;
-
-        background:
-            rgba(0, 122, 255, .08);
-
-        color:
-            #075fbd;
-
-        font-size: 10px;
-    }
-
-
-    /* -----------------------------------------------------
-       FILE LIST
-       ----------------------------------------------------- */
-
-    .file-list {
-        padding:
-            0 7px
+            env(safe-area-inset-top)
+            0
             calc(
                 84px +
                 env(safe-area-inset-bottom)
             );
 
         background:
-            #f2f2f7;
+            radial-gradient(
+                circle at 85% 0%,
+                rgba(24, 168, 255, .13),
+                transparent 32%
+            ),
+            var(--future-bg) !important;
     }
 
 
     /* -----------------------------------------------------
-       FILE ROW
-       iOS SETTINGS / FILES STYLE
-       ----------------------------------------------------- */
+       HEADER
+    ----------------------------------------------------- */
 
-    .file-item {
-        width: calc(100% - 2px);
+    .header {
 
-        min-height: 64px;
+        min-height:
+            64px;
 
-        margin:
-            3px 1px 6px;
+        height:
+            64px;
 
         padding:
-            8px 9px;
-
-        display: flex !important;
-
-        align-items: center;
-
-        gap: 9px;
+            7px 10px;
 
         border:
             0;
 
-        border-radius: 15px;
-
-        background:
-            rgba(255, 255, 255, .98);
-
-        box-shadow:
-            0 1px 2px
-            rgba(0, 0, 0, .035);
-
-        overflow: hidden;
-    }
-
-    .file-item:active,
-    .file-item.touch-active {
-        transform: scale(.985) !important;
-
-        background:
-            #f7f7fa !important;
-    }
-
-
-    /* -----------------------------------------------------
-       NUMBER
-       ----------------------------------------------------- */
-
-    .file-item .position {
-        width: 22px;
-
-        flex: 0 0 22px;
-
-        color:
-            #aeaeb2;
-
-        font-size: 10px;
-
-        font-weight: 500;
-    }
-
-
-    /* -----------------------------------------------------
-       FILE ICON
-       ----------------------------------------------------- */
-
-    .file-item .file-icon {
-        position: static;
-
-        width: 42px;
-        height: 42px;
-
-        min-width: 42px;
-        min-height: 42px;
-
-        flex: 0 0 42px;
-
-        border-radius: 11px;
-
-        background:
-            #f2f2f7;
-
-        color:
-            var(--ios-blue);
-
-        font-size: 23px;
-
-        box-shadow: none;
-    }
-
-
-    /* -----------------------------------------------------
-       FILE INFO
-       ----------------------------------------------------- */
-
-    .file-item .file-info {
-        position: static;
-
-        width: auto;
-        height: auto;
-
-        flex: 1 1 auto;
-
-        min-width: 0;
-
-        padding: 0;
-
-        display: flex !important;
-
-        flex-direction: column;
-
-        justify-content: center;
-
-        gap: 2px;
-    }
-
-    .file-item .file-name {
-        width: 100%;
-
-        height: auto;
-
-        font-size: 14px;
-
-        line-height: 1.3;
-
-        font-weight: 600;
-
-        color:
-            var(--ios-label);
-    }
-
-    .file-item .file-type {
-        width: 100%;
-
-        height: auto;
-
-        margin: 0;
-
-        font-size: 10px;
-
-        line-height: 1.3;
-
-        color:
-            var(--ios-secondary-label);
-    }
-
-    .file-item .recent-file-path,
-    .file-item .search-path {
-        margin-top: 1px;
-
-        font-size: 9px;
-
-        line-height: 1.3;
-
-        color:
-            var(--ios-secondary-label);
-    }
-
-
-    /* -----------------------------------------------------
-       ACTION BUTTONS
-       iOS QUIET CONTROL GROUP
-       ----------------------------------------------------- */
-
-    .file-item .item-actions {
-        width: auto;
-
-        height: auto;
-
-        flex: 0 0 auto;
-
-        display: grid !important;
-
-        grid-template-columns:
-            repeat(5, 38px);
-
-        gap: 3px;
-
-        padding: 0;
-
-        border-radius: 0;
-
-        background: transparent;
-
-        overflow: visible;
-    }
-
-    .file-item .item-actions > button {
-        width: 38px !important;
-        height: 38px !important;
-
-        min-width: 38px !important;
-        min-height: 38px !important;
-
-        border:
-            0 !important;
+        border-bottom:
+            1px solid
+            var(--future-line);
 
         border-radius:
-            10px !important;
+            0;
 
         background:
-            #f2f2f7 !important;
+            rgba(8, 11, 18, .82);
 
-        color:
-            var(--ios-label);
+        box-shadow:
+            0 8px 25px
+            rgba(0, 0, 0, .28);
 
-        box-shadow: none !important;
+        backdrop-filter:
+            blur(24px)
+            saturate(150%);
+
+        -webkit-backdrop-filter:
+            blur(24px)
+            saturate(150%);
+
+        overflow:
+            visible;
+
+        z-index:
+            1000;
     }
 
-    .file-item .item-actions > button:active {
-        transform: scale(.91);
+    .brand {
+        gap:
+            9px;
+    }
+
+    .app-logo {
+
+        width:
+            40px;
+
+        height:
+            40px;
+
+        flex:
+            0 0 40px;
+
+        border-radius:
+            12px;
 
         background:
-            #e5e5ea !important;
+            linear-gradient(
+                145deg,
+                #23c7ff,
+                #0878ff
+            );
+
+        box-shadow:
+            0 0 20px
+            rgba(24, 168, 255, .30);
     }
 
-    .file-item .item-btn {
-        font-size: 17px;
+    .app-logo svg {
+
+        width:
+            31px;
+
+        height:
+            31px;
     }
 
-    .file-item .item-more-btn {
+    .brand-text h1 {
+
         color:
-            var(--ios-blue) !important;
+            #fff;
+
+        font-size:
+            17px;
+
+        letter-spacing:
+            -.2px;
     }
 
-    .file-item .item-more-btn span {
-        font-size: 14px;
+    .brand-text p {
+
+        margin-top:
+            1px;
+
+        color:
+            var(--future-muted);
+
+        font-size:
+            8px;
+
+        letter-spacing:
+            .7px;
+
+        text-transform:
+            uppercase;
+    }
+
+    .header-menu {
+
+        width:
+            40px;
+
+        height:
+            40px;
+
+        min-width:
+            40px;
+
+        min-height:
+            40px;
+
+        border-radius:
+            12px;
+
+        background:
+            rgba(255,255,255,.055);
+
+        border:
+            1px solid
+            rgba(83,230,255,.16);
+    }
+
+    .header-menu .menu-line {
+
+        width:
+            17px;
+
+        height:
+            2px;
+
+        background:
+            var(--future-cyan);
+
+        box-shadow:
+            0 0 7px
+            rgba(83,230,255,.45);
     }
 
 
     /* -----------------------------------------------------
-       SEARCH RESULT
-       ----------------------------------------------------- */
+       TOOLBAR
+    ----------------------------------------------------- */
 
-    .search-result .item-actions {
-        display: none !important;
-    }
+    .toolbar {
 
+        position:
+            fixed;
 
-    /* -----------------------------------------------------
-       SELECTION
-       ----------------------------------------------------- */
+        top:
+            calc(
+                64px +
+                env(safe-area-inset-top)
+            );
 
-    .selection-bar {
-        margin:
-            0 7px 7px;
+        left:
+            8px;
+
+        right:
+            8px;
+
+        width:
+            auto;
+
+        max-height:
+            420px;
 
         padding:
-            9px 11px;
+            8px;
+
+        display:
+            grid;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap:
+            6px;
+
+        border:
+            1px solid
+            var(--future-blue-line);
+
+        border-radius:
+            18px;
+
+        background:
+            var(--future-surface-strong);
+
+        box-shadow:
+            var(--future-shadow),
+            var(--future-glow);
+
+        backdrop-filter:
+            blur(28px)
+            saturate(145%);
+
+        -webkit-backdrop-filter:
+            blur(28px)
+            saturate(145%);
+
+        overflow:
+            hidden;
+
+        z-index:
+            950;
+    }
+
+    .toolbar.menu-collapsed {
+
+        max-height:
+            0 !important;
+
+        padding:
+            0 !important;
+
+        opacity:
+            0;
+
+        transform:
+            translateY(-10px)
+            scale(.97);
+
+        border-width:
+            0;
+
+        pointer-events:
+            none;
+    }
+
+    .toolbar-btn {
+
+        height:
+            62px;
+
+        padding:
+            5px 3px;
+
+        gap:
+            4px;
+
+        border:
+            1px solid
+            rgba(255,255,255,.075);
 
         border-radius:
             13px;
 
         background:
-            rgba(0, 122, 255, .09);
+            linear-gradient(
+                145deg,
+                rgba(255,255,255,.065),
+                rgba(255,255,255,.025)
+            );
 
         color:
-            var(--ios-blue);
+            var(--future-cyan);
 
-        font-size: 13px;
+        box-shadow:
+            inset 0 1px 0
+            rgba(255,255,255,.045);
     }
 
-    .file-item.selected {
-        border:
-            2px solid
-            var(--ios-blue) !important;
+    .toolbar-btn svg,
+    .ios-menu-icon {
+
+        stroke:
+            var(--future-cyan);
+
+        filter:
+            drop-shadow(
+                0 0 5px
+                rgba(83,230,255,.35)
+            );
+    }
+
+    .toolbar-btn span {
+
+        color:
+            #cbd4e2;
+
+        font-size:
+            8px;
+
+        font-weight:
+            600;
+    }
+
+    .toolbar-btn:active,
+    .toolbar-btn.touch-active {
 
         background:
-            rgba(0, 122, 255, .06) !important;
+            rgba(24,168,255,.18);
 
-        box-shadow: none !important;
+        border-color:
+            rgba(83,230,255,.38);
+
+        transform:
+            scale(.96);
     }
 
 
     /* -----------------------------------------------------
-       PASTE FAB
-       ----------------------------------------------------- */
+       SEARCH
+    ----------------------------------------------------- */
+
+    .search-section {
+
+        position:
+            relative;
+
+        padding:
+            9px 9px 7px;
+
+        background:
+            transparent;
+    }
+
+    .search-section::before {
+
+        content:
+            "⌕";
+
+        position:
+            absolute;
+
+        left:
+            22px;
+
+        top:
+            14px;
+
+        z-index:
+            2;
+
+        color:
+            var(--future-cyan);
+
+        font-size:
+            20px;
+
+        line-height:
+            1;
+
+        text-shadow:
+            0 0 8px
+            rgba(83,230,255,.45);
+    }
+
+    .search-box {
+
+        height:
+            46px;
+
+        padding:
+            0 14px 0 39px;
+
+        border:
+            1px solid
+            rgba(255,255,255,.08);
+
+        border-radius:
+            14px;
+
+        background:
+            rgba(255,255,255,.065);
+
+        color:
+            #fff;
+
+        font-size:
+            15px;
+
+        box-shadow:
+            inset 0 1px 0
+            rgba(255,255,255,.04);
+    }
+
+    .search-box::placeholder {
+        color:
+            #778296;
+    }
+
+    .search-box:focus {
+
+        background:
+            rgba(24,168,255,.08);
+
+        border-color:
+            rgba(83,230,255,.35);
+
+        box-shadow:
+            0 0 0 3px
+            rgba(24,168,255,.08);
+    }
+
+
+    /* -----------------------------------------------------
+       BREADCRUMB
+    ----------------------------------------------------- */
+
+    .breadcrumb {
+
+        width:
+            calc(100% - 18px);
+
+        max-width:
+            none;
+
+        min-height:
+            34px;
+
+        margin:
+            1px 9px 4px;
+
+        padding:
+            3px 0;
+
+        gap:
+            4px;
+
+        color:
+            var(--future-muted);
+
+        background:
+            transparent;
+
+        border:
+            0;
+
+        box-shadow:
+            none;
+    }
+
+    .breadcrumb > span {
+
+        color:
+            var(--future-muted);
+
+        font-size:
+            11px;
+    }
+
+    .crumb {
+
+        min-height:
+            30px;
+
+        height:
+            30px;
+
+        padding:
+            4px 9px;
+
+        border-radius:
+            9px;
+
+        background:
+            rgba(24,168,255,.08);
+
+        color:
+            var(--future-cyan);
+
+        font-size:
+            11px;
+
+        line-height:
+            21px;
+    }
+
+    .crumb.current {
+
+        background:
+            rgba(255,255,255,.07);
+
+        color:
+            #cbd4e2;
+    }
+
+
+    /* -----------------------------------------------------
+       STATUS
+    ----------------------------------------------------- */
+
+    .message {
+
+        margin:
+            3px 9px 6px;
+
+        padding:
+            5px 0;
+
+        color:
+            #647187;
+
+        font-size:
+            9px;
+
+        background:
+            transparent;
+    }
+
+    .message::before {
+
+        width:
+            5px;
+
+        height:
+            5px;
+
+        margin-right:
+            5px;
+
+        background:
+            var(--future-green);
+
+        box-shadow:
+            0 0 7px
+            rgba(57,229,140,.45);
+    }
+
+    .upload-status {
+
+        margin:
+            4px 9px 7px;
+
+        padding:
+            8px 10px;
+
+        border:
+            1px solid
+            rgba(83,230,255,.15);
+
+        border-radius:
+            11px;
+
+        background:
+            rgba(24,168,255,.07);
+
+        color:
+            #bcefff;
+
+        font-size:
+            9px;
+    }
+
+
+    /* -----------------------------------------------------
+       REORDER
+    ----------------------------------------------------- */
+
+    .reorder-bar {
+
+        margin:
+            0 9px 7px;
+
+        padding:
+            9px;
+
+        border:
+            1px solid
+            rgba(83,230,255,.15);
+
+        border-radius:
+            13px;
+
+        background:
+            rgba(24,168,255,.07);
+    }
+
+    .reorder-info strong {
+
+        color:
+            var(--future-cyan);
+
+        font-size:
+            12px;
+    }
+
+    .reorder-info span {
+
+        color:
+            var(--future-muted);
+
+        font-size:
+            9px;
+    }
+
+    .reorder-actions {
+
+        gap:
+            5px;
+    }
+
+    .reorder-actions button {
+
+        min-height:
+            38px;
+
+        border-radius:
+            9px;
+
+        font-size:
+            11px;
+    }
+
+    .save-btn {
+
+        background:
+            var(--future-blue);
+    }
+
+    .cancel-btn {
+
+        background:
+            #313846;
+    }
+
+
+    /* -----------------------------------------------------
+       FILE LIST
+       Directly below search/breadcrumb area
+    ----------------------------------------------------- */
+
+    .file-list {
+
+        width:
+            100%;
+
+        margin:
+            0;
+
+        padding:
+            0 0
+            calc(
+                18px +
+                env(safe-area-inset-bottom)
+            );
+
+        background:
+            transparent;
+
+        border-top:
+            1px solid
+            var(--future-line);
+    }
+
+
+    /* -----------------------------------------------------
+       FILE ROW
+    ----------------------------------------------------- */
+
+    .file-item {
+
+        position:
+            relative;
+
+        width:
+            100%;
+
+        min-height:
+            62px;
+
+        margin:
+            0;
+
+        padding:
+            7px 8px;
+
+        display:
+            flex !important;
+
+        align-items:
+            center;
+
+        gap:
+            8px;
+
+        border:
+            0;
+
+        border-bottom:
+            1px solid
+            var(--future-line);
+
+        border-radius:
+            0;
+
+        background:
+            transparent;
+
+        box-shadow:
+            none;
+
+        color:
+            var(--future-text);
+
+        transform:
+            none !important;
+    }
+
+    .file-item::after {
+
+        content:
+            "";
+
+        position:
+            absolute;
+
+        left:
+            61px;
+
+        right:
+            0;
+
+        bottom:
+            0;
+
+        height:
+            1px;
+
+        background:
+            var(--future-line);
+    }
+
+    .file-item:active,
+    .file-item.touch-active {
+
+        background:
+            rgba(24,168,255,.07) !important;
+
+        transform:
+            none !important;
+    }
+
+    .file-item:active::before,
+    .file-item.touch-active::before {
+
+        content:
+            "";
+
+        position:
+            absolute;
+
+        left:
+            0;
+
+        top:
+            0;
+
+        bottom:
+            0;
+
+        width:
+            2px;
+
+        background:
+            var(--future-cyan);
+
+        box-shadow:
+            0 0 12px
+            rgba(83,230,255,.65);
+    }
+
+
+    /* -----------------------------------------------------
+       POSITION
+    ----------------------------------------------------- */
+
+    .file-item .position {
+
+        width:
+            18px;
+
+        min-width:
+            18px;
+
+        flex:
+            0 0 18px;
+
+        color:
+            #536074;
+
+        font-size:
+            9px;
+
+        font-weight:
+            500;
+
+        text-align:
+            center;
+    }
+
+
+    /* -----------------------------------------------------
+       ICON
+    ----------------------------------------------------- */
+
+    .file-item .file-icon {
+
+        position:
+            static;
+
+        width:
+            40px;
+
+        height:
+            40px;
+
+        min-width:
+            40px;
+
+        min-height:
+            40px;
+
+        flex:
+            0 0 40px;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        border-radius:
+            11px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(24,168,255,.18),
+                rgba(83,230,255,.035)
+            );
+
+        border:
+            1px solid
+            rgba(83,230,255,.15);
+
+        color:
+            var(--future-cyan);
+
+        font-size:
+            21px;
+
+        box-shadow:
+            inset 0 1px 0
+            rgba(255,255,255,.045);
+
+        filter:
+            none;
+    }
+
+    .file-item.folder-row
+    .file-icon {
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(24,168,255,.25),
+                rgba(24,168,255,.06)
+            );
+
+        border-color:
+            rgba(24,168,255,.30);
+    }
+
+
+    /* -----------------------------------------------------
+       INFO
+    ----------------------------------------------------- */
+
+    .file-item .file-info {
+
+        position:
+            static;
+
+        width:
+            auto;
+
+        height:
+            auto;
+
+        flex:
+            1 1 auto;
+
+        min-width:
+            0;
+
+        padding:
+            0;
+
+        display:
+            flex !important;
+
+        flex-direction:
+            column;
+
+        justify-content:
+            center;
+
+        gap:
+            1px;
+
+        overflow:
+            hidden;
+    }
+
+    .file-item .file-name {
+
+        width:
+            100%;
+
+        height:
+            auto;
+
+        color:
+            #f5f7fb;
+
+        font-size:
+            14px;
+
+        line-height:
+            19px;
+
+        font-weight:
+            600;
+
+        letter-spacing:
+            -.1px;
+    }
+
+    .file-item .file-type {
+
+        width:
+            100%;
+
+        height:
+            auto;
+
+        margin:
+            0;
+
+        color:
+            #778296;
+
+        font-size:
+            9px;
+
+        line-height:
+            14px;
+
+        letter-spacing:
+            .25px;
+    }
+
+    .file-item .recent-file-path,
+    .file-item .search-path {
+
+        margin-top:
+            1px;
+
+        color:
+            #647187;
+
+        font-size:
+            8px;
+
+        line-height:
+            12px;
+    }
+
+
+    /* -----------------------------------------------------
+       ACTION BUTTONS
+    ----------------------------------------------------- */
+
+    .file-item .item-actions {
+
+        width:
+            auto;
+
+        height:
+            auto;
+
+        flex:
+            0 0 auto;
+
+        display:
+            grid !important;
+
+        grid-template-columns:
+            repeat(
+                5,
+                30px
+            );
+
+        gap:
+            1px;
+
+        padding:
+            0;
+
+        border:
+            0;
+
+        border-radius:
+            0;
+
+        background:
+            transparent;
+
+        box-shadow:
+            none;
+
+        overflow:
+            visible;
+    }
+
+    .file-item .item-actions >
+    button {
+
+        width:
+            30px !important;
+
+        height:
+            32px !important;
+
+        min-width:
+            30px !important;
+
+        min-height:
+            32px !important;
+
+        padding:
+            0 !important;
+
+        display:
+            flex !important;
+
+        align-items:
+            center !important;
+
+        justify-content:
+            center !important;
+
+        border:
+            0 !important;
+
+        border-radius:
+            8px !important;
+
+        background:
+            transparent !important;
+
+        color:
+            #8290a5;
+
+        box-shadow:
+            none !important;
+
+        font-size:
+            15px !important;
+    }
+
+    .file-item .item-actions >
+    button:active {
+
+        background:
+            rgba(83,230,255,.10) !important;
+
+        color:
+            var(--future-cyan);
+
+        transform:
+            scale(.90);
+    }
+
+    .file-item .item-more-btn {
+
+        color:
+            var(--future-cyan) !important;
+    }
+
+    .file-item .item-more-btn span {
+
+        font-size:
+            13px;
+
+        font-weight:
+            800;
+
+        letter-spacing:
+            1px;
+    }
+
+
+    /* -----------------------------------------------------
+       SEARCH RESULT
+    ----------------------------------------------------- */
+
+    .search-result .item-actions {
+        display:
+            none !important;
+    }
+
+
+    /* -----------------------------------------------------
+       SELECTION
+    ----------------------------------------------------- */
+
+    .selection-bar {
+
+        margin:
+            0 9px 6px;
+
+        padding:
+            8px 10px;
+
+        border:
+            1px solid
+            rgba(83,230,255,.15);
+
+        border-radius:
+            11px;
+
+        background:
+            rgba(24,168,255,.08);
+
+        color:
+            var(--future-cyan);
+
+        font-size:
+            11px;
+    }
+
+    .file-item.selected {
+
+        border:
+            0 !important;
+
+        background:
+            rgba(24,168,255,.10)
+            !important;
+
+        box-shadow:
+            inset 2px 0 0
+            var(--future-cyan)
+            !important;
+    }
+
+    .file-item.selected::after {
+        display:
+            none;
+    }
+
+
+    /* -----------------------------------------------------
+       PASTE
+    ----------------------------------------------------- */
 
     .v4-paste-fab {
-        right: 13px;
+
+        right:
+            15px;
 
         bottom:
             calc(
@@ -3040,25 +3652,48 @@ and (pointer: coarse) {
                 env(safe-area-inset-bottom)
             );
 
-        min-height: 47px;
+        width:
+            54px;
+
+        height:
+            54px;
+
+        min-height:
+            54px;
 
         padding:
-            0 15px;
+            0;
 
-        border-radius: 24px;
+        border:
+            1px solid
+            rgba(83,230,255,.45);
+
+        border-radius:
+            17px;
 
         background:
-            var(--ios-blue);
+            linear-gradient(
+                145deg,
+                #18a8ff,
+                #0878ff
+            );
 
-        font-size: 13px;
+        color:
+            #fff;
 
         box-shadow:
-            0 7px 20px
-            rgba(0, 122, 255, .24);
+            0 0 0 5px
+            rgba(24,168,255,.07),
+            0 10px 35px
+            rgba(0,0,0,.50),
+            0 0 25px
+            rgba(24,168,255,.28);
     }
 
     .paste-cancel {
-        right: 9px;
+
+        right:
+            8px;
 
         bottom:
             calc(
@@ -3066,40 +3701,39 @@ and (pointer: coarse) {
                 env(safe-area-inset-bottom)
             );
 
-        width: 28px;
-        height: 28px;
+        width:
+            27px;
 
-        min-height: 28px;
+        height:
+            27px;
 
-        font-size: 17px;
-
-        background:
-            #fff;
-
-        box-shadow:
-            0 2px 8px
-            rgba(0, 0, 0, .12);
+        min-height:
+            27px;
     }
 
 
     /* -----------------------------------------------------
-       iOS ACTION SHEET
-       ----------------------------------------------------- */
+       ACTION POPUP
+       Important:
+       JS calculates left/top.
+       CSS must NOT override those values.
+    ----------------------------------------------------- */
 
     .touch-action-sheet {
+
         padding:
             calc(
-                12px +
+                10px +
                 env(safe-area-inset-top)
             )
             10px
             calc(
-                12px +
+                10px +
                 env(safe-area-inset-bottom)
             );
 
         background:
-            rgba(0, 0, 0, .24);
+            rgba(0,0,0,.42);
 
         backdrop-filter:
             blur(16px);
@@ -3109,485 +3743,1786 @@ and (pointer: coarse) {
     }
 
     .touch-sheet-card {
-        width: 100%;
 
-        max-width: 420px;
+        position:
+            fixed;
 
-        padding: 9px;
+        width:
+            min(
+                340px,
+                calc(
+                    100vw - 20px
+                )
+            );
 
-        border-radius: 21px;
+        max-width:
+            340px;
+
+        margin:
+            0;
+
+        padding:
+            8px;
+
+        border:
+            1px solid
+            rgba(83,230,255,.22);
+
+        border-radius:
+            19px;
 
         background:
-            rgba(255, 255, 255, .96);
+            rgba(15,20,30,.97);
 
         box-shadow:
-            0 24px 70px
-            rgba(0, 0, 0, .22);
+            0 28px 70px
+            rgba(0,0,0,.65),
+            0 0 35px
+            rgba(24,168,255,.08);
 
         backdrop-filter:
-            blur(20px);
+            blur(28px);
 
         -webkit-backdrop-filter:
-            blur(20px);
+            blur(28px);
     }
 
     .touch-sheet-title {
+
         padding:
-            10px 12px;
+            9px 11px;
 
         color:
-            var(--ios-label);
+            #fff;
 
-        font-size: 15px;
-
-        font-weight: 600;
+        font-size:
+            14px;
     }
 
     .touch-sheet-action {
-        min-height: 46px;
 
-        margin-top: 5px;
+        min-height:
+            43px;
 
-        border-radius: 12px;
+        margin-top:
+            4px;
+
+        border:
+            1px solid
+            rgba(255,255,255,.05);
+
+        border-radius:
+            10px;
 
         background:
-            #f2f2f7;
+            rgba(255,255,255,.055);
 
         color:
-            var(--ios-label);
+            #cfefff;
 
-        font-size: 14px;
+        font-size:
+            13px;
     }
 
     .touch-sheet-action:active {
+
         background:
-            rgba(0, 122, 255, .10);
+            rgba(83,230,255,.10);
 
         color:
-            var(--ios-blue);
+            var(--future-cyan);
     }
 
     .touch-sheet-cancel {
-        min-height: 46px;
 
-        margin-top: 7px;
+        min-height:
+            43px;
 
-        border-radius: 12px;
+        margin-top:
+            6px;
+
+        border:
+            1px solid
+            rgba(83,230,255,.12);
+
+        border-radius:
+            10px;
 
         background:
-            #e5e5ea;
+            rgba(83,230,255,.06);
 
         color:
-            var(--ios-label);
+            var(--future-cyan);
 
-        font-size: 14px;
+        font-size:
+            13px;
     }
 
 
     /* -----------------------------------------------------
-       DETAILS MODAL
-       ----------------------------------------------------- */
+       DETAILS
+    ----------------------------------------------------- */
 
     .file-details-modal {
+
         padding:
             calc(
-                12px +
+                10px +
                 env(safe-area-inset-top)
             )
             8px
             calc(
-                12px +
+                10px +
                 env(safe-area-inset-bottom)
             );
 
         background:
-            rgba(0, 0, 0, .28);
-
-        backdrop-filter:
-            blur(14px);
-
-        -webkit-backdrop-filter:
-            blur(14px);
+            rgba(0,0,0,.46);
     }
 
     .file-details-card {
-        width: 100%;
 
-        max-width: 420px;
+        width:
+            100%;
 
-        max-height:
-            calc(
-                100dvh
-                - 24px
-                - env(safe-area-inset-top)
-                - env(safe-area-inset-bottom)
-            );
+        max-width:
+            420px;
 
         padding:
-            16px 14px 14px;
+            15px 13px 13px;
 
-        border-radius: 21px;
+        border:
+            1px solid
+            rgba(83,230,255,.16);
+
+        border-radius:
+            19px;
 
         background:
-            rgba(255, 255, 255, .97);
+            rgba(15,20,30,.97);
+
+        color:
+            #fff;
 
         box-shadow:
             0 24px 70px
-            rgba(0, 0, 0, .22);
+            rgba(0,0,0,.65);
     }
 
     .file-details-card h3 {
-        font-size: 17px;
+
+        color:
+            #fff;
+
+        font-size:
+            16px;
     }
 
     .file-detail-row {
+
         padding:
-            10px 2px;
+            9px 2px;
 
         border-bottom:
             1px solid
-            rgba(60, 60, 67, .10);
+            var(--future-line);
     }
 
     .file-detail-row strong {
-        font-size: 10px;
 
         color:
-            var(--ios-secondary-label);
+            #778296;
+
+        font-size:
+            9px;
     }
 
     .file-detail-row span {
-        font-size: 13px;
 
         color:
-            var(--ios-label);
+            #dce8f5;
+
+        font-size:
+            12px;
     }
 
     .file-details-close {
-        height: 44px;
-        min-height: 44px;
 
-        margin-top: 12px;
+        height:
+            42px;
 
-        border-radius: 12px;
+        min-height:
+            42px;
+
+        border-radius:
+            11px;
 
         background:
-            var(--ios-blue);
+            linear-gradient(
+                145deg,
+                #18a8ff,
+                #0878ff
+            );
 
-        font-size: 14px;
+        font-size:
+            13px;
     }
 
 
     /* -----------------------------------------------------
-       REORDER
-       ----------------------------------------------------- */
+       EMPTY
+    ----------------------------------------------------- */
 
-    .reorder-bar {
-        margin:
-            0 7px 8px;
+    .empty {
 
-        padding: 10px;
+        min-height:
+            220px;
+
+        padding:
+            25px 15px;
+
+        color:
+            var(--future-muted);
+    }
+
+    .empty-icon {
+        opacity:
+            .75;
+    }
+}
+
+
+/* =========================================================
+   28. VERY SMALL iPHONE
+   <= 390px
+   ========================================================= */
+
+@media (max-width: 390px) {
+
+    .header {
+
+        min-height:
+            60px;
+
+        height:
+            60px;
+
+        padding:
+            6px 8px;
+    }
+
+    .app-logo {
+
+        width:
+            37px;
+
+        height:
+            37px;
+
+        flex-basis:
+            37px;
+
+        border-radius:
+            11px;
+    }
+
+    .app-logo svg {
+
+        width:
+            29px;
+
+        height:
+            29px;
+    }
+
+    .brand-text h1 {
+        font-size:
+            16px;
+    }
+
+    .brand-text p {
+        font-size:
+            7px;
+    }
+
+    .header-menu {
+
+        width:
+            37px;
+
+        height:
+            37px;
+
+        min-width:
+            37px;
+
+        min-height:
+            37px;
+    }
+
+    .toolbar {
+
+        top:
+            calc(
+                60px +
+                env(safe-area-inset-top)
+            );
+
+        left:
+            6px;
+
+        right:
+            6px;
+    }
+
+    .toolbar-btn {
+
+        height:
+            58px;
+
+        border-radius:
+            11px;
+    }
+
+    .toolbar-btn span {
+        font-size:
+            7px;
+    }
+
+    .search-section {
+
+        padding:
+            7px 6px 5px;
+    }
+
+    .search-section::before {
+
+        left:
+            18px;
+
+        top:
+            12px;
+    }
+
+    .search-box {
+
+        height:
+            44px;
+
+        padding-left:
+            36px;
+
+        font-size:
+            14px;
+
+        border-radius:
+            12px;
+    }
+
+    .breadcrumb {
+
+        width:
+            calc(100% - 12px);
+
+        margin-left:
+            6px;
+
+        margin-right:
+            6px;
+    }
+
+    .message {
+
+        margin-left:
+            6px;
+
+        margin-right:
+            6px;
+
+        font-size:
+            8px;
+    }
+
+    .upload-status {
+
+        margin-left:
+            6px;
+
+        margin-right:
+            6px;
+    }
+
+    .file-item {
+
+        min-height:
+            59px;
+
+        padding:
+            6px 6px;
+
+        gap:
+            6px;
+    }
+
+    .file-item .position {
+
+        width:
+            16px;
+
+        min-width:
+            16px;
+
+        flex-basis:
+            16px;
+
+        font-size:
+            8px;
+    }
+
+    .file-item .file-icon {
+
+        width:
+            37px;
+
+        height:
+            37px;
+
+        min-width:
+            37px;
+
+        min-height:
+            37px;
+
+        flex-basis:
+            37px;
+
+        border-radius:
+            10px;
+
+        font-size:
+            19px;
+    }
+
+    .file-item .file-name {
+        font-size:
+            13px;
+    }
+
+    .file-item .file-type {
+        font-size:
+            8px;
+    }
+
+    .file-item .recent-file-path,
+    .file-item .search-path {
+        font-size:
+            7px;
+    }
+
+    .file-item .item-actions {
+
+        grid-template-columns:
+            repeat(
+                5,
+                28px
+            );
+    }
+
+    .file-item .item-actions >
+    button {
+
+        width:
+            28px !important;
+
+        height:
+            30px !important;
+
+        min-width:
+            28px !important;
+
+        min-height:
+            30px !important;
+
+        font-size:
+            14px !important;
+    }
+}
+
+
+/* =========================================================
+   29. iPAD / TABLET
+   ---------------------------------------------------------
+   701px - 1366px
+   No hover/pointer restriction.
+   This fixes DevTools iPad emulation too.
+   ========================================================= */
+
+@media
+(min-width: 701px)
+and (max-width: 1366px) {
+
+    html,
+    body {
+
+        width:
+            100%;
+
+        min-height:
+            100dvh;
+
+        background:
+            var(--future-bg) !important;
+
+        color:
+            var(--future-text) !important;
+    }
+
+    body {
+        overflow:
+            hidden;
+    }
+
+
+    /* -----------------------------------------------------
+       MAIN iPAD WORKSPACE
+    ----------------------------------------------------- */
+
+    .app {
+
+        width:
+            100%;
+
+        height:
+            100dvh;
+
+        min-height:
+            100dvh;
+
+        display:
+            grid;
+
+        grid-template-columns:
+            235px
+            minmax(0, 1fr);
+
+        grid-template-rows:
+            76px
+            auto
+            auto
+            auto
+            minmax(0, 1fr);
+
+        padding:
+            env(safe-area-inset-top)
+            0
+            env(safe-area-inset-bottom);
+
+        background:
+            radial-gradient(
+                circle at 85% 0%,
+                rgba(24,168,255,.12),
+                transparent 32%
+            ),
+            var(--future-bg);
+
+        overflow:
+            hidden;
+    }
+
+
+    /* -----------------------------------------------------
+       HEADER
+    ----------------------------------------------------- */
+
+    .header {
+
+        grid-column:
+            1 / -1;
+
+        grid-row:
+            1;
+
+        width:
+            100%;
+
+        min-height:
+            76px;
+
+        height:
+            76px;
+
+        padding:
+            10px 18px;
 
         border:
             0;
 
-        border-radius: 14px;
+        border-bottom:
+            1px solid
+            var(--future-line);
+
+        border-radius:
+            0;
 
         background:
-            rgba(0, 122, 255, .08);
+            rgba(8,11,18,.82);
+
+        box-shadow:
+            0 12px 35px
+            rgba(0,0,0,.25);
+
+        backdrop-filter:
+            blur(24px)
+            saturate(150%);
+
+        -webkit-backdrop-filter:
+            blur(24px)
+            saturate(150%);
+
+        z-index:
+            1000;
     }
 
-    .reorder-actions button {
-        min-height: 42px;
-
-        border-radius: 11px;
-
-        font-size: 13px;
-    }
-}
-
-
-/* =========================================================
-   29. SMALL iPHONE
-   <= 430px
-
-   Dimensions preserved.
-   ========================================================= */
-
-@media
-(max-width: 430px)
-and (hover: none)
-and (pointer: coarse) {
-
-    .file-list {
-        padding-bottom:
-            calc(
-                84px +
-                env(safe-area-inset-bottom)
-            );
-    }
-
-    .file-item {
-        min-height: 62px;
-
-        padding:
-            7px 8px;
-
-        gap: 8px;
-
-        border-radius: 14px;
-    }
-
-    .file-item .position {
-        width: 20px;
-        flex-basis: 20px;
-
-        font-size: 9px;
-    }
-
-    .file-item .file-icon {
-        width: 40px;
-        height: 40px;
-
-        min-width: 40px;
-        min-height: 40px;
-
-        flex-basis: 40px;
-
-        border-radius: 10px;
-
-        font-size: 22px;
-    }
-
-    .file-item .file-name {
-        font-size: 13px;
-    }
-
-    .file-item .file-type {
-        font-size: 9px;
-    }
-
-    .file-item .recent-file-path,
-    .file-item .search-path {
-        font-size: 8px;
-    }
-
-    .file-item .item-actions {
-        grid-template-columns:
-            repeat(5, 36px);
-
-        gap: 2px;
-    }
-
-    .file-item .item-actions > button {
-        width: 36px !important;
-        height: 36px !important;
-
-        min-width: 36px !important;
-        min-height: 36px !important;
-
-        border-radius: 9px !important;
-    }
-}
-
-
-/* =========================================================
-   30. VERY SMALL iPHONE
-   <= 390px
-
-   Dimensions preserved.
-   ========================================================= */
-
-@media
-(max-width: 390px)
-and (hover: none)
-and (pointer: coarse) {
-
-    .header {
-        min-height: 70px;
-
-        padding:
-            8px 9px;
+    .brand {
+        gap:
+            11px;
     }
 
     .app-logo {
-        width: 44px;
-        height: 44px;
 
-        flex-basis: 44px;
+        width:
+            43px;
 
-        border-radius: 13px;
+        height:
+            43px;
+
+        flex-basis:
+            43px;
+
+        border-radius:
+            13px;
+
+        background:
+            linear-gradient(
+                145deg,
+                #23c7ff,
+                #0878ff
+            );
+
+        box-shadow:
+            0 0 24px
+            rgba(24,168,255,.25);
+    }
+
+    .app-logo svg {
+
+        width:
+            34px;
+
+        height:
+            34px;
     }
 
     .brand-text h1 {
-        font-size: 17px;
+
+        color:
+            #fff;
+
+        font-size:
+            20px;
     }
 
     .brand-text p {
-        font-size: 9px;
+
+        color:
+            var(--future-muted);
+
+        font-size:
+            9px;
+
+        letter-spacing:
+            1px;
+
+        text-transform:
+            uppercase;
     }
 
     .header-menu {
-        width: 43px;
-        height: 43px;
 
-        min-width: 43px;
-        min-height: 43px;
+        width:
+            42px;
+
+        height:
+            42px;
+
+        min-width:
+            42px;
+
+        min-height:
+            42px;
+
+        border-radius:
+            12px;
+
+        background:
+            rgba(255,255,255,.055);
+
+        border:
+            1px solid
+            rgba(83,230,255,.16);
     }
 
+
+    /* -----------------------------------------------------
+       LEFT COMMAND RAIL
+    ----------------------------------------------------- */
+
     .toolbar {
-        gap: 1px;
+
+        grid-column:
+            1;
+
+        grid-row:
+            2 / 6;
+
+        position:
+            relative;
+
+        top:
+            auto;
+
+        width:
+            100%;
+
+        height:
+            auto;
+
+        max-height:
+            none;
 
         padding:
-            5px 6px;
+            15px 10px;
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        gap:
+            6px;
+
+        border:
+            0;
+
+        border-right:
+            1px solid
+            var(--future-line);
+
+        background:
+            rgba(12,16,25,.72);
+
+        backdrop-filter:
+            blur(24px);
+
+        -webkit-backdrop-filter:
+            blur(24px);
+
+        overflow-y:
+            auto;
+
+        overflow-x:
+            hidden;
+
+        z-index:
+            900;
+
+        opacity:
+            1;
+    }
+
+    .toolbar.menu-collapsed {
+
+        max-height:
+            none !important;
+
+        min-height:
+            0 !important;
+
+        padding:
+            15px 10px !important;
+
+        opacity:
+            1;
+
+        transform:
+            none;
+
+        pointer-events:
+            auto;
+
+        overflow-y:
+            auto !important;
     }
 
     .toolbar-btn {
-        height: 56px;
 
-        border-radius: 0;
+        flex:
+            0 0 52px;
 
-        font-size: 20px;
-    }
+        width:
+            100%;
 
-    .toolbar-btn:nth-child(1),
-    .toolbar-btn:nth-child(4),
-    .toolbar-btn:nth-child(7) {
-        border-radius:
-            12px 0 0 12px;
-    }
+        height:
+            52px;
 
-    .toolbar-btn:nth-child(3),
-    .toolbar-btn:nth-child(6),
-    .toolbar-btn:nth-child(9) {
-        border-radius:
-            0 12px 12px 0;
-    }
+        min-height:
+            52px;
 
-    .toolbar-btn span {
-        font-size: 9px;
-    }
+        display:
+            grid;
 
-    .search-section {
+        grid-template-columns:
+            28px
+            minmax(0,1fr);
+
+        align-items:
+            center;
+
+        gap:
+            8px;
+
         padding:
-            4px 6px 5px;
+            0 11px;
+
+        border:
+            1px solid
+            transparent;
+
+        border-radius:
+            12px;
+
+        background:
+            transparent;
+
+        color:
+            var(--future-cyan);
+
+        box-shadow:
+            none;
+
+        text-align:
+            left;
     }
 
-    .search-box {
-        height: 46px;
+    .toolbar-btn svg {
 
-        border-radius: 13px;
+        width:
+            22px;
 
-        font-size: 14px;
-    }
+        height:
+            22px;
 
-    .breadcrumb {
-        width: calc(100% - 12px);
-        max-width: calc(100% - 12px);
+        stroke:
+            var(--future-cyan);
 
-        margin-left: 6px;
-        margin-right: 6px;
-    }
-
-    .message {
-        width: calc(100% - 12px);
-
-        margin-left: 6px;
-        margin-right: 6px;
-
-        font-size: 9px;
-    }
-
-    .upload-status {
-        width: calc(100% - 12px);
-
-        margin-left: 6px;
-        margin-right: 6px;
-
-        font-size: 9px;
-    }
-
-    .file-list {
-        padding-left: 6px;
-        padding-right: 6px;
-
-        padding-bottom:
-            calc(
-                82px +
-                env(safe-area-inset-bottom)
+        filter:
+            drop-shadow(
+                0 0 5px
+                rgba(83,230,255,.35)
             );
     }
 
-    .file-item {
-        min-height: 59px;
+    .toolbar-btn span {
 
-        margin-bottom: 5px;
+        color:
+            #aeb9ca;
+
+        font-size:
+            10px;
+
+        text-align:
+            left;
+    }
+
+    .toolbar-btn:active,
+    .toolbar-btn.touch-active {
+
+        background:
+            rgba(24,168,255,.12);
+
+        border-color:
+            rgba(83,230,255,.16);
+
+        transform:
+            scale(.98);
+    }
+
+
+    /* -----------------------------------------------------
+       SEARCH
+       Always first content in main pane
+    ----------------------------------------------------- */
+
+    .search-section {
+
+        grid-column:
+            2;
+
+        grid-row:
+            2;
+
+        width:
+            100%;
 
         padding:
-            6px 7px;
+            13px 20px 7px;
 
-        gap: 7px;
+        margin:
+            0;
 
-        border-radius: 13px;
+        background:
+            transparent;
+    }
+
+    .search-section::before {
+
+        content:
+            "⌕";
+
+        position:
+            absolute;
+
+        left:
+            34px;
+
+        top:
+            18px;
+
+        z-index:
+            2;
+
+        color:
+            var(--future-cyan);
+
+        font-size:
+            21px;
+    }
+
+    .search-box {
+
+        height:
+            47px;
+
+        padding:
+            0 15px 0 43px;
+
+        border:
+            1px solid
+            rgba(255,255,255,.08);
+
+        border-radius:
+            14px;
+
+        background:
+            rgba(255,255,255,.055);
+
+        color:
+            #fff;
+
+        font-size:
+            15px;
+    }
+
+    .search-box:focus {
+
+        border-color:
+            rgba(83,230,255,.35);
+
+        box-shadow:
+            0 0 0 3px
+            rgba(24,168,255,.08);
+    }
+
+
+    /* -----------------------------------------------------
+       BREADCRUMB
+    ----------------------------------------------------- */
+
+    .breadcrumb {
+
+        grid-column:
+            2;
+
+        grid-row:
+            3;
+
+        width:
+            calc(100% - 40px);
+
+        max-width:
+            none;
+
+        min-height:
+            34px;
+
+        margin:
+            0 20px;
+
+        padding:
+            4px 0;
+
+        color:
+            var(--future-muted);
+
+        background:
+            transparent;
+    }
+
+    .breadcrumb > span {
+
+        color:
+            var(--future-muted);
+
+        font-size:
+            11px;
+    }
+
+    .crumb {
+
+        min-height:
+            30px;
+
+        height:
+            30px;
+
+        padding:
+            4px 9px;
+
+        border-radius:
+            9px;
+
+        background:
+            rgba(24,168,255,.08);
+
+        color:
+            var(--future-cyan);
+
+        font-size:
+            11px;
+    }
+
+    .crumb.current {
+
+        background:
+            rgba(255,255,255,.07);
+
+        color:
+            #cbd4e2;
+    }
+
+
+    /* -----------------------------------------------------
+       STATUS / UPLOAD / REORDER
+    ----------------------------------------------------- */
+
+    .message,
+    .upload-status,
+    .reorder-bar {
+
+        grid-column:
+            2;
+
+        width:
+            calc(100% - 40px);
+
+        margin-left:
+            20px;
+
+        margin-right:
+            20px;
+    }
+
+    .message {
+
+        grid-row:
+            4;
+
+        margin-top:
+            0;
+
+        margin-bottom:
+            3px;
+
+        padding:
+            3px 0;
+
+        color:
+            #647187;
+
+        font-size:
+            9px;
+    }
+
+    .upload-status {
+
+        grid-row:
+            4;
+
+        margin-top:
+            0;
+
+        margin-bottom:
+            4px;
+    }
+
+    .reorder-bar {
+
+        grid-row:
+            4;
+
+        margin-top:
+            0;
+
+        margin-bottom:
+            4px;
+    }
+
+
+    /* -----------------------------------------------------
+       FILE LIST
+       IMPORTANT:
+       folder/file list starts immediately after
+       search + breadcrumb/status area.
+    ----------------------------------------------------- */
+
+    .file-list {
+
+        grid-column:
+            2;
+
+        grid-row:
+            5;
+
+        width:
+            calc(100% - 40px);
+
+        min-width:
+            0;
+
+        min-height:
+            0;
+
+        margin:
+            6px 20px 0;
+
+        padding:
+            0 0
+            calc(
+                20px +
+                env(safe-area-inset-bottom)
+            );
+
+        background:
+            transparent;
+
+        border-top:
+            1px solid
+            var(--future-line);
+
+        border-radius:
+            0;
+
+        overflow-y:
+            auto;
+
+        overflow-x:
+            hidden;
+
+        -webkit-overflow-scrolling:
+            touch;
+    }
+
+
+    /* -----------------------------------------------------
+       iPAD FILE ROW
+       List, NOT cards.
+    ----------------------------------------------------- */
+
+    .file-item {
+
+        position:
+            relative;
+
+        width:
+            100%;
+
+        min-height:
+            70px;
+
+        margin:
+            0;
+
+        padding:
+            10px 2px;
+
+        display:
+            flex !important;
+
+        align-items:
+            center;
+
+        gap:
+            10px;
+
+        border:
+            0;
+
+        border-bottom:
+            1px solid
+            var(--future-line);
+
+        border-radius:
+            0;
+
+        background:
+            transparent;
+
+        box-shadow:
+            none;
+
+        color:
+            var(--future-text);
+
+        transform:
+            none !important;
+    }
+
+    .file-item:active,
+    .file-item.touch-active {
+
+        background:
+            rgba(24,168,255,.07)
+            !important;
+
+        transform:
+            none !important;
     }
 
     .file-item .position {
-        width: 18px;
-        flex-basis: 18px;
 
-        font-size: 8px;
+        width:
+            25px;
+
+        min-width:
+            25px;
+
+        flex-basis:
+            25px;
+
+        color:
+            #536074;
+
+        font-size:
+            10px;
     }
 
     .file-item .file-icon {
-        width: 38px;
-        height: 38px;
 
-        min-width: 38px;
-        min-height: 38px;
+        position:
+            static;
 
-        flex-basis: 38px;
+        width:
+            44px;
 
-        border-radius: 9px;
+        height:
+            44px;
 
-        font-size: 20px;
+        min-width:
+            44px;
+
+        min-height:
+            44px;
+
+        flex-basis:
+            44px;
+
+        border-radius:
+            12px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(24,168,255,.18),
+                rgba(83,230,255,.035)
+            );
+
+        border:
+            1px solid
+            rgba(83,230,255,.15);
+
+        color:
+            var(--future-cyan);
+
+        font-size:
+            23px;
+    }
+
+    .file-item.folder-row
+    .file-icon {
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(24,168,255,.25),
+                rgba(24,168,255,.06)
+            );
+
+        border-color:
+            rgba(24,168,255,.30);
+    }
+
+    .file-item .file-info {
+
+        position:
+            static;
+
+        width:
+            auto;
+
+        height:
+            auto;
+
+        flex:
+            1 1 auto;
+
+        min-width:
+            0;
+
+        padding:
+            0;
+
+        display:
+            flex !important;
+
+        flex-direction:
+            column;
+
+        justify-content:
+            center;
+
+        gap:
+            2px;
     }
 
     .file-item .file-name {
-        font-size: 12px;
+
+        color:
+            #f5f7fb;
+
+        font-size:
+            15px;
+
+        line-height:
+            20px;
+
+        font-weight:
+            600;
     }
 
     .file-item .file-type {
-        font-size: 8px;
+
+        margin:
+            0;
+
+        color:
+            #778296;
+
+        font-size:
+            10px;
+
+        line-height:
+            14px;
     }
 
     .file-item .recent-file-path,
     .file-item .search-path {
-        font-size: 7px;
+
+        margin-top:
+            1px;
+
+        color:
+            #647187;
+
+        font-size:
+            9px;
+
+        line-height:
+            13px;
     }
+
+
+    /* -----------------------------------------------------
+       iPAD ACTIONS
+    ----------------------------------------------------- */
 
     .file-item .item-actions {
+
+        width:
+            auto;
+
+        height:
+            auto;
+
+        flex:
+            0 0 auto;
+
+        display:
+            grid !important;
+
         grid-template-columns:
-            repeat(5, 34px);
+            repeat(
+                5,
+                32px
+            );
 
-        gap: 2px;
+        gap:
+            2px;
+
+        padding:
+            0;
+
+        border:
+            0;
+
+        background:
+            transparent;
+
+        box-shadow:
+            none;
+
+        overflow:
+            visible;
     }
 
-    .file-item .item-actions > button {
-        width: 34px !important;
-        height: 34px !important;
+    .file-item .item-actions >
+    button {
 
-        min-width: 34px !important;
-        min-height: 34px !important;
+        width:
+            32px !important;
 
-        border-radius: 8px !important;
+        height:
+            34px !important;
+
+        min-width:
+            32px !important;
+
+        min-height:
+            34px !important;
+
+        border:
+            0 !important;
+
+        border-radius:
+            8px !important;
+
+        background:
+            transparent !important;
+
+        color:
+            #8290a5;
+
+        box-shadow:
+            none !important;
+
+        font-size:
+            16px !important;
     }
 
-    .file-item .item-btn {
-        font-size: 15px;
+    .file-item .item-more-btn {
+
+        color:
+            var(--future-cyan)
+            !important;
     }
 
-    .file-item .item-more-btn span {
-        font-size: 12px;
+
+    /* -----------------------------------------------------
+       iPAD PASTE
+    ----------------------------------------------------- */
+
+    .v4-paste-fab {
+
+        right:
+            22px;
+
+        bottom:
+            calc(
+                20px +
+                env(safe-area-inset-bottom)
+            );
+
+        width:
+            58px;
+
+        height:
+            58px;
+
+        min-height:
+            58px;
+
+        padding:
+            0;
+
+        border:
+            1px solid
+            rgba(83,230,255,.45);
+
+        border-radius:
+            18px;
+
+        background:
+            linear-gradient(
+                145deg,
+                #18a8ff,
+                #0878ff
+            );
+
+        box-shadow:
+            0 0 0 5px
+            rgba(24,168,255,.07),
+            0 10px 35px
+            rgba(0,0,0,.50),
+            0 0 25px
+            rgba(24,168,255,.28);
+    }
+
+
+    /* -----------------------------------------------------
+       iPAD ACTION POPUP
+       JS controls actual left/top position.
+    ----------------------------------------------------- */
+
+    .touch-action-sheet {
+
+        padding:
+            16px;
+
+        background:
+            rgba(0,0,0,.42);
+
+        backdrop-filter:
+            blur(18px);
+
+        -webkit-backdrop-filter:
+            blur(18px);
+    }
+
+    .touch-sheet-card {
+
+        position:
+            fixed;
+
+        width:
+            min(
+                360px,
+                calc(100vw - 32px)
+            );
+
+        margin:
+            0;
+
+        padding:
+            9px;
+
+        border:
+            1px solid
+            rgba(83,230,255,.22);
+
+        border-radius:
+            21px;
+
+        background:
+            rgba(15,20,30,.97);
+
+        box-shadow:
+            0 28px 70px
+            rgba(0,0,0,.65),
+            0 0 35px
+            rgba(24,168,255,.08);
+
+        backdrop-filter:
+            blur(28px);
+
+        -webkit-backdrop-filter:
+            blur(28px);
+    }
+
+    .touch-sheet-title {
+
+        color:
+            #fff;
+
+        font-size:
+            15px;
+    }
+
+    .touch-sheet-action {
+
+        color:
+            #cfefff;
+
+        background:
+            rgba(255,255,255,.055);
+    }
+
+    .touch-sheet-cancel {
+
+        color:
+            var(--future-cyan);
+
+        background:
+            rgba(83,230,255,.06);
+    }
+
+
+    /* -----------------------------------------------------
+       iPAD DETAILS
+    ----------------------------------------------------- */
+
+    .file-details-card {
+
+        width:
+            min(
+                560px,
+                calc(100vw - 60px)
+            );
+
+        background:
+            rgba(15,20,30,.97);
+
+        border:
+            1px solid
+            rgba(83,230,255,.18);
+
+        color:
+            #fff;
+    }
+
+    .file-details-card h3 {
+        color:
+            #fff;
+    }
+
+    .file-detail-row {
+        border-bottom:
+            1px solid
+            var(--future-line);
+    }
+
+    .file-detail-row strong {
+        color:
+            #778296;
+    }
+
+    .file-detail-row span {
+        color:
+            #dce8f5;
+    }
+
+    .file-details-close {
+
+        background:
+            linear-gradient(
+                145deg,
+                #18a8ff,
+                #0878ff
+            );
+    }
+}
+
+
+/* =========================================================
+   30. iPAD LANDSCAPE
+   ---------------------------------------------------------
+   No separate card layout.
+   Same workspace, wider main area.
+   ========================================================= */
+
+@media
+(min-width: 701px)
+and (max-width: 1366px)
+and (orientation: landscape) {
+
+    .app {
+
+        grid-template-columns:
+            255px
+            minmax(0, 1fr);
+    }
+
+    .toolbar {
+        padding:
+            16px 12px;
+    }
+
+    .toolbar-btn {
+
+        flex-basis:
+            54px;
+
+        height:
+            54px;
+
+        min-height:
+            54px;
+    }
+
+    .search-section {
+
+        padding-left:
+            24px;
+
+        padding-right:
+            24px;
+    }
+
+    .breadcrumb {
+
+        width:
+            calc(100% - 48px);
+
+        margin-left:
+            24px;
+
+        margin-right:
+            24px;
+    }
+
+    .message,
+    .upload-status,
+    .reorder-bar {
+
+        width:
+            calc(100% - 48px);
+
+        margin-left:
+            24px;
+
+        margin-right:
+            24px;
+    }
+
+    .file-list {
+
+        width:
+            calc(100% - 48px);
+
+        margin-left:
+            24px;
+
+        margin-right:
+            24px;
     }
 }
 
@@ -3596,23 +5531,19 @@ and (pointer: coarse) {
    31. SAFE AREA
    ========================================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 1366px) {
 
     html,
     body {
-        min-height: 100dvh !important;
+
+        min-height:
+            100dvh;
     }
 
     .app {
-        min-height: 100dvh !important;
-    }
 
-    .empty {
-        margin-bottom:
-            calc(
-                20px +
-                env(safe-area-inset-bottom)
-            );
+        min-height:
+            100dvh;
     }
 }
 
@@ -3626,6 +5557,7 @@ and (pointer: coarse) {
     *,
     *::before,
     *::after {
+
         animation-duration:
             .01ms !important;
 
@@ -3644,2230 +5576,3 @@ and (pointer: coarse) {
 /* =========================================================
    END
    ========================================================= */
-/* =========================================================
-   STEP 1 — IPHONE NATIVE iOS HEADER
-   iPhone only
-   Desktop + iPad unchanged
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-    /* -----------------------------------------------------
-       APP HEADER
-       ----------------------------------------------------- */
-
-    .app-header {
-        min-height: 52px;
-
-        padding:
-            calc(6px + env(safe-area-inset-top))
-            12px
-            6px;
-
-        background: rgba(242, 242, 247, 0.92);
-
-        border: 0;
-        border-radius: 0;
-
-        box-shadow: none;
-
-        backdrop-filter: blur(20px) saturate(180%);
-        -webkit-backdrop-filter: blur(20px) saturate(180%);
-
-        display: flex;
-        align-items: center;
-    }
-
-
-    /* -----------------------------------------------------
-       HEADER CONTENT
-       ----------------------------------------------------- */
-
-    .app-header-content {
-        width: 100%;
-
-        min-height: 44px;
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        gap: 10px;
-    }
-
-
-    /* -----------------------------------------------------
-       APP TITLE
-       ----------------------------------------------------- */
-
-    .app-title {
-        margin: 0;
-
-        padding: 0;
-
-        color: #1c1c1e;
-
-        font-size: 20px;
-        line-height: 24px;
-        font-weight: 700;
-
-        letter-spacing: -0.35px;
-
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-
-    /* -----------------------------------------------------
-       HEADER MENU BUTTON
-       ----------------------------------------------------- */
-
-    .header-menu-btn {
-        flex: 0 0 auto;
-
-        width: 36px;
-        height: 36px;
-
-        margin: 0;
-        padding: 0;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        border: 0;
-        border-radius: 50%;
-
-        background: transparent;
-
-        color: #007aff;
-
-        font-size: 22px;
-        line-height: 1;
-
-        box-shadow: none;
-
-        -webkit-tap-highlight-color: transparent;
-
-        transition:
-            background-color .12s ease,
-            transform .12s ease;
-    }
-
-
-    .header-menu-btn:active {
-        background: rgba(0, 122, 255, 0.12);
-
-        transform: scale(.94);
-    }
-
-
-    /* -----------------------------------------------------
-       REMOVE DECORATIVE HEADER EFFECTS
-       ----------------------------------------------------- */
-
-    .app-header::before,
-    .app-header::after {
-        display: none;
-    }
-
-
-    /* -----------------------------------------------------
-       KEEP HEADER ICONS SIMPLE
-       ----------------------------------------------------- */
-
-    .app-header svg,
-    .app-header i {
-        color: #007aff;
-    }
-
-
-    /* -----------------------------------------------------
-       IPHONE SMALL SCREEN
-       ----------------------------------------------------- */
-
-    @media (max-width: 430px) {
-
-        .app-header {
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-
-        .app-title {
-            font-size: 19px;
-            letter-spacing: -0.3px;
-        }
-
-        .header-menu-btn {
-            width: 34px;
-            height: 34px;
-
-            font-size: 21px;
-        }
-    }
-
-
-    /* -----------------------------------------------------
-       VERY SMALL IPHONE
-       ----------------------------------------------------- */
-
-    @media (max-width: 390px) {
-
-        .app-title {
-            font-size: 18px;
-        }
-
-        .header-menu-btn {
-            width: 32px;
-            height: 32px;
-
-            font-size: 20px;
-        }
-    }
-}
-/* =========================================================
-   STEP 3 — IPHONE NATIVE iOS BREADCRUMB / LOCATION
-   iPhone only
-   Desktop + iPad unchanged
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-    .breadcrumb {
-        width: 100%;
-
-        margin: 4px 0 8px;
-        padding: 0 12px;
-
-        min-height: 34px;
-
-        display: flex;
-        align-items: center;
-
-        background: transparent;
-
-        border: 0;
-        border-radius: 0;
-
-        box-shadow: none;
-
-        color: #8e8e93;
-
-        font-size: 14px;
-        font-weight: 500;
-
-        line-height: 20px;
-
-        overflow-x: auto;
-        overflow-y: hidden;
-
-        white-space: nowrap;
-
-        -webkit-overflow-scrolling: touch;
-
-        scrollbar-width: none;
-    }
-
-
-    .breadcrumb::-webkit-scrollbar {
-        display: none;
-    }
-
-
-    /* Breadcrumb links */
-
-    .breadcrumb a {
-        color: #007aff;
-
-        text-decoration: none;
-
-        font-weight: 600;
-    }
-
-
-    .breadcrumb a:active {
-        opacity: .55;
-    }
-
-
-    /* Current location */
-
-    .breadcrumb span,
-    .breadcrumb .current {
-        color: #8e8e93;
-
-        font-weight: 500;
-    }
-
-
-    /* Separators */
-
-    .breadcrumb .separator,
-    .breadcrumb::before {
-        color: #c7c7cc;
-    }
-
-
-    /* Prevent breadcrumb from becoming a large card */
-
-    .breadcrumb > * {
-        flex: 0 0 auto;
-    }
-
-
-    /* Small iPhone */
-
-    @media (max-width: 430px) {
-
-        .breadcrumb {
-            padding-left: 10px;
-            padding-right: 10px;
-
-            margin-top: 3px;
-            margin-bottom: 7px;
-
-            min-height: 32px;
-
-            font-size: 13px;
-        }
-    }
-
-
-    /* Very small iPhone */
-
-    @media (max-width: 390px) {
-
-        .breadcrumb {
-            font-size: 12.5px;
-        }
-    }
-}
-
-/* =========================================================
-   STEP 4 — IPHONE FILE ROWS
-   Native iOS Files-style list
-   iPhone only
-   Desktop + iPad unchanged
-   ========================================================= */
-
-@media (max-width: 700px)
-and (hover: none)
-and (pointer: coarse) {
-
-    /* -----------------------------------------------------
-       FILE LIST
-       ----------------------------------------------------- */
-
-    .file-list {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-
-    /* -----------------------------------------------------
-       FILE ROW
-       Flat iOS list row
-       ----------------------------------------------------- */
-
-    .file-item {
-        width: 100%;
-
-        min-height: 64px;
-
-        margin: 0;
-
-        padding:
-            8px 10px;
-
-        display: flex !important;
-        align-items: center;
-
-        gap: 10px;
-
-        border: 0;
-
-        border-radius: 0;
-
-        background:
-            rgba(255, 255, 255, .82);
-
-        box-shadow: none;
-
-        overflow: hidden;
-
-        transform: none !important;
-    }
-
-
-    /* iOS separator */
-
-    .file-item::after {
-        content: "";
-
-        position: absolute;
-
-        left: 76px;
-        right: 0;
-        bottom: 0;
-
-        height: 1px;
-
-        background:
-            rgba(60, 60, 67, .12);
-    }
-
-
-    /* Pressed row */
-
-    .file-item:active,
-    .file-item.touch-active {
-        background:
-            rgba(118, 118, 128, .12) !important;
-
-        transform: none !important;
-    }
-
-
-    /* -----------------------------------------------------
-       NUMBER
-       ----------------------------------------------------- */
-
-    .file-item .position {
-        width: 18px;
-        min-width: 18px;
-
-        flex: 0 0 18px;
-
-        color:
-            #8e8e93;
-
-        font-size: 11px;
-        font-weight: 500;
-
-        text-align: center;
-    }
-
-
-    /* -----------------------------------------------------
-       FILE ICON
-       ----------------------------------------------------- */
-
-    .file-item .file-icon {
-        width: 42px;
-        height: 42px;
-
-        min-width: 42px;
-        min-height: 42px;
-
-        flex: 0 0 42px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        border-radius: 10px;
-
-        background:
-            #f2f2f7;
-
-        color:
-            #007aff;
-
-        font-size: 24px;
-
-        box-shadow: none;
-
-        filter: none;
-    }
-
-
-    /* -----------------------------------------------------
-       FILE INFORMATION
-       ----------------------------------------------------- */
-
-    .file-item .file-info {
-        flex: 1 1 auto;
-
-        min-width: 0;
-
-        width: auto;
-
-        overflow: hidden;
-    }
-
-
-    .file-item .file-name {
-        margin: 0;
-
-        color:
-            #1c1c1e;
-
-        font-size: 15px;
-        line-height: 20px;
-
-        font-weight: 500;
-
-        letter-spacing: -.15px;
-
-        overflow: hidden;
-
-        text-overflow: ellipsis;
-
-        white-space: nowrap;
-    }
-
-
-    .file-item .file-type {
-        margin-top: 1px;
-
-        color:
-            #8e8e93;
-
-        font-size: 11px;
-        line-height: 15px;
-
-        font-weight: 400;
-
-        overflow: hidden;
-
-        text-overflow: ellipsis;
-
-        white-space: nowrap;
-    }
-
-
-    .file-item .recent-file-path,
-    .file-item .search-path {
-        margin-top: 1px;
-
-        color:
-            #8e8e93;
-
-        font-size: 10px;
-        line-height: 14px;
-
-        overflow: hidden;
-
-        text-overflow: ellipsis;
-
-        white-space: nowrap;
-    }
-
-
-    /* -----------------------------------------------------
-       ACTIONS
-       ----------------------------------------------------- */
-
-    .file-item .item-actions {
-        width: auto;
-        height: auto;
-
-        flex: 0 0 auto;
-
-        display: grid !important;
-
-        grid-template-columns:
-            repeat(5, 32px);
-
-        gap: 2px;
-
-        padding: 0;
-
-        border: 0;
-        border-radius: 0;
-
-        background: transparent;
-
-        box-shadow: none;
-
-        overflow: visible;
-    }
-
-
-    .file-item .item-actions > button {
-        width: 32px !important;
-        height: 32px !important;
-
-        min-width: 32px !important;
-        min-height: 32px !important;
-
-        padding: 0 !important;
-
-        display: flex !important;
-
-        align-items: center !important;
-        justify-content: center !important;
-
-        border: 0 !important;
-
-        border-radius: 8px !important;
-
-        background: transparent !important;
-
-        color:
-            #1c1c1e;
-
-        font-size: 17px !important;
-
-        box-shadow: none !important;
-    }
-
-
-    .file-item .item-actions > button:active {
-        background:
-            rgba(118, 118, 128, .12) !important;
-
-        transform: scale(.90);
-    }
-
-
-    /* More button */
-
-    .file-item .item-more-btn {
-        color:
-            #007aff !important;
-    }
-
-
-    .file-item .item-more-btn span {
-        font-size: 15px;
-        font-weight: 700;
-
-        letter-spacing: 1px;
-    }
-
-
-    /* -----------------------------------------------------
-       FOLDER ROW
-       ----------------------------------------------------- */
-
-    .file-item.folder-row .file-icon {
-        background:
-            rgba(0, 122, 255, .10);
-
-        color:
-            #007aff;
-    }
-
-
-    /* -----------------------------------------------------
-       SELECTED ROW
-       ----------------------------------------------------- */
-
-    .file-item.selected {
-        border: 0 !important;
-
-        background:
-            rgba(0, 122, 255, .08) !important;
-
-        box-shadow: none !important;
-    }
-
-
-    .file-item.selected::after {
-        display: none;
-    }
-
-
-    /* -----------------------------------------------------
-       SMALL IPHONE
-       Keep existing overall dimensions
-       ----------------------------------------------------- */
-
-    @media (max-width: 430px) {
-
-        .file-item {
-            min-height: 62px;
-
-            padding:
-                7px 8px;
-
-            gap: 8px;
-        }
-
-
-        .file-item::after {
-            left: 72px;
-        }
-
-
-        .file-item .position {
-            width: 17px;
-            min-width: 17px;
-            flex-basis: 17px;
-
-            font-size: 10px;
-        }
-
-
-        .file-item .file-icon {
-            width: 40px;
-            height: 40px;
-
-            min-width: 40px;
-            min-height: 40px;
-            flex-basis: 40px;
-
-            border-radius: 9px;
-
-            font-size: 22px;
-        }
-
-
-        .file-item .file-name {
-            font-size: 14px;
-            line-height: 19px;
-        }
-
-
-        .file-item .file-type {
-            font-size: 10px;
-        }
-
-
-        .file-item .item-actions {
-            grid-template-columns:
-                repeat(5, 30px);
-        }
-
-
-        .file-item .item-actions > button {
-            width: 30px !important;
-            height: 30px !important;
-
-            min-width: 30px !important;
-            min-height: 30px !important;
-        }
-    }
-}
-function positionTouchMenu(anchorEl, sheet) {
-    const card = sheet
-        ? sheet.querySelector(".touch-sheet-card")
-        : null;
-
-    if (!card || !anchorEl) {
-        return;
-    }
-
-    requestAnimationFrame(() => {
-
-        const r =
-            anchorEl.getBoundingClientRect();
-
-        const w =
-            card.offsetWidth;
-
-        const h =
-            card.offsetHeight;
-
-        const gap = 8;
-        const margin = 10;
-
-        const vw =
-            window.innerWidth;
-
-        const vh =
-            window.innerHeight;
-
-        /* -----------------------------------------
-           Prefer showing the popup above the button
-        ----------------------------------------- */
-
-        let top =
-            r.top -
-            h -
-            gap;
-
-        /* If there is not enough room above,
-           show it below the button. */
-
-        if (top < margin) {
-
-            top =
-                r.bottom +
-                gap;
-
-        }
-
-        /* Keep popup inside bottom edge */
-
-        if (
-            top + h >
-            vh - margin
-        ) {
-
-            top =
-                Math.max(
-                    margin,
-                    vh - h - margin
-                );
-
-        }
-
-        /* -----------------------------------------
-           Align popup's right edge with button
-        ----------------------------------------- */
-
-        let left =
-            r.right -
-            w;
-
-        /* Keep inside left edge */
-
-        if (
-            left < margin
-        ) {
-
-            left =
-                margin;
-
-        }
-
-        /* Keep inside right edge */
-
-        if (
-            left + w >
-            vw - margin
-        ) {
-
-            left =
-                vw -
-                w -
-                margin;
-
-        }
-
-        /* -----------------------------------------
-           Apply calculated position
-        ----------------------------------------- */
-
-        card.style.left =
-            `${left}px`;
-
-        card.style.top =
-            `${top}px`;
-
-        card.style.right =
-            "auto";
-
-        card.style.bottom =
-            "auto";
-
-        card.style.margin =
-            "0";
-
-        card.style.transform =
-            "none";
-    });
-}
-/* =========================================================
-   FIX — THREE-DOT POPUP POSITION
-   iPhone / iPad only
-   Desktop unchanged
-   ========================================================= */
-
-@media (max-width: 700px)
-and (hover: none)
-and (pointer: coarse) {
-
-    .touch-sheet-card {
-        position: fixed;
-        margin: 0;
-    }
-
-}
-/* =========================================================
-   iPAD — THREE-DOT POPUP POSITION
-   iPhone + Desktop unchanged
-   ========================================================= */
-
-@media (min-width: 701px)
-and (max-width: 1180px)
-and (hover: none)
-and (pointer: coarse) {
-
-    .touch-sheet-card {
-        position: fixed;
-        margin: 0;
-    }
-
-}
-/* =========================================================
-   MY FILE MANAGER
-   FUTURISTIC iPHONE / iPAD UI
-   ---------------------------------------------------------
-   Desktop is NOT affected.
-   Existing JavaScript / IndexedDB / PDF system preserved.
-========================================================= */
-
-:root {
-    --future-bg: #080b12;
-    --future-surface: rgba(18, 23, 34, 0.88);
-    --future-surface-strong: rgba(15, 20, 30, 0.96);
-
-    --future-text: #f5f7fb;
-    --future-muted: #7f8ba0;
-
-    --future-blue: #18a8ff;
-    --future-cyan: #53e6ff;
-    --future-green: #39e58c;
-
-    --future-line: rgba(255,255,255,0.08);
-    --future-blue-line: rgba(83,230,255,0.22);
-
-    --future-glow:
-        0 0 24px rgba(24,168,255,0.22);
-
-    --future-shadow:
-        0 24px 60px rgba(0,0,0,0.55);
-}
-
-
-/* =========================================================
-   iPHONE
-========================================================= */
-
-/* =========================================================
-   iPAD
-   FUTURISTIC TWO-PANE WORKSPACE
-========================================================= */
-
-@media (min-width:701px)
-and (max-width:1366px)
-and (pointer:coarse) {
-
-    html,
-    body {
-        background:
-            var(--future-bg) !important;
-
-        color:
-            var(--future-text) !important;
-    }
-
-    /* keep the rest of the existing iPad CSS exactly as it is */
-
-
-    body {
-        min-height:100dvh;
-    }
-
-
-    .app {
-        min-height:100dvh !important;
-
-        padding:
-            env(safe-area-inset-top)
-            0
-            calc(
-                18px +
-                env(safe-area-inset-bottom)
-            ) !important;
-
-        background:transparent !important;
-    }
-
-
-    /* -----------------------------------------------------
-       TOP NAVIGATION
-    ----------------------------------------------------- */
-
-    .header {
-        min-height:72px !important;
-        height:72px !important;
-
-        padding:10px 14px !important;
-
-        border:0 !important;
-        border-bottom:
-            1px solid var(--future-line) !important;
-
-        border-radius:0 !important;
-
-        background:
-            rgba(8,11,18,0.80) !important;
-
-        box-shadow:
-            0 12px 35px rgba(0,0,0,0.25) !important;
-
-        backdrop-filter:
-            blur(24px)
-            saturate(150%) !important;
-
-        -webkit-backdrop-filter:
-            blur(24px)
-            saturate(150%) !important;
-
-        z-index:1000 !important;
-    }
-
-
-    .brand {
-        gap:11px !important;
-    }
-
-
-    .app-logo {
-        width:38px !important;
-        height:38px !important;
-
-        flex-basis:38px !important;
-
-        border-radius:12px !important;
-
-        background:
-            linear-gradient(
-                145deg,
-                #23c7ff,
-                #0878ff
-            ) !important;
-
-        box-shadow:
-            0 0 0 1px
-            rgba(83,230,255,0.28),
-
-            0 0 22px
-            rgba(24,168,255,0.30) !important;
-    }
-
-
-    .app-logo svg {
-        width:30px !important;
-        height:30px !important;
-    }
-
-
-    .brand-text h1 {
-        color:#ffffff !important;
-
-        font-size:18px !important;
-
-        letter-spacing:-0.25px !important;
-    }
-
-
-    .brand-text p {
-        margin-top:2px !important;
-
-        color:var(--future-muted) !important;
-
-        font-size:10px !important;
-
-        letter-spacing:0.8px !important;
-
-        text-transform:uppercase !important;
-    }
-
-
-    /* -----------------------------------------------------
-       MENU
-    ----------------------------------------------------- */
-
-    .header-menu {
-        width:42px !important;
-        height:42px !important;
-
-        min-width:42px !important;
-        min-height:42px !important;
-
-        border-radius:12px !important;
-
-        background:
-            rgba(255,255,255,0.055) !important;
-
-        border:
-            1px solid
-            rgba(83,230,255,0.16) !important;
-    }
-
-
-    .header-menu .menu-line {
-        width:17px !important;
-        height:2px !important;
-
-        background:
-            var(--future-cyan) !important;
-
-        box-shadow:
-            0 0 7px
-            rgba(83,230,255,0.45);
-    }
-
-
-    /* -----------------------------------------------------
-       FUTURISTIC COMMAND PANEL
-    ----------------------------------------------------- */
-
-    .toolbar {
-        position:fixed !important;
-
-        top:
-            calc(
-                72px +
-                env(safe-area-inset-top)
-            ) !important;
-
-        left:10px !important;
-        right:10px !important;
-
-        width:auto !important;
-
-        padding:10px !important;
-
-        margin:0 !important;
-
-        display:grid !important;
-
-        grid-template-columns:
-            repeat(3,1fr) !important;
-
-        gap:7px !important;
-
-        border:
-            1px solid
-            var(--future-blue-line) !important;
-
-        border-radius:20px !important;
-
-        background:
-            var(--future-surface-strong) !important;
-
-        box-shadow:
-            var(--future-shadow),
-            var(--future-glow) !important;
-
-        backdrop-filter:
-            blur(28px)
-            saturate(145%) !important;
-
-        -webkit-backdrop-filter:
-            blur(28px)
-            saturate(145%) !important;
-
-        overflow:hidden !important;
-
-        z-index:950 !important;
-
-        transition:
-            opacity .2s ease,
-            transform .2s ease,
-            max-height .2s ease !important;
-    }
-
-
-    .toolbar.menu-collapsed {
-        max-height:0 !important;
-
-        padding:0 !important;
-
-        opacity:0 !important;
-
-        transform:
-            translateY(-12px)
-            scale(.97) !important;
-
-        border-width:0 !important;
-
-        pointer-events:none !important;
-    }
-
-
-    .toolbar-btn {
-        height:68px !important;
-
-        padding:7px 4px !important;
-
-        gap:5px !important;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.075) !important;
-
-        border-radius:14px !important;
-
-        background:
-            linear-gradient(
-                145deg,
-                rgba(255,255,255,0.065),
-                rgba(255,255,255,0.025)
-            ) !important;
-
-        color:
-            var(--future-cyan) !important;
-
-        box-shadow:
-            inset 0 1px 0
-            rgba(255,255,255,0.045) !important;
-    }
-
-
-    .toolbar-btn svg {
-        stroke:
-            var(--future-cyan) !important;
-
-        filter:
-            drop-shadow(
-                0 0 5px
-                rgba(83,230,255,0.35)
-            );
-    }
-
-
-    .toolbar-btn span {
-        color:#cbd4e2 !important;
-
-        font-size:9px !important;
-
-        font-weight:600 !important;
-    }
-
-
-    .toolbar-btn:active,
-    .toolbar-btn.touch-active {
-        background:
-            rgba(24,168,255,0.18) !important;
-
-        border-color:
-            rgba(83,230,255,0.38) !important;
-
-        transform:scale(.96) !important;
-    }
-
-
-    /* -----------------------------------------------------
-       SEARCH
-    ----------------------------------------------------- */
-
-    .search-section {
-        position:relative !important;
-
-        padding:
-            13px
-            14px
-            8px !important;
-
-        background:transparent !important;
-    }
-
-
-    .search-section::before {
-        content:"⌕";
-
-        position:absolute;
-
-        left:28px;
-        top:19px;
-
-        z-index:2;
-
-        color:
-            var(--future-cyan);
-
-        font-size:22px;
-
-        line-height:1;
-
-        text-shadow:
-            0 0 8px
-            rgba(83,230,255,0.45);
-    }
-
-
-    .search-box {
-        width:100% !important;
-
-        height:46px !important;
-
-        padding:
-            0
-            15px
-            0
-            43px !important;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.08) !important;
-
-        border-radius:14px !important;
-
-        background:
-            rgba(255,255,255,0.065) !important;
-
-        color:#ffffff !important;
-
-        box-shadow:
-            inset 0 1px 0
-            rgba(255,255,255,0.04) !important;
-    }
-
-
-    .search-box::placeholder {
-        color:#778296 !important;
-    }
-
-
-    .search-box:focus {
-        background:
-            rgba(24,168,255,0.08) !important;
-
-        border-color:
-            rgba(83,230,255,0.35) !important;
-
-        box-shadow:
-            0 0 0 3px
-            rgba(24,168,255,0.08) !important;
-    }
-
-
-    /* -----------------------------------------------------
-       BREADCRUMB
-    ----------------------------------------------------- */
-
-    .breadcrumb {
-        width:
-            calc(100% - 28px) !important;
-
-        max-width:none !important;
-
-        min-height:34px !important;
-
-        margin:
-            2px 14px 7px !important;
-
-        color:
-            var(--future-muted) !important;
-    }
-
-
-    /* -----------------------------------------------------
-       FILE LIST
-    ----------------------------------------------------- */
-
-    .file-list {
-        width:
-            calc(100% - 28px) !important;
-
-        margin:
-            0 14px !important;
-
-        background:transparent !important;
-
-        border-radius:0 !important;
-
-        border-top:
-            1px solid
-            var(--future-line) !important;
-
-        overflow:hidden !important;
-    }
-
-
-    .file-item {
-        position:relative !important;
-
-        min-height:68px !important;
-
-        padding:
-            9px
-            2px
-            9px
-            0 !important;
-
-        border:0 !important;
-
-        border-bottom:
-            1px solid
-            var(--future-line) !important;
-
-        border-radius:0 !important;
-
-        background:transparent !important;
-
-        box-shadow:none !important;
-
-        color:
-            var(--future-text) !important;
-
-        transition:
-            background .15s ease !important;
-    }
-
-
-    .file-item::after {
-        content:"";
-
-        position:absolute;
-
-        left:0;
-        top:0;
-        bottom:0;
-
-        width:2px;
-
-        background:transparent;
-
-        transition:.18s ease;
-    }
-
-
-    .file-item:active,
-    .file-item.touch-active {
-        background:
-            rgba(24,168,255,0.07) !important;
-    }
-
-
-    .file-item:active::after,
-    .file-item.touch-active::after {
-        background:
-            var(--future-cyan);
-
-        box-shadow:
-            0 0 12px
-            rgba(83,230,255,0.65);
-    }
-
-
-    .position {
-        width:24px !important;
-
-        min-width:24px !important;
-
-        color:#536074 !important;
-
-        font-size:10px !important;
-
-        text-align:center !important;
-    }
-
-
-    .file-icon {
-        width:42px !important;
-
-        min-width:42px !important;
-
-        height:42px !important;
-
-        margin-right:11px !important;
-
-        border-radius:12px !important;
-
-        display:flex !important;
-
-        align-items:center !important;
-
-        justify-content:center !important;
-
-        background:
-            linear-gradient(
-                145deg,
-                rgba(24,168,255,0.18),
-                rgba(83,230,255,0.035)
-            ) !important;
-
-        border:
-            1px solid
-            rgba(83,230,255,0.15) !important;
-
-        box-shadow:
-            inset 0 1px 0
-            rgba(255,255,255,0.045) !important;
-
-        font-size:22px !important;
-    }
-
-
-    .folder-row .file-icon {
-        background:
-            linear-gradient(
-                145deg,
-                rgba(24,168,255,0.25),
-                rgba(24,168,255,0.06)
-            ) !important;
-
-        border-color:
-            rgba(24,168,255,0.30) !important;
-    }
-
-
-    .file-info {
-        min-width:0 !important;
-    }
-
-
-    .file-name {
-        color:#f5f7fb !important;
-
-        font-size:15px !important;
-
-        font-weight:600 !important;
-
-        line-height:1.25 !important;
-    }
-
-
-    .file-type {
-        margin-top:3px !important;
-
-        color:#778296 !important;
-
-        font-size:10px !important;
-
-        letter-spacing:.35px !important;
-
-        text-transform:uppercase !important;
-    }
-
-
-    .item-actions {
-        gap:1px !important;
-    }
-
-
-    .item-btn {
-        width:30px !important;
-
-        height:34px !important;
-
-        min-width:30px !important;
-
-        padding:0 !important;
-
-        border:0 !important;
-
-        border-radius:9px !important;
-
-        background:transparent !important;
-
-        color:#8290a5 !important;
-
-        font-size:15px !important;
-    }
-
-
-    .item-btn:active,
-    .item-btn.touch-active {
-        color:
-            var(--future-cyan) !important;
-
-        background:
-            rgba(83,230,255,0.10) !important;
-    }
-
-
-    .item-more-btn {
-        color:
-            var(--future-cyan) !important;
-
-        letter-spacing:1px !important;
-    }
-
-
-    /* -----------------------------------------------------
-       STATUS
-    ----------------------------------------------------- */
-
-    .message {
-        margin:
-            10px 14px !important;
-
-        padding:6px 0 !important;
-
-        min-height:0 !important;
-
-        border:0 !important;
-
-        background:transparent !important;
-
-        color:#647187 !important;
-
-        font-size:10px !important;
-    }
-
-
-    /* -----------------------------------------------------
-       PASTE FAB
-    ----------------------------------------------------- */
-
-    .v4-paste-fab {
-        right:18px !important;
-
-        bottom:
-            calc(
-                20px +
-                env(safe-area-inset-bottom)
-            ) !important;
-
-        width:58px !important;
-
-        height:58px !important;
-
-        border:
-            1px solid
-            rgba(83,230,255,0.45) !important;
-
-        border-radius:18px !important;
-
-        background:
-            linear-gradient(
-                145deg,
-                #18a8ff,
-                #0878ff
-            ) !important;
-
-        color:#fff !important;
-
-        box-shadow:
-            0 0 0 5px
-            rgba(24,168,255,0.07),
-
-            0 10px 35px
-            rgba(0,0,0,0.50),
-
-            0 0 25px
-            rgba(24,168,255,0.28) !important;
-    }
-
-
-    /* -----------------------------------------------------
-       ACTION SHEET
-    ----------------------------------------------------- */
-
-    .touch-sheet-card {
-        position:fixed !important;
-
-        width:
-            min(
-                360px,
-                calc(100vw - 28px)
-            ) !important;
-
-        margin:0 !important;
-
-        border:
-            1px solid
-            rgba(83,230,255,0.22) !important;
-
-        border-radius:22px !important;
-
-        background:
-            rgba(15,20,30,0.97) !important;
-
-        box-shadow:
-            0 28px 70px
-            rgba(0,0,0,0.65),
-
-            0 0 35px
-            rgba(24,168,255,0.08) !important;
-
-        backdrop-filter:
-            blur(28px) !important;
-
-        -webkit-backdrop-filter:
-            blur(28px) !important;
-    }
-
-
-    .touch-sheet-title {
-        color:#ffffff !important;
-
-        border-bottom-color:
-            var(--future-line) !important;
-    }
-
-
-    .touch-sheet-action {
-        color:#cfefff !important;
-
-        border-bottom-color:
-            var(--future-line) !important;
-    }
-
-
-    .touch-sheet-cancel {
-        color:
-            var(--future-cyan) !important;
-
-        background:
-            rgba(83,230,255,0.06) !important;
-    }
-}
-
-
-/* =========================================================
-   iPAD
-   FUTURISTIC TWO-PANE WORKSPACE
-========================================================= */
-
-@media (min-width:701px)
-and (max-width:1180px)
-and (hover:none)
-and (pointer:coarse) {
-
-    html,
-    body {
-        background:
-            var(--future-bg) !important;
-
-        color:
-            var(--future-text) !important;
-    }
-
-
-    .app {
-        min-height:100dvh !important;
-
-        display:grid !important;
-
-        grid-template-columns:
-            245px
-            minmax(0,1fr) !important;
-
-        grid-template-rows:
-            82px
-            minmax(0,1fr) !important;
-
-        padding:
-            env(safe-area-inset-top)
-            0
-            env(safe-area-inset-bottom) !important;
-
-        background:
-            radial-gradient(
-                circle at 85% 0%,
-                rgba(24,168,255,0.11),
-                transparent 30%
-            ),
-            var(--future-bg) !important;
-    }
-
-
-    /* -----------------------------------------------------
-       HEADER
-    ----------------------------------------------------- */
-
-    .header {
-        grid-column:1 / -1 !important;
-
-        grid-row:1 !important;
-
-        min-height:82px !important;
-
-        height:82px !important;
-
-        padding:
-            12px 20px !important;
-
-        border:0 !important;
-
-        border-bottom:
-            1px solid
-            var(--future-line) !important;
-
-        border-radius:0 !important;
-
-        background:
-            rgba(8,11,18,0.80) !important;
-
-        box-shadow:
-            0 12px 35px
-            rgba(0,0,0,0.25) !important;
-
-        backdrop-filter:
-            blur(24px) !important;
-
-        -webkit-backdrop-filter:
-            blur(24px) !important;
-    }
-
-
-    .app-logo {
-        width:44px !important;
-
-        height:44px !important;
-
-        flex-basis:44px !important;
-
-        border-radius:13px !important;
-
-        background:
-            linear-gradient(
-                145deg,
-                #23c7ff,
-                #0878ff
-            ) !important;
-
-        box-shadow:
-            0 0 24px
-            rgba(24,168,255,0.25) !important;
-    }
-
-
-    .brand-text h1 {
-        color:#ffffff !important;
-
-        font-size:21px !important;
-    }
-
-
-    .brand-text p {
-        color:
-            var(--future-muted) !important;
-
-        font-size:10px !important;
-
-        letter-spacing:1px !important;
-
-        text-transform:uppercase !important;
-    }
-
-
-    /* -----------------------------------------------------
-       LEFT COMMAND RAIL
-    ----------------------------------------------------- */
-
-    .toolbar {
-        grid-column:1 !important;
-
-        grid-row:2 !important;
-
-        position:sticky !important;
-
-        top:0 !important;
-
-        align-self:start !important;
-
-        height:
-            calc(
-                100dvh - 82px
-            ) !important;
-
-        padding:
-            18px 12px !important;
-
-        display:flex !important;
-
-        flex-direction:column !important;
-
-        gap:7px !important;
-
-        border-right:
-            1px solid
-            var(--future-line) !important;
-
-        background:
-            rgba(12,16,25,0.72) !important;
-
-        backdrop-filter:
-            blur(24px) !important;
-
-        -webkit-backdrop-filter:
-            blur(24px) !important;
-
-        overflow-y:auto !important;
-    }
-
-
-    .toolbar.menu-collapsed {
-        max-height:none !important;
-
-        padding:
-            18px 12px !important;
-
-        opacity:1 !important;
-
-        pointer-events:auto !important;
-
-        transform:none !important;
-    }
-
-
-    .toolbar-btn {
-        flex:0 0 54px !important;
-
-        height:54px !important;
-
-        min-height:54px !important;
-
-        display:grid !important;
-
-        grid-template-columns:
-            30px
-            1fr !important;
-
-        align-items:center !important;
-
-        gap:9px !important;
-
-        padding:
-            0 12px !important;
-
-        border:
-            1px solid transparent !important;
-
-        border-radius:13px !important;
-
-        background:transparent !important;
-
-        color:
-            var(--future-cyan) !important;
-    }
-
-
-    .toolbar-btn svg {
-        width:23px !important;
-
-        height:23px !important;
-
-        stroke:
-            var(--future-cyan) !important;
-    }
-
-
-    .toolbar-btn span {
-        color:#aeb9ca !important;
-
-        font-size:11px !important;
-
-        text-align:left !important;
-    }
-
-
-    .toolbar-btn:active,
-    .toolbar-btn.touch-active {
-        background:
-            rgba(24,168,255,0.12) !important;
-
-        border-color:
-            rgba(83,230,255,0.16) !important;
-    }
-
-
-    /* -----------------------------------------------------
-       MAIN AREA
-    ----------------------------------------------------- */
-
-    .search-section,
-    .breadcrumb,
-    .message,
-    .reorder-bar,
-    .file-list,
-    .upload-status {
-        grid-column:2 !important;
-    }
-
-
-    .search-section {
-        grid-row:2 !important;
-
-        padding:
-            18px 22px 8px !important;
-
-        margin:0 !important;
-
-        background:transparent !important;
-    }
-
-
-    .search-box {
-        height:48px !important;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.08) !important;
-
-        border-radius:14px !important;
-
-        background:
-            rgba(255,255,255,0.055) !important;
-
-        color:#fff !important;
-    }
-
-
-    .search-box:focus {
-        border-color:
-            rgba(83,230,255,0.35) !important;
-
-        box-shadow:
-            0 0 0 3px
-            rgba(24,168,255,0.08) !important;
-    }
-
-
-    .breadcrumb {
-        grid-row:2 !important;
-
-        margin:
-            76px 22px 0 !important;
-
-        width:
-            calc(100% - 44px) !important;
-
-        max-width:none !important;
-    }
-
-
-    .message {
-        margin:
-            0 22px !important;
-
-        color:#647187 !important;
-
-        font-size:10px !important;
-    }
-
-
-    .file-list {
-        margin:
-            8px 22px 0 !important;
-
-        width:
-            calc(100% - 44px) !important;
-
-        background:transparent !important;
-
-        border-top:
-            1px solid
-            var(--future-line) !important;
-    }
-
-
-    .file-item {
-        min-height:72px !important;
-
-        padding:
-            10px 4px !important;
-
-        border:0 !important;
-
-        border-bottom:
-            1px solid
-            var(--future-line) !important;
-
-        border-radius:0 !important;
-
-        background:transparent !important;
-
-        box-shadow:none !important;
-    }
-
-
-    .file-item:active,
-    .file-item.touch-active {
-        background:
-            rgba(24,168,255,0.07) !important;
-    }
-
-
-    .position {
-        width:28px !important;
-
-        min-width:28px !important;
-
-        color:#536074 !important;
-    }
-
-
-    .file-icon {
-        width:44px !important;
-
-        min-width:44px !important;
-
-        height:44px !important;
-
-        margin-right:12px !important;
-
-        border-radius:13px !important;
-
-        background:
-            linear-gradient(
-                145deg,
-                rgba(24,168,255,0.18),
-                rgba(83,230,255,0.035)
-            ) !important;
-
-        border:
-            1px solid
-            rgba(83,230,255,0.15) !important;
-    }
-
-
-    .file-name {
-        color:#f5f7fb !important;
-
-        font-size:15px !important;
-
-        font-weight:600 !important;
-    }
-
-
-    .file-type {
-        color:#778296 !important;
-
-        font-size:10px !important;
-
-        margin-top:3px !important;
-    }
-
-
-    .item-btn {
-        width:34px !important;
-
-        height:38px !important;
-
-        min-width:34px !important;
-
-        color:#8290a5 !important;
-
-        background:transparent !important;
-
-        border:0 !important;
-
-        border-radius:9px !important;
-    }
-
-
-    .item-more-btn {
-        color:
-            var(--future-cyan) !important;
-    }
-
-
-    /* -----------------------------------------------------
-       ACTION SHEET
-    ----------------------------------------------------- */
-
-    .touch-sheet-card {
-        position:fixed !important;
-
-        margin:0 !important;
-
-        border:
-            1px solid
-            rgba(83,230,255,0.22) !important;
-
-        border-radius:22px !important;
-
-        background:
-            rgba(15,20,30,0.97) !important;
-
-        box-shadow:
-            0 28px 70px
-            rgba(0,0,0,0.65) !important;
-
-        backdrop-filter:
-            blur(28px) !important;
-
-        -webkit-backdrop-filter:
-            blur(28px) !important;
-    }
-
-
-    /* iPad uses the sidebar directly */
-    .header-menu {
-        display:none !important;
-    }
-}
-    /* -----------------------------------------------------
-       iPAD MAIN WORKSPACE
-    ----------------------------------------------------- */
-
-    .search-section {
-        grid-column:2 !important;
-        grid-row:2 !important;
-
-        width:auto !important;
-
-        padding:
-            18px 22px 8px !important;
-
-        margin:0 !important;
-
-        background:transparent !important;
-    }
-
-
-    .breadcrumb {
-        grid-column:2 !important;
-        grid-row:3 !important;
-
-        width:auto !important;
-
-        margin:
-            0 22px !important;
-
-        padding:
-            8px 0 !important;
-
-        max-width:none !important;
-
-        background:transparent !important;
-    }
-
-
-    .message {
-        grid-column:2 !important;
-        grid-row:4 !important;
-
-        width:auto !important;
-
-        margin:
-            0 22px !important;
-
-        padding:
-            4px 0 !important;
-
-        background:transparent !important;
-
-        color:#647187 !important;
-
-        font-size:10px !important;
-    }
-
-
-    .file-list {
-        grid-column:2 !important;
-        grid-row:5 !important;
-
-        width:auto !important;
-
-        margin:
-            8px 22px 0 !important;
-
-        background:transparent !important;
-
-        border-top:
-            1px solid
-            var(--future-line) !important;
-
-        border-radius:0 !important;
-
-        overflow:visible !important;
-    }
-
-
-    .reorder-bar {
-        grid-column:2 !important;
-        grid-row:4 !important;
-
-        margin:
-            0 22px !important;
-    }
-
-
-    .upload-status {
-        grid-column:2 !important;
-        grid-row:4 !important;
-
-        margin:
-            0 22px !important;
-    }
-
-
-
-
-
-
-
