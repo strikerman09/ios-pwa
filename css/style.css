@@ -6,7 +6,7 @@
    iPHONE   : Futuristic mobile UI
    iPAD     : Futuristic workspace UI
    OFFLINE  : No external resources
-   JS/DB    : No changes required
+   JS / DB  : Unchanged
    ========================================================= */
 
 
@@ -15,10 +15,6 @@
    ========================================================= */
 
 :root {
-
-    /* -----------------------------------------------------
-       Original / desktop colors
-    ----------------------------------------------------- */
 
     --blue: #007aff;
     --blue-soft: #eaf3ff;
@@ -31,21 +27,13 @@
     --secondary: #8e8e93;
     --line: #e5e5ea;
 
-    --border:
-        rgba(60, 60, 67, .12);
+    --border: rgba(60, 60, 67, .12);
 
     --shadow:
-        0 2px 10px
-        rgba(0, 0, 0, .06);
+        0 2px 10px rgba(0, 0, 0, .06);
 
     --shadow-strong:
-        0 10px 30px
-        rgba(0, 0, 0, .10);
-
-
-    /* -----------------------------------------------------
-       iOS system colors
-    ----------------------------------------------------- */
+        0 10px 30px rgba(0, 0, 0, .10);
 
     --ios-blue: #007aff;
     --ios-green: #34c759;
@@ -67,9 +55,7 @@
         rgba(0, 122, 255, .10);
 
 
-    /* -----------------------------------------------------
-       Futuristic mobile / iPad colors
-    ----------------------------------------------------- */
+    /* FUTURISTIC */
 
     --future-bg: #080b12;
 
@@ -98,12 +84,10 @@
         rgba(83, 230, 255, .22);
 
     --future-glow:
-        0 0 24px
-        rgba(24, 168, 255, .22);
+        0 0 24px rgba(24, 168, 255, .22);
 
     --future-shadow:
-        0 24px 60px
-        rgba(0, 0, 0, .55);
+        0 24px 60px rgba(0, 0, 0, .55);
 }
 
 
@@ -113,9 +97,7 @@
 
 * {
     box-sizing: border-box;
-
-    -webkit-tap-highlight-color:
-        transparent;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html,
@@ -144,20 +126,14 @@ body {
 
     min-height: 100dvh;
 
-    overscroll-behavior-y:
-        none;
+    overscroll-behavior-y: none;
 
-    -webkit-user-select:
-        none;
+    -webkit-user-select: none;
+    user-select: none;
 
-    user-select:
-        none;
+    -webkit-touch-callout: none;
 
-    -webkit-touch-callout:
-        none;
-
-    touch-action:
-        pan-y;
+    touch-action: pan-y;
 }
 
 button,
@@ -173,8 +149,7 @@ button {
 
     cursor: pointer;
 
-    touch-action:
-        manipulation;
+    touch-action: manipulation;
 }
 
 input,
@@ -183,32 +158,24 @@ textarea {
     -webkit-appearance: none;
     appearance: none;
 
-    -webkit-user-select:
-        text;
-
-    user-select:
-        text;
+    -webkit-user-select: text;
+    user-select: text;
 }
 
 .file-name,
 .file-type,
 .breadcrumb {
 
-    -webkit-user-select:
-        text;
-
-    user-select:
-        text;
+    -webkit-user-select: text;
+    user-select: text;
 }
 
 button:focus-visible {
 
     outline:
-        3px solid
-        rgba(0, 122, 255, .22);
+        3px solid rgba(0, 122, 255, .22);
 
-    outline-offset:
-        2px;
+    outline-offset: 2px;
 }
 
 .hidden {
@@ -218,38 +185,28 @@ button:focus-visible {
 
 /* =========================================================
    3. APP
-   DESKTOP BASE
+   DESKTOP
    ========================================================= */
 
 .app {
 
     width: 100%;
 
-    min-height:
-        100dvh;
+    min-height: 100dvh;
 
     padding:
-        calc(
-            6px +
-            env(safe-area-inset-top)
-        )
+        calc(6px + env(safe-area-inset-top))
         6px
-        calc(
-            20px +
-            env(safe-area-inset-bottom)
-        );
+        calc(20px + env(safe-area-inset-bottom));
 
-    background:
-        var(--bg);
+    background: var(--bg);
 
-    overflow-x:
-        hidden;
+    overflow-x: hidden;
 }
 
 
 /* =========================================================
    4. HEADER
-   DESKTOP BASE
    ========================================================= */
 
 .header {
@@ -260,38 +217,29 @@ button:focus-visible {
 
     align-items: center;
 
-    justify-content:
-        space-between;
+    justify-content: space-between;
 
     gap: 14px;
 
-    min-height:
-        82px;
+    min-height: 82px;
 
-    padding:
-        12px 14px;
+    padding: 12px 14px;
 
     background:
         rgba(255, 255, 255, .92);
 
     border:
-        1px solid
-        var(--line);
+        1px solid var(--line);
 
     border-radius:
         22px 22px 0 0;
 
-    box-shadow:
-        var(--shadow);
+    box-shadow: var(--shadow);
 
-    backdrop-filter:
-        blur(18px);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
-    -webkit-backdrop-filter:
-        blur(18px);
-
-    overflow:
-        hidden;
+    overflow: hidden;
 }
 
 .brand {
@@ -310,26 +258,21 @@ button:focus-visible {
     width: 54px;
     height: 54px;
 
-    flex:
-        0 0 54px;
+    flex: 0 0 54px;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    border-radius:
-        16px;
+    border-radius: 16px;
 
-    background:
-        var(--blue);
+    background: var(--blue);
 
     box-shadow:
-        0 5px 15px
-        rgba(0, 122, 255, .24);
+        0 5px 15px rgba(0, 122, 255, .24);
 
-    overflow:
-        hidden;
+    overflow: hidden;
 }
 
 .app-logo svg {
@@ -341,7 +284,6 @@ button:focus-visible {
 }
 
 .brand-text {
-
     min-width: 0;
 }
 
@@ -349,97 +291,64 @@ button:focus-visible {
 
     margin: 0;
 
-    font-size:
-        24px;
+    font-size: 24px;
+    line-height: 1.15;
 
-    line-height:
-        1.15;
+    font-weight: 700;
 
-    font-weight:
-        700;
+    letter-spacing: -.4px;
 
-    letter-spacing:
-        -.4px;
+    color: var(--text);
 
-    color:
-        var(--text);
+    white-space: nowrap;
 
-    white-space:
-        nowrap;
-
-    overflow:
-        hidden;
-
-    text-overflow:
-        ellipsis;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .brand-text p {
 
-    margin:
-        5px 0 0;
+    margin: 5px 0 0;
 
-    font-size:
-        13px;
+    font-size: 13px;
+    line-height: 1.25;
 
-    line-height:
-        1.25;
+    color: var(--secondary);
 
-    color:
-        var(--secondary);
-
-    white-space:
-        nowrap;
+    white-space: nowrap;
 }
 
 
 /* =========================================================
-   5. HEADER MENU
+   5. THREE-LINE HEADER MENU
    ========================================================= */
 
 .header-menu {
 
-    flex:
-        0 0 auto;
+    flex: 0 0 auto;
 
-    width:
-        52px;
+    width: 52px;
+    height: 52px;
 
-    height:
-        52px;
+    min-width: 52px;
+    min-height: 52px;
 
-    min-width:
-        52px;
+    display: flex;
 
-    min-height:
-        52px;
+    flex-direction: column;
 
-    display:
-        flex;
+    align-items: center;
+    justify-content: center;
 
-    flex-direction:
-        column;
+    gap: 5px;
 
-    align-items:
-        center;
+    padding: 0;
 
-    justify-content:
-        center;
+    border: 0;
 
-    gap:
-        5px;
+    border-radius: 50%;
 
-    padding:
-        0;
-
-    border:
-        0;
-
-    border-radius:
-        50%;
-
-    background:
-        #e7e7ec;
+    background: #e7e7ec;
 
     transition:
         transform .15s ease,
@@ -448,44 +357,36 @@ button:focus-visible {
 
 .header-menu .menu-line {
 
-    display:
-        block;
+    display: block;
 
-    width:
-        21px;
+    width: 21px;
+    height: 2.5px;
 
-    height:
-        2.5px;
+    border-radius: 4px;
 
-    border-radius:
-        4px;
+    background: var(--blue);
 
-    background:
-        var(--blue);
+    transition:
+        transform .18s ease,
+        opacity .18s ease;
 }
 
 .header-menu:active {
-    transform:
-        scale(.93);
+    transform: scale(.93);
 }
 
-.header-menu.is-open
-.menu-line:nth-child(1) {
+.header-menu.is-open .menu-line:nth-child(1) {
 
     transform:
         translateY(7.5px)
         rotate(45deg);
 }
 
-.header-menu.is-open
-.menu-line:nth-child(2) {
-
-    opacity:
-        0;
+.header-menu.is-open .menu-line:nth-child(2) {
+    opacity: 0;
 }
 
-.header-menu.is-open
-.menu-line:nth-child(3) {
+.header-menu.is-open .menu-line:nth-child(3) {
 
     transform:
         translateY(-7.5px)
@@ -494,43 +395,31 @@ button:focus-visible {
 
 
 /* =========================================================
-   6. TOOLBAR
+   6. DESKTOP TOOLBAR
    ========================================================= */
 
 .toolbar {
 
-    width:
-        100%;
+    width: 100%;
 
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
-        repeat(
-            9,
-            minmax(0, 1fr)
-        );
+        repeat(9, minmax(0, 1fr));
 
-    gap:
-        6px;
+    gap: 6px;
 
-    padding:
-        8px 10px;
+    padding: 8px 10px;
 
-    background:
-        var(--bg);
+    background: var(--bg);
 
-    position:
-        sticky;
+    position: sticky;
 
-    top:
-        0;
+    top: 0;
 
-    z-index:
-        100;
+    z-index: 100;
 
-    overflow:
-        hidden;
+    overflow: hidden;
 
     transition:
         max-height .22s ease,
@@ -541,52 +430,35 @@ button:focus-visible {
 
 .toolbar-btn {
 
-    width:
-        100%;
+    width: 100%;
+    min-width: 0;
 
-    min-width:
-        0;
+    height: 60px;
 
-    height:
-        60px;
+    display: flex;
 
-    display:
-        flex;
+    flex-direction: column;
 
-    flex-direction:
-        column;
+    align-items: center;
+    justify-content: center;
 
-    align-items:
-        center;
+    gap: 3px;
 
-    justify-content:
-        center;
-
-    gap:
-        3px;
-
-    padding:
-        3px;
+    padding: 3px;
 
     border:
-        1px solid
-        var(--line);
+        1px solid var(--line);
 
-    border-radius:
-        15px;
+    border-radius: 15px;
 
-    background:
-        #fff;
+    background: #fff;
 
-    color:
-        var(--blue);
+    color: var(--blue);
 
     box-shadow:
-        0 1px 5px
-        rgba(0, 0, 0, .055);
+        0 1px 5px rgba(0, 0, 0, .055);
 
-    font-size:
-        21px;
+    font-size: 21px;
 
     transition:
         transform .14s ease,
@@ -596,117 +468,87 @@ button:focus-visible {
 .toolbar-btn svg,
 .ios-menu-icon {
 
-    width:
-        24px;
+    width: 24px;
+    height: 24px;
 
-    height:
-        24px;
+    flex: 0 0 auto;
 
-    flex:
-        0 0 auto;
+    fill: none;
 
-    fill:
-        none;
+    stroke: var(--blue);
 
-    stroke:
-        var(--blue);
+    stroke-width: 1.9;
 
-    stroke-width:
-        1.9;
-
-    stroke-linecap:
-        round;
-
-    stroke-linejoin:
-        round;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .toolbar-btn span {
 
-    max-width:
-        100%;
+    max-width: 100%;
 
-    font-size:
-        10px;
+    font-size: 10px;
+    line-height: 12px;
 
-    line-height:
-        12px;
+    font-weight: 600;
 
-    font-weight:
-        600;
+    color: var(--blue);
 
-    color:
-        var(--blue);
+    white-space: nowrap;
 
-    white-space:
-        nowrap;
-
-    overflow:
-        hidden;
-
-    text-overflow:
-        ellipsis;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .toolbar-btn:active {
 
-    transform:
-        scale(.95);
+    transform: scale(.95);
 
-    background:
-        var(--blue-soft);
+    background: var(--blue-soft);
 }
 
 .toolbar-btn:disabled {
 
-    opacity:
-        .35;
+    opacity: .35;
 
-    transform:
-        none;
+    transform: none;
 
-    cursor:
-        default;
+    cursor: default;
 }
 
 .toolbar-btn.select-active {
 
-    background:
-        #e5efff !important;
+    background: #e5efff !important;
 
     box-shadow:
-        inset 0 0 0 2px
-        var(--blue),
-        0 2px 8px
-        rgba(0, 0, 0, .06)
+        inset 0 0 0 2px var(--blue),
+        0 2px 8px rgba(0, 0, 0, .06)
         !important;
 }
 
+
+/* =========================================================
+   IMPORTANT
+   TOOLBAR HIDE / SHOW
+   ========================================================= */
+
 .toolbar.menu-collapsed {
 
-    max-height:
-        0 !important;
+    max-height: 0 !important;
 
-    min-height:
-        0 !important;
+    min-height: 0 !important;
 
-    padding-top:
-        0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 
-    padding-bottom:
-        0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
 
-    margin:
-        0 !important;
+    opacity: 0 !important;
 
-    opacity:
-        0;
+    pointer-events: none !important;
 
-    pointer-events:
-        none;
-
-    overflow:
-        hidden !important;
+    overflow: hidden !important;
 
     transform:
         translateY(-8px);
@@ -719,49 +561,36 @@ button:focus-visible {
 
 .search-section {
 
-    width:
-        100%;
+    width: 100%;
 
-    padding:
-        7px 10px;
+    padding: 7px 10px;
 
-    background:
-        var(--bg);
+    background: var(--bg);
 }
 
 .search-box {
 
-    width:
-        100%;
+    width: 100%;
 
-    height:
-        50px;
+    height: 50px;
 
-    padding:
-        0 16px;
+    padding: 0 16px;
 
     border:
-        1px solid
-        rgba(60, 60, 67, .08);
+        1px solid rgba(60, 60, 67, .08);
 
-    border-radius:
-        15px;
+    border-radius: 15px;
 
-    background:
-        #e5e5ea;
+    background: #e5e5ea;
 
-    color:
-        var(--text);
+    color: var(--text);
 
-    font-size:
-        16px;
+    font-size: 16px;
 
-    outline:
-        none;
+    outline: none;
 
     box-shadow:
-        inset 0 1px 1px
-        rgba(0, 0, 0, .025);
+        inset 0 1px 1px rgba(0, 0, 0, .025);
 
     transition:
         background .15s ease,
@@ -770,24 +599,18 @@ button:focus-visible {
 }
 
 .search-box::placeholder {
-    color:
-        var(--secondary);
+    color: var(--secondary);
 }
 
 .search-box:focus {
 
-    background:
-        #fff;
+    background: #fff;
 
     border-color:
         rgba(0, 122, 255, .35);
 
     box-shadow:
-        0 0 0 3px
-        rgba(0, 122, 255, .10);
-
-    outline:
-        none;
+        0 0 0 3px rgba(0, 122, 255, .10);
 }
 
 
@@ -797,128 +620,87 @@ button:focus-visible {
 
 .breadcrumb {
 
-    width:
-        calc(100% - 20px);
+    width: calc(100% - 20px);
+    max-width: calc(100% - 20px);
 
-    max-width:
-        calc(100% - 20px);
+    min-width: 0;
+    min-height: 40px;
 
-    min-width:
-        0;
+    margin: 7px 10px 0;
 
-    min-height:
-        40px;
+    padding: 3px 0;
 
-    margin:
-        7px 10px 0;
+    display: flex;
 
-    padding:
-        3px 0;
+    align-items: center;
 
-    display:
-        flex;
+    gap: 5px;
 
-    align-items:
-        center;
+    overflow-x: auto;
+    overflow-y: hidden;
 
-    gap:
-        5px;
+    white-space: nowrap;
 
-    overflow-x:
-        auto;
+    flex-wrap: nowrap;
 
-    overflow-y:
-        hidden;
+    scrollbar-width: none;
 
-    white-space:
-        nowrap;
-
-    flex-wrap:
-        nowrap;
-
-    scrollbar-width:
-        none;
-
-    -webkit-overflow-scrolling:
-        touch;
+    -webkit-overflow-scrolling: touch;
 }
 
 .breadcrumb::-webkit-scrollbar {
-    display:
-        none;
+    display: none;
 }
 
 .breadcrumb > * {
-    flex:
-        0 0 auto;
+    flex: 0 0 auto;
 }
 
 .breadcrumb > span {
 
-    color:
-        var(--secondary);
+    color: var(--secondary);
 
-    font-size:
-        14px;
+    font-size: 14px;
 }
 
 .crumb {
 
-    min-height:
-        38px;
+    min-height: 38px;
+    height: 38px;
 
-    height:
-        38px;
+    max-width: 70vw;
 
-    max-width:
-        70vw;
+    padding: 6px 12px;
 
-    padding:
-        6px 12px;
+    border: 0;
 
-    border:
-        0;
+    border-radius: 11px;
 
-    border-radius:
-        11px;
+    background: var(--blue-soft);
 
-    background:
-        var(--blue-soft);
+    color: var(--blue);
 
-    color:
-        var(--blue);
+    font-size: 14px;
+    line-height: 26px;
 
-    font-size:
-        14px;
+    overflow: hidden;
 
-    line-height:
-        26px;
+    text-overflow: ellipsis;
 
-    overflow:
-        hidden;
-
-    text-overflow:
-        ellipsis;
-
-    white-space:
-        nowrap;
+    white-space: nowrap;
 }
 
 .crumb:active {
-    background:
-        #dcecff;
+    background: #dcecff;
 }
 
 .crumb.current {
 
-    background:
-        #e5e5ea;
+    background: #e5e5ea;
 
-    color:
-        var(--text);
+    color: var(--text);
 
-    font-weight:
-        700;
+    font-weight: 700;
 }
 
 
@@ -928,50 +710,35 @@ button:focus-visible {
 
 .message {
 
-    margin:
-        3px 10px 7px;
+    margin: 3px 10px 7px;
 
-    padding:
-        7px 4px;
+    padding: 7px 4px;
 
-    background:
-        transparent;
+    background: transparent;
 
-    color:
-        #6d6d72;
+    color: #6d6d72;
 
-    font-size:
-        13px;
+    font-size: 13px;
 
-    line-height:
-        1.35;
+    line-height: 1.35;
 }
 
 .message::before {
 
-    content:
-        "";
+    content: "";
 
-    display:
-        inline-block;
+    display: inline-block;
 
-    width:
-        7px;
+    width: 7px;
+    height: 7px;
 
-    height:
-        7px;
+    margin-right: 7px;
 
-    margin-right:
-        7px;
+    vertical-align: middle;
 
-    vertical-align:
-        middle;
+    border-radius: 50%;
 
-    border-radius:
-        50%;
-
-    background:
-        var(--ios-green);
+    background: var(--ios-green);
 }
 
 
@@ -981,30 +748,22 @@ button:focus-visible {
 
 .upload-status {
 
-    margin:
-        0 10px 8px;
+    margin: 0 10px 8px;
 
-    padding:
-        11px 12px;
+    padding: 11px 12px;
 
     border:
-        1px solid
-        #bfdbfe;
+        1px solid #bfdbfe;
 
-    border-radius:
-        14px;
+    border-radius: 14px;
 
-    background:
-        #eff6ff;
+    background: #eff6ff;
 
-    color:
-        #1e40af;
+    color: #1e40af;
 
-    font-size:
-        13px;
+    font-size: 13px;
 
-    line-height:
-        1.35;
+    line-height: 1.35;
 }
 
 
@@ -1014,109 +773,80 @@ button:focus-visible {
 
 .reorder-bar {
 
-    margin:
-        0 10px 10px;
+    margin: 0 10px 10px;
 
-    padding:
-        12px;
+    padding: 12px;
 
     border:
-        1px solid
-        #cfe2ff;
+        1px solid #cfe2ff;
 
-    border-radius:
-        16px;
+    border-radius: 16px;
 
-    background:
-        #eef6ff;
+    background: #eef6ff;
 }
 
 .reorder-info {
 
-    display:
-        flex;
+    display: flex;
 
-    flex-direction:
-        column;
+    flex-direction: column;
 
-    gap:
-        3px;
+    gap: 3px;
 
-    margin-bottom:
-        8px;
+    margin-bottom: 8px;
 }
 
 .reorder-info strong {
 
-    color:
-        var(--blue);
+    color: var(--blue);
 
-    font-size:
-        14px;
+    font-size: 14px;
 }
 
 .reorder-info span {
 
-    color:
-        #6d6d72;
+    color: #6d6d72;
 
-    font-size:
-        12px;
+    font-size: 12px;
 }
 
 .reorder-actions {
 
-    display:
-        flex;
+    display: flex;
 
-    gap:
-        8px;
+    gap: 8px;
 }
 
 .reorder-actions button {
 
-    flex:
-        1;
+    flex: 1;
 
-    min-height:
-        44px;
+    min-height: 44px;
 
-    border:
-        0;
+    border: 0;
 
-    border-radius:
-        12px;
+    border-radius: 12px;
 
-    font-size:
-        14px;
+    font-size: 14px;
 
-    font-weight:
-        700;
+    font-weight: 700;
 }
 
 .save-btn {
 
-    background:
-        var(--blue);
-
-    color:
-        #fff;
+    background: var(--blue);
+    color: #fff;
 }
 
 .cancel-btn {
 
-    background:
-        #8e8e93;
-
-    color:
-        #fff;
+    background: #8e8e93;
+    color: #fff;
 }
 
 .save-btn:active,
 .cancel-btn:active {
-
-    transform:
-        scale(.97);
+    transform: scale(.97);
 }
 
 
@@ -1126,11 +856,9 @@ button:focus-visible {
 
 .file-list {
 
-    width:
-        100%;
+    width: 100%;
 
-    padding:
-        0 10px 24px;
+    padding: 0 10px 24px;
 }
 
 
@@ -1141,23 +869,17 @@ button:focus-visible {
 
 .file-item {
 
-    position:
-        relative;
+    position: relative;
 
-    width:
-        100%;
+    width: 100%;
 
-    min-height:
-        72px;
+    min-height: 72px;
 
-    margin:
-        0 0 8px;
+    margin: 0 0 8px;
 
-    padding:
-        9px 10px;
+    padding: 9px 10px;
 
-    display:
-        grid !important;
+    display: grid !important;
 
     grid-template-columns:
         30px
@@ -1165,63 +887,49 @@ button:focus-visible {
         minmax(0, 1fr)
         180px;
 
-    align-items:
-        center;
+    align-items: center;
 
-    gap:
-        9px;
+    gap: 9px;
 
-    overflow:
-        hidden;
+    overflow: hidden;
 
     border:
-        1px solid
-        var(--line);
+        1px solid var(--line);
 
-    border-radius:
-        18px;
+    border-radius: 18px;
 
-    background:
-        #fff;
+    background: #fff;
 
-    box-shadow:
-        var(--shadow);
+    box-shadow: var(--shadow);
 
     transition:
         transform .15s ease,
         background .15s ease,
         box-shadow .15s ease;
 
-    touch-action:
-        manipulation;
+    touch-action: manipulation;
 }
 
 .file-item:hover {
-    background:
-        #fff;
+    background: #fff;
 }
 
 .file-item:active {
 
-    transform:
-        scale(.992);
+    transform: scale(.992);
 
-    background:
-        #f7faff;
+    background: #f7faff;
 }
 
 .file-item.touch-active {
 
-    transform:
-        scale(.992) !important;
+    transform: scale(.992) !important;
 
-    background:
-        #f7faff !important;
+    background: #f7faff !important;
 }
 
 .folder-row {
-    cursor:
-        pointer;
+    cursor: pointer;
 }
 
 
@@ -1231,32 +939,22 @@ button:focus-visible {
 
 .position {
 
-    width:
-        30px;
+    width: 30px;
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
+    justify-content: center;
 
-    justify-content:
-        center;
+    color: var(--secondary);
 
-    color:
-        var(--secondary);
+    font-size: 13px;
 
-    font-size:
-        13px;
+    font-weight: 600;
 
-    font-weight:
-        600;
+    text-align: center;
 
-    text-align:
-        center;
-
-    font-variant-numeric:
-        tabular-nums;
+    font-variant-numeric: tabular-nums;
 }
 
 
@@ -1266,38 +964,25 @@ button:focus-visible {
 
 .file-icon {
 
-    width:
-        50px;
+    width: 50px;
+    height: 50px;
 
-    height:
-        50px;
+    display: flex;
 
-    display:
-        flex;
+    align-items: center;
+    justify-content: center;
 
-    align-items:
-        center;
+    border-radius: 14px;
 
-    justify-content:
-        center;
+    background: #f2f2f7;
 
-    border-radius:
-        14px;
+    color: var(--blue);
 
-    background:
-        #f2f2f7;
+    font-size: 29px;
 
-    color:
-        var(--blue);
+    overflow: hidden;
 
-    font-size:
-        29px;
-
-    overflow:
-        hidden;
-
-    -webkit-user-drag:
-        none;
+    -webkit-user-drag: none;
 }
 
 .folder-item .file-icon,
@@ -1305,8 +990,7 @@ button:focus-visible {
 
     filter:
         drop-shadow(
-            0 3px 4px
-            rgba(0, 122, 255, .12)
+            0 3px 4px rgba(0, 122, 255, .12)
         );
 }
 
@@ -1317,104 +1001,75 @@ button:focus-visible {
 
 .file-info {
 
-    min-width:
-        0 !important;
+    min-width: 0 !important;
 
-    width:
-        auto;
+    width: auto;
 
-    overflow:
-        hidden;
+    overflow: hidden;
 }
 
 .file-name {
 
-    display:
-        block;
+    display: block;
 
-    width:
-        100%;
+    width: 100%;
 
-    min-width:
-        0;
+    min-width: 0;
 
-    margin:
-        0;
+    margin: 0;
 
-    color:
-        var(--text);
+    color: var(--text);
 
-    font-size:
-        16px;
+    font-size: 16px;
 
-    line-height:
-        1.3;
+    line-height: 1.3;
 
-    font-weight:
-        600;
+    font-weight: 600;
 
-    overflow:
-        hidden;
+    overflow: hidden;
 
-    text-overflow:
-        ellipsis;
+    text-overflow: ellipsis;
 
-    white-space:
-        nowrap;
+    white-space: nowrap;
 }
 
 .file-name-text {
-    display:
-        inline;
+    display: inline;
 }
 
 .file-type {
 
-    margin-top:
-        3px;
+    margin-top: 3px;
 
-    color:
-        var(--secondary);
+    color: var(--secondary);
 
-    font-size:
-        12px;
+    font-size: 12px;
 
-    line-height:
-        1.3;
+    line-height: 1.3;
 
-    overflow:
-        hidden;
+    overflow: hidden;
 
-    text-overflow:
-        ellipsis;
+    text-overflow: ellipsis;
 
-    white-space:
-        nowrap;
+    white-space: nowrap;
 }
 
 .recent-file-path,
 .search-path {
 
-    margin-top:
-        3px;
+    margin-top: 3px;
 
-    color:
-        #8e8e93;
+    color: #8e8e93;
 
-    font-size:
-        11px;
+    font-size: 11px;
 
-    line-height:
-        1.3;
+    line-height: 1.3;
 
-    overflow:
-        hidden;
+    overflow: hidden;
 
-    text-overflow:
-        ellipsis;
+    text-overflow: ellipsis;
 
-    white-space:
-        nowrap;
+    white-space: nowrap;
 }
 
 
@@ -1424,82 +1079,53 @@ button:focus-visible {
 
 .item-actions {
 
-    width:
-        180px;
+    width: 180px;
+    height: 54px;
 
-    height:
-        54px;
-
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
-        repeat(
-            5,
-            minmax(0, 1fr)
-        );
+        repeat(5, minmax(0, 1fr));
 
-    gap:
-        4px;
+    gap: 4px;
 
-    padding:
-        4px;
+    padding: 4px;
 
-    border-radius:
-        15px;
+    border-radius: 15px;
 
-    background:
-        #f1f2f6;
+    background: #f1f2f6;
 
-    overflow:
-        hidden;
+    overflow: hidden;
 }
 
 .item-btn,
 .item-actions > button {
 
-    width:
-        100%;
+    width: 100%;
+    height: 100%;
 
-    height:
-        100%;
+    min-width: 0;
+    min-height: 0;
 
-    min-width:
-        0;
+    display: flex;
 
-    min-height:
-        0;
+    align-items: center;
+    justify-content: center;
 
-    display:
-        flex;
+    padding: 0;
 
-    align-items:
-        center;
+    border: 0;
 
-    justify-content:
-        center;
+    border-radius: 11px;
 
-    padding:
-        0;
+    background: #fff;
 
-    border:
-        0;
+    color: var(--text);
 
-    border-radius:
-        11px;
-
-    background:
-        #fff;
-
-    color:
-        var(--text);
-
-    font-size:
-        20px;
+    font-size: 20px;
 
     box-shadow:
-        0 1px 3px
-        rgba(0, 0, 0, .05);
+        0 1px 3px rgba(0, 0, 0, .05);
 
     transition:
         transform .12s ease,
@@ -1509,76 +1135,49 @@ button:focus-visible {
 .item-btn:active,
 .item-actions > button:active {
 
-    transform:
-        scale(.91);
+    transform: scale(.91);
 
-    background:
-        var(--blue-soft);
+    background: var(--blue-soft);
 }
 
 .item-more-btn {
-
-    color:
-        var(--blue) !important;
+    color: var(--blue) !important;
 }
 
 .item-more-btn span {
 
-    font-size:
-        17px;
+    font-size: 17px;
 
-    font-weight:
-        800;
+    font-weight: 800;
 
-    letter-spacing:
-        1px;
+    letter-spacing: 1px;
 }
 
+.item-actions > button:not(.item-btn) {
 
-/* Favorite button */
+    width: 100% !important;
+    height: 100% !important;
 
-.item-actions >
-button:not(.item-btn) {
+    min-width: 0 !important;
+    min-height: 0 !important;
 
-    width:
-        100% !important;
+    padding: 0 !important;
 
-    height:
-        100% !important;
+    display: flex !important;
 
-    min-width:
-        0 !important;
+    align-items: center !important;
+    justify-content: center !important;
 
-    min-height:
-        0 !important;
+    border: 0 !important;
 
-    padding:
-        0 !important;
+    border-radius: 11px !important;
 
-    display:
-        flex !important;
+    background: #fff !important;
 
-    align-items:
-        center !important;
-
-    justify-content:
-        center !important;
-
-    border:
-        0 !important;
-
-    border-radius:
-        11px !important;
-
-    background:
-        #fff !important;
-
-    font-size:
-        21px !important;
+    font-size: 21px !important;
 
     box-shadow:
-        0 1px 3px
-        rgba(0, 0, 0, .05);
+        0 1px 3px rgba(0, 0, 0, .05);
 }
 
 
@@ -1587,13 +1186,11 @@ button:not(.item-btn) {
    ========================================================= */
 
 .search-result {
-    cursor:
-        pointer;
+    cursor: pointer;
 }
 
 .search-result .item-actions {
-    display:
-        none;
+    display: none;
 }
 
 
@@ -1603,44 +1200,31 @@ button:not(.item-btn) {
 
 .empty {
 
-    width:
-        100%;
+    width: 100%;
 
-    min-height:
-        220px;
+    min-height: 220px;
 
-    display:
-        flex;
+    display: flex;
 
-    flex-direction:
-        column;
+    flex-direction: column;
 
-    align-items:
-        center;
+    align-items: center;
+    justify-content: center;
 
-    justify-content:
-        center;
+    gap: 10px;
 
-    gap:
-        10px;
+    padding: 30px 20px;
 
-    padding:
-        30px 20px;
+    color: var(--secondary);
 
-    color:
-        var(--secondary);
-
-    text-align:
-        center;
+    text-align: center;
 }
 
 .empty-icon {
 
-    font-size:
-        48px;
+    font-size: 48px;
 
-    opacity:
-        .75;
+    opacity: .75;
 }
 
 
@@ -1650,119 +1234,83 @@ button:not(.item-btn) {
 
 .selection-bar {
 
-    display:
-        none;
+    display: none;
 
-    align-items:
-        center;
+    align-items: center;
+    justify-content: space-between;
 
-    justify-content:
-        space-between;
+    gap: 10px;
 
-    gap:
-        10px;
+    margin: 0 10px 8px;
 
-    margin:
-        0 10px 8px;
+    padding: 10px 12px;
 
-    padding:
-        10px 12px;
+    border-radius: 14px;
 
-    border-radius:
-        14px;
+    background: var(--blue-soft);
 
-    background:
-        var(--blue-soft);
+    color: var(--blue);
 
-    color:
-        var(--blue);
+    font-size: 14px;
 
-    font-size:
-        14px;
-
-    font-weight:
-        600;
+    font-weight: 600;
 }
 
 .selection-bar.active {
-    display:
-        flex;
+    display: flex;
 }
 
 .selection-actions {
 
-    display:
-        flex;
+    display: flex;
 
-    gap:
-        6px;
+    gap: 6px;
 }
 
 .selection-action {
 
-    min-height:
-        38px;
+    min-height: 38px;
 
-    padding:
-        6px 10px;
+    padding: 6px 10px;
 
-    border:
-        0;
+    border: 0;
 
-    border-radius:
-        10px;
+    border-radius: 10px;
 
-    background:
-        #fff;
+    background: #fff;
 
-    color:
-        var(--blue);
+    color: var(--blue);
 
-    font-weight:
-        700;
+    font-weight: 700;
 }
 
 .selection-check {
 
-    width:
-        26px;
+    width: 26px;
+    height: 26px;
 
-    height:
-        26px;
+    flex: 0 0 26px;
 
-    flex:
-        0 0 26px;
+    display: flex;
 
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
+    align-items: center;
+    justify-content: center;
 
     border:
-        2px solid
-        #c7c7cc;
+        2px solid #c7c7cc;
 
-    border-radius:
-        50%;
+    border-radius: 50%;
 
-    background:
-        #fff;
+    background: #fff;
 
-    color:
-        #fff;
+    color: #fff;
 }
 
 .file-item.selected {
 
-    border-color:
-        var(--blue) !important;
+    border-color: var(--blue) !important;
 
-    background:
-        #eef5ff !important;
+    background: #eef5ff !important;
 
     box-shadow:
         0 2px 10px
@@ -1770,27 +1318,19 @@ button:not(.item-btn) {
         !important;
 }
 
-.file-item.selected
-.selection-check {
+.file-item.selected .selection-check {
 
-    border-color:
-        var(--blue);
+    border-color: var(--blue);
 
-    background:
-        var(--blue);
+    background: var(--blue);
 }
 
 .select-mode .file-item {
-    cursor:
-        pointer;
+    cursor: pointer;
 }
 
-.select-mode
-.file-item
-.item-actions {
-
-    display:
-        none;
+.select-mode .file-item .item-actions {
+    display: none;
 }
 
 
@@ -1800,72 +1340,47 @@ button:not(.item-btn) {
 
 .touch-action-sheet {
 
-    position:
-        fixed;
+    position: fixed;
 
-    inset:
-        0;
+    inset: 0;
 
-    z-index:
-        1000;
+    z-index: 1000;
 
-    display:
-        none;
+    display: none;
 
-    align-items:
-        center;
-
-    justify-content:
-        center;
+    align-items: center;
+    justify-content: center;
 
     padding:
-        calc(
-            16px +
-            env(safe-area-inset-top)
-        )
+        calc(16px + env(safe-area-inset-top))
         16px
-        calc(
-            16px +
-            env(safe-area-inset-bottom)
-        );
+        calc(16px + env(safe-area-inset-bottom));
 
     background:
         rgba(0, 0, 0, .28);
 
-    backdrop-filter:
-        blur(12px);
-
-    -webkit-backdrop-filter:
-        blur(12px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 .touch-action-sheet.show {
-    display:
-        flex;
+    display: flex;
 }
 
 .touch-sheet-backdrop {
 
-    position:
-        absolute;
+    position: absolute;
 
-    inset:
-        0;
+    inset: 0;
 
-    background:
-        transparent;
+    background: transparent;
 }
 
 .touch-sheet-card {
 
-    position:
-        relative;
+    position: relative;
 
-    width:
-        min(
-            92vw,
-            380px
-        );
+    width: min(92vw, 380px);
 
     max-height:
         calc(
@@ -1875,105 +1390,76 @@ button:not(.item-btn) {
             - env(safe-area-inset-bottom)
         );
 
-    overflow-y:
-        auto;
+    overflow-y: auto;
 
-    padding:
-        10px;
+    padding: 10px;
 
-    border-radius:
-        22px;
+    border-radius: 22px;
 
     background:
         rgba(255, 255, 255, .96);
 
     box-shadow:
-        0 20px 60px
-        rgba(0, 0, 0, .22);
+        0 20px 60px rgba(0, 0, 0, .22);
 
-    backdrop-filter:
-        blur(20px);
-
-    -webkit-backdrop-filter:
-        blur(20px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }
 
 .touch-sheet-title {
 
-    padding:
-        10px 12px;
+    padding: 10px 12px;
 
-    color:
-        var(--text);
+    color: var(--text);
 
-    font-size:
-        15px;
+    font-size: 15px;
 
-    font-weight:
-        700;
+    font-weight: 700;
 }
 
 .touch-sheet-action {
 
-    width:
-        100%;
+    width: 100%;
 
-    min-height:
-        46px;
+    min-height: 46px;
 
-    margin-top:
-        5px;
+    margin-top: 5px;
 
-    border:
-        0;
+    border: 0;
 
-    border-radius:
-        12px;
+    border-radius: 12px;
 
-    background:
-        #f2f2f7;
+    background: #f2f2f7;
 
-    color:
-        var(--text);
+    color: var(--text);
 
-    font-size:
-        14px;
+    font-size: 14px;
 }
 
 .touch-sheet-action:active {
 
-    background:
-        var(--blue-soft);
+    background: var(--blue-soft);
 
-    color:
-        var(--blue);
+    color: var(--blue);
 }
 
 .touch-sheet-cancel {
 
-    width:
-        100%;
+    width: 100%;
 
-    min-height:
-        46px;
+    min-height: 46px;
 
-    margin-top:
-        7px;
+    margin-top: 7px;
 
-    border:
-        0;
+    border: 0;
 
-    border-radius:
-        12px;
+    border-radius: 12px;
 
-    background:
-        #e5e5ea;
+    background: #e5e5ea;
 
-    color:
-        var(--text);
+    color: var(--text);
 
-    font-size:
-        14px;
+    font-size: 14px;
 }
 
 
@@ -1983,11 +1469,9 @@ button:not(.item-btn) {
 
 .v4-paste-fab {
 
-    position:
-        fixed;
+    position: fixed;
 
-    right:
-        18px;
+    right: 18px;
 
     bottom:
         calc(
@@ -1995,32 +1479,23 @@ button:not(.item-btn) {
             env(safe-area-inset-bottom)
         );
 
-    z-index:
-        900;
+    z-index: 900;
 
-    min-height:
-        48px;
+    min-height: 48px;
 
-    padding:
-        0 17px;
+    padding: 0 17px;
 
-    border:
-        0;
+    border: 0;
 
-    border-radius:
-        24px;
+    border-radius: 24px;
 
-    background:
-        var(--blue);
+    background: var(--blue);
 
-    color:
-        #fff;
+    color: #fff;
 
-    font-size:
-        13px;
+    font-size: 13px;
 
-    font-weight:
-        700;
+    font-weight: 700;
 
     box-shadow:
         0 7px 20px
@@ -2028,17 +1503,14 @@ button:not(.item-btn) {
 }
 
 .paste-label {
-    pointer-events:
-        none;
+    pointer-events: none;
 }
 
 .paste-cancel {
 
-    position:
-        fixed;
+    position: fixed;
 
-    right:
-        9px;
+    right: 9px;
 
     bottom:
         calc(
@@ -2046,91 +1518,60 @@ button:not(.item-btn) {
             env(safe-area-inset-bottom)
         );
 
-    z-index:
-        901;
+    z-index: 901;
 
-    width:
-        28px;
+    width: 28px;
+    height: 28px;
 
-    height:
-        28px;
+    min-height: 28px;
 
-    min-height:
-        28px;
+    border: 0;
 
-    border:
-        0;
+    border-radius: 50%;
 
-    border-radius:
-        50%;
+    background: #fff;
 
-    background:
-        #fff;
+    color: #333;
 
-    color:
-        #333;
-
-    font-size:
-        17px;
+    font-size: 17px;
 
     box-shadow:
-        0 2px 8px
-        rgba(0, 0, 0, .12);
+        0 2px 8px rgba(0, 0, 0, .12);
 }
 
 
 /* =========================================================
-   23. FILE DETAILS MODAL
+   23. FILE DETAILS
    ========================================================= */
 
 .file-details-modal {
 
-    position:
-        fixed;
+    position: fixed;
 
-    inset:
-        0;
+    inset: 0;
 
-    z-index:
-        1100;
+    z-index: 1100;
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
-
-    justify-content:
-        center;
+    align-items: center;
+    justify-content: center;
 
     padding:
-        calc(
-            12px +
-            env(safe-area-inset-top)
-        )
+        calc(12px + env(safe-area-inset-top))
         12px
-        calc(
-            12px +
-            env(safe-area-inset-bottom)
-        );
+        calc(12px + env(safe-area-inset-bottom));
 
     background:
         rgba(0, 0, 0, .28);
 
-    backdrop-filter:
-        blur(14px);
-
-    -webkit-backdrop-filter:
-        blur(14px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 }
 
 .file-details-card {
 
-    width:
-        min(
-            92vw,
-            520px
-        );
+    width: min(92vw, 520px);
 
     max-height:
         calc(
@@ -2140,14 +1581,11 @@ button:not(.item-btn) {
             - env(safe-area-inset-bottom)
         );
 
-    overflow:
-        auto;
+    overflow: auto;
 
-    padding:
-        16px 14px 14px;
+    padding: 16px 14px 14px;
 
-    border-radius:
-        21px;
+    border-radius: 21px;
 
     background:
         rgba(255, 255, 255, .97);
@@ -2159,26 +1597,20 @@ button:not(.item-btn) {
 
 .file-details-card h3 {
 
-    margin-top:
-        0;
+    margin-top: 0;
 
-    font-size:
-        17px;
+    font-size: 17px;
 }
 
 .file-detail-row {
 
-    display:
-        flex;
+    display: flex;
 
-    justify-content:
-        space-between;
+    justify-content: space-between;
 
-    gap:
-        12px;
+    gap: 12px;
 
-    padding:
-        10px 2px;
+    padding: 10px 2px;
 
     border-bottom:
         1px solid
@@ -2187,56 +1619,41 @@ button:not(.item-btn) {
 
 .file-detail-row strong {
 
-    font-size:
-        10px;
+    font-size: 10px;
 
-    color:
-        var(--secondary);
+    color: var(--secondary);
 }
 
 .file-detail-row span {
 
-    font-size:
-        13px;
+    font-size: 13px;
 
-    color:
-        var(--text);
+    color: var(--text);
 
-    text-align:
-        right;
+    text-align: right;
 
-    overflow-wrap:
-        anywhere;
+    overflow-wrap: anywhere;
 }
 
 .file-details-close {
 
-    width:
-        100%;
+    width: 100%;
 
-    height:
-        44px;
+    height: 44px;
 
-    min-height:
-        44px;
+    min-height: 44px;
 
-    margin-top:
-        12px;
+    margin-top: 12px;
 
-    border:
-        0;
+    border: 0;
 
-    border-radius:
-        12px;
+    border-radius: 12px;
 
-    background:
-        var(--blue);
+    background: var(--blue);
 
-    color:
-        #fff;
+    color: #fff;
 
-    font-size:
-        14px;
+    font-size: 14px;
 }
 
 
@@ -2246,11 +1663,9 @@ button:not(.item-btn) {
 
 .reorder-row {
 
-    position:
-        relative;
+    position: relative;
 
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
         36px
@@ -2258,63 +1673,45 @@ button:not(.item-btn) {
         minmax(0, 1fr)
         auto;
 
-    align-items:
-        center;
+    align-items: center;
 
-    gap:
-        10px;
+    gap: 10px;
 
-    min-height:
-        62px;
+    min-height: 62px;
 
-    margin-bottom:
-        6px;
+    margin-bottom: 6px;
 
-    padding:
-        8px 10px;
+    padding: 8px 10px;
 
     border:
-        1px solid
-        var(--line);
+        1px solid var(--line);
 
-    border-radius:
-        14px;
+    border-radius: 14px;
 
-    background:
-        #fff;
+    background: #fff;
 }
 
 .reorder-buttons {
 
-    display:
-        flex;
+    display: flex;
 
-    gap:
-        4px;
+    gap: 4px;
 }
 
 .move-btn {
 
-    width:
-        34px;
+    width: 34px;
+    height: 34px;
 
-    height:
-        34px;
+    min-width: 34px;
 
-    min-width:
-        34px;
+    border: 0;
 
-    border:
-        0;
+    border-radius: 9px;
 
-    border-radius:
-        9px;
+    background: #f2f2f7;
 
-    background:
-        #f2f2f7;
-
-    color:
-        var(--blue);
+    color: var(--blue);
 }
 
 
@@ -2324,84 +1721,75 @@ button:not(.item-btn) {
 
 .v11-diag-head {
 
-    padding:
-        8px 10px;
+    padding: 8px 10px;
 
-    border-radius:
-        10px 10px 0 0;
+    border-radius: 10px 10px 0 0;
 
-    background:
-        #eef6ff;
+    background: #eef6ff;
 
-    color:
-        var(--blue);
+    color: var(--blue);
 
-    font-weight:
-        700;
+    font-weight: 700;
 }
 
 .v11-diag-body {
 
-    padding:
-        10px;
+    padding: 10px;
 
-    background:
-        #fff;
+    background: #fff;
 
-    color:
-        var(--text);
+    color: var(--text);
 
-    font-size:
-        12px;
+    font-size: 12px;
 }
 
 .v11-diag-foot {
 
-    padding:
-        8px 10px;
+    padding: 8px 10px;
 
-    border-radius:
-        0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
 
-    background:
-        #f2f2f7;
+    background: #f2f2f7;
 
-    color:
-        var(--secondary);
+    color: var(--secondary);
 
-    font-size:
-        11px;
+    font-size: 11px;
 }
 
 
 /* =========================================================
    26. DESKTOP
-   ---------------------------------------------------------
    1367px+
-   No futuristic UI.
-   Original desktop system remains.
    ========================================================= */
 
 @media (min-width: 1367px) {
 
     html,
     body {
-        background:
-            var(--bg);
-        color:
-            var(--text);
+
+        background: var(--bg);
+
+        color: var(--text);
     }
 
     .app {
-        background:
-            var(--bg);
+        background: var(--bg);
+    }
+
+    /* Desktop keeps the normal toolbar.
+       Header menu does not affect desktop layout. */
+
+    .toolbar {
+        max-height: none;
+        opacity: 1;
+        pointer-events: auto;
+        transform: none;
     }
 }
 
 
 /* =========================================================
-   27. iPHONE + SMALL TOUCH DEVICES
-   ---------------------------------------------------------
+   27. iPHONE
    0 - 700px
    ========================================================= */
 
@@ -2410,11 +1798,9 @@ button:not(.item-btn) {
     html,
     body {
 
-        width:
-            100%;
+        width: 100%;
 
-        min-height:
-            100dvh;
+        min-height: 100dvh;
 
         background:
             var(--future-bg) !important;
@@ -2424,22 +1810,17 @@ button:not(.item-btn) {
     }
 
     body {
-        overflow-x:
-            hidden;
+        overflow-x: hidden;
     }
 
 
-    /* -----------------------------------------------------
-       APP
-    ----------------------------------------------------- */
+    /* APP */
 
     .app {
 
-        width:
-            100%;
+        width: 100%;
 
-        min-height:
-            100dvh;
+        min-height: 100dvh;
 
         padding:
             env(safe-area-inset-top)
@@ -2459,37 +1840,27 @@ button:not(.item-btn) {
     }
 
 
-    /* -----------------------------------------------------
-       HEADER
-    ----------------------------------------------------- */
+    /* HEADER */
 
     .header {
 
-        min-height:
-            64px;
+        min-height: 64px;
+        height: 64px;
 
-        height:
-            64px;
+        padding: 7px 10px;
 
-        padding:
-            7px 10px;
-
-        border:
-            0;
+        border: 0;
 
         border-bottom:
-            1px solid
-            var(--future-line);
+            1px solid var(--future-line);
 
-        border-radius:
-            0;
+        border-radius: 0;
 
         background:
             rgba(8, 11, 18, .82);
 
         box-shadow:
-            0 8px 25px
-            rgba(0, 0, 0, .28);
+            0 8px 25px rgba(0, 0, 0, .28);
 
         backdrop-filter:
             blur(24px)
@@ -2499,31 +1870,23 @@ button:not(.item-btn) {
             blur(24px)
             saturate(150%);
 
-        overflow:
-            visible;
+        overflow: visible;
 
-        z-index:
-            1000;
+        z-index: 1000;
     }
 
     .brand {
-        gap:
-            9px;
+        gap: 9px;
     }
 
     .app-logo {
 
-        width:
-            40px;
+        width: 40px;
+        height: 40px;
 
-        height:
-            40px;
+        flex: 0 0 40px;
 
-        flex:
-            0 0 40px;
-
-        border-radius:
-            12px;
+        border-radius: 12px;
 
         background:
             linear-gradient(
@@ -2539,59 +1902,44 @@ button:not(.item-btn) {
 
     .app-logo svg {
 
-        width:
-            31px;
-
-        height:
-            31px;
+        width: 31px;
+        height: 31px;
     }
 
     .brand-text h1 {
 
-        color:
-            #fff;
+        color: #fff;
 
-        font-size:
-            17px;
+        font-size: 17px;
 
-        letter-spacing:
-            -.2px;
+        letter-spacing: -.2px;
     }
 
     .brand-text p {
 
-        margin-top:
-            1px;
+        margin-top: 1px;
 
-        color:
-            var(--future-muted);
+        color: var(--future-muted);
 
-        font-size:
-            8px;
+        font-size: 8px;
 
-        letter-spacing:
-            .7px;
+        letter-spacing: .7px;
 
-        text-transform:
-            uppercase;
+        text-transform: uppercase;
     }
+
+
+    /* THREE-LINE BUTTON */
 
     .header-menu {
 
-        width:
-            40px;
+        width: 40px;
+        height: 40px;
 
-        height:
-            40px;
+        min-width: 40px;
+        min-height: 40px;
 
-        min-width:
-            40px;
-
-        min-height:
-            40px;
-
-        border-radius:
-            12px;
+        border-radius: 12px;
 
         background:
             rgba(255,255,255,.055);
@@ -2603,11 +1951,8 @@ button:not(.item-btn) {
 
     .header-menu .menu-line {
 
-        width:
-            17px;
-
-        height:
-            2px;
+        width: 17px;
+        height: 2px;
 
         background:
             var(--future-cyan);
@@ -2618,14 +1963,11 @@ button:not(.item-btn) {
     }
 
 
-    /* -----------------------------------------------------
-       TOOLBAR
-    ----------------------------------------------------- */
+    /* TOOLBAR */
 
     .toolbar {
 
-        position:
-            fixed;
+        position: fixed;
 
         top:
             calc(
@@ -2633,36 +1975,27 @@ button:not(.item-btn) {
                 env(safe-area-inset-top)
             );
 
-        left:
-            8px;
+        left: 8px;
+        right: 8px;
 
-        right:
-            8px;
+        width: auto;
 
-        width:
-            auto;
+        max-height: 420px;
 
-        max-height:
-            420px;
+        padding: 8px;
 
-        padding:
-            8px;
-
-        display:
-            grid;
+        display: grid;
 
         grid-template-columns:
             repeat(3, 1fr);
 
-        gap:
-            6px;
+        gap: 6px;
 
         border:
             1px solid
             var(--future-blue-line);
 
-        border-radius:
-            18px;
+        border-radius: 18px;
 
         background:
             var(--future-surface-strong);
@@ -2679,52 +2012,54 @@ button:not(.item-btn) {
             blur(28px)
             saturate(145%);
 
-        overflow:
-            hidden;
+        overflow: hidden;
 
-        z-index:
-            950;
+        z-index: 950;
     }
+
+    /*
+       IMPORTANT:
+       This is the only mobile collapsed state.
+    */
 
     .toolbar.menu-collapsed {
 
-        max-height:
-            0 !important;
+        max-height: 0 !important;
+
+        min-height: 0 !important;
 
         padding:
             0 !important;
 
-        opacity:
-            0;
+        margin:
+            0 !important;
+
+        opacity: 0 !important;
 
         transform:
             translateY(-10px)
             scale(.97);
 
-        border-width:
-            0;
+        border-width: 0;
 
-        pointer-events:
-            none;
+        pointer-events: none !important;
+
+        overflow: hidden !important;
     }
 
     .toolbar-btn {
 
-        height:
-            62px;
+        height: 62px;
 
-        padding:
-            5px 3px;
+        padding: 5px 3px;
 
-        gap:
-            4px;
+        gap: 4px;
 
         border:
             1px solid
             rgba(255,255,255,.075);
 
-        border-radius:
-            13px;
+        border-radius: 13px;
 
         background:
             linear-gradient(
@@ -2759,11 +2094,9 @@ button:not(.item-btn) {
         color:
             #cbd4e2;
 
-        font-size:
-            8px;
+        font-size: 8px;
 
-        font-weight:
-            600;
+        font-weight: 600;
     }
 
     .toolbar-btn:active,
@@ -2775,52 +2108,38 @@ button:not(.item-btn) {
         border-color:
             rgba(83,230,255,.38);
 
-        transform:
-            scale(.96);
+        transform: scale(.96);
     }
 
 
-    /* -----------------------------------------------------
-       SEARCH
-    ----------------------------------------------------- */
+    /* SEARCH */
 
     .search-section {
 
-        position:
-            relative;
+        position: relative;
 
-        padding:
-            9px 9px 7px;
+        padding: 9px 9px 7px;
 
-        background:
-            transparent;
+        background: transparent;
     }
 
     .search-section::before {
 
-        content:
-            "⌕";
+        content: "⌕";
 
-        position:
-            absolute;
+        position: absolute;
 
-        left:
-            22px;
+        left: 22px;
+        top: 14px;
 
-        top:
-            14px;
-
-        z-index:
-            2;
+        z-index: 2;
 
         color:
             var(--future-cyan);
 
-        font-size:
-            20px;
+        font-size: 20px;
 
-        line-height:
-            1;
+        line-height: 1;
 
         text-shadow:
             0 0 8px
@@ -2829,8 +2148,7 @@ button:not(.item-btn) {
 
     .search-box {
 
-        height:
-            46px;
+        height: 46px;
 
         padding:
             0 14px 0 39px;
@@ -2839,17 +2157,14 @@ button:not(.item-btn) {
             1px solid
             rgba(255,255,255,.08);
 
-        border-radius:
-            14px;
+        border-radius: 14px;
 
         background:
             rgba(255,255,255,.065);
 
-        color:
-            #fff;
+        color: #fff;
 
-        font-size:
-            15px;
+        font-size: 15px;
 
         box-shadow:
             inset 0 1px 0
@@ -2857,8 +2172,7 @@ button:not(.item-btn) {
     }
 
     .search-box::placeholder {
-        color:
-            #778296;
+        color: #778296;
     }
 
     .search-box:focus {
@@ -2875,41 +2189,30 @@ button:not(.item-btn) {
     }
 
 
-    /* -----------------------------------------------------
-       BREADCRUMB
-    ----------------------------------------------------- */
+    /* BREADCRUMB */
 
     .breadcrumb {
 
         width:
             calc(100% - 18px);
 
-        max-width:
-            none;
+        max-width: none;
 
-        min-height:
-            34px;
+        min-height: 34px;
 
-        margin:
-            1px 9px 4px;
+        margin: 1px 9px 4px;
 
-        padding:
-            3px 0;
+        padding: 3px 0;
 
-        gap:
-            4px;
+        gap: 4px;
 
-        color:
-            var(--future-muted);
+        color: var(--future-muted);
 
-        background:
-            transparent;
+        background: transparent;
 
-        border:
-            0;
+        border: 0;
 
-        box-shadow:
-            none;
+        box-shadow: none;
     }
 
     .breadcrumb > span {
@@ -2917,23 +2220,17 @@ button:not(.item-btn) {
         color:
             var(--future-muted);
 
-        font-size:
-            11px;
+        font-size: 11px;
     }
 
     .crumb {
 
-        min-height:
-            30px;
+        min-height: 30px;
+        height: 30px;
 
-        height:
-            30px;
+        padding: 4px 9px;
 
-        padding:
-            4px 9px;
-
-        border-radius:
-            9px;
+        border-radius: 9px;
 
         background:
             rgba(24,168,255,.08);
@@ -2941,11 +2238,9 @@ button:not(.item-btn) {
         color:
             var(--future-cyan);
 
-        font-size:
-            11px;
+        font-size: 11px;
 
-        line-height:
-            21px;
+        line-height: 21px;
     }
 
     .crumb.current {
@@ -2953,43 +2248,31 @@ button:not(.item-btn) {
         background:
             rgba(255,255,255,.07);
 
-        color:
-            #cbd4e2;
+        color: #cbd4e2;
     }
 
 
-    /* -----------------------------------------------------
-       STATUS
-    ----------------------------------------------------- */
+    /* MESSAGE */
 
     .message {
 
-        margin:
-            3px 9px 6px;
+        margin: 3px 9px 6px;
 
-        padding:
-            5px 0;
+        padding: 5px 0;
 
-        color:
-            #647187;
+        color: #647187;
 
-        font-size:
-            9px;
+        font-size: 9px;
 
-        background:
-            transparent;
+        background: transparent;
     }
 
     .message::before {
 
-        width:
-            5px;
+        width: 5px;
+        height: 5px;
 
-        height:
-            5px;
-
-        margin-right:
-            5px;
+        margin-right: 5px;
 
         background:
             var(--future-green);
@@ -2999,50 +2282,43 @@ button:not(.item-btn) {
             rgba(57,229,140,.45);
     }
 
+
+    /* UPLOAD */
+
     .upload-status {
 
-        margin:
-            4px 9px 7px;
+        margin: 4px 9px 7px;
 
-        padding:
-            8px 10px;
+        padding: 8px 10px;
 
         border:
             1px solid
             rgba(83,230,255,.15);
 
-        border-radius:
-            11px;
+        border-radius: 11px;
 
         background:
             rgba(24,168,255,.07);
 
-        color:
-            #bcefff;
+        color: #bcefff;
 
-        font-size:
-            9px;
+        font-size: 9px;
     }
 
 
-    /* -----------------------------------------------------
-       REORDER
-    ----------------------------------------------------- */
+    /* REORDER */
 
     .reorder-bar {
 
-        margin:
-            0 9px 7px;
+        margin: 0 9px 7px;
 
-        padding:
-            9px;
+        padding: 9px;
 
         border:
             1px solid
             rgba(83,230,255,.15);
 
-        border-radius:
-            13px;
+        border-radius: 13px;
 
         background:
             rgba(24,168,255,.07);
@@ -3053,8 +2329,7 @@ button:not(.item-btn) {
         color:
             var(--future-cyan);
 
-        font-size:
-            12px;
+        font-size: 12px;
     }
 
     .reorder-info span {
@@ -3062,53 +2337,38 @@ button:not(.item-btn) {
         color:
             var(--future-muted);
 
-        font-size:
-            9px;
+        font-size: 9px;
     }
 
     .reorder-actions {
-
-        gap:
-            5px;
+        gap: 5px;
     }
 
     .reorder-actions button {
 
-        min-height:
-            38px;
+        min-height: 38px;
 
-        border-radius:
-            9px;
+        border-radius: 9px;
 
-        font-size:
-            11px;
+        font-size: 11px;
     }
 
     .save-btn {
-
-        background:
-            var(--future-blue);
+        background: var(--future-blue);
     }
 
     .cancel-btn {
-
-        background:
-            #313846;
+        background: #313846;
     }
 
 
-    /* -----------------------------------------------------
-       FILE LIST
-       Directly below search/breadcrumb area
-    ----------------------------------------------------- */
+    /* FILE LIST */
 
     .file-list {
 
-        width:
-            100%;
+        width: 100%;
 
-        margin:
-            0;
+        margin: 0;
 
         padding:
             0 0
@@ -3117,8 +2377,7 @@ button:not(.item-btn) {
                 env(safe-area-inset-bottom)
             );
 
-        background:
-            transparent;
+        background: transparent;
 
         border-top:
             1px solid
@@ -3126,78 +2385,54 @@ button:not(.item-btn) {
     }
 
 
-    /* -----------------------------------------------------
-       FILE ROW
-    ----------------------------------------------------- */
+    /* FILE ROW */
 
     .file-item {
 
-        position:
-            relative;
+        position: relative;
 
-        width:
-            100%;
+        width: 100%;
 
-        min-height:
-            62px;
+        min-height: 62px;
 
-        margin:
-            0;
+        margin: 0;
 
-        padding:
-            7px 8px;
+        padding: 7px 8px;
 
-        display:
-            flex !important;
+        display: flex !important;
 
-        align-items:
-            center;
+        align-items: center;
 
-        gap:
-            8px;
+        gap: 8px;
 
-        border:
-            0;
+        border: 0;
 
         border-bottom:
             1px solid
             var(--future-line);
 
-        border-radius:
-            0;
+        border-radius: 0;
 
-        background:
-            transparent;
+        background: transparent;
 
-        box-shadow:
-            none;
+        box-shadow: none;
 
-        color:
-            var(--future-text);
+        color: var(--future-text);
 
-        transform:
-            none !important;
+        transform: none !important;
     }
 
     .file-item::after {
 
-        content:
-            "";
+        content: "";
 
-        position:
-            absolute;
+        position: absolute;
 
-        left:
-            61px;
+        left: 61px;
+        right: 0;
+        bottom: 0;
 
-        right:
-            0;
-
-        bottom:
-            0;
-
-        height:
-            1px;
+        height: 1px;
 
         background:
             var(--future-line);
@@ -3207,32 +2442,24 @@ button:not(.item-btn) {
     .file-item.touch-active {
 
         background:
-            rgba(24,168,255,.07) !important;
+            rgba(24,168,255,.07)
+            !important;
 
-        transform:
-            none !important;
+        transform: none !important;
     }
 
     .file-item:active::before,
     .file-item.touch-active::before {
 
-        content:
-            "";
+        content: "";
 
-        position:
-            absolute;
+        position: absolute;
 
-        left:
-            0;
+        left: 0;
+        top: 0;
+        bottom: 0;
 
-        top:
-            0;
-
-        bottom:
-            0;
-
-        width:
-            2px;
+        width: 2px;
 
         background:
             var(--future-cyan);
@@ -3243,70 +2470,46 @@ button:not(.item-btn) {
     }
 
 
-    /* -----------------------------------------------------
-       POSITION
-    ----------------------------------------------------- */
+    /* POSITION */
 
     .file-item .position {
 
-        width:
-            18px;
+        width: 18px;
 
-        min-width:
-            18px;
+        min-width: 18px;
 
-        flex:
-            0 0 18px;
+        flex: 0 0 18px;
 
-        color:
-            #536074;
+        color: #536074;
 
-        font-size:
-            9px;
+        font-size: 9px;
 
-        font-weight:
-            500;
+        font-weight: 500;
 
-        text-align:
-            center;
+        text-align: center;
     }
 
 
-    /* -----------------------------------------------------
-       ICON
-    ----------------------------------------------------- */
+    /* ICON */
 
     .file-item .file-icon {
 
-        position:
-            static;
+        position: static;
 
-        width:
-            40px;
+        width: 40px;
+        height: 40px;
 
-        height:
-            40px;
+        min-width: 40px;
+        min-height: 40px;
 
-        min-width:
-            40px;
+        flex: 0 0 40px;
 
-        min-height:
-            40px;
+        display: flex;
 
-        flex:
-            0 0 40px;
+        align-items: center;
+        justify-content: center;
 
-        display:
-            flex;
-
-        align-items:
-            center;
-
-        justify-content:
-            center;
-
-        border-radius:
-            11px;
+        border-radius: 11px;
 
         background:
             linear-gradient(
@@ -3322,19 +2525,16 @@ button:not(.item-btn) {
         color:
             var(--future-cyan);
 
-        font-size:
-            21px;
+        font-size: 21px;
 
         box-shadow:
             inset 0 1px 0
             rgba(255,255,255,.045);
 
-        filter:
-            none;
+        filter: none;
     }
 
-    .file-item.folder-row
-    .file-icon {
+    .file-item.folder-row .file-icon {
 
         background:
             linear-gradient(
@@ -3348,263 +2548,183 @@ button:not(.item-btn) {
     }
 
 
-    /* -----------------------------------------------------
-       INFO
-    ----------------------------------------------------- */
+    /* INFO */
 
     .file-item .file-info {
 
-        position:
-            static;
+        position: static;
 
-        width:
-            auto;
+        width: auto;
+        height: auto;
 
-        height:
-            auto;
+        flex: 1 1 auto;
 
-        flex:
-            1 1 auto;
+        min-width: 0;
 
-        min-width:
-            0;
+        padding: 0;
 
-        padding:
-            0;
+        display: flex !important;
 
-        display:
-            flex !important;
+        flex-direction: column;
 
-        flex-direction:
-            column;
+        justify-content: center;
 
-        justify-content:
-            center;
+        gap: 1px;
 
-        gap:
-            1px;
-
-        overflow:
-            hidden;
+        overflow: hidden;
     }
 
     .file-item .file-name {
 
-        width:
-            100%;
+        width: 100%;
+        height: auto;
 
-        height:
-            auto;
+        color: #f5f7fb;
 
-        color:
-            #f5f7fb;
+        font-size: 14px;
 
-        font-size:
-            14px;
+        line-height: 19px;
 
-        line-height:
-            19px;
+        font-weight: 600;
 
-        font-weight:
-            600;
-
-        letter-spacing:
-            -.1px;
+        letter-spacing: -.1px;
     }
 
     .file-item .file-type {
 
-        width:
-            100%;
+        width: 100%;
+        height: auto;
 
-        height:
-            auto;
+        margin: 0;
 
-        margin:
-            0;
+        color: #778296;
 
-        color:
-            #778296;
+        font-size: 9px;
 
-        font-size:
-            9px;
+        line-height: 14px;
 
-        line-height:
-            14px;
-
-        letter-spacing:
-            .25px;
+        letter-spacing: .25px;
     }
 
     .file-item .recent-file-path,
     .file-item .search-path {
 
-        margin-top:
-            1px;
+        margin-top: 1px;
 
-        color:
-            #647187;
+        color: #647187;
 
-        font-size:
-            8px;
+        font-size: 8px;
 
-        line-height:
-            12px;
+        line-height: 12px;
     }
 
 
-    /* -----------------------------------------------------
-       ACTION BUTTONS
-    ----------------------------------------------------- */
+    /* ACTIONS */
 
     .file-item .item-actions {
 
-        width:
-            auto;
+        width: auto;
+        height: auto;
 
-        height:
-            auto;
+        flex: 0 0 auto;
 
-        flex:
-            0 0 auto;
-
-        display:
-            grid !important;
+        display: grid !important;
 
         grid-template-columns:
-            repeat(
-                5,
-                30px
-            );
+            repeat(5, 30px);
 
-        gap:
-            1px;
+        gap: 1px;
 
-        padding:
-            0;
+        padding: 0;
 
-        border:
-            0;
+        border: 0;
 
-        border-radius:
-            0;
+        border-radius: 0;
 
-        background:
-            transparent;
+        background: transparent;
 
-        box-shadow:
-            none;
+        box-shadow: none;
 
-        overflow:
-            visible;
+        overflow: visible;
     }
 
-    .file-item .item-actions >
-    button {
+    .file-item .item-actions > button {
 
-        width:
-            30px !important;
+        width: 30px !important;
+        height: 32px !important;
 
-        height:
-            32px !important;
+        min-width: 30px !important;
+        min-height: 32px !important;
 
-        min-width:
-            30px !important;
+        padding: 0 !important;
 
-        min-height:
-            32px !important;
+        display: flex !important;
 
-        padding:
-            0 !important;
+        align-items: center !important;
+        justify-content: center !important;
 
-        display:
-            flex !important;
+        border: 0 !important;
 
-        align-items:
-            center !important;
+        border-radius: 8px !important;
 
-        justify-content:
-            center !important;
+        background: transparent !important;
 
-        border:
-            0 !important;
+        color: #8290a5;
 
-        border-radius:
-            8px !important;
+        box-shadow: none !important;
 
-        background:
-            transparent !important;
-
-        color:
-            #8290a5;
-
-        box-shadow:
-            none !important;
-
-        font-size:
-            15px !important;
+        font-size: 15px !important;
     }
 
-    .file-item .item-actions >
-    button:active {
+    .file-item .item-actions > button:active {
 
         background:
-            rgba(83,230,255,.10) !important;
+            rgba(83,230,255,.10)
+            !important;
 
         color:
             var(--future-cyan);
 
-        transform:
-            scale(.90);
+        transform: scale(.90);
     }
 
     .file-item .item-more-btn {
 
         color:
-            var(--future-cyan) !important;
+            var(--future-cyan)
+            !important;
     }
 
     .file-item .item-more-btn span {
 
-        font-size:
-            13px;
+        font-size: 13px;
 
-        font-weight:
-            800;
+        font-weight: 800;
 
-        letter-spacing:
-            1px;
+        letter-spacing: 1px;
     }
 
 
-    /* -----------------------------------------------------
-       SEARCH RESULT
-    ----------------------------------------------------- */
+    /* SEARCH RESULT */
 
     .search-result .item-actions {
-        display:
-            none !important;
+        display: none !important;
     }
 
 
-    /* -----------------------------------------------------
-       SELECTION
-    ----------------------------------------------------- */
+    /* SELECTION */
 
     .selection-bar {
 
-        margin:
-            0 9px 6px;
+        margin: 0 9px 6px;
 
-        padding:
-            8px 10px;
+        padding: 8px 10px;
 
         border:
             1px solid
             rgba(83,230,255,.15);
 
-        border-radius:
-            11px;
+        border-radius: 11px;
 
         background:
             rgba(24,168,255,.08);
@@ -3612,14 +2732,12 @@ button:not(.item-btn) {
         color:
             var(--future-cyan);
 
-        font-size:
-            11px;
+        font-size: 11px;
     }
 
     .file-item.selected {
 
-        border:
-            0 !important;
+        border: 0 !important;
 
         background:
             rgba(24,168,255,.10)
@@ -3632,19 +2750,15 @@ button:not(.item-btn) {
     }
 
     .file-item.selected::after {
-        display:
-            none;
+        display: none;
     }
 
 
-    /* -----------------------------------------------------
-       PASTE
-    ----------------------------------------------------- */
+    /* PASTE */
 
     .v4-paste-fab {
 
-        right:
-            15px;
+        right: 15px;
 
         bottom:
             calc(
@@ -3652,24 +2766,18 @@ button:not(.item-btn) {
                 env(safe-area-inset-bottom)
             );
 
-        width:
-            54px;
+        width: 54px;
+        height: 54px;
 
-        height:
-            54px;
+        min-height: 54px;
 
-        min-height:
-            54px;
-
-        padding:
-            0;
+        padding: 0;
 
         border:
             1px solid
             rgba(83,230,255,.45);
 
-        border-radius:
-            17px;
+        border-radius: 17px;
 
         background:
             linear-gradient(
@@ -3678,8 +2786,7 @@ button:not(.item-btn) {
                 #0878ff
             );
 
-        color:
-            #fff;
+        color: #fff;
 
         box-shadow:
             0 0 0 5px
@@ -3692,8 +2799,7 @@ button:not(.item-btn) {
 
     .paste-cancel {
 
-        right:
-            8px;
+        right: 8px;
 
         bottom:
             calc(
@@ -3701,23 +2807,14 @@ button:not(.item-btn) {
                 env(safe-area-inset-bottom)
             );
 
-        width:
-            27px;
+        width: 27px;
+        height: 27px;
 
-        height:
-            27px;
-
-        min-height:
-            27px;
+        min-height: 27px;
     }
 
 
-    /* -----------------------------------------------------
-       ACTION POPUP
-       Important:
-       JS calculates left/top.
-       CSS must NOT override those values.
-    ----------------------------------------------------- */
+    /* ACTION POPUP */
 
     .touch-action-sheet {
 
@@ -3735,93 +2832,70 @@ button:not(.item-btn) {
         background:
             rgba(0,0,0,.42);
 
-        backdrop-filter:
-            blur(16px);
-
-        -webkit-backdrop-filter:
-            blur(16px);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
     }
 
     .touch-sheet-card {
 
-        position:
-            fixed;
+        position: fixed;
 
         width:
             min(
                 340px,
-                calc(
-                    100vw - 20px
-                )
+                calc(100vw - 20px)
             );
 
-        max-width:
-            340px;
+        max-width: 340px;
 
-        margin:
-            0;
+        margin: 0;
 
-        padding:
-            8px;
+        padding: 8px;
 
         border:
             1px solid
             rgba(83,230,255,.22);
 
-        border-radius:
-            19px;
+        border-radius: 19px;
 
         background:
             rgba(15,20,30,.97);
 
         box-shadow:
-            0 28px 70px
-            rgba(0,0,0,.65),
-            0 0 35px
-            rgba(24,168,255,.08);
+            0 28px 70px rgba(0,0,0,.65),
+            0 0 35px rgba(24,168,255,.08);
 
-        backdrop-filter:
-            blur(28px);
-
-        -webkit-backdrop-filter:
-            blur(28px);
+        backdrop-filter: blur(28px);
+        -webkit-backdrop-filter: blur(28px);
     }
 
     .touch-sheet-title {
 
-        padding:
-            9px 11px;
+        padding: 9px 11px;
 
-        color:
-            #fff;
+        color: #fff;
 
-        font-size:
-            14px;
+        font-size: 14px;
     }
 
     .touch-sheet-action {
 
-        min-height:
-            43px;
+        min-height: 43px;
 
-        margin-top:
-            4px;
+        margin-top: 4px;
 
         border:
             1px solid
             rgba(255,255,255,.05);
 
-        border-radius:
-            10px;
+        border-radius: 10px;
 
         background:
             rgba(255,255,255,.055);
 
-        color:
-            #cfefff;
+        color: #cfefff;
 
-        font-size:
-            13px;
+        font-size: 13px;
     }
 
     .touch-sheet-action:active {
@@ -3835,18 +2909,15 @@ button:not(.item-btn) {
 
     .touch-sheet-cancel {
 
-        min-height:
-            43px;
+        min-height: 43px;
 
-        margin-top:
-            6px;
+        margin-top: 6px;
 
         border:
             1px solid
             rgba(83,230,255,.12);
 
-        border-radius:
-            10px;
+        border-radius: 10px;
 
         background:
             rgba(83,230,255,.06);
@@ -3854,14 +2925,11 @@ button:not(.item-btn) {
         color:
             var(--future-cyan);
 
-        font-size:
-            13px;
+        font-size: 13px;
     }
 
 
-    /* -----------------------------------------------------
-       DETAILS
-    ----------------------------------------------------- */
+    /* DETAILS */
 
     .file-details-modal {
 
@@ -3882,27 +2950,22 @@ button:not(.item-btn) {
 
     .file-details-card {
 
-        width:
-            100%;
+        width: 100%;
 
-        max-width:
-            420px;
+        max-width: 420px;
 
-        padding:
-            15px 13px 13px;
+        padding: 15px 13px 13px;
 
         border:
             1px solid
             rgba(83,230,255,.16);
 
-        border-radius:
-            19px;
+        border-radius: 19px;
 
         background:
             rgba(15,20,30,.97);
 
-        color:
-            #fff;
+        color: #fff;
 
         box-shadow:
             0 24px 70px
@@ -3911,17 +2974,14 @@ button:not(.item-btn) {
 
     .file-details-card h3 {
 
-        color:
-            #fff;
+        color: #fff;
 
-        font-size:
-            16px;
+        font-size: 16px;
     }
 
     .file-detail-row {
 
-        padding:
-            9px 2px;
+        padding: 9px 2px;
 
         border-bottom:
             1px solid
@@ -3930,32 +2990,25 @@ button:not(.item-btn) {
 
     .file-detail-row strong {
 
-        color:
-            #778296;
+        color: #778296;
 
-        font-size:
-            9px;
+        font-size: 9px;
     }
 
     .file-detail-row span {
 
-        color:
-            #dce8f5;
+        color: #dce8f5;
 
-        font-size:
-            12px;
+        font-size: 12px;
     }
 
     .file-details-close {
 
-        height:
-            42px;
+        height: 42px;
 
-        min-height:
-            42px;
+        min-height: 42px;
 
-        border-radius:
-            11px;
+        border-radius: 11px;
 
         background:
             linear-gradient(
@@ -3964,30 +3017,23 @@ button:not(.item-btn) {
                 #0878ff
             );
 
-        font-size:
-            13px;
+        font-size: 13px;
     }
 
 
-    /* -----------------------------------------------------
-       EMPTY
-    ----------------------------------------------------- */
+    /* EMPTY */
 
     .empty {
 
-        min-height:
-            220px;
+        min-height: 220px;
 
-        padding:
-            25px 15px;
+        padding: 25px 15px;
 
-        color:
-            var(--future-muted);
+        color: var(--future-muted);
     }
 
     .empty-icon {
-        opacity:
-            .75;
+        opacity: .75;
     }
 }
 
@@ -4001,63 +3047,49 @@ button:not(.item-btn) {
 
     .header {
 
-        min-height:
-            60px;
+        min-height: 60px;
+        height: 60px;
 
-        height:
-            60px;
-
-        padding:
-            6px 8px;
+        padding: 6px 8px;
     }
 
     .app-logo {
 
-        width:
-            37px;
+        width: 37px;
+        height: 37px;
 
-        height:
-            37px;
+        flex-basis: 37px;
 
-        flex-basis:
-            37px;
-
-        border-radius:
-            11px;
+        border-radius: 11px;
     }
 
     .app-logo svg {
 
-        width:
-            29px;
-
-        height:
-            29px;
+        width: 29px;
+        height: 29px;
     }
 
     .brand-text h1 {
-        font-size:
-            16px;
+        font-size: 16px;
     }
 
     .brand-text p {
-        font-size:
-            7px;
+        font-size: 7px;
     }
 
     .header-menu {
 
-        width:
-            37px;
+        width: 37px;
+        height: 37px;
 
-        height:
-            37px;
+        min-width: 37px;
+        min-height: 37px;
+    }
 
-        min-width:
-            37px;
+    .header-menu .menu-line {
 
-        min-height:
-            37px;
+        width: 16px;
+        height: 2px;
     }
 
     .toolbar {
@@ -4068,25 +3100,19 @@ button:not(.item-btn) {
                 env(safe-area-inset-top)
             );
 
-        left:
-            6px;
-
-        right:
-            6px;
+        left: 6px;
+        right: 6px;
     }
 
     .toolbar-btn {
 
-        height:
-            58px;
+        height: 58px;
 
-        border-radius:
-            11px;
+        border-radius: 11px;
     }
 
     .toolbar-btn span {
-        font-size:
-            7px;
+        font-size: 7px;
     }
 
     .search-section {
@@ -4097,26 +3123,19 @@ button:not(.item-btn) {
 
     .search-section::before {
 
-        left:
-            18px;
-
-        top:
-            12px;
+        left: 18px;
+        top: 12px;
     }
 
     .search-box {
 
-        height:
-            44px;
+        height: 44px;
 
-        padding-left:
-            36px;
+        padding-left: 36px;
 
-        font-size:
-            14px;
+        font-size: 14px;
 
-        border-radius:
-            12px;
+        border-radius: 12px;
     }
 
     .breadcrumb {
@@ -4124,137 +3143,92 @@ button:not(.item-btn) {
         width:
             calc(100% - 12px);
 
-        margin-left:
-            6px;
-
-        margin-right:
-            6px;
+        margin-left: 6px;
+        margin-right: 6px;
     }
 
     .message {
 
-        margin-left:
-            6px;
+        margin-left: 6px;
+        margin-right: 6px;
 
-        margin-right:
-            6px;
-
-        font-size:
-            8px;
+        font-size: 8px;
     }
 
     .upload-status {
 
-        margin-left:
-            6px;
-
-        margin-right:
-            6px;
+        margin-left: 6px;
+        margin-right: 6px;
     }
 
     .file-item {
 
-        min-height:
-            59px;
+        min-height: 59px;
 
-        padding:
-            6px 6px;
+        padding: 6px 6px;
 
-        gap:
-            6px;
+        gap: 6px;
     }
 
     .file-item .position {
 
-        width:
-            16px;
+        width: 16px;
+        min-width: 16px;
+        flex-basis: 16px;
 
-        min-width:
-            16px;
-
-        flex-basis:
-            16px;
-
-        font-size:
-            8px;
+        font-size: 8px;
     }
 
     .file-item .file-icon {
 
-        width:
-            37px;
+        width: 37px;
+        height: 37px;
 
-        height:
-            37px;
+        min-width: 37px;
+        min-height: 37px;
 
-        min-width:
-            37px;
+        flex-basis: 37px;
 
-        min-height:
-            37px;
+        border-radius: 10px;
 
-        flex-basis:
-            37px;
-
-        border-radius:
-            10px;
-
-        font-size:
-            19px;
+        font-size: 19px;
     }
 
     .file-item .file-name {
-        font-size:
-            13px;
+        font-size: 13px;
     }
 
     .file-item .file-type {
-        font-size:
-            8px;
+        font-size: 8px;
     }
 
     .file-item .recent-file-path,
     .file-item .search-path {
-        font-size:
-            7px;
+        font-size: 7px;
     }
 
     .file-item .item-actions {
 
         grid-template-columns:
-            repeat(
-                5,
-                28px
-            );
+            repeat(5, 28px);
     }
 
-    .file-item .item-actions >
-    button {
+    .file-item .item-actions > button {
 
-        width:
-            28px !important;
+        width: 28px !important;
+        height: 30px !important;
 
-        height:
-            30px !important;
+        min-width: 28px !important;
+        min-height: 30px !important;
 
-        min-width:
-            28px !important;
-
-        min-height:
-            30px !important;
-
-        font-size:
-            14px !important;
+        font-size: 14px !important;
     }
 }
 
 
 /* =========================================================
    29. iPAD / TABLET
-   ---------------------------------------------------------
    701px - 1366px
-   No hover/pointer restriction.
-   This fixes DevTools iPad emulation too.
    ========================================================= */
 
 @media
@@ -4264,11 +3238,9 @@ and (max-width: 1366px) {
     html,
     body {
 
-        width:
-            100%;
+        width: 100%;
 
-        min-height:
-            100dvh;
+        min-height: 100dvh;
 
         background:
             var(--future-bg) !important;
@@ -4278,28 +3250,21 @@ and (max-width: 1366px) {
     }
 
     body {
-        overflow:
-            hidden;
+        overflow: hidden;
     }
 
 
-    /* -----------------------------------------------------
-       MAIN iPAD WORKSPACE
-    ----------------------------------------------------- */
+    /* WORKSPACE */
 
     .app {
 
-        width:
-            100%;
+        width: 100%;
 
-        height:
-            100dvh;
+        height: 100dvh;
 
-        min-height:
-            100dvh;
+        min-height: 100dvh;
 
-        display:
-            grid;
+        display: grid;
 
         grid-template-columns:
             235px
@@ -4325,44 +3290,31 @@ and (max-width: 1366px) {
             ),
             var(--future-bg);
 
-        overflow:
-            hidden;
+        overflow: hidden;
     }
 
 
-    /* -----------------------------------------------------
-       HEADER
-    ----------------------------------------------------- */
+    /* HEADER */
 
     .header {
 
-        grid-column:
-            1 / -1;
+        grid-column: 1 / -1;
+        grid-row: 1;
 
-        grid-row:
-            1;
+        width: 100%;
 
-        width:
-            100%;
+        min-height: 76px;
+        height: 76px;
 
-        min-height:
-            76px;
+        padding: 10px 18px;
 
-        height:
-            76px;
-
-        padding:
-            10px 18px;
-
-        border:
-            0;
+        border: 0;
 
         border-bottom:
             1px solid
             var(--future-line);
 
-        border-radius:
-            0;
+        border-radius: 0;
 
         background:
             rgba(8,11,18,.82);
@@ -4379,28 +3331,21 @@ and (max-width: 1366px) {
             blur(24px)
             saturate(150%);
 
-        z-index:
-            1000;
+        z-index: 1000;
     }
 
     .brand {
-        gap:
-            11px;
+        gap: 11px;
     }
 
     .app-logo {
 
-        width:
-            43px;
+        width: 43px;
+        height: 43px;
 
-        height:
-            43px;
+        flex-basis: 43px;
 
-        flex-basis:
-            43px;
-
-        border-radius:
-            13px;
+        border-radius: 13px;
 
         background:
             linear-gradient(
@@ -4416,53 +3361,37 @@ and (max-width: 1366px) {
 
     .app-logo svg {
 
-        width:
-            34px;
-
-        height:
-            34px;
+        width: 34px;
+        height: 34px;
     }
 
     .brand-text h1 {
 
-        color:
-            #fff;
+        color: #fff;
 
-        font-size:
-            20px;
+        font-size: 20px;
     }
 
     .brand-text p {
 
-        color:
-            var(--future-muted);
+        color: var(--future-muted);
 
-        font-size:
-            9px;
+        font-size: 9px;
 
-        letter-spacing:
-            1px;
+        letter-spacing: 1px;
 
-        text-transform:
-            uppercase;
+        text-transform: uppercase;
     }
 
     .header-menu {
 
-        width:
-            42px;
+        width: 42px;
+        height: 42px;
 
-        height:
-            42px;
+        min-width: 42px;
+        min-height: 42px;
 
-        min-width:
-            42px;
-
-        min-height:
-            42px;
-
-        border-radius:
-            12px;
+        border-radius: 12px;
 
         background:
             rgba(255,255,255,.055);
@@ -4472,52 +3401,53 @@ and (max-width: 1366px) {
             rgba(83,230,255,.16);
     }
 
+    .header-menu .menu-line {
 
-    /* -----------------------------------------------------
-       LEFT COMMAND RAIL
-    ----------------------------------------------------- */
+        background:
+            var(--future-cyan);
+
+        box-shadow:
+            0 0 7px
+            rgba(83,230,255,.45);
+    }
+
+
+    /* LEFT COMMAND RAIL */
 
     .toolbar {
 
-        grid-column:
-            1;
+        grid-column: 1;
 
-        grid-row:
-            2 / 6;
+        grid-row: 2 / 6;
 
-        position:
-            relative;
+        position: relative;
 
-        top:
-            auto;
+        top: auto;
 
-        width:
-            100%;
+        left: auto;
+        right: auto;
 
-        height:
-            auto;
+        width: 100%;
 
-        max-height:
-            none;
+        height: auto;
 
-        padding:
-            15px 10px;
+        max-height: none;
 
-        display:
-            flex;
+        padding: 15px 10px;
 
-        flex-direction:
-            column;
+        display: flex;
 
-        gap:
-            6px;
+        flex-direction: column;
 
-        border:
-            0;
+        gap: 6px;
+
+        border: 0;
 
         border-right:
             1px solid
             var(--future-line);
+
+        border-radius: 0;
 
         background:
             rgba(12,16,25,.72);
@@ -4528,100 +3458,98 @@ and (max-width: 1366px) {
         -webkit-backdrop-filter:
             blur(24px);
 
-        overflow-y:
-            auto;
+        overflow-y: auto;
+        overflow-x: hidden;
 
-        overflow-x:
-            hidden;
+        z-index: 900;
 
-        z-index:
-            900;
-
-        opacity:
-            1;
+        opacity: 1;
     }
+
+    /*
+       IMPORTANT FIX:
+       DO NOT override .menu-collapsed here.
+
+       The old CSS had:
+
+       .toolbar.menu-collapsed {
+           max-height: none !important;
+           opacity: 1;
+       }
+
+       That prevented the ☰ button from hiding
+       the toolbar on iPad.
+
+       Now the common .toolbar.menu-collapsed
+       rule remains active.
+    */
 
     .toolbar.menu-collapsed {
 
-        max-height:
-            none !important;
+        max-height: 0 !important;
 
-        min-height:
-            0 !important;
+        min-height: 0 !important;
 
-        padding:
-            15px 10px !important;
+        height: 0 !important;
 
-        opacity:
-            1;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+
+        margin: 0 !important;
+
+        opacity: 0 !important;
+
+        pointer-events: none !important;
+
+        overflow: hidden !important;
 
         transform:
-            none;
+            translateY(-10px);
 
-        pointer-events:
-            auto;
-
-        overflow-y:
-            auto !important;
+        border-width: 0 !important;
     }
 
     .toolbar-btn {
 
-        flex:
-            0 0 52px;
+        flex: 0 0 52px;
 
-        width:
-            100%;
+        width: 100%;
 
-        height:
-            52px;
+        height: 52px;
 
-        min-height:
-            52px;
+        min-height: 52px;
 
-        display:
-            grid;
+        display: grid;
 
         grid-template-columns:
             28px
             minmax(0,1fr);
 
-        align-items:
-            center;
+        align-items: center;
 
-        gap:
-            8px;
+        gap: 8px;
 
-        padding:
-            0 11px;
+        padding: 0 11px;
 
         border:
-            1px solid
-            transparent;
+            1px solid transparent;
 
-        border-radius:
-            12px;
+        border-radius: 12px;
 
-        background:
-            transparent;
+        background: transparent;
 
-        color:
-            var(--future-cyan);
+        color: var(--future-cyan);
 
-        box-shadow:
-            none;
+        box-shadow: none;
 
-        text-align:
-            left;
+        text-align: left;
     }
 
-    .toolbar-btn svg {
+    .toolbar-btn svg,
+    .ios-menu-icon {
 
-        width:
-            22px;
-
-        height:
-            22px;
+        width: 22px;
+        height: 22px;
 
         stroke:
             var(--future-cyan);
@@ -4635,14 +3563,11 @@ and (max-width: 1366px) {
 
     .toolbar-btn span {
 
-        color:
-            #aeb9ca;
+        color: #aeb9ca;
 
-        font-size:
-            10px;
+        font-size: 10px;
 
-        text-align:
-            left;
+        text-align: left;
     }
 
     .toolbar-btn:active,
@@ -4654,65 +3579,46 @@ and (max-width: 1366px) {
         border-color:
             rgba(83,230,255,.16);
 
-        transform:
-            scale(.98);
+        transform: scale(.98);
     }
 
 
-    /* -----------------------------------------------------
-       SEARCH
-       Always first content in main pane
-    ----------------------------------------------------- */
+    /* SEARCH */
 
     .search-section {
 
-        grid-column:
-            2;
+        grid-column: 2;
+        grid-row: 2;
 
-        grid-row:
-            2;
+        width: 100%;
 
-        width:
-            100%;
+        padding: 13px 20px 7px;
 
-        padding:
-            13px 20px 7px;
+        margin: 0;
 
-        margin:
-            0;
-
-        background:
-            transparent;
+        background: transparent;
     }
 
     .search-section::before {
 
-        content:
-            "⌕";
+        content: "⌕";
 
-        position:
-            absolute;
+        position: absolute;
 
-        left:
-            34px;
+        left: 34px;
+        top: 18px;
 
-        top:
-            18px;
-
-        z-index:
-            2;
+        z-index: 2;
 
         color:
             var(--future-cyan);
 
-        font-size:
-            21px;
+        font-size: 21px;
     }
 
     .search-box {
 
-        height:
-            47px;
+        height: 47px;
 
         padding:
             0 15px 0 43px;
@@ -4721,17 +3627,14 @@ and (max-width: 1366px) {
             1px solid
             rgba(255,255,255,.08);
 
-        border-radius:
-            14px;
+        border-radius: 14px;
 
         background:
             rgba(255,255,255,.055);
 
-        color:
-            #fff;
+        color: #fff;
 
-        font-size:
-            15px;
+        font-size: 15px;
     }
 
     .search-box:focus {
@@ -4745,62 +3648,44 @@ and (max-width: 1366px) {
     }
 
 
-    /* -----------------------------------------------------
-       BREADCRUMB
-    ----------------------------------------------------- */
+    /* BREADCRUMB */
 
     .breadcrumb {
 
-        grid-column:
-            2;
-
-        grid-row:
-            3;
+        grid-column: 2;
+        grid-row: 3;
 
         width:
             calc(100% - 40px);
 
-        max-width:
-            none;
+        max-width: none;
 
-        min-height:
-            34px;
+        min-height: 34px;
 
-        margin:
-            0 20px;
+        margin: 0 20px;
 
-        padding:
-            4px 0;
+        padding: 4px 0;
 
-        color:
-            var(--future-muted);
+        color: var(--future-muted);
 
-        background:
-            transparent;
+        background: transparent;
     }
 
     .breadcrumb > span {
 
-        color:
-            var(--future-muted);
+        color: var(--future-muted);
 
-        font-size:
-            11px;
+        font-size: 11px;
     }
 
     .crumb {
 
-        min-height:
-            30px;
+        min-height: 30px;
+        height: 30px;
 
-        height:
-            30px;
+        padding: 4px 9px;
 
-        padding:
-            4px 9px;
-
-        border-radius:
-            9px;
+        border-radius: 9px;
 
         background:
             rgba(24,168,255,.08);
@@ -4808,8 +3693,7 @@ and (max-width: 1366px) {
         color:
             var(--future-cyan);
 
-        font-size:
-            11px;
+        font-size: 11px;
     }
 
     .crumb.current {
@@ -4817,104 +3701,70 @@ and (max-width: 1366px) {
         background:
             rgba(255,255,255,.07);
 
-        color:
-            #cbd4e2;
+        color: #cbd4e2;
     }
 
 
-    /* -----------------------------------------------------
-       STATUS / UPLOAD / REORDER
-    ----------------------------------------------------- */
+    /* STATUS */
 
     .message,
     .upload-status,
     .reorder-bar {
 
-        grid-column:
-            2;
+        grid-column: 2;
 
         width:
             calc(100% - 40px);
 
-        margin-left:
-            20px;
-
-        margin-right:
-            20px;
+        margin-left: 20px;
+        margin-right: 20px;
     }
 
     .message {
 
-        grid-row:
-            4;
+        grid-row: 4;
 
-        margin-top:
-            0;
+        margin-top: 0;
+        margin-bottom: 3px;
 
-        margin-bottom:
-            3px;
+        padding: 3px 0;
 
-        padding:
-            3px 0;
+        color: #647187;
 
-        color:
-            #647187;
-
-        font-size:
-            9px;
+        font-size: 9px;
     }
 
     .upload-status {
 
-        grid-row:
-            4;
+        grid-row: 4;
 
-        margin-top:
-            0;
-
-        margin-bottom:
-            4px;
+        margin-top: 0;
+        margin-bottom: 4px;
     }
 
     .reorder-bar {
 
-        grid-row:
-            4;
+        grid-row: 4;
 
-        margin-top:
-            0;
-
-        margin-bottom:
-            4px;
+        margin-top: 0;
+        margin-bottom: 4px;
     }
 
 
-    /* -----------------------------------------------------
-       FILE LIST
-       IMPORTANT:
-       folder/file list starts immediately after
-       search + breadcrumb/status area.
-    ----------------------------------------------------- */
+    /* FILE LIST */
 
     .file-list {
 
-        grid-column:
-            2;
-
-        grid-row:
-            5;
+        grid-column: 2;
+        grid-row: 5;
 
         width:
             calc(100% - 40px);
 
-        min-width:
-            0;
+        min-width: 0;
+        min-height: 0;
 
-        min-height:
-            0;
-
-        margin:
-            6px 20px 0;
+        margin: 6px 20px 0;
 
         padding:
             0 0
@@ -4923,79 +3773,56 @@ and (max-width: 1366px) {
                 env(safe-area-inset-bottom)
             );
 
-        background:
-            transparent;
+        background: transparent;
 
         border-top:
             1px solid
             var(--future-line);
 
-        border-radius:
-            0;
+        border-radius: 0;
 
-        overflow-y:
-            auto;
+        overflow-y: auto;
+        overflow-x: hidden;
 
-        overflow-x:
-            hidden;
-
-        -webkit-overflow-scrolling:
-            touch;
+        -webkit-overflow-scrolling: touch;
     }
 
 
-    /* -----------------------------------------------------
-       iPAD FILE ROW
-       List, NOT cards.
-    ----------------------------------------------------- */
+    /* iPAD FILE ROW */
 
     .file-item {
 
-        position:
-            relative;
+        position: relative;
 
-        width:
-            100%;
+        width: 100%;
 
-        min-height:
-            70px;
+        min-height: 70px;
 
-        margin:
-            0;
+        margin: 0;
 
-        padding:
-            10px 2px;
+        padding: 10px 2px;
 
-        display:
-            flex !important;
+        display: flex !important;
 
-        align-items:
-            center;
+        align-items: center;
 
-        gap:
-            10px;
+        gap: 10px;
 
-        border:
-            0;
+        border: 0;
 
         border-bottom:
             1px solid
             var(--future-line);
 
-        border-radius:
-            0;
+        border-radius: 0;
 
-        background:
-            transparent;
+        background: transparent;
 
-        box-shadow:
-            none;
+        box-shadow: none;
 
-        color:
-            var(--future-text);
+        color: var(--future-text);
 
-        transform:
-            none !important;
+        transform: none !important;
     }
 
     .file-item:active,
@@ -5005,50 +3832,35 @@ and (max-width: 1366px) {
             rgba(24,168,255,.07)
             !important;
 
-        transform:
-            none !important;
+        transform: none !important;
     }
 
     .file-item .position {
 
-        width:
-            25px;
+        width: 25px;
 
-        min-width:
-            25px;
+        min-width: 25px;
 
-        flex-basis:
-            25px;
+        flex-basis: 25px;
 
-        color:
-            #536074;
+        color: #536074;
 
-        font-size:
-            10px;
+        font-size: 10px;
     }
 
     .file-item .file-icon {
 
-        position:
-            static;
+        position: static;
 
-        width:
-            44px;
+        width: 44px;
+        height: 44px;
 
-        height:
-            44px;
+        min-width: 44px;
+        min-height: 44px;
 
-        min-width:
-            44px;
+        flex-basis: 44px;
 
-        min-height:
-            44px;
-
-        flex-basis:
-            44px;
-
-        border-radius:
-            12px;
+        border-radius: 12px;
 
         background:
             linear-gradient(
@@ -5064,12 +3876,10 @@ and (max-width: 1366px) {
         color:
             var(--future-cyan);
 
-        font-size:
-            23px;
+        font-size: 23px;
     }
 
-    .file-item.folder-row
-    .file-icon {
+    .file-item.folder-row .file-icon {
 
         background:
             linear-gradient(
@@ -5084,159 +3894,107 @@ and (max-width: 1366px) {
 
     .file-item .file-info {
 
-        position:
-            static;
+        position: static;
 
-        width:
-            auto;
+        width: auto;
+        height: auto;
 
-        height:
-            auto;
+        flex: 1 1 auto;
 
-        flex:
-            1 1 auto;
+        min-width: 0;
 
-        min-width:
-            0;
+        padding: 0;
 
-        padding:
-            0;
+        display: flex !important;
 
-        display:
-            flex !important;
+        flex-direction: column;
 
-        flex-direction:
-            column;
+        justify-content: center;
 
-        justify-content:
-            center;
-
-        gap:
-            2px;
+        gap: 2px;
     }
 
     .file-item .file-name {
 
-        color:
-            #f5f7fb;
+        color: #f5f7fb;
 
-        font-size:
-            15px;
+        font-size: 15px;
 
-        line-height:
-            20px;
+        line-height: 20px;
 
-        font-weight:
-            600;
+        font-weight: 600;
     }
 
     .file-item .file-type {
 
-        margin:
-            0;
+        margin: 0;
 
-        color:
-            #778296;
+        color: #778296;
 
-        font-size:
-            10px;
+        font-size: 10px;
 
-        line-height:
-            14px;
+        line-height: 14px;
     }
 
     .file-item .recent-file-path,
     .file-item .search-path {
 
-        margin-top:
-            1px;
+        margin-top: 1px;
 
-        color:
-            #647187;
+        color: #647187;
 
-        font-size:
-            9px;
+        font-size: 9px;
 
-        line-height:
-            13px;
+        line-height: 13px;
     }
 
 
-    /* -----------------------------------------------------
-       iPAD ACTIONS
-    ----------------------------------------------------- */
+    /* iPAD ACTIONS */
 
     .file-item .item-actions {
 
-        width:
-            auto;
+        width: auto;
+        height: auto;
 
-        height:
-            auto;
+        flex: 0 0 auto;
 
-        flex:
-            0 0 auto;
-
-        display:
-            grid !important;
+        display: grid !important;
 
         grid-template-columns:
-            repeat(
-                5,
-                32px
-            );
+            repeat(5, 32px);
 
-        gap:
-            2px;
+        gap: 2px;
 
-        padding:
-            0;
+        padding: 0;
 
-        border:
-            0;
+        border: 0;
 
-        background:
-            transparent;
+        background: transparent;
 
-        box-shadow:
-            none;
+        box-shadow: none;
 
-        overflow:
-            visible;
+        overflow: visible;
     }
 
-    .file-item .item-actions >
-    button {
+    .file-item .item-actions > button {
 
-        width:
-            32px !important;
+        width: 32px !important;
+        height: 34px !important;
 
-        height:
-            34px !important;
+        min-width: 32px !important;
+        min-height: 34px !important;
 
-        min-width:
-            32px !important;
+        border: 0 !important;
 
-        min-height:
-            34px !important;
+        border-radius: 8px !important;
 
-        border:
-            0 !important;
+        background: transparent !important;
 
-        border-radius:
-            8px !important;
+        color: #8290a5;
 
-        background:
-            transparent !important;
+        box-shadow: none !important;
 
-        color:
-            #8290a5;
-
-        box-shadow:
-            none !important;
-
-        font-size:
-            16px !important;
+        font-size: 16px !important;
     }
 
     .file-item .item-more-btn {
@@ -5247,14 +4005,11 @@ and (max-width: 1366px) {
     }
 
 
-    /* -----------------------------------------------------
-       iPAD PASTE
-    ----------------------------------------------------- */
+    /* PASTE */
 
     .v4-paste-fab {
 
-        right:
-            22px;
+        right: 22px;
 
         bottom:
             calc(
@@ -5262,24 +4017,18 @@ and (max-width: 1366px) {
                 env(safe-area-inset-bottom)
             );
 
-        width:
-            58px;
+        width: 58px;
+        height: 58px;
 
-        height:
-            58px;
+        min-height: 58px;
 
-        min-height:
-            58px;
-
-        padding:
-            0;
+        padding: 0;
 
         border:
             1px solid
             rgba(83,230,255,.45);
 
-        border-radius:
-            18px;
+        border-radius: 18px;
 
         background:
             linear-gradient(
@@ -5298,30 +4047,22 @@ and (max-width: 1366px) {
     }
 
 
-    /* -----------------------------------------------------
-       iPAD ACTION POPUP
-       JS controls actual left/top position.
-    ----------------------------------------------------- */
+    /* ACTION POPUP */
 
     .touch-action-sheet {
 
-        padding:
-            16px;
+        padding: 16px;
 
         background:
             rgba(0,0,0,.42);
 
-        backdrop-filter:
-            blur(18px);
-
-        -webkit-backdrop-filter:
-            blur(18px);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
     }
 
     .touch-sheet-card {
 
-        position:
-            fixed;
+        position: fixed;
 
         width:
             min(
@@ -5329,48 +4070,37 @@ and (max-width: 1366px) {
                 calc(100vw - 32px)
             );
 
-        margin:
-            0;
+        margin: 0;
 
-        padding:
-            9px;
+        padding: 9px;
 
         border:
             1px solid
             rgba(83,230,255,.22);
 
-        border-radius:
-            21px;
+        border-radius: 21px;
 
         background:
             rgba(15,20,30,.97);
 
         box-shadow:
-            0 28px 70px
-            rgba(0,0,0,.65),
-            0 0 35px
-            rgba(24,168,255,.08);
+            0 28px 70px rgba(0,0,0,.65),
+            0 0 35px rgba(24,168,255,.08);
 
-        backdrop-filter:
-            blur(28px);
-
-        -webkit-backdrop-filter:
-            blur(28px);
+        backdrop-filter: blur(28px);
+        -webkit-backdrop-filter: blur(28px);
     }
 
     .touch-sheet-title {
 
-        color:
-            #fff;
+        color: #fff;
 
-        font-size:
-            15px;
+        font-size: 15px;
     }
 
     .touch-sheet-action {
 
-        color:
-            #cfefff;
+        color: #cfefff;
 
         background:
             rgba(255,255,255,.055);
@@ -5386,9 +4116,7 @@ and (max-width: 1366px) {
     }
 
 
-    /* -----------------------------------------------------
-       iPAD DETAILS
-    ----------------------------------------------------- */
+    /* DETAILS */
 
     .file-details-card {
 
@@ -5405,29 +4133,26 @@ and (max-width: 1366px) {
             1px solid
             rgba(83,230,255,.18);
 
-        color:
-            #fff;
+        color: #fff;
     }
 
     .file-details-card h3 {
-        color:
-            #fff;
+        color: #fff;
     }
 
     .file-detail-row {
+
         border-bottom:
             1px solid
             var(--future-line);
     }
 
     .file-detail-row strong {
-        color:
-            #778296;
+        color: #778296;
     }
 
     .file-detail-row span {
-        color:
-            #dce8f5;
+        color: #dce8f5;
     }
 
     .file-details-close {
@@ -5444,9 +4169,6 @@ and (max-width: 1366px) {
 
 /* =========================================================
    30. iPAD LANDSCAPE
-   ---------------------------------------------------------
-   No separate card layout.
-   Same workspace, wider main area.
    ========================================================= */
 
 @media
@@ -5462,29 +4184,22 @@ and (orientation: landscape) {
     }
 
     .toolbar {
-        padding:
-            16px 12px;
+        padding: 16px 12px;
     }
 
     .toolbar-btn {
 
-        flex-basis:
-            54px;
+        flex-basis: 54px;
 
-        height:
-            54px;
+        height: 54px;
 
-        min-height:
-            54px;
+        min-height: 54px;
     }
 
     .search-section {
 
-        padding-left:
-            24px;
-
-        padding-right:
-            24px;
+        padding-left: 24px;
+        padding-right: 24px;
     }
 
     .breadcrumb {
@@ -5492,11 +4207,8 @@ and (orientation: landscape) {
         width:
             calc(100% - 48px);
 
-        margin-left:
-            24px;
-
-        margin-right:
-            24px;
+        margin-left: 24px;
+        margin-right: 24px;
     }
 
     .message,
@@ -5506,11 +4218,8 @@ and (orientation: landscape) {
         width:
             calc(100% - 48px);
 
-        margin-left:
-            24px;
-
-        margin-right:
-            24px;
+        margin-left: 24px;
+        margin-right: 24px;
     }
 
     .file-list {
@@ -5518,11 +4227,8 @@ and (orientation: landscape) {
         width:
             calc(100% - 48px);
 
-        margin-left:
-            24px;
-
-        margin-right:
-            24px;
+        margin-left: 24px;
+        margin-right: 24px;
     }
 }
 
@@ -5535,15 +4241,11 @@ and (orientation: landscape) {
 
     html,
     body {
-
-        min-height:
-            100dvh;
+        min-height: 100dvh;
     }
 
     .app {
-
-        min-height:
-            100dvh;
+        min-height: 100dvh;
     }
 }
 
