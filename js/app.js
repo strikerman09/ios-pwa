@@ -4803,61 +4803,84 @@ return String(
 }
 
 /* =====================================================
-IOS MENU BUTTON
+   HEADER MENU
+   iPHONE:
+   - Sidebar hidden by default
+   - Files/search/breadcrumb remain visible
+   - ☰ opens sidebar
+   - ☰ closes sidebar
+   iPAD / DESKTOP:
+   - Existing behavior preserved
 ===================================================== */
 
 function initializeHeaderMenu() {
 
+    const menuBtn =
+        document.getElementById("headerMenuBtn");
 
-const menuButton =
-    document.getElementById(
-        "headerMenuBtn"
-    );
+    const toolbar =
+        document.getElementById("mainToolbar");
 
-
-const toolbar =
-    document.getElementById(
-        "mainToolbar"
-    );
-
-
-if (
-    !menuButton ||
-    !toolbar
-) {
-
-    return;
-
-}
-
-
-menuButton.addEventListener(
-    "click",
-    () => {
-
-        const collapsed =
-            toolbar.classList.toggle(
-                "menu-collapsed"
-            );
-
-
-        menuButton.classList.toggle(
-            "is-open",
-            !collapsed
-        );
-
-
-        menuButton.setAttribute(
-            "aria-expanded",
-            String(
-                !collapsed
-            )
-        );
-
+    if (!menuBtn || !toolbar) {
+        return;
     }
-);
 
+    /*
+        Detect touch/mobile device.
+        This affects only the initial state.
+    */
+    const isMobileTouch =
+        window.matchMedia(
+            "(max-width: 700px) and (hover: none) and (pointer: coarse)"
+        ).matches;
 
+    /*
+        iPhone:
+        Start with sidebar CLOSED.
+
+        The existing toggle still controls it afterward.
+    */
+    if (isMobileTouch) {
+
+        toolbar.classList.add(
+            "menu-collapsed"
+        );
+
+        menuBtn.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    } else {
+
+        /*
+            iPad / Desktop:
+            Preserve existing default state.
+        */
+        menuBtn.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+    }
+
+    /*
+        Existing menu button behavior.
+    */
+    menuBtn.addEventListener(
+        "click",
+        () => {
+
+            const isCollapsed =
+                toolbar.classList.toggle(
+                    "menu-collapsed"
+                );
+
+            menuBtn.setAttribute(
+                "aria-expanded",
+                String(!isCollapsed)
+            );
+        }
+    );
 }
 
 /* =====================================================
