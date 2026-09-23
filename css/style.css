@@ -1,71 +1,131 @@
-/* =====================================================
+/* =========================================================
    MY FILE MANAGER
-   FUTURISTIC iOS / iPAD / DESKTOP UI
-   ===================================================== */
+   CONSOLIDATED RESPONSIVE UI
+   =========================================================
+   DESKTOP
+   ---------------------------------------------------------
+   Existing desktop layout preserved.
+
+   iPHONE
+   ---------------------------------------------------------
+   Futuristic left navigation drawer.
+   Drawer overlays content.
+   Main content remains full width.
+
+   iPAD
+   ---------------------------------------------------------
+   Futuristic native-style workspace with collapsible
+   LEFT SIDEBAR.
+
+   IMPORTANT
+   ---------------------------------------------------------
+   ☰ SHOW  -> navigation visible
+   ☰ HIDE  -> navigation completely hidden
+   MAIN    -> full available width
+
+   JS / IndexedDB / PDF.js / storage:
+   UNCHANGED
+   ========================================================= */
 
 
-/* =====================================================
+/* =========================================================
    1. ROOT
-   ===================================================== */
+   ========================================================= */
 
 :root {
-    --bg: #05070b;
-    --surface: rgba(17, 22, 31, 0.88);
-    --surface-strong: rgba(22, 28, 39, 0.96);
-    --surface-soft: rgba(255, 255, 255, 0.045);
-
-    --text: #f5f7fb;
-    --text-secondary: #9ca7b8;
-    --text-muted: #687386;
 
     --blue: #007aff;
-    --cyan: #45d9ff;
-    --blue-soft: rgba(0, 122, 255, 0.16);
+    --blue-soft: #eaf3ff;
+    --blue-light: #f4f8ff;
 
-    --border: rgba(255, 255, 255, 0.09);
-    --separator: rgba(255, 255, 255, 0.07);
+    --bg: #f2f2f7;
+    --card: #ffffff;
 
-    --danger: #ff453a;
-    --success: #30d158;
-    --warning: #ffd60a;
+    --text: #1c1c1e;
+    --secondary: #8e8e93;
+    --line: #e5e5ea;
 
-    --radius: 18px;
+    --border: rgba(60, 60, 67, .12);
 
     --shadow:
-        0 18px 45px rgba(0, 0, 0, 0.28);
+        0 2px 10px rgba(0, 0, 0, .06);
 
-    --header-height: 76px;
+    --shadow-strong:
+        0 10px 30px rgba(0, 0, 0, .10);
+
+    --ios-blue: #007aff;
+    --ios-green: #34c759;
+    --ios-red: #ff3b30;
+    --ios-orange: #ff9500;
+
+    --ios-bg: #f2f2f7;
+    --ios-grouped: #ffffff;
+    --ios-secondary-bg: #e5e5ea;
+    --ios-tertiary-bg: #f2f2f7;
+
+    --ios-label: #1c1c1e;
+    --ios-secondary-label: #8e8e93;
+
+    --ios-separator:
+        rgba(60, 60, 67, .12);
+
+    --ios-blue-tint:
+        rgba(0, 122, 255, .10);
+
+
+    /* FUTURISTIC */
+
+    --future-bg: #080b12;
+
+    --future-surface:
+        rgba(18, 23, 34, .88);
+
+    --future-surface-strong:
+        rgba(15, 20, 30, .96);
+
+    --future-text: #f5f7fb;
+
+    --future-muted: #7f8ba0;
+
+    --future-blue: #18a8ff;
+
+    --future-cyan: #53e6ff;
+
+    --future-green: #39e58c;
+
+    --future-red: #ff5c70;
+
+    --future-line:
+        rgba(255, 255, 255, .08);
+
+    --future-blue-line:
+        rgba(83, 230, 255, .22);
+
+    --future-glow:
+        0 0 24px rgba(24, 168, 255, .22);
+
+    --future-shadow:
+        0 24px 60px rgba(0, 0, 0, .55);
 }
 
 
-/* =====================================================
+/* =========================================================
    2. RESET
-   ===================================================== */
+   ========================================================= */
 
 * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
-html {
+html,
+body {
+
+    margin: 0;
+    padding: 0;
+
     width: 100%;
     min-height: 100%;
-    background: var(--bg);
-}
-
-body {
-    width: 100%;
-    min-height: 100dvh;
-    margin: 0;
-
-    background:
-        radial-gradient(
-            circle at 50% -10%,
-            rgba(0, 122, 255, 0.10),
-            transparent 38%
-        ),
-        var(--bg);
-
-    color: var(--text);
 
     font-family:
         -apple-system,
@@ -73,35 +133,82 @@ body {
         "SF Pro Display",
         "SF Pro Text",
         "Segoe UI",
-        "Noto Sans Myanmar",
+        Arial,
         sans-serif;
 
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    background: var(--bg);
+    color: var(--text);
+}
 
-    overflow-x: hidden;
+body {
+
+    min-height: 100dvh;
+
+    overscroll-behavior-y: none;
+
+    -webkit-user-select: none;
+    user-select: none;
+
+    -webkit-touch-callout: none;
+
+    touch-action: pan-y;
 }
 
 button,
-input {
-    font: inherit;
+input,
+textarea {
+    font-family: inherit;
 }
 
 button {
-    -webkit-tap-highlight-color: transparent;
+
+    -webkit-appearance: none;
+    appearance: none;
+
+    cursor: pointer;
+
+    touch-action: manipulation;
 }
 
-input {
-    outline: none;
+input,
+textarea {
+
+    -webkit-appearance: none;
+    appearance: none;
+
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+.file-name,
+.file-type,
+.breadcrumb {
+
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+button:focus-visible {
+
+    outline:
+        3px solid rgba(0, 122, 255, .22);
+
+    outline-offset: 2px;
+}
+
+.hidden {
+    display: none !important;
 }
 
 
-/* =====================================================
+/* =========================================================
    3. APP
-   ===================================================== */
+   ========================================================= */
 
 .app {
+
     width: 100%;
+
     min-height: 100dvh;
 
     padding:
@@ -115,75 +222,82 @@ input {
 }
 
 
-/* =====================================================
+/* =========================================================
    4. HEADER
-   ===================================================== */
+   ========================================================= */
 
 .header {
+
     position: relative;
 
-    width: 100%;
-    height: var(--header-height);
-
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
-    padding: 0 18px;
+    gap: 14px;
+
+    min-height: 82px;
+
+    padding: 12px 14px;
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(24, 31, 43, 0.96),
-            rgba(8, 12, 19, 0.96)
-        );
+        rgba(255, 255, 255, .92);
 
-    border: 1px solid var(--border);
-    border-radius: 20px;
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        22px 22px 0 0;
 
     box-shadow: var(--shadow);
 
-    z-index: 4000;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    overflow: hidden;
 }
 
 .brand {
-    min-width: 0;
 
     display: flex;
+
     align-items: center;
+
+    min-width: 0;
 
     gap: 13px;
 }
 
 .app-logo {
-    width: 46px;
-    height: 46px;
+
+    width: 54px;
+    height: 54px;
+
+    flex: 0 0 54px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    flex: 0 0 46px;
+    border-radius: 16px;
 
-    border-radius: 14px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(0, 122, 255, 0.28),
-            rgba(69, 217, 255, 0.08)
-        );
-
-    border:
-        1px solid rgba(69, 217, 255, 0.18);
+    background: var(--blue);
 
     box-shadow:
-        0 0 22px rgba(0, 122, 255, 0.12);
+        0 5px 15px rgba(0, 122, 255, .24);
+
+    overflow: hidden;
 }
 
 .app-logo svg {
-    width: 25px;
-    height: 25px;
+
+    width: 43px;
+    height: 43px;
+
+    display: block;
 }
 
 .brand-text {
@@ -191,42 +305,53 @@ input {
 }
 
 .brand-text h1 {
+
     margin: 0;
+
+    font-size: 24px;
+    line-height: 1.15;
+
+    font-weight: 700;
+
+    letter-spacing: -.4px;
 
     color: var(--text);
 
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 1.15;
-
     white-space: nowrap;
+
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .brand-text p {
+
     margin: 5px 0 0;
 
-    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.25;
 
-    font-size: 11px;
-    line-height: 1;
+    color: var(--secondary);
 
-    letter-spacing: 0.04em;
+    white-space: nowrap;
 }
 
 
-/* =====================================================
-   5. THREE-LINE MENU
-   ===================================================== */
+/* =========================================================
+   5. THREE-LINE MENU BUTTON
+   ========================================================= */
 
 .header-menu {
-    width: 44px;
-    height: 44px;
 
-    flex: 0 0 44px;
+    flex: 0 0 auto;
+
+    width: 52px;
+    height: 52px;
+
+    min-width: 52px;
+    min-height: 52px;
 
     display: flex;
+
     flex-direction: column;
 
     align-items: center;
@@ -236,42 +361,65 @@ input {
 
     padding: 0;
 
-    border:
-        1px solid var(--border);
+    border: 0;
 
-    border-radius: 13px;
+    border-radius: 50%;
 
-    background:
-        rgba(255, 255, 255, 0.045);
+    background: #e7e7ec;
 
-    color: var(--text);
-
-    cursor: pointer;
-
-    z-index: 5000;
+    transition:
+        transform .15s ease,
+        background .15s ease;
 }
 
-.header-menu:active {
-    transform: scale(0.94);
-}
-
-.menu-line {
-    width: 19px;
-    height: 2px;
+.header-menu .menu-line {
 
     display: block;
 
-    border-radius: 10px;
+    width: 21px;
+    height: 2.5px;
 
-    background: currentColor;
+    border-radius: 4px;
+
+    background: var(--blue);
+
+    transition:
+        transform .18s ease,
+        opacity .18s ease;
+}
+
+.header-menu:active {
+    transform: scale(.93);
 }
 
 
-/* =====================================================
+/* X WHEN OPEN */
+
+.header-menu.is-open .menu-line:nth-child(1) {
+
+    transform:
+        translateY(7.5px)
+        rotate(45deg);
+}
+
+.header-menu.is-open .menu-line:nth-child(2) {
+    opacity: 0;
+}
+
+.header-menu.is-open .menu-line:nth-child(3) {
+
+    transform:
+        translateY(-7.5px)
+        rotate(-45deg);
+}
+
+
+/* =========================================================
    6. DESKTOP TOOLBAR
-   ===================================================== */
+   ========================================================= */
 
 .toolbar {
+
     width: 100%;
 
     display: grid;
@@ -279,309 +427,524 @@ input {
     grid-template-columns:
         repeat(9, minmax(0, 1fr));
 
-    gap: 7px;
+    gap: 6px;
 
-    margin-top: 8px;
+    padding: 8px 10px;
 
-    padding: 8px;
+    background: var(--bg);
 
-    background: var(--surface);
+    position: sticky;
 
-    border:
-        1px solid var(--border);
+    top: 0;
 
-    border-radius: 17px;
+    z-index: 100;
 
-    box-shadow:
-        0 12px 30px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
 
     transition:
-        opacity 0.22s ease,
-        transform 0.22s ease;
+        max-height .22s ease,
+        opacity .18s ease,
+        transform .22s ease,
+        padding .22s ease;
 }
 
 .toolbar-btn {
+
+    width: 100%;
     min-width: 0;
-    min-height: 44px;
+
+    height: 60px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 3px;
+
+    padding: 3px;
 
     border:
-        1px solid var(--border);
-
-    border-radius: 12px;
-
-    background:
-        rgba(255, 255, 255, 0.035);
-
-    color: var(--text-secondary);
-
-    cursor: pointer;
-
-    transition:
-        background 0.18s ease,
-        color 0.18s ease,
-        border-color 0.18s ease,
-        transform 0.18s ease;
-}
-
-.toolbar-btn:hover {
-    color: var(--text);
-
-    background:
-        rgba(0, 122, 255, 0.10);
-
-    border-color:
-        rgba(0, 122, 255, 0.28);
-}
-
-.toolbar-btn:active {
-    transform: scale(0.97);
-}
-
-.toolbar-btn:disabled {
-    opacity: 0.35;
-    cursor: default;
-}
-
-
-/* =====================================================
-   7. DESKTOP COLLAPSE
-   ===================================================== */
-
-.toolbar.menu-collapsed {
-    display: none;
-}
-
-
-/* =====================================================
-   8. SEARCH
-   ===================================================== */
-
-.search-section {
-    width: 100%;
-    margin-top: 9px;
-}
-
-.search-box {
-    width: 100%;
-    height: 50px;
-
-    padding: 0 17px;
-
-    border:
-        1px solid var(--border);
+        1px solid var(--line);
 
     border-radius: 15px;
 
-    background:
-        rgba(255, 255, 255, 0.055);
+    background: #fff;
 
-    color: var(--text);
-
-    font-size: 15px;
+    color: var(--blue);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+        0 1px 5px rgba(0, 0, 0, .055);
+
+    font-size: 21px;
 
     transition:
-        border-color 0.18s ease,
-        background 0.18s ease,
-        box-shadow 0.18s ease;
+        transform .14s ease,
+        background .14s ease;
 }
 
-.search-box::placeholder {
-    color: var(--text-muted);
+.toolbar-btn svg,
+.ios-menu-icon {
+
+    width: 24px;
+    height: 24px;
+
+    flex: 0 0 auto;
+
+    fill: none;
+
+    stroke: var(--blue);
+
+    stroke-width: 1.9;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
-.search-box:focus {
-    border-color:
-        rgba(0, 122, 255, 0.55);
+.toolbar-btn span {
 
-    background:
-        rgba(255, 255, 255, 0.07);
+    max-width: 100%;
 
-    box-shadow:
-        0 0 0 3px rgba(0, 122, 255, 0.10);
-}
+    font-size: 10px;
+    line-height: 12px;
 
+    font-weight: 600;
 
-/* =====================================================
-   9. BREADCRUMB
-   ===================================================== */
-
-.breadcrumb {
-    width: 100%;
-
-    min-height: 42px;
-
-    display: flex;
-    align-items: center;
-
-    margin-top: 8px;
-
-    padding: 0 13px;
-
-    overflow-x: auto;
+    color: var(--blue);
 
     white-space: nowrap;
 
-    color: var(--text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
-    background:
-        rgba(255, 255, 255, 0.035);
+.toolbar-btn:active {
+
+    transform: scale(.95);
+
+    background: var(--blue-soft);
+}
+
+.toolbar-btn:disabled {
+
+    opacity: .35;
+
+    transform: none;
+
+    cursor: default;
+}
+
+.toolbar-btn.select-active {
+
+    background: #e5efff !important;
+
+    box-shadow:
+        inset 0 0 0 2px var(--blue),
+        0 2px 8px rgba(0, 0, 0, .06)
+        !important;
+}
+
+
+/* =========================================================
+   7. COMMON TOOLBAR COLLAPSE
+   ========================================================= */
+
+.toolbar.menu-collapsed {
+
+    max-height: 0 !important;
+
+    min-height: 0 !important;
+
+    height: 0 !important;
+
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+
+    opacity: 0 !important;
+
+    pointer-events: none !important;
+
+    overflow: hidden !important;
+
+    transform:
+        translateY(-8px);
+}
+
+
+/* =========================================================
+   8. SEARCH
+   ========================================================= */
+
+.search-section {
+
+    width: 100%;
+
+    padding: 7px 10px;
+
+    background: var(--bg);
+}
+
+.search-box {
+
+    width: 100%;
+
+    height: 50px;
+
+    padding: 0 16px;
 
     border:
-        1px solid var(--border);
+        1px solid rgba(60, 60, 67, .08);
 
-    border-radius: 13px;
+    border-radius: 15px;
+
+    background: #e5e5ea;
+
+    color: var(--text);
+
+    font-size: 16px;
+
+    outline: none;
+
+    box-shadow:
+        inset 0 1px 1px rgba(0, 0, 0, .025);
+
+    transition:
+        background .15s ease,
+        border-color .15s ease,
+        box-shadow .15s ease;
+}
+
+.search-box::placeholder {
+    color: var(--secondary);
+}
+
+.search-box:focus {
+
+    background: #fff;
+
+    border-color:
+        rgba(0, 122, 255, .35);
+
+    box-shadow:
+        0 0 0 3px rgba(0, 122, 255, .10);
+}
+
+
+/* =========================================================
+   9. BREADCRUMB
+   ========================================================= */
+
+.breadcrumb {
+
+    width:
+        calc(100% - 20px);
+
+    max-width:
+        calc(100% - 20px);
+
+    min-width: 0;
+
+    min-height: 40px;
+
+    margin:
+        7px 10px 0;
+
+    padding: 3px 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    white-space: nowrap;
+
+    flex-wrap: nowrap;
 
     scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
 }
 
 .breadcrumb::-webkit-scrollbar {
     display: none;
 }
 
+.breadcrumb > * {
+    flex: 0 0 auto;
+}
 
-/* =====================================================
-   10. MESSAGE
-   ===================================================== */
+.breadcrumb > span {
 
-.message {
-    width: 100%;
+    color: var(--secondary);
+
+    font-size: 14px;
+}
+
+.crumb {
 
     min-height: 38px;
+    height: 38px;
 
-    display: flex;
-    align-items: center;
+    max-width: 70vw;
 
-    margin-top: 8px;
+    padding: 6px 12px;
 
-    padding: 0 13px;
-
-    color: var(--text-secondary);
-
-    background:
-        rgba(255, 255, 255, 0.025);
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 12px;
-
-    font-size: 13px;
-}
-
-
-/* =====================================================
-   11. UPLOAD STATUS
-   ===================================================== */
-
-.upload-status {
-    width: 100%;
-
-    margin-top: 8px;
-
-    padding: 10px 13px;
-
-    color: var(--text-secondary);
-
-    background:
-        rgba(0, 122, 255, 0.07);
-
-    border:
-        1px solid rgba(0, 122, 255, 0.16);
-
-    border-radius: 12px;
-
-    font-size: 13px;
-}
-
-
-/* =====================================================
-   12. REORDER BAR
-   ===================================================== */
-
-.reorder-bar {
-    width: 100%;
-
-    display: flex;
-    align-items: center;
-
-    gap: 8px;
-
-    margin-top: 8px;
-
-    padding: 9px;
-
-    background: var(--surface);
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 14px;
-}
-
-.reorder-bar.hidden {
-    display: none;
-}
-
-.reorder-bar button {
-    min-height: 40px;
-
-    padding: 0 14px;
-
-    border:
-        1px solid var(--border);
+    border: 0;
 
     border-radius: 11px;
 
     background:
-        rgba(255, 255, 255, 0.045);
+        var(--blue-soft);
 
-    color: var(--text);
+    color: var(--blue);
 
-    cursor: pointer;
-}
-
-
-/* =====================================================
-   13. FILE LIST
-   ===================================================== */
-
-.file-list {
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-
-    margin-top: 9px;
+    font-size: 14px;
+    line-height: 26px;
 
     overflow: hidden;
 
-    background:
-        rgba(13, 17, 24, 0.72);
+    text-overflow: ellipsis;
 
-    border:
-        1px solid var(--border);
+    white-space: nowrap;
+}
 
-    border-radius: 17px;
+.crumb:active {
+    background: #dcecff;
+}
 
-    box-shadow:
-        0 14px 34px rgba(0, 0, 0, 0.20);
+.crumb.current {
+
+    background: #e5e5ea;
+
+    color: var(--text);
+
+    font-weight: 700;
 }
 
 
-/* =====================================================
+/* =========================================================
+   10. MESSAGE
+   ========================================================= */
+
+.message {
+
+    margin:
+        3px 10px 7px;
+
+    padding:
+        7px 4px;
+
+    background:
+        transparent;
+
+    color:
+        #6d6d72;
+
+    font-size: 13px;
+
+    line-height: 1.35;
+}
+
+.message::before {
+
+    content: "";
+
+    display: inline-block;
+
+    width: 7px;
+    height: 7px;
+
+    margin-right: 7px;
+
+    vertical-align: middle;
+
+    border-radius: 50%;
+
+    background:
+        var(--ios-green);
+}
+
+
+/* =========================================================
+   11. UPLOAD STATUS
+   ========================================================= */
+
+.upload-status {
+
+    margin:
+        0 10px 8px;
+
+    padding:
+        11px 12px;
+
+    border:
+        1px solid #bfdbfe;
+
+    border-radius: 14px;
+
+    background:
+        #eff6ff;
+
+    color:
+        #1e40af;
+
+    font-size: 13px;
+
+    line-height: 1.35;
+}
+
+
+/* =========================================================
+   12. REORDER BAR
+   ========================================================= */
+
+.reorder-bar {
+
+    margin:
+        0 10px 10px;
+
+    padding:
+        12px;
+
+    border:
+        1px solid #cfe2ff;
+
+    border-radius:
+        16px;
+
+    background:
+        #eef6ff;
+}
+
+.reorder-info {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        3px;
+
+    margin-bottom:
+        8px;
+}
+
+.reorder-info strong {
+
+    color:
+        var(--blue);
+
+    font-size:
+        14px;
+}
+
+.reorder-info span {
+
+    color:
+        #6d6d72;
+
+    font-size:
+        12px;
+}
+
+.reorder-actions {
+
+    display:
+        flex;
+
+    gap:
+        8px;
+}
+
+.reorder-actions button {
+
+    flex:
+        1;
+
+    min-height:
+        44px;
+
+    border:
+        0;
+
+    border-radius:
+        12px;
+
+    font-size:
+        14px;
+
+    font-weight:
+        700;
+}
+
+.save-btn {
+
+    background:
+        var(--blue);
+
+    color:
+        #fff;
+}
+
+.cancel-btn {
+
+    background:
+        #8e8e93;
+
+    color:
+        #fff;
+}
+
+.save-btn:active,
+.cancel-btn:active {
+    transform: scale(.97);
+}
+
+
+/* =========================================================
+   13. FILE LIST
+   ========================================================= */
+
+.file-list {
+
+    width: 100%;
+
+    padding:
+        0 10px 24px;
+}
+
+
+/* =========================================================
    14. FILE ITEM
-   ===================================================== */
+   DESKTOP
+   ========================================================= */
 
 .file-item {
+
     position: relative;
 
     width: 100%;
+
     min-height: 72px;
 
-    display: grid;
+    margin:
+        0 0 8px;
+
+    padding:
+        9px 10px;
+
+    display: grid !important;
 
     grid-template-columns:
         30px
@@ -591,1063 +954,3004 @@ input {
 
     align-items: center;
 
-    gap: 10px;
+    gap: 9px;
 
-    padding: 8px 12px;
+    overflow: hidden;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        18px;
 
     background:
-        rgba(255, 255, 255, 0.018);
+        #fff;
 
-    border-bottom:
-        1px solid var(--separator);
-
-    cursor: pointer;
+    box-shadow:
+        var(--shadow);
 
     transition:
-        background 0.18s ease,
-        box-shadow 0.18s ease;
-}
+        transform .15s ease,
+        background .15s ease,
+        box-shadow .15s ease;
 
-.file-item:last-child {
-    border-bottom: 0;
+    touch-action:
+        manipulation;
 }
 
 .file-item:hover {
-    background:
-        rgba(0, 122, 255, 0.055);
+    background: #fff;
 }
 
 .file-item:active {
+
+    transform:
+        scale(.992);
+
     background:
-        rgba(0, 122, 255, 0.09);
+        #f7faff;
+}
+
+.file-item.touch-active {
+
+    transform:
+        scale(.992) !important;
+
+    background:
+        #f7faff !important;
 }
 
 .folder-row {
-    background:
-        rgba(0, 122, 255, 0.025);
+    cursor: pointer;
 }
 
 
-/* =====================================================
+/* =========================================================
    15. POSITION
-   ===================================================== */
+   ========================================================= */
 
 .position {
-    color: var(--text-muted);
 
-    font-size: 12px;
-
-    text-align: center;
-
-    user-select: none;
-}
-
-
-/* =====================================================
-   16. FILE ICON
-   ===================================================== */
-
-.file-icon {
-    width: 46px;
-    height: 46px;
+    width: 30px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    border-radius: 13px;
+    color:
+        var(--secondary);
 
-    background:
-        rgba(255, 255, 255, 0.045);
+    font-size:
+        13px;
 
-    border:
-        1px solid var(--border);
+    font-weight:
+        600;
 
-    font-size: 22px;
+    text-align:
+        center;
 
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    font-variant-numeric:
+        tabular-nums;
 }
 
 
-/* =====================================================
-   17. FILE INFO
-   ===================================================== */
+/* =========================================================
+   16. FILE ICON
+   ========================================================= */
 
-.file-info {
-    min-width: 0;
+.file-icon {
+
+    width: 50px;
+    height: 50px;
 
     display: flex;
-    flex-direction: column;
 
-    gap: 4px;
+    align-items: center;
+    justify-content: center;
+
+    border-radius:
+        14px;
+
+    background:
+        #f2f2f7;
+
+    color:
+        var(--blue);
+
+    font-size:
+        29px;
+
+    overflow:
+        hidden;
+
+    -webkit-user-drag:
+        none;
+}
+
+.folder-item .file-icon,
+.reorder-row .file-icon {
+
+    filter:
+        drop-shadow(
+            0 3px 4px
+            rgba(0, 122, 255, .12)
+        );
+}
+
+
+/* =========================================================
+   17. FILE INFO
+   ========================================================= */
+
+.file-info {
+
+    min-width:
+        0 !important;
+
+    width:
+        auto;
+
+    overflow:
+        hidden;
 }
 
 .file-name {
-    min-width: 0;
 
-    color: var(--text);
+    display:
+        block;
 
-    font-size: 15px;
+    width:
+        100%;
 
-    font-weight: 600;
+    min-width:
+        0;
+
+    margin:
+        0;
+
+    color:
+        var(--text);
+
+    font-size:
+        16px;
+
+    line-height:
+        1.3;
+
+    font-weight:
+        600;
+
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
 }
 
 .file-name-text {
-    display: block;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-
-    white-space: nowrap;
+    display: inline;
 }
 
 .file-type {
-    color: var(--text-muted);
 
-    font-size: 11px;
+    margin-top:
+        3px;
+
+    color:
+        var(--secondary);
+
+    font-size:
+        12px;
+
+    line-height:
+        1.3;
+
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+.recent-file-path,
+.search-path {
+
+    margin-top:
+        3px;
+
+    color:
+        #8e8e93;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.3;
+
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
 }
 
 
-/* =====================================================
+/* =========================================================
    18. ITEM ACTIONS
-   ===================================================== */
+   ========================================================= */
 
 .item-actions {
-    display: flex;
 
-    align-items: center;
+    width:
+        180px;
 
-    justify-content: flex-end;
+    height:
+        54px;
 
-    gap: 5px;
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap:
+        4px;
+
+    padding:
+        4px;
+
+    border-radius:
+        15px;
+
+    background:
+        #f1f2f6;
+
+    overflow:
+        hidden;
 }
 
-.item-btn {
-    width: 36px;
-    height: 36px;
+.item-btn,
+.item-actions > button {
 
-    display: inline-flex;
+    width:
+        100%;
 
-    align-items: center;
-    justify-content: center;
+    height:
+        100%;
 
-    padding: 0;
+    min-width:
+        0;
+
+    min-height:
+        0;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        0;
 
     border:
-        1px solid var(--border);
+        0;
 
-    border-radius: 10px;
+    border-radius:
+        11px;
 
     background:
-        rgba(255, 255, 255, 0.035);
+        #fff;
 
-    color: var(--text-secondary);
+    color:
+        var(--text);
 
-    cursor: pointer;
+    font-size:
+        20px;
+
+    box-shadow:
+        0 1px 3px
+        rgba(0, 0, 0, .05);
 
     transition:
-        background 0.18s ease,
-        color 0.18s ease,
-        border-color 0.18s ease,
-        transform 0.18s ease;
+        transform .12s ease,
+        background .12s ease;
 }
 
-.item-btn:hover {
-    color: var(--text);
+.item-btn:active,
+.item-actions > button:active {
+
+    transform:
+        scale(.91);
 
     background:
-        rgba(0, 122, 255, 0.10);
-
-    border-color:
-        rgba(0, 122, 255, 0.25);
-}
-
-.item-btn:active {
-    transform: scale(0.92);
+        var(--blue-soft);
 }
 
 .item-more-btn {
-    color: var(--cyan);
+    color:
+        var(--blue) !important;
 }
 
 .item-more-btn span {
-    font-weight: 700;
-    letter-spacing: 2px;
+
+    font-size:
+        17px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        1px;
 }
 
+.item-actions > button:not(.item-btn) {
 
-/* =====================================================
-   19. SEARCH RESULT
-   ===================================================== */
+    width:
+        100% !important;
 
-.search-result {
-    background:
-        rgba(0, 122, 255, 0.075);
+    height:
+        100% !important;
 
-    border-left:
-        2px solid var(--blue);
-}
+    min-width:
+        0 !important;
 
-
-/* =====================================================
-   20. EMPTY
-   ===================================================== */
-
-.empty {
-    min-height: 180px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 30px;
-
-    color: var(--text-muted);
-
-    text-align: center;
-}
-
-
-/* =====================================================
-   21. SELECTION
-   ===================================================== */
-
-.file-item.selected {
-    background:
-        rgba(0, 122, 255, 0.12);
-
-    box-shadow:
-        inset 3px 0 0 var(--blue);
-}
-
-
-/* =====================================================
-   22. TOUCH ACTION SHEET
-   ===================================================== */
-
-.touch-action-sheet {
-    position: fixed;
-
-    inset: 0;
-
-    display: none;
-
-    align-items: center;
-    justify-content: center;
+    min-height:
+        0 !important;
 
     padding:
-        20px
-        calc(20px + env(safe-area-inset-right))
-        calc(20px + env(safe-area-inset-bottom))
-        calc(20px + env(safe-area-inset-left));
+        0 !important;
 
-    z-index: 6000;
+    display:
+        flex !important;
+
+    align-items:
+        center !important;
+
+    justify-content:
+        center !important;
+
+    border:
+        0 !important;
+
+    border-radius:
+        11px !important;
+
+    background:
+        #fff !important;
+
+    font-size:
+        21px !important;
+
+    box-shadow:
+        0 1px 3px
+        rgba(0, 0, 0, .05);
+}
+
+
+/* =========================================================
+   19. SEARCH RESULT
+   ========================================================= */
+
+.search-result {
+    cursor:
+        pointer;
+}
+
+.search-result .item-actions {
+    display:
+        none;
+}
+
+
+/* =========================================================
+   20. EMPTY
+   ========================================================= */
+
+.empty {
+
+    width:
+        100%;
+
+    min-height:
+        220px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        10px;
+
+    padding:
+        30px 20px;
+
+    color:
+        var(--secondary);
+
+    text-align:
+        center;
+}
+
+.empty-icon {
+
+    font-size:
+        48px;
+
+    opacity:
+        .75;
+}
+
+
+/* =========================================================
+   21. SELECTION
+   ========================================================= */
+
+.selection-bar {
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        10px;
+
+    margin:
+        0 10px 8px;
+
+    padding:
+        10px 12px;
+
+    border-radius:
+        14px;
+
+    background:
+        var(--blue-soft);
+
+    color:
+        var(--blue);
+
+    font-size:
+        14px;
+
+    font-weight:
+        600;
+}
+
+.selection-bar.active {
+    display:
+        flex;
+}
+
+.selection-actions {
+
+    display:
+        flex;
+
+    gap:
+        6px;
+}
+
+.selection-action {
+
+    min-height:
+        38px;
+
+    padding:
+        6px 10px;
+
+    border:
+        0;
+
+    border-radius:
+        10px;
+
+    background:
+        #fff;
+
+    color:
+        var(--blue);
+
+    font-weight:
+        700;
+}
+
+.selection-check {
+
+    width:
+        26px;
+
+    height:
+        26px;
+
+    flex:
+        0 0 26px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border:
+        2px solid #c7c7cc;
+
+    border-radius:
+        50%;
+
+    background:
+        #fff;
+
+    color:
+        #fff;
+}
+
+.file-item.selected {
+
+    border-color:
+        var(--blue) !important;
+
+    background:
+        #eef5ff !important;
+
+    box-shadow:
+        0 2px 10px
+        rgba(0, 122, 255, .13)
+        !important;
+}
+
+.file-item.selected .selection-check {
+
+    border-color:
+        var(--blue);
+
+    background:
+        var(--blue);
+}
+
+.select-mode .file-item {
+    cursor:
+        pointer;
+}
+
+.select-mode .file-item .item-actions {
+    display:
+        none;
+}
+
+
+/* =========================================================
+   22. TOUCH ACTION SHEET
+   ========================================================= */
+
+.touch-action-sheet {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        5000;
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        calc(16px + env(safe-area-inset-top))
+        16px
+        calc(16px + env(safe-area-inset-bottom));
+
+    background:
+        rgba(0, 0, 0, .28);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
 }
 
 .touch-action-sheet.show {
-    display: flex;
+    display:
+        flex;
 }
 
 .touch-sheet-backdrop {
-    position: absolute;
 
-    inset: 0;
+    position:
+        absolute;
+
+    inset:
+        0;
 
     background:
-        rgba(0, 0, 0, 0.60);
-
-    backdrop-filter: blur(8px);
-
-    -webkit-backdrop-filter: blur(8px);
+        transparent;
 }
 
 .touch-sheet-card {
-    position: relative;
 
-    width: min(420px, 100%);
+    position:
+        relative;
 
-    overflow: hidden;
+    width:
+        min(92vw, 380px);
+
+    max-height:
+        calc(
+            100dvh
+            - 32px
+            - env(safe-area-inset-top)
+            - env(safe-area-inset-bottom)
+        );
+
+    overflow-y:
+        auto;
+
+    padding:
+        10px;
+
+    border-radius:
+        22px;
 
     background:
-        rgba(25, 30, 40, 0.96);
-
-    border:
-        1px solid rgba(255, 255, 255, 0.11);
-
-    border-radius: 20px;
+        rgba(255, 255, 255, .96);
 
     box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.45);
+        0 20px 60px
+        rgba(0, 0, 0, .22);
 }
 
 .touch-sheet-title {
-    padding: 16px 18px;
 
-    color: var(--text-secondary);
+    padding:
+        8px 10px 12px;
 
-    font-size: 13px;
+    color:
+        var(--text);
 
-    border-bottom:
-        1px solid var(--separator);
+    font-size:
+        16px;
+
+    font-weight:
+        700;
+
+    text-align:
+        center;
 }
 
 .touch-sheet-action,
 .touch-sheet-cancel {
-    width: 100%;
 
-    min-height: 52px;
+    width:
+        100%;
 
-    border: 0;
+    min-height:
+        48px;
 
-    border-bottom:
-        1px solid var(--separator);
+    margin:
+        3px 0;
 
-    background: transparent;
+    border:
+        0;
 
-    color: var(--text);
+    border-radius:
+        13px;
 
-    cursor: pointer;
+    background:
+        #f2f2f7;
+
+    color:
+        var(--text);
+
+    font-size:
+        15px;
+
+    font-weight:
+        600;
 }
 
-.touch-sheet-action:hover {
+.touch-sheet-action:active,
+.touch-sheet-cancel:active {
+
     background:
-        rgba(0, 122, 255, 0.10);
+        #e5e5ea;
+
+    transform:
+        scale(.98);
 }
 
 .touch-sheet-cancel {
-    color: var(--danger);
 
-    border-bottom: 0;
+    margin-top:
+        8px;
+
+    color:
+        var(--ios-red);
+
+    background:
+        #fff1f0;
 }
 
 
-/* =====================================================
-   23. PASTE BUTTON
-   ===================================================== */
+/* =========================================================
+   23. PASTE FAB
+   ========================================================= */
 
 .v4-paste-fab {
-    position: fixed;
 
-    left: 50%;
-    right: auto;
+    position:
+        fixed;
+
+    right:
+        18px;
 
     bottom:
         calc(
-            24px +
+            18px +
             env(safe-area-inset-bottom)
         );
 
-    min-width: 150px;
-    min-height: 50px;
+    z-index:
+        1200;
 
-    display: flex;
+    width:
+        58px;
 
-    align-items: center;
-    justify-content: center;
+    height:
+        58px;
 
-    padding: 0 20px;
+    min-width:
+        58px;
+
+    min-height:
+        58px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        0;
 
     border:
-        1px solid rgba(69, 217, 255, 0.28);
+        0;
 
-    border-radius: 18px;
+    border-radius:
+        18px;
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(0, 122, 255, 0.92),
-            rgba(20, 145, 255, 0.82)
-        );
+        var(--blue);
 
-    color: #ffffff;
-
-    font-size: 14px;
-
-    font-weight: 650;
+    color:
+        #fff;
 
     box-shadow:
-        0 12px 30px rgba(0, 122, 255, 0.28),
-        0 0 20px rgba(69, 217, 255, 0.08);
+        0 8px 28px
+        rgba(0, 122, 255, .28);
 
-    backdrop-filter: blur(18px);
+    font-size:
+        15px;
 
-    -webkit-backdrop-filter: blur(18px);
-
-    cursor: pointer;
-
-    z-index: 5000;
-
-    transform:
-        translateX(-50%);
+    font-weight:
+        700;
 }
 
 .v4-paste-fab:active {
+
     transform:
-        translateX(-50%)
-        scale(0.95);
+        scale(.93);
 }
 
 .paste-label {
-    white-space: nowrap;
+    display:
+        block;
 }
 
-
-/* =====================================================
-   24. PASTE CANCEL X
-   ===================================================== */
-
 .paste-cancel {
-    position: fixed;
 
-    left: 50%;
-    right: auto;
+    position:
+        fixed;
+
+    right:
+        14px;
 
     bottom:
         calc(
-            84px +
+            82px +
             env(safe-area-inset-bottom)
         );
 
-    width: 34px;
-    height: 34px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 0;
-    margin: 0;
-
-    border:
-        1px solid rgba(255, 255, 255, 0.16);
-
-    border-radius: 50%;
-
-    background:
-        rgba(24, 29, 38, 0.92);
-
-    color: #ffffff;
-
-    font-size: 21px;
-
-    font-weight: 300;
-
-    line-height: 1;
-
-    box-shadow:
-        0 8px 22px rgba(0, 0, 0, 0.32),
-        inset 0 1px 0 rgba(255, 255, 255, 0.07);
-
-    backdrop-filter: blur(16px);
-
-    -webkit-backdrop-filter: blur(16px);
-
-    cursor: pointer;
-
-    z-index: 5001;
-
-    transform:
-        translateX(-50%);
-}
-
-.paste-cancel:active {
-    transform:
-        translateX(-50%)
-        scale(0.90);
-}
-
-
-/* =====================================================
-   25. FILE DETAILS MODAL
-   ===================================================== */
-
-.file-details-modal {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 7000;
-}
-
-.file-details-modal .modal-backdrop {
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        rgba(0, 0, 0, 0.62);
-
-    backdrop-filter: blur(9px);
-
-    -webkit-backdrop-filter: blur(9px);
-}
-
-.file-details-modal .modal-card {
-    position: relative;
+    z-index:
+        1201;
 
     width:
-        min(
-            520px,
-            calc(100% - 32px)
-        );
+        32px;
 
-    margin:
-        12vh auto 0;
-
-    padding: 22px;
-
-    background:
-        rgba(22, 27, 36, 0.97);
+    height:
+        32px;
 
     border:
-        1px solid var(--border);
+        0;
 
-    border-radius: 21px;
+    border-radius:
+        50%;
+
+    background:
+        #555;
+
+    color:
+        #fff;
+
+    font-size:
+        20px;
+
+    line-height:
+        32px;
+
+    text-align:
+        center;
+}
+
+
+/* =========================================================
+   24. FILE DETAILS MODAL
+   ========================================================= */
+
+.file-details-modal {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        2500;
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        20px;
+
+    background:
+        rgba(0, 0, 0, .35);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+}
+
+.file-details-modal.show {
+    display:
+        flex;
+}
+
+.file-details-card {
+
+    width:
+        min(560px, calc(100vw - 40px));
+
+    max-height:
+        calc(100dvh - 40px);
+
+    overflow:
+        auto;
+
+    padding:
+        20px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        22px;
+
+    background:
+        #fff;
 
     box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.48);
+        var(--shadow-strong);
+}
+
+.file-details-card h3 {
+
+    margin:
+        0 0 16px;
+
+    color:
+        var(--text);
+
+    font-size:
+        20px;
+}
+
+.file-detail-row {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        15px;
+
+    padding:
+        11px 0;
+
+    border-bottom:
+        1px solid var(--line);
+}
+
+.file-detail-row strong {
+
+    color:
+        var(--secondary);
+
+    font-size:
+        13px;
+}
+
+.file-detail-row span {
+
+    color:
+        var(--text);
+
+    font-size:
+        13px;
+
+    text-align:
+        right;
+
+    word-break:
+        break-word;
+}
+
+.file-details-close {
+
+    width:
+        100%;
+
+    min-height:
+        46px;
+
+    margin-top:
+        16px;
+
+    border:
+        0;
+
+    border-radius:
+        13px;
+
+    background:
+        var(--blue);
+
+    color:
+        #fff;
+
+    font-size:
+        15px;
+
+    font-weight:
+        700;
 }
 
 
-/* =====================================================
-   26. REORDER ROW
-   ===================================================== */
+/* =========================================================
+   25. REORDER ROW
+   ========================================================= */
 
 .reorder-row {
-    cursor: grab;
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    min-height:
+        64px;
+
+    padding:
+        8px 10px;
+
+    margin-bottom:
+        6px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        14px;
+
+    background:
+        #fff;
 }
 
-.reorder-row:active {
-    cursor: grabbing;
+.reorder-row .file-info {
+    flex:
+        1 1 auto;
+}
+
+.reorder-buttons {
+
+    display:
+        flex;
+
+    gap:
+        5px;
+
+    flex:
+        0 0 auto;
+}
+
+.reorder-buttons button {
+
+    width:
+        38px;
+
+    height:
+        38px;
+
+    border:
+        0;
+
+    border-radius:
+        10px;
+
+    background:
+        #f2f2f7;
+
+    color:
+        var(--blue);
+
+    font-size:
+        18px;
 }
 
 
-/* =====================================================
-   27. iPHONE ONLY
-   ===================================================== */
+/* =========================================================
+   26. iPHONE
+   FUTURISTIC LEFT DRAWER
+   ========================================================= */
 
-@media (max-width: 700px)
-       and (hover: none)
-       and (pointer: coarse) {
+@media
+(max-width: 700px)
+and (hover: none)
+and (pointer: coarse) {
 
-    :root {
-        --mobile-header-height: 68px;
+    html,
+    body {
+
+        width:
+            100%;
+
+        min-height:
+            100dvh;
+
+        background:
+            var(--future-bg);
+    }
+
+    body {
+        overflow-x:
+            hidden;
     }
 
 
-    /* ---------------------------------------------
+    /* -----------------------------------------------------
        APP
-       --------------------------------------------- */
+
+       IMPORTANT:
+       No grid here.
+
+       The main content is ALWAYS full width.
+       The navigation drawer overlays it.
+       ----------------------------------------------------- */
 
     .app {
-        width: 100%;
 
-        padding-left: 5px;
-        padding-right: 5px;
+        position:
+            relative;
 
-        overflow-x: hidden;
+        width:
+            100%;
+
+        min-height:
+            100dvh;
+
+        padding:
+            env(safe-area-inset-top)
+            0
+            env(safe-area-inset-bottom);
+
+        background:
+            var(--future-bg);
+
+        overflow-x:
+            hidden;
     }
 
 
-    /* ---------------------------------------------
+    /* -----------------------------------------------------
        HEADER
-       --------------------------------------------- */
+       ----------------------------------------------------- */
 
     .header {
+
+        position:
+            relative;
+
+        z-index:
+            3200;
+
+        min-height:
+            68px;
+
         height:
-            var(--mobile-header-height);
+            68px;
+
+        padding:
+            8px 10px;
+
+        border:
+            0;
+
+        border-bottom:
+            1px solid
+            rgba(83,230,255,.10);
+
+        border-radius:
+            0;
+
+        background:
+            rgba(8,11,18,.90);
+
+        box-shadow:
+            0 8px 30px
+            rgba(0,0,0,.25);
+
+        backdrop-filter:
+            blur(24px);
+
+        -webkit-backdrop-filter:
+            blur(24px);
+    }
+
+    .brand {
+
+        gap:
+            9px;
+    }
+
+    .app-logo {
+
+        width:
+            40px;
+
+        height:
+            40px;
+
+        flex-basis:
+            40px;
+
+        border-radius:
+            12px;
+
+        background:
+            linear-gradient(
+                145deg,
+                #23c7ff,
+                #0878ff
+            );
+
+        box-shadow:
+            0 0 22px
+            rgba(24,168,255,.28);
+    }
+
+    .app-logo svg {
+
+        width:
+            31px;
+
+        height:
+            31px;
+    }
+
+    .brand-text h1 {
+
+        font-size:
+            17px;
+
+        color:
+            #f5f7fb;
+
+        letter-spacing:
+            -.2px;
+    }
+
+    .brand-text p {
+
+        margin-top:
+            2px;
+
+        font-size:
+            8px;
+
+        color:
+            #718097;
+
+        letter-spacing:
+            .7px;
+
+        text-transform:
+            uppercase;
+    }
+
+
+    /* -----------------------------------------------------
+       MENU BUTTON
+       ----------------------------------------------------- */
+
+    .header-menu {
+
+        width:
+            40px;
+
+        height:
+            40px;
+
+        min-width:
+            40px;
+
+        min-height:
+            40px;
+
+        border-radius:
+            12px;
+
+        background:
+            rgba(255,255,255,.055);
+
+        border:
+            1px solid
+            rgba(83,230,255,.16);
+
+        box-shadow:
+            0 0 16px
+            rgba(24,168,255,.08);
+    }
+
+    .header-menu .menu-line {
+
+        width:
+            17px;
+
+        height:
+            2px;
+
+        background:
+            var(--future-cyan);
+
+        box-shadow:
+            0 0 6px
+            rgba(83,230,255,.45);
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE NAVIGATION DRAWER
+
+       This is the major change.
+
+       The drawer is NOT part of the document width.
+
+       Therefore:
+       - search stays full width
+       - breadcrumb stays full width
+       - file list stays full width
+       ----------------------------------------------------- */
+
+    .toolbar {
+
+        position:
+            fixed;
+
+        top:
+            calc(
+                68px +
+                env(safe-area-inset-top)
+            );
+
+        left:
+            0;
+
+        bottom:
+            0;
+
+        z-index:
+            3000;
+
+        width:
+            min(285px, 82vw);
+
+        height:
+            auto;
+
+        min-height:
+            0;
+
+        max-height:
+            none;
+
+        margin:
+            0;
+
+        padding:
+            15px 10px
+            calc(
+                18px +
+                env(safe-area-inset-bottom)
+            );
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        gap:
+            6px;
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(12,16,25,.98),
+                rgba(7,10,17,.99)
+            );
+
+        border:
+            0;
+
+        border-right:
+            1px solid
+            rgba(83,230,255,.18);
+
+        border-top:
+            1px solid
+            rgba(83,230,255,.10);
+
+        border-radius:
+            0 20px 20px 0;
+
+        box-shadow:
+            18px 0 50px
+            rgba(0,0,0,.52),
+            0 0 35px
+            rgba(24,168,255,.08);
+
+        backdrop-filter:
+            blur(28px)
+            saturate(150%);
+
+        -webkit-backdrop-filter:
+            blur(28px)
+            saturate(150%);
+
+        overflow-y:
+            auto;
+
+        overflow-x:
+            hidden;
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+
+        pointer-events:
+            auto;
+
+        transition:
+            transform .24s cubic-bezier(.22,.61,.36,1),
+            opacity .20s ease;
+
+        overscroll-behavior:
+            contain;
+    }
+
+
+    /* -----------------------------------------------------
+       NAVIGATION OPEN INDICATOR
+       ----------------------------------------------------- */
+
+    .toolbar::before {
+
+        content:
+            "NAVIGATION";
+
+        display:
+            block;
+
+        flex:
+            0 0 auto;
+
+        padding:
+            2px 12px 9px;
+
+        color:
+            #607088;
+
+        font-size:
+            8px;
+
+        font-weight:
+            700;
+
+        letter-spacing:
+            1.8px;
+    }
+
+
+    /* -----------------------------------------------------
+       NAVIGATION BUTTONS
+       ----------------------------------------------------- */
+
+    .toolbar-btn {
+
+        flex:
+            0 0 54px;
+
+        width:
+            100%;
+
+        height:
+            54px;
+
+        min-height:
+            54px;
+
+        display:
+            grid;
+
+        grid-template-columns:
+            32px
+            minmax(0,1fr);
+
+        align-items:
+            center;
+
+        gap:
+            9px;
 
         padding:
             0 12px;
 
-        border-radius: 17px;
-
-        z-index: 5000;
-    }
-
-    .app-logo {
-        width: 40px;
-        height: 40px;
-
-        flex-basis: 40px;
-
-        border-radius: 12px;
-    }
-
-    .brand-text h1 {
-        font-size: 16px;
-    }
-
-    .brand-text p {
-        font-size: 10px;
-    }
-
-
-    /* ---------------------------------------------
-       SIDEBAR OPEN
-       --------------------------------------------- */
-
-    .toolbar {
-        position: fixed !important;
-
-        top:
-            calc(
-                env(safe-area-inset-top) +
-                var(--mobile-header-height)
-            ) !important;
-
-        left: 0 !important;
-
-        width: 252px !important;
-
-        height:
-            calc(
-                100dvh -
-                env(safe-area-inset-top) -
-                var(--mobile-header-height)
-            ) !important;
-
-        max-height: none !important;
-
-        display: flex !important;
-
-        flex-direction: column !important;
-
-        gap: 7px !important;
-
-        margin: 0 !important;
-
-        padding:
-            14px 10px
-            calc(
-                20px +
-                env(safe-area-inset-bottom)
-            ) !important;
-
-        overflow-y: auto !important;
-
-        background:
-            rgba(8, 11, 18, 0.97) !important;
-
         border:
-            1px solid rgba(255, 255, 255, 0.10) !important;
-
-        border-left: 0 !important;
+            1px solid
+            transparent;
 
         border-radius:
-            0 20px 20px 0 !important;
+            13px;
+
+        background:
+            transparent;
+
+        color:
+            var(--future-cyan);
 
         box-shadow:
-            18px 0 48px rgba(0, 0, 0, 0.40) !important;
+            none;
 
-        backdrop-filter: blur(25px);
+        text-align:
+            left;
 
-        -webkit-backdrop-filter: blur(25px);
+        font-size:
+            20px;
+    }
 
-        opacity: 1 !important;
+    .toolbar-btn svg,
+    .ios-menu-icon {
 
-        pointer-events: auto !important;
+        width:
+            22px;
+
+        height:
+            22px;
+
+        stroke:
+            var(--future-cyan);
+
+        filter:
+            drop-shadow(
+                0 0 5px
+                rgba(83,230,255,.35)
+            );
+    }
+
+    .toolbar-btn span {
+
+        color:
+            #b7c3d4;
+
+        font-size:
+            12px;
+
+        line-height:
+            15px;
+
+        font-weight:
+            600;
+
+        text-align:
+            left;
+    }
+
+    .toolbar-btn:active {
+
+        background:
+            rgba(24,168,255,.13);
+
+        border-color:
+            rgba(83,230,255,.17);
 
         transform:
-            translate3d(0, 0, 0) !important;
+            scale(.985);
+    }
 
-        z-index: 4500 !important;
+    .toolbar-btn.select-active {
 
-        transition:
-            transform 0.24s ease,
-            opacity 0.20s ease !important;
+        background:
+            rgba(24,168,255,.15)
+            !important;
+
+        border-color:
+            rgba(83,230,255,.28)
+            !important;
+
+        box-shadow:
+            inset 0 0 0 1px
+            rgba(83,230,255,.14),
+            0 0 18px
+            rgba(24,168,255,.07)
+            !important;
     }
 
 
-    /* ---------------------------------------------
-       SIDEBAR CLOSED
-       --------------------------------------------- */
+    /* -----------------------------------------------------
+       HIDE NAVIGATION
+
+       IMPORTANT:
+       We do NOT use width: 0.
+
+       The drawer simply moves outside the viewport.
+
+       Main content never loses width.
+       ----------------------------------------------------- */
 
     .toolbar.menu-collapsed {
-        display: flex !important;
 
-        position: fixed !important;
+        position:
+            fixed;
 
         top:
             calc(
-                env(safe-area-inset-top) +
-                var(--mobile-header-height)
-            ) !important;
+                68px +
+                env(safe-area-inset-top)
+            );
 
-        left: 0 !important;
+        left:
+            0;
 
-        width: 252px !important;
+        bottom:
+            0;
+
+        width:
+            min(285px, 82vw);
 
         height:
-            calc(
-                100dvh -
-                env(safe-area-inset-top) -
-                var(--mobile-header-height)
-            ) !important;
+            auto;
 
-        max-height: none !important;
+        min-height:
+            0;
 
-        margin: 0 !important;
+        max-height:
+            none;
 
         padding:
-            14px 10px
+            15px 10px
             calc(
-                20px +
+                18px +
                 env(safe-area-inset-bottom)
-            ) !important;
+            );
 
-        overflow-y: auto !important;
+        margin:
+            0;
 
-        opacity: 0 !important;
+        border:
+            0;
 
-        pointer-events: none !important;
+        border-right:
+            1px solid
+            rgba(83,230,255,.18);
+
+        opacity:
+            0;
+
+        pointer-events:
+            none;
+
+        overflow:
+            hidden;
 
         transform:
-            translate3d(-105%, 0, 0) !important;
-    }
-
-
-    /* ---------------------------------------------
-       SIDEBAR BUTTONS
-       --------------------------------------------- */
-
-    .toolbar .toolbar-btn {
-        width: 100% !important;
-
-        min-width: 0 !important;
-
-        min-height: 48px !important;
-
-        height: 48px !important;
-
-        flex: 0 0 48px !important;
-
-        display: flex !important;
-
-        align-items: center !important;
-
-        justify-content: flex-start !important;
-
-        padding:
-            0 15px !important;
-
-        text-align: left !important;
-
-        border-radius: 13px !important;
+            translateX(-105%);
 
         background:
-            rgba(255, 255, 255, 0.045) !important;
-
-        color:
-            var(--text-secondary) !important;
+            linear-gradient(
+                180deg,
+                rgba(12,16,25,.98),
+                rgba(7,10,17,.99)
+            );
     }
 
 
-    /* ---------------------------------------------
-       MAIN CONTENT
-       --------------------------------------------- */
+    /* -----------------------------------------------------
+       DRAWER SHADOW / SCREEN DIMMER
 
-    .search-section,
-    .breadcrumb,
-    .message,
-    .upload-status,
-    .reorder-bar,
-    .file-list {
-        width: 100% !important;
+       Uses :has() only for the mobile visual layer.
+       ----------------------------------------------------- */
 
-        max-width: none !important;
+    .app::after {
 
-        margin-left: 0 !important;
+        content:
+            "";
 
-        margin-right: 0 !important;
+        position:
+            fixed;
+
+        inset:
+            0;
+
+        z-index:
+            2900;
+
+        pointer-events:
+            auto;
+
+        background:
+            rgba(0,0,0,.38);
+
+        backdrop-filter:
+            blur(2px);
+
+        -webkit-backdrop-filter:
+            blur(2px);
+
+        opacity:
+            1;
+
+        visibility:
+            visible;
+
+        transition:
+            opacity .20s ease,
+            visibility .20s ease;
     }
+
+    .app:has(.toolbar.menu-collapsed)::after {
+
+        opacity:
+            0;
+
+        visibility:
+            hidden;
+
+        pointer-events:
+            none;
+    }
+
+
+    /* -----------------------------------------------------
+       MAIN SEARCH AREA
+
+       ALWAYS FULL WIDTH
+       ----------------------------------------------------- */
 
     .search-section {
-        margin-top: 8px;
+
+        position:
+            relative;
+
+        z-index:
+            10;
+
+        width:
+            100%;
+
+        display:
+            block;
+
+        padding:
+            9px 8px 6px;
+
+        margin:
+            0;
+
+        background:
+            var(--future-bg);
+    }
+
+    .search-section::before {
+
+        content:
+            "⌕";
+
+        position:
+            absolute;
+
+        left:
+            22px;
+
+        top:
+            14px;
+
+        z-index:
+            2;
+
+        color:
+            var(--future-cyan);
+
+        font-size:
+            21px;
+
+        line-height:
+            1;
     }
 
     .search-box {
-        width: 100% !important;
 
-        height: 48px;
+        width:
+            100%;
 
-        border-radius: 14px;
-
-        font-size: 14px;
-    }
-
-    .breadcrumb {
-        min-height: 42px;
-
-        border-radius: 13px;
-
-        font-size: 13px;
-    }
-
-
-    /* ---------------------------------------------
-       FILE LIST
-       --------------------------------------------- */
-
-    .file-list {
-        width: 100% !important;
-
-        border-radius: 16px;
-    }
-
-    .file-item {
-        width: 100% !important;
-
-        min-height: 67px;
-
-        grid-template-columns:
-            28px
-            45px
-            minmax(0, 1fr)
-            auto;
-
-        gap: 8px;
+        height:
+            45px;
 
         padding:
-            8px 9px;
-    }
+            0 14px 0 40px;
 
-    .position {
-        font-size: 11px;
-    }
+        border:
+            1px solid
+            rgba(255,255,255,.08);
 
-    .file-icon {
-        width: 42px;
-        height: 42px;
-
-        border-radius: 12px;
-
-        font-size: 20px;
-    }
-
-    .file-name {
-        font-size: 14px;
-    }
-
-    .file-type {
-        font-size: 10px;
-    }
-
-    .item-actions {
-        gap: 3px;
-    }
-
-    .item-btn {
-        width: 34px;
-        height: 34px;
-
-        border-radius: 9px;
-    }
-
-
-    /* ---------------------------------------------
-       SIDEBAR DARK OVERLAY
-       --------------------------------------------- */
-
-    .app::after {
-        content: "";
-
-        position: fixed;
-
-        inset: 0;
+        border-radius:
+            13px;
 
         background:
-            rgba(0, 0, 0, 0.32);
+            rgba(255,255,255,.055);
 
-        opacity: 0;
+        color:
+            #fff;
 
-        pointer-events: none;
+        font-size:
+            15px;
 
-        z-index: 4000;
-
-        transition:
-            opacity 0.24s ease;
+        box-shadow:
+            inset 0 1px 0
+            rgba(255,255,255,.025);
     }
 
-    .app:has(
-        .toolbar:not(.menu-collapsed)
-    )::after {
-        opacity: 1;
+    .search-box::placeholder {
+        color:
+            #78859a;
     }
 
-    .app:has(
-        .toolbar.menu-collapsed
-    )::after {
-        opacity: 0;
+    .search-box:focus {
+
+        background:
+            rgba(255,255,255,.075);
+
+        border-color:
+            rgba(83,230,255,.32);
+
+        box-shadow:
+            0 0 0 3px
+            rgba(24,168,255,.08),
+            0 0 20px
+            rgba(24,168,255,.06);
     }
 
 
-    /* ---------------------------------------------
-       PASTE BUTTON
-       --------------------------------------------- */
+    /* -----------------------------------------------------
+       BREADCRUMB
+       ----------------------------------------------------- */
 
-    #v4PasteFab {
-        left: 50% !important;
+    .breadcrumb {
 
-        right: auto !important;
+        position:
+            relative;
 
-        bottom:
+        z-index:
+            10;
+
+        width:
+            calc(100% - 16px);
+
+        max-width:
+            calc(100% - 16px);
+
+        min-height:
+            36px;
+
+        margin:
+            5px 8px 0;
+
+        padding:
+            3px 0;
+
+        background:
+            transparent;
+
+        color:
+            #78859a;
+    }
+
+    .breadcrumb > span {
+
+        color:
+            #78859a;
+
+        font-size:
+            10px;
+    }
+
+    .crumb {
+
+        min-height:
+            32px;
+
+        height:
+            32px;
+
+        max-width:
+            70vw;
+
+        padding:
+            4px 10px;
+
+        border:
+            1px solid
+            rgba(83,230,255,.10);
+
+        border-radius:
+            9px;
+
+        background:
+            rgba(24,168,255,.07);
+
+        color:
+            var(--future-cyan);
+
+        font-size:
+            11px;
+
+        line-height:
+            24px;
+    }
+
+    .crumb.current {
+
+        background:
+            rgba(255,255,255,.06);
+
+        color:
+            #cbd4e2;
+
+        border-color:
+            rgba(255,255,255,.07);
+    }
+
+
+    /* -----------------------------------------------------
+       MESSAGE
+       ----------------------------------------------------- */
+
+    .message {
+
+        position:
+            relative;
+
+        z-index:
+            10;
+
+        margin:
+            2px 8px 5px;
+
+        padding:
+            5px 2px;
+
+        color:
+            #718097;
+
+        font-size:
+            10px;
+
+        background:
+            transparent;
+    }
+
+    .message::before {
+
+        width:
+            6px;
+
+        height:
+            6px;
+
+        margin-right:
+            6px;
+
+        background:
+            var(--future-green);
+
+        box-shadow:
+            0 0 7px
+            rgba(57,229,140,.35);
+    }
+
+
+    /* -----------------------------------------------------
+       UPLOAD STATUS
+       ----------------------------------------------------- */
+
+    .upload-status {
+
+        position:
+            relative;
+
+        z-index:
+            10;
+
+        margin:
+            0 8px 6px;
+
+        padding:
+            9px 10px;
+
+        border:
+            1px solid
+            rgba(83,230,255,.15);
+
+        border-radius:
+            12px;
+
+        background:
+            rgba(24,168,255,.07);
+
+        color:
+            #b9dff1;
+
+        font-size:
+            10px;
+    }
+
+
+    /* -----------------------------------------------------
+       REORDER BAR
+       ----------------------------------------------------- */
+
+    .reorder-bar {
+
+        position:
+            relative;
+
+        z-index:
+            10;
+
+        margin:
+            0 8px 7px;
+
+        padding:
+            10px;
+
+        border:
+            1px solid
+            rgba(83,230,255,.16);
+
+        border-radius:
+            13px;
+
+        background:
+            rgba(24,168,255,.07);
+    }
+
+    .reorder-info strong {
+        color:
+            var(--future-cyan);
+    }
+
+    .reorder-info span {
+        color:
+            #718097;
+    }
+
+
+    /* -----------------------------------------------------
+       FILE LIST
+
+       ALWAYS FULL WIDTH
+       ----------------------------------------------------- */
+
+    .file-list {
+
+        position:
+            relative;
+
+        z-index:
+            10;
+
+        width:
+            100%;
+
+        min-width:
+            0;
+
+        padding:
+            0 8px
             calc(
-                24px +
+                20px +
                 env(safe-area-inset-bottom)
-            ) !important;
+            );
 
-        transform:
-            translateX(-50%) !important;
+        margin:
+            0;
+
+        background:
+            var(--future-bg);
+
+        border-top:
+            1px solid
+            rgba(255,255,255,.06);
+
+        overflow-x:
+            hidden;
     }
 
-    #v4PasteFab:active {
-        transform:
-            translateX(-50%)
-            scale(0.95) !important;
-    }
 
-
-    /* ---------------------------------------------
-       PASTE CANCEL
-       --------------------------------------------- */
-
-    #v4PasteCancel {
-        left: 50% !important;
-
-        right: auto !important;
-
-        bottom:
-            calc(
-                84px +
-                env(safe-area-inset-bottom)
-            ) !important;
-
-        transform:
-            translateX(-50%) !important;
-    }
-
-    #v4PasteCancel:active {
-        transform:
-            translateX(-50%)
-            scale(0.90) !important;
-    }
-}
-
-
-/* =====================================================
-   28. SMALL iPHONE
-   ===================================================== */
-
-@media (max-width: 430px)
-       and (hover: none)
-       and (pointer: coarse) {
-
-    :root {
-        --mobile-header-height: 62px;
-    }
-
-    .header {
-        height: 62px;
-    }
-
-    .app-logo {
-        width: 38px;
-        height: 38px;
-
-        flex-basis: 38px;
-    }
-
-    .brand-text h1 {
-        font-size: 15px;
-    }
-
-    .header-menu {
-        width: 42px;
-        height: 42px;
-
-        flex-basis: 42px;
-    }
+    /* -----------------------------------------------------
+       MOBILE FILE ROW
+       ----------------------------------------------------- */
 
     .file-item {
-        grid-template-columns:
-            25px
-            43px
-            minmax(0, 1fr)
+
+        width:
+            100%;
+
+        min-height:
+            62px;
+
+        margin:
+            0;
+
+        padding:
+            7px 4px;
+
+        display:
+            flex !important;
+
+        align-items:
+            center;
+
+        gap:
+            7px;
+
+        border:
+            0;
+
+        border-bottom:
+            1px solid
+            rgba(255,255,255,.065);
+
+        border-radius:
+            0;
+
+        background:
+            transparent;
+
+        box-shadow:
+            none;
+
+        color:
+            var(--future-text);
+
+        transform:
+            none !important;
+    }
+
+    .file-item:active,
+    .file-item.touch-active {
+
+        background:
+            rgba(24,168,255,.07)
+            !important;
+
+        transform:
+            none !important;
+    }
+
+    .file-item .position {
+
+        width:
+            18px;
+
+        min-width:
+            18px;
+
+        flex-basis:
+            18px;
+
+        color:
+            #4f5c70;
+
+        font-size:
+            9px;
+    }
+
+    .file-item .file-icon {
+
+        width:
+            40px;
+
+        height:
+            40px;
+
+        min-width:
+            40px;
+
+        min-height:
+            40px;
+
+        flex-basis:
+            40px;
+
+        border-radius:
+            11px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(24,168,255,.17),
+                rgba(83,230,255,.035)
+            );
+
+        border:
+            1px solid
+            rgba(83,230,255,.13);
+
+        color:
+            var(--future-cyan);
+
+        font-size:
+            22px;
+
+        box-shadow:
+            inset 0 0 15px
+            rgba(24,168,255,.035);
+    }
+
+    .file-item.folder-row .file-icon {
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(24,168,255,.23),
+                rgba(24,168,255,.055)
+            );
+
+        border-color:
+            rgba(24,168,255,.25);
+
+        box-shadow:
+            0 0 15px
+            rgba(24,168,255,.08);
+    }
+
+    .file-item .file-info {
+
+        position:
+            static;
+
+        flex:
+            1 1 auto;
+
+        width:
             auto;
 
-        gap: 7px;
+        height:
+            auto;
 
-        padding-left: 7px;
-        padding-right: 7px;
+        min-width:
+            0;
+
+        padding:
+            0;
+
+        display:
+            flex !important;
+
+        flex-direction:
+            column;
+
+        justify-content:
+            center;
+
+        gap:
+            2px;
     }
 
-    .file-icon {
-        width: 40px;
-        height: 40px;
+    .file-item .file-name {
+
+        color:
+            #f5f7fb;
+
+        font-size:
+            14px;
+
+        line-height:
+            19px;
+
+        font-weight:
+            600;
     }
 
-    .item-btn {
-        width: 32px;
-        height: 32px;
+    .file-item .file-type {
+
+        margin:
+            0;
+
+        color:
+            #718097;
+
+        font-size:
+            9px;
+
+        line-height:
+            13px;
     }
+
+    .file-item .recent-file-path,
+    .file-item .search-path {
+
+        margin-top:
+            0;
+
+        color:
+            #58667a;
+
+        font-size:
+            8px;
+
+        line-height:
+            12px;
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE ITEM ACTIONS
+       ----------------------------------------------------- */
+
+    .file-item .item-actions {
+
+        width:
+            auto;
+
+        height:
+            auto;
+
+        flex:
+            0 0 auto;
+
+        display:
+            grid !important;
+
+        grid-template-columns:
+            repeat(5, 28px);
+
+        gap:
+            1px;
+
+        padding:
+            0;
+
+        border:
+            0;
+
+        background:
+            transparent;
+
+        box-shadow:
+            none;
+
+        overflow:
+            visible;
+    }
+
+    .file-item .item-actions > button {
+
+        width:
+            28px !important;
+
+        height:
+            32px !important;
+
+        min-width:
+            28px !important;
+
+        min-height:
+            32px !important;
+
+        padding:
+            0 !important;
+
+        border:
+            0 !important;
+
+        border-radius:
+            8px !important;
+
+        background:
+            transparent !important;
+
+        color:
+            #8290a5;
+
+        box-shadow:
+            none !important;
+
+        font-size:
+            14px !important;
+    }
+
+    .file-item .item-more-btn {
+
+        color:
+            var(--future-cyan)
+            !important;
+    }
+
+
+    /* -----------------------------------------------------
+       PASTE FAB
+       ----------------------------------------------------- */
 
     .v4-paste-fab {
-        min-width: 142px;
-        min-height: 48px;
+
+        right:
+            14px;
+
+        bottom:
+            calc(
+                16px +
+                env(safe-area-inset-bottom)
+            );
+
+        width:
+            54px;
+
+        height:
+            54px;
+
+        min-width:
+            54px;
+
+        min-height:
+            54px;
+
+        border:
+            1px solid
+            rgba(83,230,255,.38);
+
+        border-radius:
+            17px;
+
+        background:
+            linear-gradient(
+                145deg,
+                #18a8ff,
+                #0878ff
+            );
+
+        box-shadow:
+            0 0 0 5px
+            rgba(24,168,255,.06),
+            0 10px 30px
+            rgba(0,0,0,.50),
+            0 0 22px
+            rgba(24,168,255,.24);
+    }
+
+    .paste-cancel {
+
+        right:
+            11px;
+
+        bottom:
+            calc(
+                77px +
+                env(safe-area-inset-bottom)
+            );
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE ACTION SHEET
+       ----------------------------------------------------- */
+
+    .touch-action-sheet {
+
+        padding:
+            16px;
+
+        background:
+            rgba(0,0,0,.48);
+
+        backdrop-filter:
+            blur(18px);
+
+        -webkit-backdrop-filter:
+            blur(18px);
+    }
+
+    .touch-sheet-card {
+
+        width:
+            min(
+                360px,
+                calc(100vw - 32px)
+            );
+
+        padding:
+            9px;
+
+        border:
+            1px solid
+            rgba(83,230,255,.20);
+
+        border-radius:
+            20px;
+
+        background:
+            rgba(15,20,30,.97);
+
+        box-shadow:
+            0 28px 70px
+            rgba(0,0,0,.65),
+            0 0 30px
+            rgba(24,168,255,.08);
+    }
+
+    .touch-sheet-title {
+
+        color:
+            #fff;
+
+        font-size:
+            15px;
+    }
+
+    .touch-sheet-action {
+
+        color:
+            #cfefff;
+
+        background:
+            rgba(255,255,255,.055);
+    }
+
+    .touch-sheet-cancel {
+
+        color:
+            var(--future-cyan);
+
+        background:
+            rgba(83,230,255,.06);
+    }
+
+
+    /* -----------------------------------------------------
+       DETAILS MODAL
+       ----------------------------------------------------- */
+
+    .file-details-card {
+
+        width:
+            min(
+                560px,
+                calc(100vw - 32px)
+            );
+
+        max-height:
+            calc(100dvh - 32px);
+
+        background:
+            rgba(15,20,30,.97);
+
+        border:
+            1px solid
+            rgba(83,230,255,.18);
+
+        color:
+            #fff;
+    }
+
+    .file-details-card h3 {
+
+        color:
+            #fff;
+    }
+
+    .file-detail-row {
+
+        border-bottom:
+            1px solid
+            var(--future-line);
+    }
+
+    .file-detail-row strong {
+
+        color:
+            #778296;
+    }
+
+    .file-detail-row span {
+
+        color:
+            #dce8f5;
+    }
+
+    .file-details-close {
+
+        background:
+            linear-gradient(
+                145deg,
+                #18a8ff,
+                #0878ff
+            );
+    }
+
+
+    /* -----------------------------------------------------
+       SMALL iPHONE
+       ----------------------------------------------------- */
+
+    @media (max-width: 430px) {
+
+        .header {
+
+            min-height:
+                62px;
+
+            height:
+                62px;
+
+            padding:
+                6px 8px;
+        }
+
+        .app-logo {
+
+            width:
+                37px;
+
+            height:
+                37px;
+
+            flex-basis:
+                37px;
+
+            border-radius:
+                11px;
+        }
+
+        .app-logo svg {
+
+            width:
+                29px;
+
+            height:
+                29px;
+        }
+
+        .brand-text h1 {
+
+            font-size:
+                16px;
+        }
+
+        .brand-text p {
+
+            font-size:
+                7px;
+        }
+
+        .header-menu {
+
+            width:
+                37px;
+
+            height:
+                37px;
+
+            min-width:
+                37px;
+
+            min-height:
+                37px;
+        }
+
+        .header-menu .menu-line {
+
+            width:
+                16px;
+
+            height:
+                2px;
+        }
+
+
+        /* Drawer follows the smaller header */
+
+        .toolbar {
+
+            top:
+                calc(
+                    62px +
+                    env(safe-area-inset-top)
+                );
+
+            width:
+                min(275px, 84vw);
+        }
+
+        .toolbar.menu-collapsed {
+
+            top:
+                calc(
+                    62px +
+                    env(safe-area-inset-top)
+                );
+
+            width:
+                min(275px, 84vw);
+        }
+
+
+        .toolbar-btn {
+
+            flex-basis:
+                52px;
+
+            height:
+                52px;
+
+            min-height:
+                52px;
+        }
+
+        .toolbar-btn span {
+
+            font-size:
+                11px;
+        }
+
+        .search-box {
+
+            height:
+                43px;
+
+            font-size:
+                14px;
+        }
+
+        .search-section::before {
+
+            left:
+                21px;
+
+            top:
+                13px;
+        }
+
+        .file-item {
+
+            min-height:
+                58px;
+
+            padding:
+                6px 3px;
+
+            gap:
+                5px;
+        }
+
+        .file-item .position {
+
+            width:
+                16px;
+
+            min-width:
+                16px;
+
+            flex-basis:
+                16px;
+
+            font-size:
+                8px;
+        }
+
+        .file-item .file-icon {
+
+            width:
+                37px;
+
+            height:
+                37px;
+
+            min-width:
+                37px;
+
+            min-height:
+                37px;
+
+            flex-basis:
+                37px;
+
+            border-radius:
+                10px;
+
+            font-size:
+                20px;
+        }
+
+        .file-item .file-name {
+
+            font-size:
+                13px;
+        }
+
+        .file-item .file-type {
+
+            font-size:
+                8px;
+        }
+
+        .file-item .recent-file-path,
+        .file-item .search-path {
+
+            font-size:
+                7px;
+        }
+
+        .file-item .item-actions {
+
+            grid-template-columns:
+                repeat(5, 25px);
+        }
+
+        .file-item .item-actions > button {
+
+            width:
+                25px !important;
+
+            height:
+                29px !important;
+
+            min-width:
+                25px !important;
+
+            min-height:
+                29px !important;
+
+            font-size:
+                13px !important;
+        }
+    }
+
+
+    /* -----------------------------------------------------
+       VERY SMALL iPHONE
+       ----------------------------------------------------- */
+
+    @media (max-width: 390px) {
+
+        .toolbar {
+
+            width:
+                min(265px, 86vw);
+
+            padding:
+                13px 8px
+                calc(
+                    15px +
+                    env(safe-area-inset-bottom)
+                );
+        }
+
+        .toolbar.menu-collapsed {
+
+            width:
+                min(265px, 86vw);
+
+            padding:
+                13px 8px
+                calc(
+                    15px +
+                    env(safe-area-inset-bottom)
+                );
+        }
+
+        .toolbar-btn {
+
+            flex-basis:
+                49px;
+
+            height:
+                49px;
+
+            min-height:
+                49px;
+
+            border-radius:
+                11px;
+        }
+
+        .toolbar-btn span {
+
+            font-size:
+                10px;
+        }
+
+        .file-item .item-actions {
+
+            grid-template-columns:
+                repeat(5, 23px);
+        }
+
+        .file-item .item-actions > button {
+
+            width:
+                23px !important;
+
+            height:
+                28px !important;
+
+            min-width:
+                23px !important;
+
+            min-height:
+                28px !important;
+
+            font-size:
+                12px !important;
+        }
     }
 }
 
 
-/* =====================================================
-   29. VERY SMALL iPHONE
-   ===================================================== */
+/* =========================================================
+   27. iPAD FUTURISTIC WORKSPACE
+   ONLY iPAD / TOUCH TABLETS
+   ========================================================= */
 
-@media (max-width: 390px)
-       and (hover: none)
-       and (pointer: coarse) {
+@media
+(min-width: 701px)
+and (max-width: 1366px)
+and (hover: none)
+and (pointer: coarse) {
 
-    .brand-text p {
-        display: none;
+    html,
+    body {
+
+        width:
+            100%;
+
+        height:
+            100%;
+
+        min-height:
+            100dvh;
+
+        background:
+            var(--future-bg);
+
+        color:
+            var(--future-text);
     }
 
-    .file-item {
-        grid-template-columns:
-            23px
-            41px
-            minmax(0, 1fr)
-            auto;
+    body {
 
-        gap: 6px;
+        overflow:
+            hidden;
     }
 
-    .file-name {
-        font-size: 13px;
-    }
 
-    .item-btn {
-        width: 31px;
-        height: 31px;
-    }
-}
-
-
-/* =====================================================
-   30. iPAD
-   Existing split workspace preserved
-   ===================================================== */
-
-@media (min-width: 701px)
-       and (max-width: 1366px)
-       and (hover: none)
-       and (pointer: coarse) {
+    /* -----------------------------------------------------
+       MAIN iPAD WORKSPACE
+       ----------------------------------------------------- */
 
     .app {
-        display: grid;
+
+        width:
+            100%;
+
+        height:
+            100dvh;
+
+        min-height:
+            100dvh;
+
+        display:
+            grid;
 
         grid-template-columns:
             255px
@@ -1660,266 +3964,1584 @@ input {
             auto
             minmax(0, 1fr);
 
-        column-gap: 10px;
-
-        min-height: 100dvh;
-
         padding:
-            calc(6px + env(safe-area-inset-top))
-            8px
-            calc(20px + env(safe-area-inset-bottom));
-    }
-
-    .header {
-        grid-column: 1 / -1;
-        grid-row: 1;
-
-        height: 76px;
-    }
-
-    .toolbar {
-        grid-column: 1;
-        grid-row: 2 / 6;
-
-        position: relative;
-
-        width: 100%;
-        height: 100%;
-
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 7px;
-
-        margin-top: 0;
-
-        padding: 10px;
+            env(safe-area-inset-top)
+            0
+            env(safe-area-inset-bottom);
 
         background:
-            rgba(13, 18, 27, 0.90);
+            radial-gradient(
+                circle at 85% 0%,
+                rgba(24,168,255,.12),
+                transparent 32%
+            ),
+            var(--future-bg);
 
-        border-radius: 18px;
+        overflow:
+            hidden;
 
-        opacity: 1;
-
-        pointer-events: auto;
-
-        transform: none;
-    }
-
-    .toolbar-btn {
-        width: 100%;
-
-        min-height: 48px;
-
-        flex: 0 0 48px;
-
-        text-align: left;
-
-        padding: 0 14px;
+        transition:
+            grid-template-columns .24s ease;
     }
 
 
-    /* ---------------------------------------------
-       iPAD COLLAPSED
-       --------------------------------------------- */
+    /* -----------------------------------------------------
+       HEADER
+       ----------------------------------------------------- */
 
-    .toolbar.menu-collapsed {
-        display: flex;
+    .header {
 
-        width: 0;
+        grid-column:
+            1 / -1;
 
-        min-width: 0;
+        grid-row:
+            1;
+
+        width:
+            100%;
+
+        min-height:
+            76px;
+
+        height:
+            76px;
 
         padding:
-            10px 0;
+            10px 18px;
 
-        overflow: hidden;
+        border:
+            0;
 
-        opacity: 0;
+        border-bottom:
+            1px solid
+            var(--future-line);
 
-        pointer-events: none;
+        border-radius:
+            0;
+
+        background:
+            rgba(8,11,18,.84);
+
+        box-shadow:
+            0 12px 35px
+            rgba(0,0,0,.25);
+
+        backdrop-filter:
+            blur(24px)
+            saturate(150%);
+
+        -webkit-backdrop-filter:
+            blur(24px)
+            saturate(150%);
+
+        z-index:
+            3000;
     }
 
-    .app:has(
-        .toolbar.menu-collapsed
-    ) {
+    .brand {
+
+        gap:
+            11px;
+    }
+
+    .app-logo {
+
+        width:
+            43px;
+
+        height:
+            43px;
+
+        flex-basis:
+            43px;
+
+        border-radius:
+            13px;
+
+        background:
+            linear-gradient(
+                145deg,
+                #23c7ff,
+                #0878ff
+            );
+
+        box-shadow:
+            0 0 24px
+            rgba(24,168,255,.25);
+    }
+
+    .app-logo svg {
+
+        width:
+            34px;
+
+        height:
+            34px;
+    }
+
+    .brand-text h1 {
+
+        color:
+            #fff;
+
+        font-size:
+            20px;
+    }
+
+    .brand-text p {
+
+        color:
+            var(--future-muted);
+
+        font-size:
+            9px;
+
+        letter-spacing:
+            1px;
+
+        text-transform:
+            uppercase;
+    }
+
+
+    /* -----------------------------------------------------
+       THREE-LINE BUTTON
+       ----------------------------------------------------- */
+
+    .header-menu {
+
+        width:
+            44px;
+
+        height:
+            44px;
+
+        min-width:
+            44px;
+
+        min-height:
+            44px;
+
+        border-radius:
+            13px;
+
+        background:
+            rgba(255,255,255,.055);
+
+        border:
+            1px solid
+            rgba(83,230,255,.16);
+
+        box-shadow:
+            0 0 15px
+            rgba(24,168,255,.06);
+    }
+
+    .header-menu .menu-line {
+
+        background:
+            var(--future-cyan);
+
+        box-shadow:
+            0 0 7px
+            rgba(83,230,255,.45);
+    }
+
+
+    /* -----------------------------------------------------
+       LEFT SIDEBAR
+       ----------------------------------------------------- */
+
+    .toolbar {
+
+        grid-column:
+            1;
+
+        grid-row:
+            2 / 6;
+
+        position:
+            relative;
+
+        top:
+            auto;
+
+        left:
+            auto;
+
+        right:
+            auto;
+
+        width:
+            100%;
+
+        height:
+            auto;
+
+        min-height:
+            0;
+
+        max-height:
+            none;
+
+        padding:
+            15px 10px;
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        gap:
+            6px;
+
+        border:
+            0;
+
+        border-right:
+            1px solid
+            var(--future-line);
+
+        border-radius:
+            0;
+
+        background:
+            rgba(12,16,25,.76);
+
+        backdrop-filter:
+            blur(24px);
+
+        -webkit-backdrop-filter:
+            blur(24px);
+
+        overflow-y:
+            auto;
+
+        overflow-x:
+            hidden;
+
+        z-index:
+            2000;
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+
+        pointer-events:
+            auto;
+
+        transition:
+            opacity .20s ease,
+            transform .24s ease;
+    }
+
+
+    /* -----------------------------------------------------
+       SIDEBAR BUTTONS
+       ----------------------------------------------------- */
+
+    .toolbar-btn {
+
+        flex:
+            0 0 54px;
+
+        width:
+            100%;
+
+        height:
+            54px;
+
+        min-height:
+            54px;
+
+        display:
+            grid;
+
+        grid-template-columns:
+            30px
+            minmax(0,1fr);
+
+        align-items:
+            center;
+
+        gap:
+            9px;
+
+        padding:
+            0 12px;
+
+        border:
+            1px solid
+            transparent;
+
+        border-radius:
+            13px;
+
+        background:
+            transparent;
+
+        color:
+            var(--future-cyan);
+
+        box-shadow:
+            none;
+
+        text-align:
+            left;
+    }
+
+    .toolbar-btn svg,
+    .ios-menu-icon {
+
+        width:
+            23px;
+
+        height:
+            23px;
+
+        stroke:
+            var(--future-cyan);
+
+        filter:
+            drop-shadow(
+                0 0 5px
+                rgba(83,230,255,.35)
+            );
+    }
+
+    .toolbar-btn span {
+
+        color:
+            #aeb9ca;
+
+        font-size:
+            11px;
+
+        line-height:
+            14px;
+
+        text-align:
+            left;
+    }
+
+    .toolbar-btn:active,
+    .toolbar-btn.touch-active {
+
+        background:
+            rgba(24,168,255,.12);
+
+        border-color:
+            rgba(83,230,255,.16);
+
+        transform:
+            scale(.985);
+    }
+
+
+    /* -----------------------------------------------------
+       SIDEBAR HIDDEN
+       ----------------------------------------------------- */
+
+    .app:has(.toolbar.menu-collapsed) {
+
         grid-template-columns:
             0
             minmax(0, 1fr);
     }
 
+    .app:has(.toolbar.menu-collapsed) .toolbar {
 
-    /* ---------------------------------------------
-       iPAD MAIN
-       --------------------------------------------- */
+        width:
+            0 !important;
 
-    .search-section {
-        grid-column: 2;
-        grid-row: 2;
+        min-width:
+            0 !important;
 
-        width: 100%;
+        max-width:
+            0 !important;
 
-        position: relative;
+        height:
+            0 !important;
 
-        margin-top: 0;
+        min-height:
+            0 !important;
+
+        max-height:
+            none !important;
+
+        padding:
+            0 !important;
+
+        margin:
+            0 !important;
+
+        border:
+            0 !important;
+
+        opacity:
+            0 !important;
+
+        transform:
+            translateX(-100%);
+
+        pointer-events:
+            none !important;
+
+        overflow:
+            hidden !important;
     }
 
+
+    /* -----------------------------------------------------
+       MAIN SEARCH AREA
+       ----------------------------------------------------- */
+
+    .search-section {
+
+        grid-column:
+            2;
+
+        grid-row:
+            2;
+
+        width:
+            100%;
+
+        padding:
+            13px 20px 7px;
+
+        margin:
+            0;
+
+        background:
+            transparent;
+
+        min-width:
+            0;
+
+        position:
+            relative;
+    }
+
+    .search-section::before {
+
+        content:
+            "⌕";
+
+        position:
+            absolute;
+
+        left:
+            34px;
+
+        top:
+            18px;
+
+        z-index:
+            2;
+
+        color:
+            var(--future-cyan);
+
+        font-size:
+            21px;
+    }
+
+    .search-box {
+
+        width:
+            100%;
+
+        height:
+            47px;
+
+        padding:
+            0 15px 0 43px;
+
+        border:
+            1px solid
+            rgba(255,255,255,.08);
+
+        border-radius:
+            14px;
+
+        background:
+            rgba(255,255,255,.055);
+
+        color:
+            #fff;
+
+        font-size:
+            15px;
+    }
+
+    .search-box::placeholder {
+        color:
+            #7f8ba0;
+    }
+
+    .search-box:focus {
+
+        border-color:
+            rgba(83,230,255,.35);
+
+        background:
+            rgba(255,255,255,.075);
+
+        box-shadow:
+            0 0 0 3px
+            rgba(24,168,255,.08);
+    }
+
+
+    /* -----------------------------------------------------
+       SEARCH FULL WIDTH WHEN SIDEBAR HIDDEN
+       ----------------------------------------------------- */
+
+    .app:has(.toolbar.menu-collapsed)
+    .search-section {
+
+        grid-column:
+            1 / -1;
+
+        width:
+            100%;
+
+        padding-left:
+            20px;
+
+        padding-right:
+            20px;
+    }
+
+
+    /* -----------------------------------------------------
+       BREADCRUMB
+       ----------------------------------------------------- */
+
     .breadcrumb {
-        grid-column: 2;
-        grid-row: 3;
 
-        width: 100%;
+        grid-column:
+            2;
 
-        margin-top: 8px;
+        grid-row:
+            3;
+
+        width:
+            calc(100% - 40px);
+
+        max-width:
+            none;
+
+        min-height:
+            34px;
+
+        margin:
+            0 20px;
+
+        padding:
+            4px 0;
+
+        color:
+            var(--future-muted);
+
+        background:
+            transparent;
+
+        min-width:
+            0;
+    }
+
+    .breadcrumb > span {
+
+        color:
+            var(--future-muted);
+
+        font-size:
+            11px;
+    }
+
+    .crumb {
+
+        min-height:
+            30px;
+
+        height:
+            30px;
+
+        padding:
+            4px 9px;
+
+        border-radius:
+            9px;
+
+        background:
+            rgba(24,168,255,.08);
+
+        color:
+            var(--future-cyan);
+
+        font-size:
+            11px;
+    }
+
+    .crumb.current {
+
+        background:
+            rgba(255,255,255,.07);
+
+        color:
+            #cbd4e2;
+    }
+
+
+    /* -----------------------------------------------------
+       BREADCRUMB FULL WIDTH
+       ----------------------------------------------------- */
+
+    .app:has(.toolbar.menu-collapsed)
+    .breadcrumb {
+
+        grid-column:
+            1 / -1;
+
+        width:
+            calc(100% - 40px);
+
+        margin-left:
+            20px;
+
+        margin-right:
+            20px;
+    }
+
+
+    /* -----------------------------------------------------
+       MESSAGE / STATUS
+       ----------------------------------------------------- */
+
+    .message,
+    .upload-status,
+    .reorder-bar {
+
+        grid-column:
+            2;
+
+        width:
+            calc(100% - 40px);
+
+        margin-left:
+            20px;
+
+        margin-right:
+            20px;
+
+        min-width:
+            0;
     }
 
     .message {
-        grid-column: 2;
-        grid-row: 4;
 
-        width: 100%;
+        grid-row:
+            4;
 
-        margin-top: 8px;
+        margin-top:
+            0;
+
+        margin-bottom:
+            3px;
+
+        padding:
+            3px 0;
+
+        color:
+            #647187;
+
+        font-size:
+            9px;
+    }
+
+    .message::before {
+
+        width:
+            6px;
+
+        height:
+            6px;
+
+        background:
+            var(--future-green);
     }
 
     .upload-status {
-        grid-column: 2;
-        grid-row: 4;
 
-        width: 100%;
+        grid-row:
+            4;
+
+        margin-top:
+            0;
+
+        margin-bottom:
+            4px;
     }
 
     .reorder-bar {
-        grid-column: 2;
-        grid-row: 4;
 
-        width: 100%;
-    }
+        grid-row:
+            4;
 
-    .file-list {
-        grid-column: 2;
-        grid-row: 5;
+        margin-top:
+            0;
 
-        width: 100%;
-
-        min-height: 0;
-
-        margin-top: 8px;
-
-        overflow-y: auto;
+        margin-bottom:
+            4px;
     }
 
 
-    /* ---------------------------------------------
-       iPAD COLLAPSED MAIN WIDTH
-       --------------------------------------------- */
+    /* -----------------------------------------------------
+       STATUS FULL WIDTH
+       ----------------------------------------------------- */
 
-    .app:has(
-        .toolbar.menu-collapsed
-    )
-    .search-section,
-
-    .app:has(
-        .toolbar.menu-collapsed
-    )
-    .breadcrumb,
-
-    .app:has(
-        .toolbar.menu-collapsed
-    )
+    .app:has(.toolbar.menu-collapsed)
     .message,
-
-    .app:has(
-        .toolbar.menu-collapsed
-    )
+    .app:has(.toolbar.menu-collapsed)
     .upload-status,
+    .app:has(.toolbar.menu-collapsed)
+    .reorder-bar {
 
-    .app:has(
-        .toolbar.menu-collapsed
-    )
-    .reorder-bar,
+        grid-column:
+            1 / -1;
 
-    .app:has(
-        .toolbar.menu-collapsed
-    )
+        width:
+            calc(100% - 40px);
+
+        margin-left:
+            20px;
+
+        margin-right:
+            20px;
+    }
+
+
+    /* -----------------------------------------------------
+       FILE LIST
+       ----------------------------------------------------- */
+
     .file-list {
-        grid-column: 1 / -1;
+
+        grid-column:
+            2;
+
+        grid-row:
+            5;
+
+        width:
+            calc(100% - 40px);
+
+        min-width:
+            0;
+
+        min-height:
+            0;
+
+        margin:
+            6px 20px 0;
+
+        padding:
+            0 0
+            calc(
+                20px +
+                env(safe-area-inset-bottom)
+            );
+
+        background:
+            transparent;
+
+        border-top:
+            1px solid
+            var(--future-line);
+
+        border-radius:
+            0;
+
+        overflow-y:
+            auto;
+
+        overflow-x:
+            hidden;
+
+        -webkit-overflow-scrolling:
+            touch;
+    }
+
+
+    /* -----------------------------------------------------
+       FILE LIST FULL WIDTH
+       ----------------------------------------------------- */
+
+    .app:has(.toolbar.menu-collapsed)
+    .file-list {
+
+        grid-column:
+            1 / -1;
+
+        width:
+            calc(100% - 40px);
+
+        margin-left:
+            20px;
+
+        margin-right:
+            20px;
+    }
+
+
+    /* -----------------------------------------------------
+       iPAD FILE ROW
+       ----------------------------------------------------- */
+
+    .file-item {
+
+        position:
+            relative;
+
+        width:
+            100%;
+
+        min-height:
+            70px;
+
+        margin:
+            0;
+
+        padding:
+            10px 2px;
+
+        display:
+            flex !important;
+
+        align-items:
+            center;
+
+        gap:
+            10px;
+
+        border:
+            0;
+
+        border-bottom:
+            1px solid
+            var(--future-line);
+
+        border-radius:
+            0;
+
+        background:
+            transparent;
+
+        box-shadow:
+            none;
+
+        color:
+            var(--future-text);
+
+        transform:
+            none !important;
+    }
+
+    .file-item:active,
+    .file-item.touch-active {
+
+        background:
+            rgba(24,168,255,.07)
+            !important;
+
+        transform:
+            none !important;
+    }
+
+    .file-item .position {
+
+        width:
+            25px;
+
+        min-width:
+            25px;
+
+        flex-basis:
+            25px;
+
+        color:
+            #536074;
+
+        font-size:
+            10px;
+    }
+
+    .file-item .file-icon {
+
+        position:
+            static;
+
+        width:
+            44px;
+
+        height:
+            44px;
+
+        min-width:
+            44px;
+
+        min-height:
+            44px;
+
+        flex-basis:
+            44px;
+
+        border-radius:
+            12px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(24,168,255,.18),
+                rgba(83,230,255,.035)
+            );
+
+        border:
+            1px solid
+            rgba(83,230,255,.15);
+
+        color:
+            var(--future-cyan);
+
+        font-size:
+            23px;
+    }
+
+    .file-item.folder-row .file-icon {
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(24,168,255,.25),
+                rgba(24,168,255,.06)
+            );
+
+        border-color:
+            rgba(24,168,255,.30);
+    }
+
+    .file-item .file-info {
+
+        position:
+            static;
+
+        width:
+            auto;
+
+        height:
+            auto;
+
+        flex:
+            1 1 auto;
+
+        min-width:
+            0;
+
+        padding:
+            0;
+
+        display:
+            flex !important;
+
+        flex-direction:
+            column;
+
+        justify-content:
+            center;
+
+        gap:
+            2px;
+    }
+
+    .file-item .file-name {
+
+        color:
+            #f5f7fb;
+
+        font-size:
+            15px;
+
+        line-height:
+            20px;
+
+        font-weight:
+            600;
+    }
+
+    .file-item .file-type {
+
+        margin:
+            0;
+
+        color:
+            #778296;
+
+        font-size:
+            10px;
+
+        line-height:
+            14px;
+    }
+
+    .file-item .recent-file-path,
+    .file-item .search-path {
+
+        margin-top:
+            1px;
+
+        color:
+            #647187;
+
+        font-size:
+            9px;
+
+        line-height:
+            13px;
+    }
+
+
+    /* -----------------------------------------------------
+       iPAD FILE ACTIONS
+       ----------------------------------------------------- */
+
+    .file-item .item-actions {
+
+        width:
+            auto;
+
+        height:
+            auto;
+
+        flex:
+            0 0 auto;
+
+        display:
+            grid !important;
+
+        grid-template-columns:
+            repeat(5, 32px);
+
+        gap:
+            2px;
+
+        padding:
+            0;
+
+        border:
+            0;
+
+        background:
+            transparent;
+
+        box-shadow:
+            none;
+
+        overflow:
+            visible;
+    }
+
+    .file-item .item-actions > button {
+
+        width:
+            32px !important;
+
+        height:
+            34px !important;
+
+        min-width:
+            32px !important;
+
+        min-height:
+            34px !important;
+
+        border:
+            0 !important;
+
+        border-radius:
+            8px !important;
+
+        background:
+            transparent !important;
+
+        color:
+            #8290a5;
+
+        box-shadow:
+            none !important;
+
+        font-size:
+            16px !important;
+    }
+
+    .file-item .item-more-btn {
+
+        color:
+            var(--future-cyan)
+            !important;
+    }
+
+
+    /* -----------------------------------------------------
+       PASTE FAB
+       ----------------------------------------------------- */
+
+    .v4-paste-fab {
+
+        right:
+            22px;
+
+        bottom:
+            calc(
+                20px +
+                env(safe-area-inset-bottom)
+            );
+
+        width:
+            58px;
+
+        height:
+            58px;
+
+        min-width:
+            58px;
+
+        min-height:
+            58px;
+
+        padding:
+            0;
+
+        border:
+            1px solid
+            rgba(83,230,255,.45);
+
+        border-radius:
+            18px;
+
+        background:
+            linear-gradient(
+                145deg,
+                #18a8ff,
+                #0878ff
+            );
+
+        color:
+            #fff;
+
+        box-shadow:
+            0 0 0 5px
+            rgba(24,168,255,.07),
+            0 10px 35px
+            rgba(0,0,0,.50),
+            0 0 25px
+            rgba(24,168,255,.28);
+    }
+
+
+    /* -----------------------------------------------------
+       ACTION POPUP
+       ----------------------------------------------------- */
+
+    .touch-action-sheet {
+
+        padding:
+            16px;
+
+        background:
+            rgba(0,0,0,.42);
+
+        backdrop-filter:
+            blur(18px);
+
+        -webkit-backdrop-filter:
+            blur(18px);
+    }
+
+    .touch-sheet-card {
+
+        position:
+            fixed;
+
+        width:
+            min(
+                360px,
+                calc(100vw - 32px)
+            );
+
+        margin:
+            0;
+
+        padding:
+            9px;
+
+        border:
+            1px solid
+            rgba(83,230,255,.22);
+
+        border-radius:
+            21px;
+
+        background:
+            rgba(15,20,30,.97);
+
+        box-shadow:
+            0 28px 70px
+            rgba(0,0,0,.65),
+            0 0 35px
+            rgba(24,168,255,.08);
+
+        backdrop-filter:
+            blur(28px);
+
+        -webkit-backdrop-filter:
+            blur(28px);
+    }
+
+    .touch-sheet-title {
+
+        color:
+            #fff;
+
+        font-size:
+            15px;
+    }
+
+    .touch-sheet-action {
+
+        color:
+            #cfefff;
+
+        background:
+            rgba(255,255,255,.055);
+    }
+
+    .touch-sheet-cancel {
+
+        color:
+            var(--future-cyan);
+
+        background:
+            rgba(83,230,255,.06);
+    }
+
+
+    /* -----------------------------------------------------
+       DETAILS MODAL
+       ----------------------------------------------------- */
+
+    .file-details-card {
+
+        width:
+            min(
+                560px,
+                calc(100vw - 60px)
+            );
+
+        background:
+            rgba(15,20,30,.97);
+
+        border:
+            1px solid
+            rgba(83,230,255,.18);
+
+        color:
+            #fff;
+    }
+
+    .file-details-card h3 {
+
+        color:
+            #fff;
+    }
+
+    .file-detail-row {
+
+        border-bottom:
+            1px solid
+            var(--future-line);
+    }
+
+    .file-detail-row strong {
+
+        color:
+            #778296;
+    }
+
+    .file-detail-row span {
+
+        color:
+            #dce8f5;
+    }
+
+    .file-details-close {
+
+        background:
+            linear-gradient(
+                145deg,
+                #18a8ff,
+                #0878ff
+            );
     }
 }
 
 
-/* =====================================================
-   31. iPAD LANDSCAPE
-   ===================================================== */
+/* =========================================================
+   28. iPAD LANDSCAPE
+   ========================================================= */
 
-@media (min-width: 1000px)
-       and (max-width: 1366px)
-       and (hover: none)
-       and (pointer: coarse) {
+@media
+(min-width: 701px)
+and (max-width: 1366px)
+and (hover: none)
+and (pointer: coarse)
+and (orientation: landscape) {
 
     .app {
+
         grid-template-columns:
             270px
-            minmax(0, 1fr);
+            minmax(0,1fr);
+    }
+
+    .app:has(.toolbar.menu-collapsed) {
+
+        grid-template-columns:
+            0
+            minmax(0,1fr);
+    }
+
+    .toolbar {
+
+        padding:
+            16px 12px;
+    }
+
+    .toolbar-btn {
+
+        flex-basis:
+            55px;
+
+        height:
+            55px;
+
+        min-height:
+            55px;
+    }
+
+    .search-section {
+
+        padding-left:
+            24px;
+
+        padding-right:
+            24px;
+    }
+
+    .app:has(.toolbar.menu-collapsed)
+    .search-section {
+
+        padding-left:
+            24px;
+
+        padding-right:
+            24px;
+    }
+
+    .breadcrumb {
+
+        width:
+            calc(100% - 48px);
+
+        margin-left:
+            24px;
+
+        margin-right:
+            24px;
+    }
+
+    .app:has(.toolbar.menu-collapsed)
+    .breadcrumb {
+
+        width:
+            calc(100% - 48px);
+
+        margin-left:
+            24px;
+
+        margin-right:
+            24px;
+    }
+
+    .message,
+    .upload-status,
+    .reorder-bar {
+
+        width:
+            calc(100% - 48px);
+
+        margin-left:
+            24px;
+
+        margin-right:
+            24px;
+    }
+
+    .app:has(.toolbar.menu-collapsed)
+    .message,
+    .app:has(.toolbar.menu-collapsed)
+    .upload-status,
+    .app:has(.toolbar.menu-collapsed)
+    .reorder-bar {
+
+        width:
+            calc(100% - 48px);
+
+        margin-left:
+            24px;
+
+        margin-right:
+            24px;
+    }
+
+    .file-list {
+
+        width:
+            calc(100% - 48px);
+
+        margin-left:
+            24px;
+
+        margin-right:
+            24px;
+    }
+
+    .app:has(.toolbar.menu-collapsed)
+    .file-list {
+
+        width:
+            calc(100% - 48px);
+
+        margin-left:
+            24px;
+
+        margin-right:
+            24px;
     }
 }
 
 
-/* =====================================================
-   32. iPAD PORTRAIT
-   ===================================================== */
+/* =========================================================
+   29. iPAD PORTRAIT
+   ========================================================= */
 
-@media (min-width: 701px)
-       and (max-width: 999px)
-       and (hover: none)
-       and (pointer: coarse) {
+@media
+(min-width: 701px)
+and (max-width: 1366px)
+and (hover: none)
+and (pointer: coarse)
+and (orientation: portrait) {
 
     .app {
+
         grid-template-columns:
             235px
-            minmax(0, 1fr);
+            minmax(0,1fr);
+    }
+
+    .app:has(.toolbar.menu-collapsed) {
+
+        grid-template-columns:
+            0
+            minmax(0,1fr);
+    }
+
+    .toolbar {
+
+        padding:
+            14px 9px;
+    }
+
+    .toolbar-btn {
+
+        flex-basis:
+            52px;
+
+        height:
+            52px;
+
+        min-height:
+            52px;
+    }
+
+    .toolbar-btn span {
+
+        font-size:
+            10px;
     }
 }
 
 
-/* =====================================================
-   33. SAFETY
-   ===================================================== */
+/* =========================================================
+   30. SAFETY
+   ========================================================= */
 
-button,
-.file-item {
-    touch-action: manipulation;
-}
+@media (max-width: 1366px) {
 
-@supports (-webkit-touch-callout: none) {
+    html,
+    body {
 
-    input,
-    button {
-        -webkit-appearance: none;
+        min-height:
+            100dvh;
+    }
+
+    .app {
+
+        min-height:
+            100dvh;
     }
 }
 
 
-/* =====================================================
-   34. REDUCED MOTION
-   ===================================================== */
+/* =========================================================
+   31. REDUCED MOTION
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
     *,
     *::before,
     *::after {
-        scroll-behavior: auto !important;
-
-        transition-duration:
-            0.01ms !important;
 
         animation-duration:
-            0.01ms !important;
+            .01ms !important;
 
         animation-iteration-count:
             1 !important;
+
+        scroll-behavior:
+            auto !important;
+
+        transition-duration:
+            .01ms !important;
     }
 }
+
+
+/* =========================================================
+   END
+   ========================================================= */
