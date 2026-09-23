@@ -4,11 +4,13 @@
    =========================================================
    DESKTOP
    ---------------------------------------------------------
-   Existing desktop layout preserved by the base styles.
+   Existing desktop layout preserved.
 
    iPHONE
    ---------------------------------------------------------
-   Mobile file-manager layout.
+   Futuristic left navigation drawer.
+   Drawer overlays content.
+   Main content remains full width.
 
    iPAD
    ---------------------------------------------------------
@@ -17,9 +19,9 @@
 
    IMPORTANT
    ---------------------------------------------------------
-   ☰ SHOW  -> sidebar visible
-   ☰ HIDE  -> sidebar removed from layout
-   MAIN    -> automatically becomes full width
+   ☰ SHOW  -> navigation visible
+   ☰ HIDE  -> navigation completely hidden
+   MAIN    -> full available width
 
    JS / IndexedDB / PDF.js / storage:
    UNCHANGED
@@ -825,13 +827,17 @@ button:focus-visible {
 
 .reorder-info {
 
-    display: flex;
+    display:
+        flex;
 
-    flex-direction: column;
+    flex-direction:
+        column;
 
-    gap: 3px;
+    gap:
+        3px;
 
-    margin-bottom: 8px;
+    margin-bottom:
+        8px;
 }
 
 .reorder-info strong {
@@ -839,7 +845,8 @@ button:focus-visible {
     color:
         var(--blue);
 
-    font-size: 14px;
+    font-size:
+        14px;
 }
 
 .reorder-info span {
@@ -847,29 +854,38 @@ button:focus-visible {
     color:
         #6d6d72;
 
-    font-size: 12px;
+    font-size:
+        12px;
 }
 
 .reorder-actions {
 
-    display: flex;
+    display:
+        flex;
 
-    gap: 8px;
+    gap:
+        8px;
 }
 
 .reorder-actions button {
 
-    flex: 1;
+    flex:
+        1;
 
-    min-height: 44px;
+    min-height:
+        44px;
 
-    border: 0;
+    border:
+        0;
 
-    border-radius: 12px;
+    border-radius:
+        12px;
 
-    font-size: 14px;
+    font-size:
+        14px;
 
-    font-weight: 700;
+    font-weight:
+        700;
 }
 
 .save-btn {
@@ -1546,7 +1562,7 @@ button:focus-visible {
         0;
 
     z-index:
-        2000;
+        5000;
 
     display:
         none;
@@ -2054,7 +2070,7 @@ button:focus-visible {
 
 /* =========================================================
    26. iPHONE
-   ONLY TOUCH DEVICES <= 700px
+   FUTURISTIC LEFT DRAWER
    ========================================================= */
 
 @media
@@ -2072,7 +2088,7 @@ and (pointer: coarse) {
             100dvh;
 
         background:
-            #f2f2f7;
+            var(--future-bg);
     }
 
     body {
@@ -2080,7 +2096,21 @@ and (pointer: coarse) {
             hidden;
     }
 
+
+    /* -----------------------------------------------------
+       APP
+
+       IMPORTANT:
+       No grid here.
+
+       The main content is ALWAYS full width.
+       The navigation drawer overlays it.
+       ----------------------------------------------------- */
+
     .app {
+
+        position:
+            relative;
 
         width:
             100%;
@@ -2094,7 +2124,10 @@ and (pointer: coarse) {
             env(safe-area-inset-bottom);
 
         background:
-            #f2f2f7;
+            var(--future-bg);
+
+        overflow-x:
+            hidden;
     }
 
 
@@ -2103,6 +2136,12 @@ and (pointer: coarse) {
        ----------------------------------------------------- */
 
     .header {
+
+        position:
+            relative;
+
+        z-index:
+            3200;
 
         min-height:
             68px;
@@ -2118,22 +2157,23 @@ and (pointer: coarse) {
 
         border-bottom:
             1px solid
-            rgba(60, 60, 67, .10);
+            rgba(83,230,255,.10);
 
         border-radius:
             0;
 
         background:
-            rgba(242,242,247,.92);
+            rgba(8,11,18,.90);
 
         box-shadow:
-            none;
+            0 8px 30px
+            rgba(0,0,0,.25);
 
         backdrop-filter:
-            blur(20px);
+            blur(24px);
 
         -webkit-backdrop-filter:
-            blur(20px);
+            blur(24px);
     }
 
     .brand {
@@ -2155,6 +2195,17 @@ and (pointer: coarse) {
 
         border-radius:
             12px;
+
+        background:
+            linear-gradient(
+                145deg,
+                #23c7ff,
+                #0878ff
+            );
+
+        box-shadow:
+            0 0 22px
+            rgba(24,168,255,.28);
     }
 
     .app-logo svg {
@@ -2171,6 +2222,9 @@ and (pointer: coarse) {
         font-size:
             17px;
 
+        color:
+            #f5f7fb;
+
         letter-spacing:
             -.2px;
     }
@@ -2184,8 +2238,19 @@ and (pointer: coarse) {
             8px;
 
         color:
-            #8e8e93;
+            #718097;
+
+        letter-spacing:
+            .7px;
+
+        text-transform:
+            uppercase;
     }
+
+
+    /* -----------------------------------------------------
+       MENU BUTTON
+       ----------------------------------------------------- */
 
     .header-menu {
 
@@ -2205,7 +2270,15 @@ and (pointer: coarse) {
             12px;
 
         background:
-            #e5e5ea;
+            rgba(255,255,255,.055);
+
+        border:
+            1px solid
+            rgba(83,230,255,.16);
+
+        box-shadow:
+            0 0 16px
+            rgba(24,168,255,.08);
     }
 
     .header-menu .menu-line {
@@ -2215,106 +2288,226 @@ and (pointer: coarse) {
 
         height:
             2px;
+
+        background:
+            var(--future-cyan);
+
+        box-shadow:
+            0 0 6px
+            rgba(83,230,255,.45);
     }
 
 
     /* -----------------------------------------------------
-       MOBILE TOOLBAR
+       MOBILE NAVIGATION DRAWER
+
+       This is the major change.
+
+       The drawer is NOT part of the document width.
+
+       Therefore:
+       - search stays full width
+       - breadcrumb stays full width
+       - file list stays full width
        ----------------------------------------------------- */
 
     .toolbar {
 
         position:
-            relative;
+            fixed;
 
         top:
+            calc(
+                68px +
+                env(safe-area-inset-top)
+            );
+
+        left:
+            0;
+
+        bottom:
+            0;
+
+        z-index:
+            3000;
+
+        width:
+            min(285px, 82vw);
+
+        height:
             auto;
+
+        min-height:
+            0;
+
+        max-height:
+            none;
+
+        margin:
+            0;
+
+        padding:
+            15px 10px
+            calc(
+                18px +
+                env(safe-area-inset-bottom)
+            );
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        gap:
+            6px;
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(12,16,25,.98),
+                rgba(7,10,17,.99)
+            );
+
+        border:
+            0;
+
+        border-right:
+            1px solid
+            rgba(83,230,255,.18);
+
+        border-top:
+            1px solid
+            rgba(83,230,255,.10);
+
+        border-radius:
+            0 20px 20px 0;
+
+        box-shadow:
+            18px 0 50px
+            rgba(0,0,0,.52),
+            0 0 35px
+            rgba(24,168,255,.08);
+
+        backdrop-filter:
+            blur(28px)
+            saturate(150%);
+
+        -webkit-backdrop-filter:
+            blur(28px)
+            saturate(150%);
+
+        overflow-y:
+            auto;
+
+        overflow-x:
+            hidden;
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+
+        pointer-events:
+            auto;
+
+        transition:
+            transform .24s cubic-bezier(.22,.61,.36,1),
+            opacity .20s ease;
+
+        overscroll-behavior:
+            contain;
+    }
+
+
+    /* -----------------------------------------------------
+       NAVIGATION OPEN INDICATOR
+       ----------------------------------------------------- */
+
+    .toolbar::before {
+
+        content:
+            "NAVIGATION";
+
+        display:
+            block;
+
+        flex:
+            0 0 auto;
+
+        padding:
+            2px 12px 9px;
+
+        color:
+            #607088;
+
+        font-size:
+            8px;
+
+        font-weight:
+            700;
+
+        letter-spacing:
+            1.8px;
+    }
+
+
+    /* -----------------------------------------------------
+       NAVIGATION BUTTONS
+       ----------------------------------------------------- */
+
+    .toolbar-btn {
+
+        flex:
+            0 0 54px;
 
         width:
             100%;
 
-        padding:
-            7px 7px;
+        height:
+            54px;
+
+        min-height:
+            54px;
 
         display:
             grid;
 
         grid-template-columns:
-            repeat(5, minmax(0, 1fr));
+            32px
+            minmax(0,1fr);
+
+        align-items:
+            center;
 
         gap:
-            5px;
-
-        background:
-            #f2f2f7;
-
-        overflow:
-            hidden;
-    }
-
-    .toolbar.menu-collapsed {
-
-        display:
-            none !important;
-
-        width:
-            0 !important;
-
-        height:
-            0 !important;
-
-        min-height:
-            0 !important;
-
-        max-height:
-            0 !important;
+            9px;
 
         padding:
-            0 !important;
-
-        margin:
-            0 !important;
-
-        border:
-            0 !important;
-
-        opacity:
-            0 !important;
-
-        pointer-events:
-            none !important;
-
-        overflow:
-            hidden !important;
-
-        transform:
-            none !important;
-    }
-
-    .toolbar-btn {
-
-        height:
-            55px;
-
-        min-height:
-            55px;
-
-        padding:
-            3px;
+            0 12px;
 
         border:
             1px solid
-            #e0e0e5;
+            transparent;
 
         border-radius:
             13px;
 
         background:
-            #fff;
+            transparent;
+
+        color:
+            var(--future-cyan);
 
         box-shadow:
-            0 1px 5px
-            rgba(0,0,0,.04);
+            none;
+
+        text-align:
+            left;
+
+        font-size:
+            20px;
     }
 
     .toolbar-btn svg,
@@ -2325,23 +2518,213 @@ and (pointer: coarse) {
 
         height:
             22px;
+
+        stroke:
+            var(--future-cyan);
+
+        filter:
+            drop-shadow(
+                0 0 5px
+                rgba(83,230,255,.35)
+            );
     }
 
     .toolbar-btn span {
 
+        color:
+            #b7c3d4;
+
         font-size:
-            8px;
+            12px;
 
         line-height:
-            10px;
+            15px;
+
+        font-weight:
+            600;
+
+        text-align:
+            left;
+    }
+
+    .toolbar-btn:active {
+
+        background:
+            rgba(24,168,255,.13);
+
+        border-color:
+            rgba(83,230,255,.17);
+
+        transform:
+            scale(.985);
+    }
+
+    .toolbar-btn.select-active {
+
+        background:
+            rgba(24,168,255,.15)
+            !important;
+
+        border-color:
+            rgba(83,230,255,.28)
+            !important;
+
+        box-shadow:
+            inset 0 0 0 1px
+            rgba(83,230,255,.14),
+            0 0 18px
+            rgba(24,168,255,.07)
+            !important;
     }
 
 
     /* -----------------------------------------------------
-       SEARCH MUST REMAIN FULL WIDTH WHEN MENU HIDDEN
+       HIDE NAVIGATION
+
+       IMPORTANT:
+       We do NOT use width: 0.
+
+       The drawer simply moves outside the viewport.
+
+       Main content never loses width.
+       ----------------------------------------------------- */
+
+    .toolbar.menu-collapsed {
+
+        position:
+            fixed;
+
+        top:
+            calc(
+                68px +
+                env(safe-area-inset-top)
+            );
+
+        left:
+            0;
+
+        bottom:
+            0;
+
+        width:
+            min(285px, 82vw);
+
+        height:
+            auto;
+
+        min-height:
+            0;
+
+        max-height:
+            none;
+
+        padding:
+            15px 10px
+            calc(
+                18px +
+                env(safe-area-inset-bottom)
+            );
+
+        margin:
+            0;
+
+        border:
+            0;
+
+        border-right:
+            1px solid
+            rgba(83,230,255,.18);
+
+        opacity:
+            0;
+
+        pointer-events:
+            none;
+
+        overflow:
+            hidden;
+
+        transform:
+            translateX(-105%);
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(12,16,25,.98),
+                rgba(7,10,17,.99)
+            );
+    }
+
+
+    /* -----------------------------------------------------
+       DRAWER SHADOW / SCREEN DIMMER
+
+       Uses :has() only for the mobile visual layer.
+       ----------------------------------------------------- */
+
+    .app::after {
+
+        content:
+            "";
+
+        position:
+            fixed;
+
+        inset:
+            0;
+
+        z-index:
+            2900;
+
+        pointer-events:
+            auto;
+
+        background:
+            rgba(0,0,0,.38);
+
+        backdrop-filter:
+            blur(2px);
+
+        -webkit-backdrop-filter:
+            blur(2px);
+
+        opacity:
+            1;
+
+        visibility:
+            visible;
+
+        transition:
+            opacity .20s ease,
+            visibility .20s ease;
+    }
+
+    .app:has(.toolbar.menu-collapsed)::after {
+
+        opacity:
+            0;
+
+        visibility:
+            hidden;
+
+        pointer-events:
+            none;
+    }
+
+
+    /* -----------------------------------------------------
+       MAIN SEARCH AREA
+
+       ALWAYS FULL WIDTH
        ----------------------------------------------------- */
 
     .search-section {
+
+        position:
+            relative;
+
+        z-index:
+            10;
 
         width:
             100%;
@@ -2350,13 +2733,40 @@ and (pointer: coarse) {
             block;
 
         padding:
-            6px 8px;
+            9px 8px 6px;
 
         margin:
             0;
 
         background:
-            #f2f2f7;
+            var(--future-bg);
+    }
+
+    .search-section::before {
+
+        content:
+            "⌕";
+
+        position:
+            absolute;
+
+        left:
+            22px;
+
+        top:
+            14px;
+
+        z-index:
+            2;
+
+        color:
+            var(--future-cyan);
+
+        font-size:
+            21px;
+
+        line-height:
+            1;
     }
 
     .search-box {
@@ -2368,13 +2778,47 @@ and (pointer: coarse) {
             45px;
 
         padding:
-            0 14px;
+            0 14px 0 40px;
+
+        border:
+            1px solid
+            rgba(255,255,255,.08);
 
         border-radius:
             13px;
 
+        background:
+            rgba(255,255,255,.055);
+
+        color:
+            #fff;
+
         font-size:
             15px;
+
+        box-shadow:
+            inset 0 1px 0
+            rgba(255,255,255,.025);
+    }
+
+    .search-box::placeholder {
+        color:
+            #78859a;
+    }
+
+    .search-box:focus {
+
+        background:
+            rgba(255,255,255,.075);
+
+        border-color:
+            rgba(83,230,255,.32);
+
+        box-shadow:
+            0 0 0 3px
+            rgba(24,168,255,.08),
+            0 0 20px
+            rgba(24,168,255,.06);
     }
 
 
@@ -2384,46 +2828,101 @@ and (pointer: coarse) {
 
     .breadcrumb {
 
+        position:
+            relative;
+
+        z-index:
+            10;
+
         width:
             calc(100% - 16px);
 
         max-width:
             calc(100% - 16px);
 
+        min-height:
+            36px;
+
         margin:
             5px 8px 0;
 
-        min-height:
-            36px;
+        padding:
+            3px 0;
+
+        background:
+            transparent;
+
+        color:
+            #78859a;
+    }
+
+    .breadcrumb > span {
+
+        color:
+            #78859a;
+
+        font-size:
+            10px;
     }
 
     .crumb {
 
         min-height:
-            34px;
+            32px;
 
         height:
-            34px;
+            32px;
+
+        max-width:
+            70vw;
 
         padding:
             4px 10px;
 
+        border:
+            1px solid
+            rgba(83,230,255,.10);
+
         border-radius:
-            10px;
+            9px;
+
+        background:
+            rgba(24,168,255,.07);
+
+        color:
+            var(--future-cyan);
 
         font-size:
-            12px;
+            11px;
 
         line-height:
             24px;
     }
 
+    .crumb.current {
+
+        background:
+            rgba(255,255,255,.06);
+
+        color:
+            #cbd4e2;
+
+        border-color:
+            rgba(255,255,255,.07);
+    }
+
 
     /* -----------------------------------------------------
-       STATUS
+       MESSAGE
        ----------------------------------------------------- */
 
     .message {
+
+        position:
+            relative;
+
+        z-index:
+            10;
 
         margin:
             2px 8px 5px;
@@ -2431,11 +2930,47 @@ and (pointer: coarse) {
         padding:
             5px 2px;
 
+        color:
+            #718097;
+
         font-size:
-            11px;
+            10px;
+
+        background:
+            transparent;
     }
 
+    .message::before {
+
+        width:
+            6px;
+
+        height:
+            6px;
+
+        margin-right:
+            6px;
+
+        background:
+            var(--future-green);
+
+        box-shadow:
+            0 0 7px
+            rgba(57,229,140,.35);
+    }
+
+
+    /* -----------------------------------------------------
+       UPLOAD STATUS
+       ----------------------------------------------------- */
+
     .upload-status {
+
+        position:
+            relative;
+
+        z-index:
+            10;
 
         margin:
             0 8px 6px;
@@ -2443,22 +2978,83 @@ and (pointer: coarse) {
         padding:
             9px 10px;
 
+        border:
+            1px solid
+            rgba(83,230,255,.15);
+
         border-radius:
             12px;
 
+        background:
+            rgba(24,168,255,.07);
+
+        color:
+            #b9dff1;
+
         font-size:
-            11px;
+            10px;
+    }
+
+
+    /* -----------------------------------------------------
+       REORDER BAR
+       ----------------------------------------------------- */
+
+    .reorder-bar {
+
+        position:
+            relative;
+
+        z-index:
+            10;
+
+        margin:
+            0 8px 7px;
+
+        padding:
+            10px;
+
+        border:
+            1px solid
+            rgba(83,230,255,.16);
+
+        border-radius:
+            13px;
+
+        background:
+            rgba(24,168,255,.07);
+    }
+
+    .reorder-info strong {
+        color:
+            var(--future-cyan);
+    }
+
+    .reorder-info span {
+        color:
+            #718097;
     }
 
 
     /* -----------------------------------------------------
        FILE LIST
+
+       ALWAYS FULL WIDTH
        ----------------------------------------------------- */
 
     .file-list {
 
+        position:
+            relative;
+
+        z-index:
+            10;
+
         width:
             100%;
+
+        min-width:
+            0;
 
         padding:
             0 8px
@@ -2466,6 +3062,19 @@ and (pointer: coarse) {
                 20px +
                 env(safe-area-inset-bottom)
             );
+
+        margin:
+            0;
+
+        background:
+            var(--future-bg);
+
+        border-top:
+            1px solid
+            rgba(255,255,255,.06);
+
+        overflow-x:
+            hidden;
     }
 
 
@@ -2501,7 +3110,7 @@ and (pointer: coarse) {
 
         border-bottom:
             1px solid
-            rgba(60,60,67,.10);
+            rgba(255,255,255,.065);
 
         border-radius:
             0;
@@ -2512,6 +3121,9 @@ and (pointer: coarse) {
         box-shadow:
             none;
 
+        color:
+            var(--future-text);
+
         transform:
             none !important;
     }
@@ -2520,7 +3132,7 @@ and (pointer: coarse) {
     .file-item.touch-active {
 
         background:
-            rgba(0,122,255,.06)
+            rgba(24,168,255,.07)
             !important;
 
         transform:
@@ -2538,11 +3150,11 @@ and (pointer: coarse) {
         flex-basis:
             18px;
 
+        color:
+            #4f5c70;
+
         font-size:
             9px;
-
-        color:
-            #8e8e93;
     }
 
     .file-item .file-icon {
@@ -2566,13 +3178,42 @@ and (pointer: coarse) {
             11px;
 
         background:
-            #eaf3ff;
+            linear-gradient(
+                145deg,
+                rgba(24,168,255,.17),
+                rgba(83,230,255,.035)
+            );
+
+        border:
+            1px solid
+            rgba(83,230,255,.13);
 
         color:
-            var(--blue);
+            var(--future-cyan);
 
         font-size:
             22px;
+
+        box-shadow:
+            inset 0 0 15px
+            rgba(24,168,255,.035);
+    }
+
+    .file-item.folder-row .file-icon {
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(24,168,255,.23),
+                rgba(24,168,255,.055)
+            );
+
+        border-color:
+            rgba(24,168,255,.25);
+
+        box-shadow:
+            0 0 15px
+            rgba(24,168,255,.08);
     }
 
     .file-item .file-info {
@@ -2610,6 +3251,9 @@ and (pointer: coarse) {
 
     .file-item .file-name {
 
+        color:
+            #f5f7fb;
+
         font-size:
             14px;
 
@@ -2625,14 +3269,14 @@ and (pointer: coarse) {
         margin:
             0;
 
+        color:
+            #718097;
+
         font-size:
             9px;
 
         line-height:
             13px;
-
-        color:
-            #8e8e93;
     }
 
     .file-item .recent-file-path,
@@ -2640,6 +3284,9 @@ and (pointer: coarse) {
 
         margin-top:
             0;
+
+        color:
+            #58667a;
 
         font-size:
             8px;
@@ -2650,7 +3297,7 @@ and (pointer: coarse) {
 
 
     /* -----------------------------------------------------
-       MOBILE ACTION BUTTONS
+       MOBILE ITEM ACTIONS
        ----------------------------------------------------- */
 
     .file-item .item-actions {
@@ -2715,6 +3362,9 @@ and (pointer: coarse) {
         background:
             transparent !important;
 
+        color:
+            #8290a5;
+
         box-shadow:
             none !important;
 
@@ -2725,13 +3375,13 @@ and (pointer: coarse) {
     .file-item .item-more-btn {
 
         color:
-            var(--blue)
+            var(--future-cyan)
             !important;
     }
 
 
     /* -----------------------------------------------------
-       PASTE
+       PASTE FAB
        ----------------------------------------------------- */
 
     .v4-paste-fab {
@@ -2757,15 +3407,27 @@ and (pointer: coarse) {
         min-height:
             54px;
 
+        border:
+            1px solid
+            rgba(83,230,255,.38);
+
         border-radius:
             17px;
 
         background:
-            var(--blue);
+            linear-gradient(
+                145deg,
+                #18a8ff,
+                #0878ff
+            );
 
         box-shadow:
-            0 8px 25px
-            rgba(0,122,255,.28);
+            0 0 0 5px
+            rgba(24,168,255,.06),
+            0 10px 30px
+            rgba(0,0,0,.50),
+            0 0 22px
+            rgba(24,168,255,.24);
     }
 
     .paste-cancel {
@@ -2777,6 +3439,143 @@ and (pointer: coarse) {
             calc(
                 77px +
                 env(safe-area-inset-bottom)
+            );
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE ACTION SHEET
+       ----------------------------------------------------- */
+
+    .touch-action-sheet {
+
+        padding:
+            16px;
+
+        background:
+            rgba(0,0,0,.48);
+
+        backdrop-filter:
+            blur(18px);
+
+        -webkit-backdrop-filter:
+            blur(18px);
+    }
+
+    .touch-sheet-card {
+
+        width:
+            min(
+                360px,
+                calc(100vw - 32px)
+            );
+
+        padding:
+            9px;
+
+        border:
+            1px solid
+            rgba(83,230,255,.20);
+
+        border-radius:
+            20px;
+
+        background:
+            rgba(15,20,30,.97);
+
+        box-shadow:
+            0 28px 70px
+            rgba(0,0,0,.65),
+            0 0 30px
+            rgba(24,168,255,.08);
+    }
+
+    .touch-sheet-title {
+
+        color:
+            #fff;
+
+        font-size:
+            15px;
+    }
+
+    .touch-sheet-action {
+
+        color:
+            #cfefff;
+
+        background:
+            rgba(255,255,255,.055);
+    }
+
+    .touch-sheet-cancel {
+
+        color:
+            var(--future-cyan);
+
+        background:
+            rgba(83,230,255,.06);
+    }
+
+
+    /* -----------------------------------------------------
+       DETAILS MODAL
+       ----------------------------------------------------- */
+
+    .file-details-card {
+
+        width:
+            min(
+                560px,
+                calc(100vw - 32px)
+            );
+
+        max-height:
+            calc(100dvh - 32px);
+
+        background:
+            rgba(15,20,30,.97);
+
+        border:
+            1px solid
+            rgba(83,230,255,.18);
+
+        color:
+            #fff;
+    }
+
+    .file-details-card h3 {
+
+        color:
+            #fff;
+    }
+
+    .file-detail-row {
+
+        border-bottom:
+            1px solid
+            var(--future-line);
+    }
+
+    .file-detail-row strong {
+
+        color:
+            #778296;
+    }
+
+    .file-detail-row span {
+
+        color:
+            #dce8f5;
+    }
+
+    .file-details-close {
+
+        background:
+            linear-gradient(
+                145deg,
+                #18a8ff,
+                #0878ff
             );
     }
 
@@ -2824,11 +3623,13 @@ and (pointer: coarse) {
         }
 
         .brand-text h1 {
+
             font-size:
                 16px;
         }
 
         .brand-text p {
+
             font-size:
                 7px;
         }
@@ -2857,7 +3658,38 @@ and (pointer: coarse) {
                 2px;
         }
 
+
+        /* Drawer follows the smaller header */
+
+        .toolbar {
+
+            top:
+                calc(
+                    62px +
+                    env(safe-area-inset-top)
+                );
+
+            width:
+                min(275px, 84vw);
+        }
+
+        .toolbar.menu-collapsed {
+
+            top:
+                calc(
+                    62px +
+                    env(safe-area-inset-top)
+                );
+
+            width:
+                min(275px, 84vw);
+        }
+
+
         .toolbar-btn {
+
+            flex-basis:
+                52px;
 
             height:
                 52px;
@@ -2869,7 +3701,7 @@ and (pointer: coarse) {
         .toolbar-btn span {
 
             font-size:
-                7px;
+                11px;
         }
 
         .search-box {
@@ -2879,6 +3711,15 @@ and (pointer: coarse) {
 
             font-size:
                 14px;
+        }
+
+        .search-section::before {
+
+            left:
+                21px;
+
+            top:
+                13px;
         }
 
         .file-item {
@@ -2933,17 +3774,20 @@ and (pointer: coarse) {
         }
 
         .file-item .file-name {
+
             font-size:
                 13px;
         }
 
         .file-item .file-type {
+
             font-size:
                 8px;
         }
 
         .file-item .recent-file-path,
         .file-item .search-path {
+
             font-size:
                 7px;
         }
@@ -2982,17 +3826,34 @@ and (pointer: coarse) {
 
         .toolbar {
 
-            grid-template-columns:
-                repeat(5, minmax(0, 1fr));
-
-            gap:
-                4px;
+            width:
+                min(265px, 86vw);
 
             padding:
-                6px;
+                13px 8px
+                calc(
+                    15px +
+                    env(safe-area-inset-bottom)
+                );
+        }
+
+        .toolbar.menu-collapsed {
+
+            width:
+                min(265px, 86vw);
+
+            padding:
+                13px 8px
+                calc(
+                    15px +
+                    env(safe-area-inset-bottom)
+                );
         }
 
         .toolbar-btn {
+
+            flex-basis:
+                49px;
 
             height:
                 49px;
@@ -3007,7 +3868,7 @@ and (pointer: coarse) {
         .toolbar-btn span {
 
             font-size:
-                6.5px;
+                10px;
         }
 
         .file-item .item-actions {
@@ -3076,12 +3937,6 @@ and (pointer: coarse) {
 
     /* -----------------------------------------------------
        MAIN iPAD WORKSPACE
-
-       IMPORTANT:
-       grid-template-columns controls the sidebar width.
-
-       255px  -> sidebar visible
-       0px    -> sidebar hidden
        ----------------------------------------------------- */
 
     .app {
@@ -3487,13 +4342,7 @@ and (pointer: coarse) {
 
 
     /* -----------------------------------------------------
-       THE IMPORTANT PART
-
-       WHEN ☰ HIDES THE SIDEBAR
-
-       1. sidebar width -> 0
-       2. sidebar disappears
-       3. main area gets all remaining width
+       SIDEBAR HIDDEN
        ----------------------------------------------------- */
 
     .app:has(.toolbar.menu-collapsed) {
@@ -3547,7 +4396,7 @@ and (pointer: coarse) {
 
 
     /* -----------------------------------------------------
-       MAIN AREA
+       MAIN SEARCH AREA
        ----------------------------------------------------- */
 
     .search-section {
@@ -3572,6 +4421,9 @@ and (pointer: coarse) {
 
         min-width:
             0;
+
+        position:
+            relative;
     }
 
     .search-section::before {
@@ -3646,8 +4498,7 @@ and (pointer: coarse) {
 
 
     /* -----------------------------------------------------
-       WHEN SIDEBAR HIDDEN:
-       SEARCH USES FULL MAIN WIDTH
+       SEARCH FULL WIDTH WHEN SIDEBAR HIDDEN
        ----------------------------------------------------- */
 
     .app:has(.toolbar.menu-collapsed)
@@ -3664,13 +4515,6 @@ and (pointer: coarse) {
 
         padding-right:
             20px;
-    }
-
-    .app:has(.toolbar.menu-collapsed)
-    .search-section::before {
-
-        left:
-            34px;
     }
 
 
@@ -3755,7 +4599,6 @@ and (pointer: coarse) {
 
 
     /* -----------------------------------------------------
-       WHEN SIDEBAR HIDDEN:
        BREADCRUMB FULL WIDTH
        ----------------------------------------------------- */
 
@@ -3859,7 +4702,7 @@ and (pointer: coarse) {
 
 
     /* -----------------------------------------------------
-       STATUS FULL WIDTH WHEN SIDEBAR HIDDEN
+       STATUS FULL WIDTH
        ----------------------------------------------------- */
 
     .app:has(.toolbar.menu-collapsed)
@@ -3936,7 +4779,7 @@ and (pointer: coarse) {
 
 
     /* -----------------------------------------------------
-       FILE LIST FULL WIDTH WHEN SIDEBAR HIDDEN
+       FILE LIST FULL WIDTH
        ----------------------------------------------------- */
 
     .app:has(.toolbar.menu-collapsed)
