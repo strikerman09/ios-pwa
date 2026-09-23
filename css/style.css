@@ -5770,6 +5770,100 @@ and (pointer:coarse) {
         display:none !important;
     }
 }
+    /* -----------------------------------------------------
+       iPAD MAIN WORKSPACE
+    ----------------------------------------------------- */
+
+    .search-section {
+        grid-column:2 !important;
+        grid-row:2 !important;
+
+        width:auto !important;
+
+        padding:
+            18px 22px 8px !important;
+
+        margin:0 !important;
+
+        background:transparent !important;
+    }
+
+
+    .breadcrumb {
+        grid-column:2 !important;
+        grid-row:3 !important;
+
+        width:auto !important;
+
+        margin:
+            0 22px !important;
+
+        padding:
+            8px 0 !important;
+
+        max-width:none !important;
+
+        background:transparent !important;
+    }
+
+
+    .message {
+        grid-column:2 !important;
+        grid-row:4 !important;
+
+        width:auto !important;
+
+        margin:
+            0 22px !important;
+
+        padding:
+            4px 0 !important;
+
+        background:transparent !important;
+
+        color:#647187 !important;
+
+        font-size:10px !important;
+    }
+
+
+    .file-list {
+        grid-column:2 !important;
+        grid-row:5 !important;
+
+        width:auto !important;
+
+        margin:
+            8px 22px 0 !important;
+
+        background:transparent !important;
+
+        border-top:
+            1px solid
+            var(--future-line) !important;
+
+        border-radius:0 !important;
+
+        overflow:visible !important;
+    }
+
+
+    .reorder-bar {
+        grid-column:2 !important;
+        grid-row:4 !important;
+
+        margin:
+            0 22px !important;
+    }
+
+
+    .upload-status {
+        grid-column:2 !important;
+        grid-row:4 !important;
+
+        margin:
+            0 22px !important;
+    }
 
 
 
