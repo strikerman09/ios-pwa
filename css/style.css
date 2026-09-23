@@ -5540,7 +5540,17 @@ and (orientation: portrait) {
             .01ms !important;
     }
 }
+/* =====================================================
+   PASTE CANCEL X — HIDDEN BY DEFAULT
+   ===================================================== */
 
+#v4PasteCancel {
+    display: none !important;
+}
+
+#v4PasteCancel.show {
+    display: flex !important;
+}
 
 /* =========================================================
    END
