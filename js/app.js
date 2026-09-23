@@ -6709,4 +6709,13 @@ if (updateBtn) {
 
 }
 }
+const pasteCancel =
+    document.getElementById("v4PasteCancel");
+
+if (pasteCancel) {
+    pasteCancel.style.display =
+        clipboardItems.length > 0
+            ? "flex"
+            : "none";
+}
 
