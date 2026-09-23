@@ -5552,36 +5552,23 @@ and (orientation: portrait) {
     display: flex !important;
 }
 /* =====================================================
-   PASTE CONTROLS — POSITION ONLY
+   PASTE CONTROLS — POSITION FIX ONLY
    ===================================================== */
 
 #v4PasteFab {
     position: fixed !important;
-
-    right: calc(18px + env(safe-area-inset-right)) !important;
-    bottom: calc(20px + env(safe-area-inset-bottom)) !important;
+    right: 18px !important;
+    bottom: calc(24px + env(safe-area-inset-bottom)) !important;
 
     z-index: 5000 !important;
 }
 
 #v4PasteCancel {
     position: fixed !important;
-
-    right: calc(8px + env(safe-area-inset-right)) !important;
-    bottom: calc(76px + env(safe-area-inset-bottom)) !important;
+    right: 18px !important;
+    bottom: calc(82px + env(safe-area-inset-bottom)) !important;
 
     z-index: 5001 !important;
-
-    width: 34px !important;
-    height: 34px !important;
-    padding: 0 !important;
-    margin: 0 !important;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50% !important;
 }
 /* =========================================================
    END
