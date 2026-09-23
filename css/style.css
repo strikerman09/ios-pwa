@@ -4477,6 +4477,24 @@ and (pointer: coarse) {
     }
 
 }
+/* =========================================================
+   iPAD — THREE-DOT POPUP POSITION
+   iPhone + Desktop unchanged
+   ========================================================= */
+
+@media (min-width: 701px)
+and (max-width: 1180px)
+and (hover: none)
+and (pointer: coarse) {
+
+    .touch-sheet-card {
+        position: fixed;
+        margin: 0;
+    }
+
+}
+
+
 
 
 
