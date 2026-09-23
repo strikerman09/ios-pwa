@@ -1,12 +1,28 @@
 /* =========================================================
    MY FILE MANAGER
    CONSOLIDATED RESPONSIVE UI
+   =========================================================
+   DESKTOP
    ---------------------------------------------------------
-   DESKTOP  : Original light UI
-   iPHONE   : Futuristic mobile UI
-   iPAD     : Futuristic workspace UI
-   OFFLINE  : No external resources
-   JS / DB  : Unchanged
+   Existing desktop layout preserved by the base styles.
+
+   iPHONE
+   ---------------------------------------------------------
+   Mobile file-manager layout.
+
+   iPAD
+   ---------------------------------------------------------
+   Futuristic native-style workspace with collapsible
+   LEFT SIDEBAR.
+
+   IMPORTANT
+   ---------------------------------------------------------
+   ☰ SHOW  -> sidebar visible
+   ☰ HIDE  -> sidebar removed from layout
+   MAIN    -> automatically becomes full width
+
+   JS / IndexedDB / PDF.js / storage:
+   UNCHANGED
    ========================================================= */
 
 
@@ -185,7 +201,6 @@ button:focus-visible {
 
 /* =========================================================
    3. APP
-   DESKTOP
    ========================================================= */
 
 .app {
@@ -320,7 +335,7 @@ button:focus-visible {
 
 
 /* =========================================================
-   5. THREE-LINE HEADER MENU
+   5. THREE-LINE MENU BUTTON
    ========================================================= */
 
 .header-menu {
@@ -374,6 +389,9 @@ button:focus-visible {
 .header-menu:active {
     transform: scale(.93);
 }
+
+
+/* X WHEN OPEN */
 
 .header-menu.is-open .menu-line:nth-child(1) {
 
@@ -528,8 +546,7 @@ button:focus-visible {
 
 
 /* =========================================================
-   IMPORTANT
-   TOOLBAR HIDE / SHOW
+   7. COMMON TOOLBAR COLLAPSE
    ========================================================= */
 
 .toolbar.menu-collapsed {
@@ -537,6 +554,8 @@ button:focus-visible {
     max-height: 0 !important;
 
     min-height: 0 !important;
+
+    height: 0 !important;
 
     padding-top: 0 !important;
     padding-bottom: 0 !important;
@@ -556,7 +575,7 @@ button:focus-visible {
 
 
 /* =========================================================
-   7. SEARCH
+   8. SEARCH
    ========================================================= */
 
 .search-section {
@@ -615,18 +634,23 @@ button:focus-visible {
 
 
 /* =========================================================
-   8. BREADCRUMB
+   9. BREADCRUMB
    ========================================================= */
 
 .breadcrumb {
 
-    width: calc(100% - 20px);
-    max-width: calc(100% - 20px);
+    width:
+        calc(100% - 20px);
+
+    max-width:
+        calc(100% - 20px);
 
     min-width: 0;
+
     min-height: 40px;
 
-    margin: 7px 10px 0;
+    margin:
+        7px 10px 0;
 
     padding: 3px 0;
 
@@ -676,7 +700,8 @@ button:focus-visible {
 
     border-radius: 11px;
 
-    background: var(--blue-soft);
+    background:
+        var(--blue-soft);
 
     color: var(--blue);
 
@@ -705,18 +730,22 @@ button:focus-visible {
 
 
 /* =========================================================
-   9. MESSAGE
+   10. MESSAGE
    ========================================================= */
 
 .message {
 
-    margin: 3px 10px 7px;
+    margin:
+        3px 10px 7px;
 
-    padding: 7px 4px;
+    padding:
+        7px 4px;
 
-    background: transparent;
+    background:
+        transparent;
 
-    color: #6d6d72;
+    color:
+        #6d6d72;
 
     font-size: 13px;
 
@@ -738,28 +767,33 @@ button:focus-visible {
 
     border-radius: 50%;
 
-    background: var(--ios-green);
+    background:
+        var(--ios-green);
 }
 
 
 /* =========================================================
-   10. UPLOAD STATUS
+   11. UPLOAD STATUS
    ========================================================= */
 
 .upload-status {
 
-    margin: 0 10px 8px;
+    margin:
+        0 10px 8px;
 
-    padding: 11px 12px;
+    padding:
+        11px 12px;
 
     border:
         1px solid #bfdbfe;
 
     border-radius: 14px;
 
-    background: #eff6ff;
+    background:
+        #eff6ff;
 
-    color: #1e40af;
+    color:
+        #1e40af;
 
     font-size: 13px;
 
@@ -768,21 +802,25 @@ button:focus-visible {
 
 
 /* =========================================================
-   11. REORDER BAR
+   12. REORDER BAR
    ========================================================= */
 
 .reorder-bar {
 
-    margin: 0 10px 10px;
+    margin:
+        0 10px 10px;
 
-    padding: 12px;
+    padding:
+        12px;
 
     border:
         1px solid #cfe2ff;
 
-    border-radius: 16px;
+    border-radius:
+        16px;
 
-    background: #eef6ff;
+    background:
+        #eef6ff;
 }
 
 .reorder-info {
@@ -798,14 +836,16 @@ button:focus-visible {
 
 .reorder-info strong {
 
-    color: var(--blue);
+    color:
+        var(--blue);
 
     font-size: 14px;
 }
 
 .reorder-info span {
 
-    color: #6d6d72;
+    color:
+        #6d6d72;
 
     font-size: 12px;
 }
@@ -834,14 +874,20 @@ button:focus-visible {
 
 .save-btn {
 
-    background: var(--blue);
-    color: #fff;
+    background:
+        var(--blue);
+
+    color:
+        #fff;
 }
 
 .cancel-btn {
 
-    background: #8e8e93;
-    color: #fff;
+    background:
+        #8e8e93;
+
+    color:
+        #fff;
 }
 
 .save-btn:active,
@@ -851,19 +897,20 @@ button:focus-visible {
 
 
 /* =========================================================
-   12. FILE LIST
+   13. FILE LIST
    ========================================================= */
 
 .file-list {
 
     width: 100%;
 
-    padding: 0 10px 24px;
+    padding:
+        0 10px 24px;
 }
 
 
 /* =========================================================
-   13. FILE ITEM
+   14. FILE ITEM
    DESKTOP
    ========================================================= */
 
@@ -875,9 +922,11 @@ button:focus-visible {
 
     min-height: 72px;
 
-    margin: 0 0 8px;
+    margin:
+        0 0 8px;
 
-    padding: 9px 10px;
+    padding:
+        9px 10px;
 
     display: grid !important;
 
@@ -896,18 +945,22 @@ button:focus-visible {
     border:
         1px solid var(--line);
 
-    border-radius: 18px;
+    border-radius:
+        18px;
 
-    background: #fff;
+    background:
+        #fff;
 
-    box-shadow: var(--shadow);
+    box-shadow:
+        var(--shadow);
 
     transition:
         transform .15s ease,
         background .15s ease,
         box-shadow .15s ease;
 
-    touch-action: manipulation;
+    touch-action:
+        manipulation;
 }
 
 .file-item:hover {
@@ -916,16 +969,20 @@ button:focus-visible {
 
 .file-item:active {
 
-    transform: scale(.992);
+    transform:
+        scale(.992);
 
-    background: #f7faff;
+    background:
+        #f7faff;
 }
 
 .file-item.touch-active {
 
-    transform: scale(.992) !important;
+    transform:
+        scale(.992) !important;
 
-    background: #f7faff !important;
+    background:
+        #f7faff !important;
 }
 
 .folder-row {
@@ -934,7 +991,7 @@ button:focus-visible {
 
 
 /* =========================================================
-   14. POSITION
+   15. POSITION
    ========================================================= */
 
 .position {
@@ -946,20 +1003,25 @@ button:focus-visible {
     align-items: center;
     justify-content: center;
 
-    color: var(--secondary);
+    color:
+        var(--secondary);
 
-    font-size: 13px;
+    font-size:
+        13px;
 
-    font-weight: 600;
+    font-weight:
+        600;
 
-    text-align: center;
+    text-align:
+        center;
 
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric:
+        tabular-nums;
 }
 
 
 /* =========================================================
-   15. FILE ICON
+   16. FILE ICON
    ========================================================= */
 
 .file-icon {
@@ -972,17 +1034,23 @@ button:focus-visible {
     align-items: center;
     justify-content: center;
 
-    border-radius: 14px;
+    border-radius:
+        14px;
 
-    background: #f2f2f7;
+    background:
+        #f2f2f7;
 
-    color: var(--blue);
+    color:
+        var(--blue);
 
-    font-size: 29px;
+    font-size:
+        29px;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
-    -webkit-user-drag: none;
+    -webkit-user-drag:
+        none;
 }
 
 .folder-item .file-icon,
@@ -990,47 +1058,62 @@ button:focus-visible {
 
     filter:
         drop-shadow(
-            0 3px 4px rgba(0, 122, 255, .12)
+            0 3px 4px
+            rgba(0, 122, 255, .12)
         );
 }
 
 
 /* =========================================================
-   16. FILE INFO
+   17. FILE INFO
    ========================================================= */
 
 .file-info {
 
-    min-width: 0 !important;
+    min-width:
+        0 !important;
 
-    width: auto;
+    width:
+        auto;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 }
 
 .file-name {
 
-    display: block;
+    display:
+        block;
 
-    width: 100%;
+    width:
+        100%;
 
-    min-width: 0;
+    min-width:
+        0;
 
-    margin: 0;
+    margin:
+        0;
 
-    color: var(--text);
+    color:
+        var(--text);
 
-    font-size: 16px;
+    font-size:
+        16px;
 
-    line-height: 1.3;
+    line-height:
+        1.3;
 
-    font-weight: 600;
+    font-weight:
+        600;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
-    text-overflow: ellipsis;
+    text-overflow:
+        ellipsis;
 
-    white-space: nowrap;
+    white-space:
+        nowrap;
 }
 
 .file-name-text {
@@ -1039,93 +1122,133 @@ button:focus-visible {
 
 .file-type {
 
-    margin-top: 3px;
+    margin-top:
+        3px;
 
-    color: var(--secondary);
+    color:
+        var(--secondary);
 
-    font-size: 12px;
+    font-size:
+        12px;
 
-    line-height: 1.3;
+    line-height:
+        1.3;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
-    text-overflow: ellipsis;
+    text-overflow:
+        ellipsis;
 
-    white-space: nowrap;
+    white-space:
+        nowrap;
 }
 
 .recent-file-path,
 .search-path {
 
-    margin-top: 3px;
+    margin-top:
+        3px;
 
-    color: #8e8e93;
+    color:
+        #8e8e93;
 
-    font-size: 11px;
+    font-size:
+        11px;
 
-    line-height: 1.3;
+    line-height:
+        1.3;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
-    text-overflow: ellipsis;
+    text-overflow:
+        ellipsis;
 
-    white-space: nowrap;
+    white-space:
+        nowrap;
 }
 
 
 /* =========================================================
-   17. ITEM ACTIONS
+   18. ITEM ACTIONS
    ========================================================= */
 
 .item-actions {
 
-    width: 180px;
-    height: 54px;
+    width:
+        180px;
 
-    display: grid;
+    height:
+        54px;
+
+    display:
+        grid;
 
     grid-template-columns:
         repeat(5, minmax(0, 1fr));
 
-    gap: 4px;
+    gap:
+        4px;
 
-    padding: 4px;
+    padding:
+        4px;
 
-    border-radius: 15px;
+    border-radius:
+        15px;
 
-    background: #f1f2f6;
+    background:
+        #f1f2f6;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 }
 
 .item-btn,
 .item-actions > button {
 
-    width: 100%;
-    height: 100%;
+    width:
+        100%;
 
-    min-width: 0;
-    min-height: 0;
+    height:
+        100%;
 
-    display: flex;
+    min-width:
+        0;
 
-    align-items: center;
-    justify-content: center;
+    min-height:
+        0;
 
-    padding: 0;
+    display:
+        flex;
 
-    border: 0;
+    align-items:
+        center;
 
-    border-radius: 11px;
+    justify-content:
+        center;
 
-    background: #fff;
+    padding:
+        0;
 
-    color: var(--text);
+    border:
+        0;
 
-    font-size: 20px;
+    border-radius:
+        11px;
+
+    background:
+        #fff;
+
+    color:
+        var(--text);
+
+    font-size:
+        20px;
 
     box-shadow:
-        0 1px 3px rgba(0, 0, 0, .05);
+        0 1px 3px
+        rgba(0, 0, 0, .05);
 
     transition:
         transform .12s ease,
@@ -1135,182 +1258,254 @@ button:focus-visible {
 .item-btn:active,
 .item-actions > button:active {
 
-    transform: scale(.91);
+    transform:
+        scale(.91);
 
-    background: var(--blue-soft);
+    background:
+        var(--blue-soft);
 }
 
 .item-more-btn {
-    color: var(--blue) !important;
+    color:
+        var(--blue) !important;
 }
 
 .item-more-btn span {
 
-    font-size: 17px;
+    font-size:
+        17px;
 
-    font-weight: 800;
+    font-weight:
+        800;
 
-    letter-spacing: 1px;
+    letter-spacing:
+        1px;
 }
 
 .item-actions > button:not(.item-btn) {
 
-    width: 100% !important;
-    height: 100% !important;
+    width:
+        100% !important;
 
-    min-width: 0 !important;
-    min-height: 0 !important;
+    height:
+        100% !important;
 
-    padding: 0 !important;
+    min-width:
+        0 !important;
 
-    display: flex !important;
+    min-height:
+        0 !important;
 
-    align-items: center !important;
-    justify-content: center !important;
+    padding:
+        0 !important;
 
-    border: 0 !important;
+    display:
+        flex !important;
 
-    border-radius: 11px !important;
+    align-items:
+        center !important;
 
-    background: #fff !important;
+    justify-content:
+        center !important;
 
-    font-size: 21px !important;
+    border:
+        0 !important;
+
+    border-radius:
+        11px !important;
+
+    background:
+        #fff !important;
+
+    font-size:
+        21px !important;
 
     box-shadow:
-        0 1px 3px rgba(0, 0, 0, .05);
+        0 1px 3px
+        rgba(0, 0, 0, .05);
 }
 
 
 /* =========================================================
-   18. SEARCH RESULT
+   19. SEARCH RESULT
    ========================================================= */
 
 .search-result {
-    cursor: pointer;
+    cursor:
+        pointer;
 }
 
 .search-result .item-actions {
-    display: none;
+    display:
+        none;
 }
 
 
 /* =========================================================
-   19. EMPTY
+   20. EMPTY
    ========================================================= */
 
 .empty {
 
-    width: 100%;
+    width:
+        100%;
 
-    min-height: 220px;
+    min-height:
+        220px;
 
-    display: flex;
+    display:
+        flex;
 
-    flex-direction: column;
+    flex-direction:
+        column;
 
-    align-items: center;
-    justify-content: center;
+    align-items:
+        center;
 
-    gap: 10px;
+    justify-content:
+        center;
 
-    padding: 30px 20px;
+    gap:
+        10px;
 
-    color: var(--secondary);
+    padding:
+        30px 20px;
 
-    text-align: center;
+    color:
+        var(--secondary);
+
+    text-align:
+        center;
 }
 
 .empty-icon {
 
-    font-size: 48px;
+    font-size:
+        48px;
 
-    opacity: .75;
+    opacity:
+        .75;
 }
 
 
 /* =========================================================
-   20. SELECTION
+   21. SELECTION
    ========================================================= */
 
 .selection-bar {
 
-    display: none;
+    display:
+        none;
 
-    align-items: center;
-    justify-content: space-between;
+    align-items:
+        center;
 
-    gap: 10px;
+    justify-content:
+        space-between;
 
-    margin: 0 10px 8px;
+    gap:
+        10px;
 
-    padding: 10px 12px;
+    margin:
+        0 10px 8px;
 
-    border-radius: 14px;
+    padding:
+        10px 12px;
 
-    background: var(--blue-soft);
+    border-radius:
+        14px;
 
-    color: var(--blue);
+    background:
+        var(--blue-soft);
 
-    font-size: 14px;
+    color:
+        var(--blue);
 
-    font-weight: 600;
+    font-size:
+        14px;
+
+    font-weight:
+        600;
 }
 
 .selection-bar.active {
-    display: flex;
+    display:
+        flex;
 }
 
 .selection-actions {
 
-    display: flex;
+    display:
+        flex;
 
-    gap: 6px;
+    gap:
+        6px;
 }
 
 .selection-action {
 
-    min-height: 38px;
+    min-height:
+        38px;
 
-    padding: 6px 10px;
+    padding:
+        6px 10px;
 
-    border: 0;
+    border:
+        0;
 
-    border-radius: 10px;
+    border-radius:
+        10px;
 
-    background: #fff;
+    background:
+        #fff;
 
-    color: var(--blue);
+    color:
+        var(--blue);
 
-    font-weight: 700;
+    font-weight:
+        700;
 }
 
 .selection-check {
 
-    width: 26px;
-    height: 26px;
+    width:
+        26px;
 
-    flex: 0 0 26px;
+    height:
+        26px;
 
-    display: flex;
+    flex:
+        0 0 26px;
 
-    align-items: center;
-    justify-content: center;
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
 
     border:
         2px solid #c7c7cc;
 
-    border-radius: 50%;
+    border-radius:
+        50%;
 
-    background: #fff;
+    background:
+        #fff;
 
-    color: #fff;
+    color:
+        #fff;
 }
 
 .file-item.selected {
 
-    border-color: var(--blue) !important;
+    border-color:
+        var(--blue) !important;
 
-    background: #eef5ff !important;
+    background:
+        #eef5ff !important;
 
     box-shadow:
         0 2px 10px
@@ -1320,36 +1515,47 @@ button:focus-visible {
 
 .file-item.selected .selection-check {
 
-    border-color: var(--blue);
+    border-color:
+        var(--blue);
 
-    background: var(--blue);
+    background:
+        var(--blue);
 }
 
 .select-mode .file-item {
-    cursor: pointer;
+    cursor:
+        pointer;
 }
 
 .select-mode .file-item .item-actions {
-    display: none;
+    display:
+        none;
 }
 
 
 /* =========================================================
-   21. TOUCH ACTION SHEET
+   22. TOUCH ACTION SHEET
    ========================================================= */
 
 .touch-action-sheet {
 
-    position: fixed;
+    position:
+        fixed;
 
-    inset: 0;
+    inset:
+        0;
 
-    z-index: 1000;
+    z-index:
+        2000;
 
-    display: none;
+    display:
+        none;
 
-    align-items: center;
-    justify-content: center;
+    align-items:
+        center;
+
+    justify-content:
+        center;
 
     padding:
         calc(16px + env(safe-area-inset-top))
@@ -1359,28 +1565,37 @@ button:focus-visible {
     background:
         rgba(0, 0, 0, .28);
 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
 }
 
 .touch-action-sheet.show {
-    display: flex;
+    display:
+        flex;
 }
 
 .touch-sheet-backdrop {
 
-    position: absolute;
+    position:
+        absolute;
 
-    inset: 0;
+    inset:
+        0;
 
-    background: transparent;
+    background:
+        transparent;
 }
 
 .touch-sheet-card {
 
-    position: relative;
+    position:
+        relative;
 
-    width: min(92vw, 380px);
+    width:
+        min(92vw, 380px);
 
     max-height:
         calc(
@@ -1390,88 +1605,106 @@ button:focus-visible {
             - env(safe-area-inset-bottom)
         );
 
-    overflow-y: auto;
+    overflow-y:
+        auto;
 
-    padding: 10px;
+    padding:
+        10px;
 
-    border-radius: 22px;
+    border-radius:
+        22px;
 
     background:
         rgba(255, 255, 255, .96);
 
     box-shadow:
-        0 20px 60px rgba(0, 0, 0, .22);
-
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+        0 20px 60px
+        rgba(0, 0, 0, .22);
 }
 
 .touch-sheet-title {
 
-    padding: 10px 12px;
+    padding:
+        8px 10px 12px;
 
-    color: var(--text);
+    color:
+        var(--text);
 
-    font-size: 15px;
+    font-size:
+        16px;
 
-    font-weight: 700;
+    font-weight:
+        700;
+
+    text-align:
+        center;
 }
 
-.touch-sheet-action {
+.touch-sheet-action,
+.touch-sheet-cancel {
 
-    width: 100%;
+    width:
+        100%;
 
-    min-height: 46px;
+    min-height:
+        48px;
 
-    margin-top: 5px;
+    margin:
+        3px 0;
 
-    border: 0;
+    border:
+        0;
 
-    border-radius: 12px;
+    border-radius:
+        13px;
 
-    background: #f2f2f7;
+    background:
+        #f2f2f7;
 
-    color: var(--text);
+    color:
+        var(--text);
 
-    font-size: 14px;
+    font-size:
+        15px;
+
+    font-weight:
+        600;
 }
 
-.touch-sheet-action:active {
+.touch-sheet-action:active,
+.touch-sheet-cancel:active {
 
-    background: var(--blue-soft);
+    background:
+        #e5e5ea;
 
-    color: var(--blue);
+    transform:
+        scale(.98);
 }
 
 .touch-sheet-cancel {
 
-    width: 100%;
+    margin-top:
+        8px;
 
-    min-height: 46px;
+    color:
+        var(--ios-red);
 
-    margin-top: 7px;
-
-    border: 0;
-
-    border-radius: 12px;
-
-    background: #e5e5ea;
-
-    color: var(--text);
-
-    font-size: 14px;
+    background:
+        #fff1f0;
 }
 
 
 /* =========================================================
-   22. PASTE FAB
+   23. PASTE FAB
    ========================================================= */
 
 .v4-paste-fab {
 
-    position: fixed;
+    position:
+        fixed;
 
-    right: 18px;
+    right:
+        18px;
 
     bottom:
         calc(
@@ -1479,554 +1712,562 @@ button:focus-visible {
             env(safe-area-inset-bottom)
         );
 
-    z-index: 900;
+    z-index:
+        1200;
 
-    min-height: 48px;
+    width:
+        58px;
 
-    padding: 0 17px;
+    height:
+        58px;
 
-    border: 0;
+    min-width:
+        58px;
 
-    border-radius: 24px;
+    min-height:
+        58px;
 
-    background: var(--blue);
+    display:
+        flex;
 
-    color: #fff;
+    align-items:
+        center;
 
-    font-size: 13px;
+    justify-content:
+        center;
 
-    font-weight: 700;
+    padding:
+        0;
+
+    border:
+        0;
+
+    border-radius:
+        18px;
+
+    background:
+        var(--blue);
+
+    color:
+        #fff;
 
     box-shadow:
-        0 7px 20px
-        rgba(0, 122, 255, .24);
+        0 8px 28px
+        rgba(0, 122, 255, .28);
+
+    font-size:
+        15px;
+
+    font-weight:
+        700;
+}
+
+.v4-paste-fab:active {
+
+    transform:
+        scale(.93);
 }
 
 .paste-label {
-    pointer-events: none;
+    display:
+        block;
 }
 
 .paste-cancel {
 
-    position: fixed;
+    position:
+        fixed;
 
-    right: 9px;
+    right:
+        14px;
 
     bottom:
         calc(
-            7px +
+            82px +
             env(safe-area-inset-bottom)
         );
 
-    z-index: 901;
+    z-index:
+        1201;
 
-    width: 28px;
-    height: 28px;
+    width:
+        32px;
 
-    min-height: 28px;
+    height:
+        32px;
 
-    border: 0;
+    border:
+        0;
 
-    border-radius: 50%;
+    border-radius:
+        50%;
 
-    background: #fff;
+    background:
+        #555;
 
-    color: #333;
+    color:
+        #fff;
 
-    font-size: 17px;
+    font-size:
+        20px;
 
-    box-shadow:
-        0 2px 8px rgba(0, 0, 0, .12);
+    line-height:
+        32px;
+
+    text-align:
+        center;
 }
 
 
 /* =========================================================
-   23. FILE DETAILS
+   24. FILE DETAILS MODAL
    ========================================================= */
 
 .file-details-modal {
 
-    position: fixed;
+    position:
+        fixed;
 
-    inset: 0;
+    inset:
+        0;
 
-    z-index: 1100;
+    z-index:
+        2500;
 
-    display: flex;
+    display:
+        none;
 
-    align-items: center;
-    justify-content: center;
+    align-items:
+        center;
+
+    justify-content:
+        center;
 
     padding:
-        calc(12px + env(safe-area-inset-top))
-        12px
-        calc(12px + env(safe-area-inset-bottom));
+        20px;
 
     background:
-        rgba(0, 0, 0, .28);
+        rgba(0, 0, 0, .35);
 
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+}
+
+.file-details-modal.show {
+    display:
+        flex;
 }
 
 .file-details-card {
 
-    width: min(92vw, 520px);
+    width:
+        min(560px, calc(100vw - 40px));
 
     max-height:
-        calc(
-            100dvh
-            - 24px
-            - env(safe-area-inset-top)
-            - env(safe-area-inset-bottom)
-        );
+        calc(100dvh - 40px);
 
-    overflow: auto;
-
-    padding: 16px 14px 14px;
-
-    border-radius: 21px;
-
-    background:
-        rgba(255, 255, 255, .97);
-
-    box-shadow:
-        0 24px 70px
-        rgba(0, 0, 0, .22);
-}
-
-.file-details-card h3 {
-
-    margin-top: 0;
-
-    font-size: 17px;
-}
-
-.file-detail-row {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    gap: 12px;
-
-    padding: 10px 2px;
-
-    border-bottom:
-        1px solid
-        rgba(60, 60, 67, .10);
-}
-
-.file-detail-row strong {
-
-    font-size: 10px;
-
-    color: var(--secondary);
-}
-
-.file-detail-row span {
-
-    font-size: 13px;
-
-    color: var(--text);
-
-    text-align: right;
-
-    overflow-wrap: anywhere;
-}
-
-.file-details-close {
-
-    width: 100%;
-
-    height: 44px;
-
-    min-height: 44px;
-
-    margin-top: 12px;
-
-    border: 0;
-
-    border-radius: 12px;
-
-    background: var(--blue);
-
-    color: #fff;
-
-    font-size: 14px;
-}
-
-
-/* =========================================================
-   24. REORDER ROW
-   ========================================================= */
-
-.reorder-row {
-
-    position: relative;
-
-    display: grid;
-
-    grid-template-columns:
-        36px
-        50px
-        minmax(0, 1fr)
+    overflow:
         auto;
 
-    align-items: center;
-
-    gap: 10px;
-
-    min-height: 62px;
-
-    margin-bottom: 6px;
-
-    padding: 8px 10px;
+    padding:
+        20px;
 
     border:
         1px solid var(--line);
 
-    border-radius: 14px;
+    border-radius:
+        22px;
 
-    background: #fff;
+    background:
+        #fff;
+
+    box-shadow:
+        var(--shadow-strong);
+}
+
+.file-details-card h3 {
+
+    margin:
+        0 0 16px;
+
+    color:
+        var(--text);
+
+    font-size:
+        20px;
+}
+
+.file-detail-row {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        15px;
+
+    padding:
+        11px 0;
+
+    border-bottom:
+        1px solid var(--line);
+}
+
+.file-detail-row strong {
+
+    color:
+        var(--secondary);
+
+    font-size:
+        13px;
+}
+
+.file-detail-row span {
+
+    color:
+        var(--text);
+
+    font-size:
+        13px;
+
+    text-align:
+        right;
+
+    word-break:
+        break-word;
+}
+
+.file-details-close {
+
+    width:
+        100%;
+
+    min-height:
+        46px;
+
+    margin-top:
+        16px;
+
+    border:
+        0;
+
+    border-radius:
+        13px;
+
+    background:
+        var(--blue);
+
+    color:
+        #fff;
+
+    font-size:
+        15px;
+
+    font-weight:
+        700;
+}
+
+
+/* =========================================================
+   25. REORDER ROW
+   ========================================================= */
+
+.reorder-row {
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    min-height:
+        64px;
+
+    padding:
+        8px 10px;
+
+    margin-bottom:
+        6px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        14px;
+
+    background:
+        #fff;
+}
+
+.reorder-row .file-info {
+    flex:
+        1 1 auto;
 }
 
 .reorder-buttons {
 
-    display: flex;
+    display:
+        flex;
 
-    gap: 4px;
+    gap:
+        5px;
+
+    flex:
+        0 0 auto;
 }
 
-.move-btn {
+.reorder-buttons button {
 
-    width: 34px;
-    height: 34px;
+    width:
+        38px;
 
-    min-width: 34px;
+    height:
+        38px;
 
-    border: 0;
+    border:
+        0;
 
-    border-radius: 9px;
+    border-radius:
+        10px;
 
-    background: #f2f2f7;
+    background:
+        #f2f2f7;
 
-    color: var(--blue);
-}
+    color:
+        var(--blue);
 
-
-/* =========================================================
-   25. DIAGNOSTIC
-   ========================================================= */
-
-.v11-diag-head {
-
-    padding: 8px 10px;
-
-    border-radius: 10px 10px 0 0;
-
-    background: #eef6ff;
-
-    color: var(--blue);
-
-    font-weight: 700;
-}
-
-.v11-diag-body {
-
-    padding: 10px;
-
-    background: #fff;
-
-    color: var(--text);
-
-    font-size: 12px;
-}
-
-.v11-diag-foot {
-
-    padding: 8px 10px;
-
-    border-radius: 0 0 10px 10px;
-
-    background: #f2f2f7;
-
-    color: var(--secondary);
-
-    font-size: 11px;
+    font-size:
+        18px;
 }
 
 
 /* =========================================================
-   26. DESKTOP
-   1367px+
+   26. iPHONE
+   ONLY TOUCH DEVICES <= 700px
    ========================================================= */
 
-@media (min-width: 1367px) {
+@media
+(max-width: 700px)
+and (hover: none)
+and (pointer: coarse) {
 
     html,
     body {
 
-        background: var(--bg);
+        width:
+            100%;
 
-        color: var(--text);
-    }
-
-    .app {
-        background: var(--bg);
-    }
-
-    /* Desktop keeps the normal toolbar.
-       Header menu does not affect desktop layout. */
-
-    .toolbar {
-        max-height: none;
-        opacity: 1;
-        pointer-events: auto;
-        transform: none;
-    }
-}
-
-
-/* =========================================================
-   27. iPHONE
-   0 - 700px
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-    html,
-    body {
-
-        width: 100%;
-
-        min-height: 100dvh;
+        min-height:
+            100dvh;
 
         background:
-            var(--future-bg) !important;
-
-        color:
-            var(--future-text) !important;
+            #f2f2f7;
     }
 
     body {
-        overflow-x: hidden;
+        overflow-x:
+            hidden;
     }
-
-
-    /* APP */
 
     .app {
 
-        width: 100%;
+        width:
+            100%;
 
-        min-height: 100dvh;
+        min-height:
+            100dvh;
 
         padding:
             env(safe-area-inset-top)
             0
-            calc(
-                84px +
-                env(safe-area-inset-bottom)
-            );
+            env(safe-area-inset-bottom);
 
         background:
-            radial-gradient(
-                circle at 85% 0%,
-                rgba(24, 168, 255, .13),
-                transparent 32%
-            ),
-            var(--future-bg) !important;
+            #f2f2f7;
     }
 
 
-    /* HEADER */
+    /* -----------------------------------------------------
+       HEADER
+       ----------------------------------------------------- */
 
     .header {
 
-        min-height: 64px;
-        height: 64px;
+        min-height:
+            68px;
 
-        padding: 7px 10px;
+        height:
+            68px;
 
-        border: 0;
+        padding:
+            8px 10px;
+
+        border:
+            0;
 
         border-bottom:
-            1px solid var(--future-line);
+            1px solid
+            rgba(60, 60, 67, .10);
 
-        border-radius: 0;
+        border-radius:
+            0;
 
         background:
-            rgba(8, 11, 18, .82);
+            rgba(242,242,247,.92);
 
         box-shadow:
-            0 8px 25px rgba(0, 0, 0, .28);
+            none;
 
         backdrop-filter:
-            blur(24px)
-            saturate(150%);
+            blur(20px);
 
         -webkit-backdrop-filter:
-            blur(24px)
-            saturate(150%);
-
-        overflow: visible;
-
-        z-index: 1000;
+            blur(20px);
     }
 
     .brand {
-        gap: 9px;
+
+        gap:
+            9px;
     }
 
     .app-logo {
 
-        width: 40px;
-        height: 40px;
+        width:
+            40px;
 
-        flex: 0 0 40px;
+        height:
+            40px;
 
-        border-radius: 12px;
+        flex-basis:
+            40px;
 
-        background:
-            linear-gradient(
-                145deg,
-                #23c7ff,
-                #0878ff
-            );
-
-        box-shadow:
-            0 0 20px
-            rgba(24, 168, 255, .30);
+        border-radius:
+            12px;
     }
 
     .app-logo svg {
 
-        width: 31px;
-        height: 31px;
+        width:
+            31px;
+
+        height:
+            31px;
     }
 
     .brand-text h1 {
 
-        color: #fff;
+        font-size:
+            17px;
 
-        font-size: 17px;
-
-        letter-spacing: -.2px;
+        letter-spacing:
+            -.2px;
     }
 
     .brand-text p {
 
-        margin-top: 1px;
+        margin-top:
+            2px;
 
-        color: var(--future-muted);
+        font-size:
+            8px;
 
-        font-size: 8px;
-
-        letter-spacing: .7px;
-
-        text-transform: uppercase;
+        color:
+            #8e8e93;
     }
-
-
-    /* THREE-LINE BUTTON */
 
     .header-menu {
 
-        width: 40px;
-        height: 40px;
+        width:
+            40px;
 
-        min-width: 40px;
-        min-height: 40px;
+        height:
+            40px;
 
-        border-radius: 12px;
+        min-width:
+            40px;
+
+        min-height:
+            40px;
+
+        border-radius:
+            12px;
 
         background:
-            rgba(255,255,255,.055);
-
-        border:
-            1px solid
-            rgba(83,230,255,.16);
+            #e5e5ea;
     }
 
     .header-menu .menu-line {
 
-        width: 17px;
-        height: 2px;
+        width:
+            17px;
 
-        background:
-            var(--future-cyan);
-
-        box-shadow:
-            0 0 7px
-            rgba(83,230,255,.45);
+        height:
+            2px;
     }
 
 
-    /* TOOLBAR */
+    /* -----------------------------------------------------
+       MOBILE TOOLBAR
+       ----------------------------------------------------- */
 
     .toolbar {
 
-        position: fixed;
+        position:
+            relative;
 
         top:
-            calc(
-                64px +
-                env(safe-area-inset-top)
-            );
+            auto;
 
-        left: 8px;
-        right: 8px;
+        width:
+            100%;
 
-        width: auto;
+        padding:
+            7px 7px;
 
-        max-height: 420px;
-
-        padding: 8px;
-
-        display: grid;
+        display:
+            grid;
 
         grid-template-columns:
-            repeat(3, 1fr);
+            repeat(5, minmax(0, 1fr));
 
-        gap: 6px;
-
-        border:
-            1px solid
-            var(--future-blue-line);
-
-        border-radius: 18px;
+        gap:
+            5px;
 
         background:
-            var(--future-surface-strong);
+            #f2f2f7;
 
-        box-shadow:
-            var(--future-shadow),
-            var(--future-glow);
-
-        backdrop-filter:
-            blur(28px)
-            saturate(145%);
-
-        -webkit-backdrop-filter:
-            blur(28px)
-            saturate(145%);
-
-        overflow: hidden;
-
-        z-index: 950;
+        overflow:
+            hidden;
     }
-
-    /*
-       IMPORTANT:
-       This is the only mobile collapsed state.
-    */
 
     .toolbar.menu-collapsed {
 
-        max-height: 0 !important;
+        display:
+            none !important;
 
-        min-height: 0 !important;
+        width:
+            0 !important;
+
+        height:
+            0 !important;
+
+        min-height:
+            0 !important;
+
+        max-height:
+            0 !important;
 
         padding:
             0 !important;
@@ -2034,1240 +2275,831 @@ button:focus-visible {
         margin:
             0 !important;
 
-        opacity: 0 !important;
+        border:
+            0 !important;
+
+        opacity:
+            0 !important;
+
+        pointer-events:
+            none !important;
+
+        overflow:
+            hidden !important;
 
         transform:
-            translateY(-10px)
-            scale(.97);
-
-        border-width: 0;
-
-        pointer-events: none !important;
-
-        overflow: hidden !important;
+            none !important;
     }
 
     .toolbar-btn {
 
-        height: 62px;
+        height:
+            55px;
 
-        padding: 5px 3px;
+        min-height:
+            55px;
 
-        gap: 4px;
+        padding:
+            3px;
 
         border:
             1px solid
-            rgba(255,255,255,.075);
+            #e0e0e5;
 
-        border-radius: 13px;
+        border-radius:
+            13px;
 
         background:
-            linear-gradient(
-                145deg,
-                rgba(255,255,255,.065),
-                rgba(255,255,255,.025)
-            );
-
-        color:
-            var(--future-cyan);
+            #fff;
 
         box-shadow:
-            inset 0 1px 0
-            rgba(255,255,255,.045);
+            0 1px 5px
+            rgba(0,0,0,.04);
     }
 
     .toolbar-btn svg,
     .ios-menu-icon {
 
-        stroke:
-            var(--future-cyan);
+        width:
+            22px;
 
-        filter:
-            drop-shadow(
-                0 0 5px
-                rgba(83,230,255,.35)
-            );
+        height:
+            22px;
     }
 
     .toolbar-btn span {
 
-        color:
-            #cbd4e2;
+        font-size:
+            8px;
 
-        font-size: 8px;
-
-        font-weight: 600;
-    }
-
-    .toolbar-btn:active,
-    .toolbar-btn.touch-active {
-
-        background:
-            rgba(24,168,255,.18);
-
-        border-color:
-            rgba(83,230,255,.38);
-
-        transform: scale(.96);
+        line-height:
+            10px;
     }
 
 
-    /* SEARCH */
+    /* -----------------------------------------------------
+       SEARCH MUST REMAIN FULL WIDTH WHEN MENU HIDDEN
+       ----------------------------------------------------- */
 
     .search-section {
 
-        position: relative;
+        width:
+            100%;
 
-        padding: 9px 9px 7px;
+        display:
+            block;
 
-        background: transparent;
-    }
+        padding:
+            6px 8px;
 
-    .search-section::before {
+        margin:
+            0;
 
-        content: "⌕";
-
-        position: absolute;
-
-        left: 22px;
-        top: 14px;
-
-        z-index: 2;
-
-        color:
-            var(--future-cyan);
-
-        font-size: 20px;
-
-        line-height: 1;
-
-        text-shadow:
-            0 0 8px
-            rgba(83,230,255,.45);
+        background:
+            #f2f2f7;
     }
 
     .search-box {
 
-        height: 46px;
+        width:
+            100%;
+
+        height:
+            45px;
 
         padding:
-            0 14px 0 39px;
+            0 14px;
 
-        border:
-            1px solid
-            rgba(255,255,255,.08);
+        border-radius:
+            13px;
 
-        border-radius: 14px;
-
-        background:
-            rgba(255,255,255,.065);
-
-        color: #fff;
-
-        font-size: 15px;
-
-        box-shadow:
-            inset 0 1px 0
-            rgba(255,255,255,.04);
-    }
-
-    .search-box::placeholder {
-        color: #778296;
-    }
-
-    .search-box:focus {
-
-        background:
-            rgba(24,168,255,.08);
-
-        border-color:
-            rgba(83,230,255,.35);
-
-        box-shadow:
-            0 0 0 3px
-            rgba(24,168,255,.08);
+        font-size:
+            15px;
     }
 
 
-    /* BREADCRUMB */
+    /* -----------------------------------------------------
+       BREADCRUMB
+       ----------------------------------------------------- */
 
     .breadcrumb {
 
         width:
-            calc(100% - 18px);
+            calc(100% - 16px);
 
-        max-width: none;
+        max-width:
+            calc(100% - 16px);
 
-        min-height: 34px;
+        margin:
+            5px 8px 0;
 
-        margin: 1px 9px 4px;
-
-        padding: 3px 0;
-
-        gap: 4px;
-
-        color: var(--future-muted);
-
-        background: transparent;
-
-        border: 0;
-
-        box-shadow: none;
-    }
-
-    .breadcrumb > span {
-
-        color:
-            var(--future-muted);
-
-        font-size: 11px;
+        min-height:
+            36px;
     }
 
     .crumb {
 
-        min-height: 30px;
-        height: 30px;
+        min-height:
+            34px;
 
-        padding: 4px 9px;
+        height:
+            34px;
 
-        border-radius: 9px;
+        padding:
+            4px 10px;
 
-        background:
-            rgba(24,168,255,.08);
+        border-radius:
+            10px;
 
-        color:
-            var(--future-cyan);
+        font-size:
+            12px;
 
-        font-size: 11px;
-
-        line-height: 21px;
-    }
-
-    .crumb.current {
-
-        background:
-            rgba(255,255,255,.07);
-
-        color: #cbd4e2;
+        line-height:
+            24px;
     }
 
 
-    /* MESSAGE */
+    /* -----------------------------------------------------
+       STATUS
+       ----------------------------------------------------- */
 
     .message {
 
-        margin: 3px 9px 6px;
+        margin:
+            2px 8px 5px;
 
-        padding: 5px 0;
+        padding:
+            5px 2px;
 
-        color: #647187;
-
-        font-size: 9px;
-
-        background: transparent;
+        font-size:
+            11px;
     }
-
-    .message::before {
-
-        width: 5px;
-        height: 5px;
-
-        margin-right: 5px;
-
-        background:
-            var(--future-green);
-
-        box-shadow:
-            0 0 7px
-            rgba(57,229,140,.45);
-    }
-
-
-    /* UPLOAD */
 
     .upload-status {
 
-        margin: 4px 9px 7px;
+        margin:
+            0 8px 6px;
 
-        padding: 8px 10px;
+        padding:
+            9px 10px;
 
-        border:
-            1px solid
-            rgba(83,230,255,.15);
+        border-radius:
+            12px;
 
-        border-radius: 11px;
-
-        background:
-            rgba(24,168,255,.07);
-
-        color: #bcefff;
-
-        font-size: 9px;
+        font-size:
+            11px;
     }
 
 
-    /* REORDER */
-
-    .reorder-bar {
-
-        margin: 0 9px 7px;
-
-        padding: 9px;
-
-        border:
-            1px solid
-            rgba(83,230,255,.15);
-
-        border-radius: 13px;
-
-        background:
-            rgba(24,168,255,.07);
-    }
-
-    .reorder-info strong {
-
-        color:
-            var(--future-cyan);
-
-        font-size: 12px;
-    }
-
-    .reorder-info span {
-
-        color:
-            var(--future-muted);
-
-        font-size: 9px;
-    }
-
-    .reorder-actions {
-        gap: 5px;
-    }
-
-    .reorder-actions button {
-
-        min-height: 38px;
-
-        border-radius: 9px;
-
-        font-size: 11px;
-    }
-
-    .save-btn {
-        background: var(--future-blue);
-    }
-
-    .cancel-btn {
-        background: #313846;
-    }
-
-
-    /* FILE LIST */
+    /* -----------------------------------------------------
+       FILE LIST
+       ----------------------------------------------------- */
 
     .file-list {
 
-        width: 100%;
-
-        margin: 0;
+        width:
+            100%;
 
         padding:
-            0 0
+            0 8px
             calc(
-                18px +
+                20px +
                 env(safe-area-inset-bottom)
             );
-
-        background: transparent;
-
-        border-top:
-            1px solid
-            var(--future-line);
     }
 
 
-    /* FILE ROW */
+    /* -----------------------------------------------------
+       MOBILE FILE ROW
+       ----------------------------------------------------- */
 
     .file-item {
 
-        position: relative;
+        width:
+            100%;
 
-        width: 100%;
+        min-height:
+            62px;
 
-        min-height: 62px;
+        margin:
+            0;
 
-        margin: 0;
+        padding:
+            7px 4px;
 
-        padding: 7px 8px;
+        display:
+            flex !important;
 
-        display: flex !important;
+        align-items:
+            center;
 
-        align-items: center;
+        gap:
+            7px;
 
-        gap: 8px;
-
-        border: 0;
+        border:
+            0;
 
         border-bottom:
             1px solid
-            var(--future-line);
+            rgba(60,60,67,.10);
 
-        border-radius: 0;
-
-        background: transparent;
-
-        box-shadow: none;
-
-        color: var(--future-text);
-
-        transform: none !important;
-    }
-
-    .file-item::after {
-
-        content: "";
-
-        position: absolute;
-
-        left: 61px;
-        right: 0;
-        bottom: 0;
-
-        height: 1px;
+        border-radius:
+            0;
 
         background:
-            var(--future-line);
+            transparent;
+
+        box-shadow:
+            none;
+
+        transform:
+            none !important;
     }
 
     .file-item:active,
     .file-item.touch-active {
 
         background:
-            rgba(24,168,255,.07)
+            rgba(0,122,255,.06)
             !important;
 
-        transform: none !important;
+        transform:
+            none !important;
     }
-
-    .file-item:active::before,
-    .file-item.touch-active::before {
-
-        content: "";
-
-        position: absolute;
-
-        left: 0;
-        top: 0;
-        bottom: 0;
-
-        width: 2px;
-
-        background:
-            var(--future-cyan);
-
-        box-shadow:
-            0 0 12px
-            rgba(83,230,255,.65);
-    }
-
-
-    /* POSITION */
 
     .file-item .position {
 
-        width: 18px;
+        width:
+            18px;
 
-        min-width: 18px;
+        min-width:
+            18px;
 
-        flex: 0 0 18px;
+        flex-basis:
+            18px;
 
-        color: #536074;
+        font-size:
+            9px;
 
-        font-size: 9px;
-
-        font-weight: 500;
-
-        text-align: center;
+        color:
+            #8e8e93;
     }
-
-
-    /* ICON */
 
     .file-item .file-icon {
 
-        position: static;
+        width:
+            40px;
 
-        width: 40px;
-        height: 40px;
+        height:
+            40px;
 
-        min-width: 40px;
-        min-height: 40px;
+        min-width:
+            40px;
 
-        flex: 0 0 40px;
+        min-height:
+            40px;
 
-        display: flex;
+        flex-basis:
+            40px;
 
-        align-items: center;
-        justify-content: center;
-
-        border-radius: 11px;
+        border-radius:
+            11px;
 
         background:
-            linear-gradient(
-                145deg,
-                rgba(24,168,255,.18),
-                rgba(83,230,255,.035)
-            );
-
-        border:
-            1px solid
-            rgba(83,230,255,.15);
+            #eaf3ff;
 
         color:
-            var(--future-cyan);
+            var(--blue);
 
-        font-size: 21px;
-
-        box-shadow:
-            inset 0 1px 0
-            rgba(255,255,255,.045);
-
-        filter: none;
+        font-size:
+            22px;
     }
-
-    .file-item.folder-row .file-icon {
-
-        background:
-            linear-gradient(
-                145deg,
-                rgba(24,168,255,.25),
-                rgba(24,168,255,.06)
-            );
-
-        border-color:
-            rgba(24,168,255,.30);
-    }
-
-
-    /* INFO */
 
     .file-item .file-info {
 
-        position: static;
+        position:
+            static;
 
-        width: auto;
-        height: auto;
+        flex:
+            1 1 auto;
 
-        flex: 1 1 auto;
+        width:
+            auto;
 
-        min-width: 0;
+        height:
+            auto;
 
-        padding: 0;
+        min-width:
+            0;
 
-        display: flex !important;
+        padding:
+            0;
 
-        flex-direction: column;
+        display:
+            flex !important;
 
-        justify-content: center;
+        flex-direction:
+            column;
 
-        gap: 1px;
+        justify-content:
+            center;
 
-        overflow: hidden;
+        gap:
+            2px;
     }
 
     .file-item .file-name {
 
-        width: 100%;
-        height: auto;
+        font-size:
+            14px;
 
-        color: #f5f7fb;
+        line-height:
+            19px;
 
-        font-size: 14px;
-
-        line-height: 19px;
-
-        font-weight: 600;
-
-        letter-spacing: -.1px;
+        font-weight:
+            600;
     }
 
     .file-item .file-type {
 
-        width: 100%;
-        height: auto;
+        margin:
+            0;
 
-        margin: 0;
+        font-size:
+            9px;
 
-        color: #778296;
+        line-height:
+            13px;
 
-        font-size: 9px;
-
-        line-height: 14px;
-
-        letter-spacing: .25px;
+        color:
+            #8e8e93;
     }
 
     .file-item .recent-file-path,
     .file-item .search-path {
 
-        margin-top: 1px;
+        margin-top:
+            0;
 
-        color: #647187;
+        font-size:
+            8px;
 
-        font-size: 8px;
-
-        line-height: 12px;
+        line-height:
+            12px;
     }
 
 
-    /* ACTIONS */
+    /* -----------------------------------------------------
+       MOBILE ACTION BUTTONS
+       ----------------------------------------------------- */
 
     .file-item .item-actions {
 
-        width: auto;
-        height: auto;
+        width:
+            auto;
 
-        flex: 0 0 auto;
+        height:
+            auto;
 
-        display: grid !important;
+        flex:
+            0 0 auto;
+
+        display:
+            grid !important;
 
         grid-template-columns:
-            repeat(5, 30px);
+            repeat(5, 28px);
 
-        gap: 1px;
+        gap:
+            1px;
 
-        padding: 0;
+        padding:
+            0;
 
-        border: 0;
+        border:
+            0;
 
-        border-radius: 0;
+        background:
+            transparent;
 
-        background: transparent;
+        box-shadow:
+            none;
 
-        box-shadow: none;
-
-        overflow: visible;
+        overflow:
+            visible;
     }
 
     .file-item .item-actions > button {
 
-        width: 30px !important;
-        height: 32px !important;
+        width:
+            28px !important;
 
-        min-width: 30px !important;
-        min-height: 32px !important;
+        height:
+            32px !important;
 
-        padding: 0 !important;
+        min-width:
+            28px !important;
 
-        display: flex !important;
+        min-height:
+            32px !important;
 
-        align-items: center !important;
-        justify-content: center !important;
+        padding:
+            0 !important;
 
-        border: 0 !important;
+        border:
+            0 !important;
 
-        border-radius: 8px !important;
-
-        background: transparent !important;
-
-        color: #8290a5;
-
-        box-shadow: none !important;
-
-        font-size: 15px !important;
-    }
-
-    .file-item .item-actions > button:active {
+        border-radius:
+            8px !important;
 
         background:
-            rgba(83,230,255,.10)
-            !important;
+            transparent !important;
 
-        color:
-            var(--future-cyan);
+        box-shadow:
+            none !important;
 
-        transform: scale(.90);
+        font-size:
+            14px !important;
     }
 
     .file-item .item-more-btn {
 
         color:
-            var(--future-cyan)
+            var(--blue)
             !important;
     }
 
-    .file-item .item-more-btn span {
 
-        font-size: 13px;
-
-        font-weight: 800;
-
-        letter-spacing: 1px;
-    }
-
-
-    /* SEARCH RESULT */
-
-    .search-result .item-actions {
-        display: none !important;
-    }
-
-
-    /* SELECTION */
-
-    .selection-bar {
-
-        margin: 0 9px 6px;
-
-        padding: 8px 10px;
-
-        border:
-            1px solid
-            rgba(83,230,255,.15);
-
-        border-radius: 11px;
-
-        background:
-            rgba(24,168,255,.08);
-
-        color:
-            var(--future-cyan);
-
-        font-size: 11px;
-    }
-
-    .file-item.selected {
-
-        border: 0 !important;
-
-        background:
-            rgba(24,168,255,.10)
-            !important;
-
-        box-shadow:
-            inset 2px 0 0
-            var(--future-cyan)
-            !important;
-    }
-
-    .file-item.selected::after {
-        display: none;
-    }
-
-
-    /* PASTE */
+    /* -----------------------------------------------------
+       PASTE
+       ----------------------------------------------------- */
 
     .v4-paste-fab {
 
-        right: 15px;
+        right:
+            14px;
 
         bottom:
             calc(
-                14px +
+                16px +
                 env(safe-area-inset-bottom)
             );
 
-        width: 54px;
-        height: 54px;
+        width:
+            54px;
 
-        min-height: 54px;
+        height:
+            54px;
 
-        padding: 0;
+        min-width:
+            54px;
 
-        border:
-            1px solid
-            rgba(83,230,255,.45);
+        min-height:
+            54px;
 
-        border-radius: 17px;
+        border-radius:
+            17px;
 
         background:
-            linear-gradient(
-                145deg,
-                #18a8ff,
-                #0878ff
-            );
-
-        color: #fff;
+            var(--blue);
 
         box-shadow:
-            0 0 0 5px
-            rgba(24,168,255,.07),
-            0 10px 35px
-            rgba(0,0,0,.50),
-            0 0 25px
-            rgba(24,168,255,.28);
+            0 8px 25px
+            rgba(0,122,255,.28);
     }
 
     .paste-cancel {
 
-        right: 8px;
+        right:
+            11px;
 
         bottom:
             calc(
-                7px +
+                77px +
                 env(safe-area-inset-bottom)
             );
-
-        width: 27px;
-        height: 27px;
-
-        min-height: 27px;
     }
 
 
-    /* ACTION POPUP */
+    /* -----------------------------------------------------
+       SMALL iPHONE
+       ----------------------------------------------------- */
 
-    .touch-action-sheet {
+    @media (max-width: 430px) {
 
-        padding:
-            calc(
-                10px +
-                env(safe-area-inset-top)
-            )
-            10px
-            calc(
-                10px +
-                env(safe-area-inset-bottom)
-            );
+        .header {
 
-        background:
-            rgba(0,0,0,.42);
+            min-height:
+                62px;
 
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-    }
+            height:
+                62px;
 
-    .touch-sheet-card {
+            padding:
+                6px 8px;
+        }
 
-        position: fixed;
+        .app-logo {
 
-        width:
-            min(
-                340px,
-                calc(100vw - 20px)
-            );
+            width:
+                37px;
 
-        max-width: 340px;
+            height:
+                37px;
 
-        margin: 0;
+            flex-basis:
+                37px;
 
-        padding: 8px;
+            border-radius:
+                11px;
+        }
 
-        border:
-            1px solid
-            rgba(83,230,255,.22);
+        .app-logo svg {
 
-        border-radius: 19px;
+            width:
+                29px;
 
-        background:
-            rgba(15,20,30,.97);
+            height:
+                29px;
+        }
 
-        box-shadow:
-            0 28px 70px rgba(0,0,0,.65),
-            0 0 35px rgba(24,168,255,.08);
+        .brand-text h1 {
+            font-size:
+                16px;
+        }
 
-        backdrop-filter: blur(28px);
-        -webkit-backdrop-filter: blur(28px);
-    }
+        .brand-text p {
+            font-size:
+                7px;
+        }
 
-    .touch-sheet-title {
+        .header-menu {
 
-        padding: 9px 11px;
+            width:
+                37px;
 
-        color: #fff;
+            height:
+                37px;
 
-        font-size: 14px;
-    }
+            min-width:
+                37px;
 
-    .touch-sheet-action {
+            min-height:
+                37px;
+        }
 
-        min-height: 43px;
+        .header-menu .menu-line {
 
-        margin-top: 4px;
+            width:
+                16px;
 
-        border:
-            1px solid
-            rgba(255,255,255,.05);
+            height:
+                2px;
+        }
 
-        border-radius: 10px;
+        .toolbar-btn {
 
-        background:
-            rgba(255,255,255,.055);
+            height:
+                52px;
 
-        color: #cfefff;
+            min-height:
+                52px;
+        }
 
-        font-size: 13px;
-    }
+        .toolbar-btn span {
 
-    .touch-sheet-action:active {
+            font-size:
+                7px;
+        }
 
-        background:
-            rgba(83,230,255,.10);
+        .search-box {
 
-        color:
-            var(--future-cyan);
-    }
+            height:
+                43px;
 
-    .touch-sheet-cancel {
+            font-size:
+                14px;
+        }
 
-        min-height: 43px;
+        .file-item {
 
-        margin-top: 6px;
+            min-height:
+                58px;
 
-        border:
-            1px solid
-            rgba(83,230,255,.12);
+            padding:
+                6px 3px;
 
-        border-radius: 10px;
+            gap:
+                5px;
+        }
 
-        background:
-            rgba(83,230,255,.06);
+        .file-item .position {
 
-        color:
-            var(--future-cyan);
+            width:
+                16px;
 
-        font-size: 13px;
-    }
+            min-width:
+                16px;
 
+            flex-basis:
+                16px;
 
-    /* DETAILS */
+            font-size:
+                8px;
+        }
 
-    .file-details-modal {
+        .file-item .file-icon {
 
-        padding:
-            calc(
-                10px +
-                env(safe-area-inset-top)
-            )
-            8px
-            calc(
-                10px +
-                env(safe-area-inset-bottom)
-            );
+            width:
+                37px;
 
-        background:
-            rgba(0,0,0,.46);
-    }
+            height:
+                37px;
 
-    .file-details-card {
+            min-width:
+                37px;
 
-        width: 100%;
+            min-height:
+                37px;
 
-        max-width: 420px;
+            flex-basis:
+                37px;
 
-        padding: 15px 13px 13px;
+            border-radius:
+                10px;
 
-        border:
-            1px solid
-            rgba(83,230,255,.16);
+            font-size:
+                20px;
+        }
 
-        border-radius: 19px;
+        .file-item .file-name {
+            font-size:
+                13px;
+        }
 
-        background:
-            rgba(15,20,30,.97);
+        .file-item .file-type {
+            font-size:
+                8px;
+        }
 
-        color: #fff;
+        .file-item .recent-file-path,
+        .file-item .search-path {
+            font-size:
+                7px;
+        }
 
-        box-shadow:
-            0 24px 70px
-            rgba(0,0,0,.65);
-    }
+        .file-item .item-actions {
 
-    .file-details-card h3 {
+            grid-template-columns:
+                repeat(5, 25px);
+        }
 
-        color: #fff;
+        .file-item .item-actions > button {
 
-        font-size: 16px;
-    }
+            width:
+                25px !important;
 
-    .file-detail-row {
+            height:
+                29px !important;
 
-        padding: 9px 2px;
+            min-width:
+                25px !important;
 
-        border-bottom:
-            1px solid
-            var(--future-line);
-    }
+            min-height:
+                29px !important;
 
-    .file-detail-row strong {
-
-        color: #778296;
-
-        font-size: 9px;
-    }
-
-    .file-detail-row span {
-
-        color: #dce8f5;
-
-        font-size: 12px;
-    }
-
-    .file-details-close {
-
-        height: 42px;
-
-        min-height: 42px;
-
-        border-radius: 11px;
-
-        background:
-            linear-gradient(
-                145deg,
-                #18a8ff,
-                #0878ff
-            );
-
-        font-size: 13px;
+            font-size:
+                13px !important;
+        }
     }
 
 
-    /* EMPTY */
+    /* -----------------------------------------------------
+       VERY SMALL iPHONE
+       ----------------------------------------------------- */
 
-    .empty {
+    @media (max-width: 390px) {
 
-        min-height: 220px;
+        .toolbar {
 
-        padding: 25px 15px;
+            grid-template-columns:
+                repeat(5, minmax(0, 1fr));
 
-        color: var(--future-muted);
-    }
+            gap:
+                4px;
 
-    .empty-icon {
-        opacity: .75;
+            padding:
+                6px;
+        }
+
+        .toolbar-btn {
+
+            height:
+                49px;
+
+            min-height:
+                49px;
+
+            border-radius:
+                11px;
+        }
+
+        .toolbar-btn span {
+
+            font-size:
+                6.5px;
+        }
+
+        .file-item .item-actions {
+
+            grid-template-columns:
+                repeat(5, 23px);
+        }
+
+        .file-item .item-actions > button {
+
+            width:
+                23px !important;
+
+            height:
+                28px !important;
+
+            min-width:
+                23px !important;
+
+            min-height:
+                28px !important;
+
+            font-size:
+                12px !important;
+        }
     }
 }
 
 
 /* =========================================================
-   28. VERY SMALL iPHONE
-   <= 390px
-   ========================================================= */
-
-@media (max-width: 390px) {
-
-    .header {
-
-        min-height: 60px;
-        height: 60px;
-
-        padding: 6px 8px;
-    }
-
-    .app-logo {
-
-        width: 37px;
-        height: 37px;
-
-        flex-basis: 37px;
-
-        border-radius: 11px;
-    }
-
-    .app-logo svg {
-
-        width: 29px;
-        height: 29px;
-    }
-
-    .brand-text h1 {
-        font-size: 16px;
-    }
-
-    .brand-text p {
-        font-size: 7px;
-    }
-
-    .header-menu {
-
-        width: 37px;
-        height: 37px;
-
-        min-width: 37px;
-        min-height: 37px;
-    }
-
-    .header-menu .menu-line {
-
-        width: 16px;
-        height: 2px;
-    }
-
-    .toolbar {
-
-        top:
-            calc(
-                60px +
-                env(safe-area-inset-top)
-            );
-
-        left: 6px;
-        right: 6px;
-    }
-
-    .toolbar-btn {
-
-        height: 58px;
-
-        border-radius: 11px;
-    }
-
-    .toolbar-btn span {
-        font-size: 7px;
-    }
-
-    .search-section {
-
-        padding:
-            7px 6px 5px;
-    }
-
-    .search-section::before {
-
-        left: 18px;
-        top: 12px;
-    }
-
-    .search-box {
-
-        height: 44px;
-
-        padding-left: 36px;
-
-        font-size: 14px;
-
-        border-radius: 12px;
-    }
-
-    .breadcrumb {
-
-        width:
-            calc(100% - 12px);
-
-        margin-left: 6px;
-        margin-right: 6px;
-    }
-
-    .message {
-
-        margin-left: 6px;
-        margin-right: 6px;
-
-        font-size: 8px;
-    }
-
-    .upload-status {
-
-        margin-left: 6px;
-        margin-right: 6px;
-    }
-
-    .file-item {
-
-        min-height: 59px;
-
-        padding: 6px 6px;
-
-        gap: 6px;
-    }
-
-    .file-item .position {
-
-        width: 16px;
-        min-width: 16px;
-        flex-basis: 16px;
-
-        font-size: 8px;
-    }
-
-    .file-item .file-icon {
-
-        width: 37px;
-        height: 37px;
-
-        min-width: 37px;
-        min-height: 37px;
-
-        flex-basis: 37px;
-
-        border-radius: 10px;
-
-        font-size: 19px;
-    }
-
-    .file-item .file-name {
-        font-size: 13px;
-    }
-
-    .file-item .file-type {
-        font-size: 8px;
-    }
-
-    .file-item .recent-file-path,
-    .file-item .search-path {
-        font-size: 7px;
-    }
-
-    .file-item .item-actions {
-
-        grid-template-columns:
-            repeat(5, 28px);
-    }
-
-    .file-item .item-actions > button {
-
-        width: 28px !important;
-        height: 30px !important;
-
-        min-width: 28px !important;
-        min-height: 30px !important;
-
-        font-size: 14px !important;
-    }
-}
-
-
-/* =========================================================
-   29. iPAD / TABLET
-   701px - 1366px
+   27. iPAD FUTURISTIC WORKSPACE
+   ONLY iPAD / TOUCH TABLETS
    ========================================================= */
 
 @media
 (min-width: 701px)
-and (max-width: 1366px) {
+and (max-width: 1366px)
+and (hover: none)
+and (pointer: coarse) {
 
     html,
     body {
 
-        width: 100%;
+        width:
+            100%;
 
-        min-height: 100dvh;
+        height:
+            100%;
+
+        min-height:
+            100dvh;
 
         background:
-            var(--future-bg) !important;
+            var(--future-bg);
 
         color:
-            var(--future-text) !important;
+            var(--future-text);
     }
 
     body {
-        overflow: hidden;
+
+        overflow:
+            hidden;
     }
 
 
-    /* WORKSPACE */
+    /* -----------------------------------------------------
+       MAIN iPAD WORKSPACE
+
+       IMPORTANT:
+       grid-template-columns controls the sidebar width.
+
+       255px  -> sidebar visible
+       0px    -> sidebar hidden
+       ----------------------------------------------------- */
 
     .app {
 
-        width: 100%;
+        width:
+            100%;
 
-        height: 100dvh;
+        height:
+            100dvh;
 
-        min-height: 100dvh;
+        min-height:
+            100dvh;
 
-        display: grid;
+        display:
+            grid;
 
         grid-template-columns:
-            235px
+            255px
             minmax(0, 1fr);
 
         grid-template-rows:
@@ -3290,34 +3122,50 @@ and (max-width: 1366px) {
             ),
             var(--future-bg);
 
-        overflow: hidden;
+        overflow:
+            hidden;
+
+        transition:
+            grid-template-columns .24s ease;
     }
 
 
-    /* HEADER */
+    /* -----------------------------------------------------
+       HEADER
+       ----------------------------------------------------- */
 
     .header {
 
-        grid-column: 1 / -1;
-        grid-row: 1;
+        grid-column:
+            1 / -1;
 
-        width: 100%;
+        grid-row:
+            1;
 
-        min-height: 76px;
-        height: 76px;
+        width:
+            100%;
 
-        padding: 10px 18px;
+        min-height:
+            76px;
 
-        border: 0;
+        height:
+            76px;
+
+        padding:
+            10px 18px;
+
+        border:
+            0;
 
         border-bottom:
             1px solid
             var(--future-line);
 
-        border-radius: 0;
+        border-radius:
+            0;
 
         background:
-            rgba(8,11,18,.82);
+            rgba(8,11,18,.84);
 
         box-shadow:
             0 12px 35px
@@ -3331,21 +3179,29 @@ and (max-width: 1366px) {
             blur(24px)
             saturate(150%);
 
-        z-index: 1000;
+        z-index:
+            3000;
     }
 
     .brand {
-        gap: 11px;
+
+        gap:
+            11px;
     }
 
     .app-logo {
 
-        width: 43px;
-        height: 43px;
+        width:
+            43px;
 
-        flex-basis: 43px;
+        height:
+            43px;
 
-        border-radius: 13px;
+        flex-basis:
+            43px;
+
+        border-radius:
+            13px;
 
         background:
             linear-gradient(
@@ -3361,37 +3217,58 @@ and (max-width: 1366px) {
 
     .app-logo svg {
 
-        width: 34px;
-        height: 34px;
+        width:
+            34px;
+
+        height:
+            34px;
     }
 
     .brand-text h1 {
 
-        color: #fff;
+        color:
+            #fff;
 
-        font-size: 20px;
+        font-size:
+            20px;
     }
 
     .brand-text p {
 
-        color: var(--future-muted);
+        color:
+            var(--future-muted);
 
-        font-size: 9px;
+        font-size:
+            9px;
 
-        letter-spacing: 1px;
+        letter-spacing:
+            1px;
 
-        text-transform: uppercase;
+        text-transform:
+            uppercase;
     }
+
+
+    /* -----------------------------------------------------
+       THREE-LINE BUTTON
+       ----------------------------------------------------- */
 
     .header-menu {
 
-        width: 42px;
-        height: 42px;
+        width:
+            44px;
 
-        min-width: 42px;
-        min-height: 42px;
+        height:
+            44px;
 
-        border-radius: 12px;
+        min-width:
+            44px;
+
+        min-height:
+            44px;
+
+        border-radius:
+            13px;
 
         background:
             rgba(255,255,255,.055);
@@ -3399,6 +3276,10 @@ and (max-width: 1366px) {
         border:
             1px solid
             rgba(83,230,255,.16);
+
+        box-shadow:
+            0 0 15px
+            rgba(24,168,255,.06);
     }
 
     .header-menu .menu-line {
@@ -3412,45 +3293,66 @@ and (max-width: 1366px) {
     }
 
 
-    /* LEFT COMMAND RAIL */
+    /* -----------------------------------------------------
+       LEFT SIDEBAR
+       ----------------------------------------------------- */
 
     .toolbar {
 
-        grid-column: 1;
+        grid-column:
+            1;
 
-        grid-row: 2 / 6;
+        grid-row:
+            2 / 6;
 
-        position: relative;
+        position:
+            relative;
 
-        top: auto;
+        top:
+            auto;
 
-        left: auto;
-        right: auto;
+        left:
+            auto;
 
-        width: 100%;
+        right:
+            auto;
 
-        height: auto;
+        width:
+            100%;
 
-        max-height: none;
+        height:
+            auto;
 
-        padding: 15px 10px;
+        min-height:
+            0;
 
-        display: flex;
+        max-height:
+            none;
 
-        flex-direction: column;
+        padding:
+            15px 10px;
 
-        gap: 6px;
+        display:
+            flex;
 
-        border: 0;
+        flex-direction:
+            column;
+
+        gap:
+            6px;
+
+        border:
+            0;
 
         border-right:
             1px solid
             var(--future-line);
 
-        border-radius: 0;
+        border-radius:
+            0;
 
         background:
-            rgba(12,16,25,.72);
+            rgba(12,16,25,.76);
 
         backdrop-filter:
             blur(24px);
@@ -3458,98 +3360,92 @@ and (max-width: 1366px) {
         -webkit-backdrop-filter:
             blur(24px);
 
-        overflow-y: auto;
-        overflow-x: hidden;
+        overflow-y:
+            auto;
 
-        z-index: 900;
+        overflow-x:
+            hidden;
 
-        opacity: 1;
-    }
+        z-index:
+            2000;
 
-    /*
-       IMPORTANT FIX:
-       DO NOT override .menu-collapsed here.
-
-       The old CSS had:
-
-       .toolbar.menu-collapsed {
-           max-height: none !important;
-           opacity: 1;
-       }
-
-       That prevented the ☰ button from hiding
-       the toolbar on iPad.
-
-       Now the common .toolbar.menu-collapsed
-       rule remains active.
-    */
-
-    .toolbar.menu-collapsed {
-
-        max-height: 0 !important;
-
-        min-height: 0 !important;
-
-        height: 0 !important;
-
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-
-        margin: 0 !important;
-
-        opacity: 0 !important;
-
-        pointer-events: none !important;
-
-        overflow: hidden !important;
+        opacity:
+            1;
 
         transform:
-            translateY(-10px);
+            translateX(0);
 
-        border-width: 0 !important;
+        pointer-events:
+            auto;
+
+        transition:
+            opacity .20s ease,
+            transform .24s ease;
     }
+
+
+    /* -----------------------------------------------------
+       SIDEBAR BUTTONS
+       ----------------------------------------------------- */
 
     .toolbar-btn {
 
-        flex: 0 0 52px;
+        flex:
+            0 0 54px;
 
-        width: 100%;
+        width:
+            100%;
 
-        height: 52px;
+        height:
+            54px;
 
-        min-height: 52px;
+        min-height:
+            54px;
 
-        display: grid;
+        display:
+            grid;
 
         grid-template-columns:
-            28px
+            30px
             minmax(0,1fr);
 
-        align-items: center;
+        align-items:
+            center;
 
-        gap: 8px;
+        gap:
+            9px;
 
-        padding: 0 11px;
+        padding:
+            0 12px;
 
         border:
-            1px solid transparent;
+            1px solid
+            transparent;
 
-        border-radius: 12px;
+        border-radius:
+            13px;
 
-        background: transparent;
+        background:
+            transparent;
 
-        color: var(--future-cyan);
+        color:
+            var(--future-cyan);
 
-        box-shadow: none;
+        box-shadow:
+            none;
 
-        text-align: left;
+        text-align:
+            left;
     }
 
     .toolbar-btn svg,
     .ios-menu-icon {
 
-        width: 22px;
-        height: 22px;
+        width:
+            23px;
+
+        height:
+            23px;
 
         stroke:
             var(--future-cyan);
@@ -3563,11 +3459,17 @@ and (max-width: 1366px) {
 
     .toolbar-btn span {
 
-        color: #aeb9ca;
+        color:
+            #aeb9ca;
 
-        font-size: 10px;
+        font-size:
+            11px;
 
-        text-align: left;
+        line-height:
+            14px;
+
+        text-align:
+            left;
     }
 
     .toolbar-btn:active,
@@ -3579,46 +3481,130 @@ and (max-width: 1366px) {
         border-color:
             rgba(83,230,255,.16);
 
-        transform: scale(.98);
+        transform:
+            scale(.985);
     }
 
 
-    /* SEARCH */
+    /* -----------------------------------------------------
+       THE IMPORTANT PART
+
+       WHEN ☰ HIDES THE SIDEBAR
+
+       1. sidebar width -> 0
+       2. sidebar disappears
+       3. main area gets all remaining width
+       ----------------------------------------------------- */
+
+    .app:has(.toolbar.menu-collapsed) {
+
+        grid-template-columns:
+            0
+            minmax(0, 1fr);
+    }
+
+    .app:has(.toolbar.menu-collapsed) .toolbar {
+
+        width:
+            0 !important;
+
+        min-width:
+            0 !important;
+
+        max-width:
+            0 !important;
+
+        height:
+            0 !important;
+
+        min-height:
+            0 !important;
+
+        max-height:
+            none !important;
+
+        padding:
+            0 !important;
+
+        margin:
+            0 !important;
+
+        border:
+            0 !important;
+
+        opacity:
+            0 !important;
+
+        transform:
+            translateX(-100%);
+
+        pointer-events:
+            none !important;
+
+        overflow:
+            hidden !important;
+    }
+
+
+    /* -----------------------------------------------------
+       MAIN AREA
+       ----------------------------------------------------- */
 
     .search-section {
 
-        grid-column: 2;
-        grid-row: 2;
+        grid-column:
+            2;
 
-        width: 100%;
+        grid-row:
+            2;
 
-        padding: 13px 20px 7px;
+        width:
+            100%;
 
-        margin: 0;
+        padding:
+            13px 20px 7px;
 
-        background: transparent;
+        margin:
+            0;
+
+        background:
+            transparent;
+
+        min-width:
+            0;
     }
 
     .search-section::before {
 
-        content: "⌕";
+        content:
+            "⌕";
 
-        position: absolute;
+        position:
+            absolute;
 
-        left: 34px;
-        top: 18px;
+        left:
+            34px;
 
-        z-index: 2;
+        top:
+            18px;
+
+        z-index:
+            2;
 
         color:
             var(--future-cyan);
 
-        font-size: 21px;
+        font-size:
+            21px;
     }
 
     .search-box {
 
-        height: 47px;
+        width:
+            100%;
+
+        height:
+            47px;
 
         padding:
             0 15px 0 43px;
@@ -3627,14 +3613,22 @@ and (max-width: 1366px) {
             1px solid
             rgba(255,255,255,.08);
 
-        border-radius: 14px;
+        border-radius:
+            14px;
 
         background:
             rgba(255,255,255,.055);
 
-        color: #fff;
+        color:
+            #fff;
 
-        font-size: 15px;
+        font-size:
+            15px;
+    }
+
+    .search-box::placeholder {
+        color:
+            #7f8ba0;
     }
 
     .search-box:focus {
@@ -3642,50 +3636,103 @@ and (max-width: 1366px) {
         border-color:
             rgba(83,230,255,.35);
 
+        background:
+            rgba(255,255,255,.075);
+
         box-shadow:
             0 0 0 3px
             rgba(24,168,255,.08);
     }
 
 
-    /* BREADCRUMB */
+    /* -----------------------------------------------------
+       WHEN SIDEBAR HIDDEN:
+       SEARCH USES FULL MAIN WIDTH
+       ----------------------------------------------------- */
+
+    .app:has(.toolbar.menu-collapsed)
+    .search-section {
+
+        grid-column:
+            1 / -1;
+
+        width:
+            100%;
+
+        padding-left:
+            20px;
+
+        padding-right:
+            20px;
+    }
+
+    .app:has(.toolbar.menu-collapsed)
+    .search-section::before {
+
+        left:
+            34px;
+    }
+
+
+    /* -----------------------------------------------------
+       BREADCRUMB
+       ----------------------------------------------------- */
 
     .breadcrumb {
 
-        grid-column: 2;
-        grid-row: 3;
+        grid-column:
+            2;
+
+        grid-row:
+            3;
 
         width:
             calc(100% - 40px);
 
-        max-width: none;
+        max-width:
+            none;
 
-        min-height: 34px;
+        min-height:
+            34px;
 
-        margin: 0 20px;
+        margin:
+            0 20px;
 
-        padding: 4px 0;
+        padding:
+            4px 0;
 
-        color: var(--future-muted);
+        color:
+            var(--future-muted);
 
-        background: transparent;
+        background:
+            transparent;
+
+        min-width:
+            0;
     }
 
     .breadcrumb > span {
 
-        color: var(--future-muted);
+        color:
+            var(--future-muted);
 
-        font-size: 11px;
+        font-size:
+            11px;
     }
 
     .crumb {
 
-        min-height: 30px;
-        height: 30px;
+        min-height:
+            30px;
 
-        padding: 4px 9px;
+        height:
+            30px;
 
-        border-radius: 9px;
+        padding:
+            4px 9px;
+
+        border-radius:
+            9px;
 
         background:
             rgba(24,168,255,.08);
@@ -3693,7 +3740,8 @@ and (max-width: 1366px) {
         color:
             var(--future-cyan);
 
-        font-size: 11px;
+        font-size:
+            11px;
     }
 
     .crumb.current {
@@ -3701,70 +3749,163 @@ and (max-width: 1366px) {
         background:
             rgba(255,255,255,.07);
 
-        color: #cbd4e2;
+        color:
+            #cbd4e2;
     }
 
 
-    /* STATUS */
+    /* -----------------------------------------------------
+       WHEN SIDEBAR HIDDEN:
+       BREADCRUMB FULL WIDTH
+       ----------------------------------------------------- */
+
+    .app:has(.toolbar.menu-collapsed)
+    .breadcrumb {
+
+        grid-column:
+            1 / -1;
+
+        width:
+            calc(100% - 40px);
+
+        margin-left:
+            20px;
+
+        margin-right:
+            20px;
+    }
+
+
+    /* -----------------------------------------------------
+       MESSAGE / STATUS
+       ----------------------------------------------------- */
 
     .message,
     .upload-status,
     .reorder-bar {
 
-        grid-column: 2;
+        grid-column:
+            2;
 
         width:
             calc(100% - 40px);
 
-        margin-left: 20px;
-        margin-right: 20px;
+        margin-left:
+            20px;
+
+        margin-right:
+            20px;
+
+        min-width:
+            0;
     }
 
     .message {
 
-        grid-row: 4;
+        grid-row:
+            4;
 
-        margin-top: 0;
-        margin-bottom: 3px;
+        margin-top:
+            0;
 
-        padding: 3px 0;
+        margin-bottom:
+            3px;
 
-        color: #647187;
+        padding:
+            3px 0;
 
-        font-size: 9px;
+        color:
+            #647187;
+
+        font-size:
+            9px;
+    }
+
+    .message::before {
+
+        width:
+            6px;
+
+        height:
+            6px;
+
+        background:
+            var(--future-green);
     }
 
     .upload-status {
 
-        grid-row: 4;
+        grid-row:
+            4;
 
-        margin-top: 0;
-        margin-bottom: 4px;
+        margin-top:
+            0;
+
+        margin-bottom:
+            4px;
     }
 
     .reorder-bar {
 
-        grid-row: 4;
+        grid-row:
+            4;
 
-        margin-top: 0;
-        margin-bottom: 4px;
+        margin-top:
+            0;
+
+        margin-bottom:
+            4px;
     }
 
 
-    /* FILE LIST */
+    /* -----------------------------------------------------
+       STATUS FULL WIDTH WHEN SIDEBAR HIDDEN
+       ----------------------------------------------------- */
 
-    .file-list {
+    .app:has(.toolbar.menu-collapsed)
+    .message,
+    .app:has(.toolbar.menu-collapsed)
+    .upload-status,
+    .app:has(.toolbar.menu-collapsed)
+    .reorder-bar {
 
-        grid-column: 2;
-        grid-row: 5;
+        grid-column:
+            1 / -1;
 
         width:
             calc(100% - 40px);
 
-        min-width: 0;
-        min-height: 0;
+        margin-left:
+            20px;
 
-        margin: 6px 20px 0;
+        margin-right:
+            20px;
+    }
+
+
+    /* -----------------------------------------------------
+       FILE LIST
+       ----------------------------------------------------- */
+
+    .file-list {
+
+        grid-column:
+            2;
+
+        grid-row:
+            5;
+
+        width:
+            calc(100% - 40px);
+
+        min-width:
+            0;
+
+        min-height:
+            0;
+
+        margin:
+            6px 20px 0;
 
         padding:
             0 0
@@ -3773,56 +3914,99 @@ and (max-width: 1366px) {
                 env(safe-area-inset-bottom)
             );
 
-        background: transparent;
+        background:
+            transparent;
 
         border-top:
             1px solid
             var(--future-line);
 
-        border-radius: 0;
+        border-radius:
+            0;
 
-        overflow-y: auto;
-        overflow-x: hidden;
+        overflow-y:
+            auto;
 
-        -webkit-overflow-scrolling: touch;
+        overflow-x:
+            hidden;
+
+        -webkit-overflow-scrolling:
+            touch;
     }
 
 
-    /* iPAD FILE ROW */
+    /* -----------------------------------------------------
+       FILE LIST FULL WIDTH WHEN SIDEBAR HIDDEN
+       ----------------------------------------------------- */
+
+    .app:has(.toolbar.menu-collapsed)
+    .file-list {
+
+        grid-column:
+            1 / -1;
+
+        width:
+            calc(100% - 40px);
+
+        margin-left:
+            20px;
+
+        margin-right:
+            20px;
+    }
+
+
+    /* -----------------------------------------------------
+       iPAD FILE ROW
+       ----------------------------------------------------- */
 
     .file-item {
 
-        position: relative;
+        position:
+            relative;
 
-        width: 100%;
+        width:
+            100%;
 
-        min-height: 70px;
+        min-height:
+            70px;
 
-        margin: 0;
+        margin:
+            0;
 
-        padding: 10px 2px;
+        padding:
+            10px 2px;
 
-        display: flex !important;
+        display:
+            flex !important;
 
-        align-items: center;
+        align-items:
+            center;
 
-        gap: 10px;
+        gap:
+            10px;
 
-        border: 0;
+        border:
+            0;
 
         border-bottom:
             1px solid
             var(--future-line);
 
-        border-radius: 0;
+        border-radius:
+            0;
 
-        background: transparent;
+        background:
+            transparent;
 
-        box-shadow: none;
+        box-shadow:
+            none;
 
-        color: var(--future-text);
+        color:
+            var(--future-text);
 
-        transform: none !important;
+        transform:
+            none !important;
     }
 
     .file-item:active,
@@ -3832,35 +4016,50 @@ and (max-width: 1366px) {
             rgba(24,168,255,.07)
             !important;
 
-        transform: none !important;
+        transform:
+            none !important;
     }
 
     .file-item .position {
 
-        width: 25px;
+        width:
+            25px;
 
-        min-width: 25px;
+        min-width:
+            25px;
 
-        flex-basis: 25px;
+        flex-basis:
+            25px;
 
-        color: #536074;
+        color:
+            #536074;
 
-        font-size: 10px;
+        font-size:
+            10px;
     }
 
     .file-item .file-icon {
 
-        position: static;
+        position:
+            static;
 
-        width: 44px;
-        height: 44px;
+        width:
+            44px;
 
-        min-width: 44px;
-        min-height: 44px;
+        height:
+            44px;
 
-        flex-basis: 44px;
+        min-width:
+            44px;
 
-        border-radius: 12px;
+        min-height:
+            44px;
+
+        flex-basis:
+            44px;
+
+        border-radius:
+            12px;
 
         background:
             linear-gradient(
@@ -3876,7 +4075,8 @@ and (max-width: 1366px) {
         color:
             var(--future-cyan);
 
-        font-size: 23px;
+        font-size:
+            23px;
     }
 
     .file-item.folder-row .file-icon {
@@ -3894,107 +4094,155 @@ and (max-width: 1366px) {
 
     .file-item .file-info {
 
-        position: static;
+        position:
+            static;
 
-        width: auto;
-        height: auto;
+        width:
+            auto;
 
-        flex: 1 1 auto;
+        height:
+            auto;
 
-        min-width: 0;
+        flex:
+            1 1 auto;
 
-        padding: 0;
+        min-width:
+            0;
 
-        display: flex !important;
+        padding:
+            0;
 
-        flex-direction: column;
+        display:
+            flex !important;
 
-        justify-content: center;
+        flex-direction:
+            column;
 
-        gap: 2px;
+        justify-content:
+            center;
+
+        gap:
+            2px;
     }
 
     .file-item .file-name {
 
-        color: #f5f7fb;
+        color:
+            #f5f7fb;
 
-        font-size: 15px;
+        font-size:
+            15px;
 
-        line-height: 20px;
+        line-height:
+            20px;
 
-        font-weight: 600;
+        font-weight:
+            600;
     }
 
     .file-item .file-type {
 
-        margin: 0;
+        margin:
+            0;
 
-        color: #778296;
+        color:
+            #778296;
 
-        font-size: 10px;
+        font-size:
+            10px;
 
-        line-height: 14px;
+        line-height:
+            14px;
     }
 
     .file-item .recent-file-path,
     .file-item .search-path {
 
-        margin-top: 1px;
+        margin-top:
+            1px;
 
-        color: #647187;
+        color:
+            #647187;
 
-        font-size: 9px;
+        font-size:
+            9px;
 
-        line-height: 13px;
+        line-height:
+            13px;
     }
 
 
-    /* iPAD ACTIONS */
+    /* -----------------------------------------------------
+       iPAD FILE ACTIONS
+       ----------------------------------------------------- */
 
     .file-item .item-actions {
 
-        width: auto;
-        height: auto;
+        width:
+            auto;
 
-        flex: 0 0 auto;
+        height:
+            auto;
 
-        display: grid !important;
+        flex:
+            0 0 auto;
+
+        display:
+            grid !important;
 
         grid-template-columns:
             repeat(5, 32px);
 
-        gap: 2px;
+        gap:
+            2px;
 
-        padding: 0;
+        padding:
+            0;
 
-        border: 0;
+        border:
+            0;
 
-        background: transparent;
+        background:
+            transparent;
 
-        box-shadow: none;
+        box-shadow:
+            none;
 
-        overflow: visible;
+        overflow:
+            visible;
     }
 
     .file-item .item-actions > button {
 
-        width: 32px !important;
-        height: 34px !important;
+        width:
+            32px !important;
 
-        min-width: 32px !important;
-        min-height: 34px !important;
+        height:
+            34px !important;
 
-        border: 0 !important;
+        min-width:
+            32px !important;
 
-        border-radius: 8px !important;
+        min-height:
+            34px !important;
 
-        background: transparent !important;
+        border:
+            0 !important;
 
-        color: #8290a5;
+        border-radius:
+            8px !important;
 
-        box-shadow: none !important;
+        background:
+            transparent !important;
 
-        font-size: 16px !important;
+        color:
+            #8290a5;
+
+        box-shadow:
+            none !important;
+
+        font-size:
+            16px !important;
     }
 
     .file-item .item-more-btn {
@@ -4005,11 +4253,14 @@ and (max-width: 1366px) {
     }
 
 
-    /* PASTE */
+    /* -----------------------------------------------------
+       PASTE FAB
+       ----------------------------------------------------- */
 
     .v4-paste-fab {
 
-        right: 22px;
+        right:
+            22px;
 
         bottom:
             calc(
@@ -4017,18 +4268,27 @@ and (max-width: 1366px) {
                 env(safe-area-inset-bottom)
             );
 
-        width: 58px;
-        height: 58px;
+        width:
+            58px;
 
-        min-height: 58px;
+        height:
+            58px;
 
-        padding: 0;
+        min-width:
+            58px;
+
+        min-height:
+            58px;
+
+        padding:
+            0;
 
         border:
             1px solid
             rgba(83,230,255,.45);
 
-        border-radius: 18px;
+        border-radius:
+            18px;
 
         background:
             linear-gradient(
@@ -4036,6 +4296,9 @@ and (max-width: 1366px) {
                 #18a8ff,
                 #0878ff
             );
+
+        color:
+            #fff;
 
         box-shadow:
             0 0 0 5px
@@ -4047,22 +4310,29 @@ and (max-width: 1366px) {
     }
 
 
-    /* ACTION POPUP */
+    /* -----------------------------------------------------
+       ACTION POPUP
+       ----------------------------------------------------- */
 
     .touch-action-sheet {
 
-        padding: 16px;
+        padding:
+            16px;
 
         background:
             rgba(0,0,0,.42);
 
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
+        backdrop-filter:
+            blur(18px);
+
+        -webkit-backdrop-filter:
+            blur(18px);
     }
 
     .touch-sheet-card {
 
-        position: fixed;
+        position:
+            fixed;
 
         width:
             min(
@@ -4070,37 +4340,48 @@ and (max-width: 1366px) {
                 calc(100vw - 32px)
             );
 
-        margin: 0;
+        margin:
+            0;
 
-        padding: 9px;
+        padding:
+            9px;
 
         border:
             1px solid
             rgba(83,230,255,.22);
 
-        border-radius: 21px;
+        border-radius:
+            21px;
 
         background:
             rgba(15,20,30,.97);
 
         box-shadow:
-            0 28px 70px rgba(0,0,0,.65),
-            0 0 35px rgba(24,168,255,.08);
+            0 28px 70px
+            rgba(0,0,0,.65),
+            0 0 35px
+            rgba(24,168,255,.08);
 
-        backdrop-filter: blur(28px);
-        -webkit-backdrop-filter: blur(28px);
+        backdrop-filter:
+            blur(28px);
+
+        -webkit-backdrop-filter:
+            blur(28px);
     }
 
     .touch-sheet-title {
 
-        color: #fff;
+        color:
+            #fff;
 
-        font-size: 15px;
+        font-size:
+            15px;
     }
 
     .touch-sheet-action {
 
-        color: #cfefff;
+        color:
+            #cfefff;
 
         background:
             rgba(255,255,255,.055);
@@ -4116,7 +4397,9 @@ and (max-width: 1366px) {
     }
 
 
-    /* DETAILS */
+    /* -----------------------------------------------------
+       DETAILS MODAL
+       ----------------------------------------------------- */
 
     .file-details-card {
 
@@ -4133,11 +4416,14 @@ and (max-width: 1366px) {
             1px solid
             rgba(83,230,255,.18);
 
-        color: #fff;
+        color:
+            #fff;
     }
 
     .file-details-card h3 {
-        color: #fff;
+
+        color:
+            #fff;
     }
 
     .file-detail-row {
@@ -4148,11 +4434,15 @@ and (max-width: 1366px) {
     }
 
     .file-detail-row strong {
-        color: #778296;
+
+        color:
+            #778296;
     }
 
     .file-detail-row span {
-        color: #dce8f5;
+
+        color:
+            #dce8f5;
     }
 
     .file-details-close {
@@ -4168,38 +4458,65 @@ and (max-width: 1366px) {
 
 
 /* =========================================================
-   30. iPAD LANDSCAPE
+   28. iPAD LANDSCAPE
    ========================================================= */
 
 @media
 (min-width: 701px)
 and (max-width: 1366px)
+and (hover: none)
+and (pointer: coarse)
 and (orientation: landscape) {
 
     .app {
 
         grid-template-columns:
-            255px
-            minmax(0, 1fr);
+            270px
+            minmax(0,1fr);
+    }
+
+    .app:has(.toolbar.menu-collapsed) {
+
+        grid-template-columns:
+            0
+            minmax(0,1fr);
     }
 
     .toolbar {
-        padding: 16px 12px;
+
+        padding:
+            16px 12px;
     }
 
     .toolbar-btn {
 
-        flex-basis: 54px;
+        flex-basis:
+            55px;
 
-        height: 54px;
+        height:
+            55px;
 
-        min-height: 54px;
+        min-height:
+            55px;
     }
 
     .search-section {
 
-        padding-left: 24px;
-        padding-right: 24px;
+        padding-left:
+            24px;
+
+        padding-right:
+            24px;
+    }
+
+    .app:has(.toolbar.menu-collapsed)
+    .search-section {
+
+        padding-left:
+            24px;
+
+        padding-right:
+            24px;
     }
 
     .breadcrumb {
@@ -4207,8 +4524,24 @@ and (orientation: landscape) {
         width:
             calc(100% - 48px);
 
-        margin-left: 24px;
-        margin-right: 24px;
+        margin-left:
+            24px;
+
+        margin-right:
+            24px;
+    }
+
+    .app:has(.toolbar.menu-collapsed)
+    .breadcrumb {
+
+        width:
+            calc(100% - 48px);
+
+        margin-left:
+            24px;
+
+        margin-right:
+            24px;
     }
 
     .message,
@@ -4218,8 +4551,28 @@ and (orientation: landscape) {
         width:
             calc(100% - 48px);
 
-        margin-left: 24px;
-        margin-right: 24px;
+        margin-left:
+            24px;
+
+        margin-right:
+            24px;
+    }
+
+    .app:has(.toolbar.menu-collapsed)
+    .message,
+    .app:has(.toolbar.menu-collapsed)
+    .upload-status,
+    .app:has(.toolbar.menu-collapsed)
+    .reorder-bar {
+
+        width:
+            calc(100% - 48px);
+
+        margin-left:
+            24px;
+
+        margin-right:
+            24px;
     }
 
     .file-list {
@@ -4227,31 +4580,102 @@ and (orientation: landscape) {
         width:
             calc(100% - 48px);
 
-        margin-left: 24px;
-        margin-right: 24px;
+        margin-left:
+            24px;
+
+        margin-right:
+            24px;
+    }
+
+    .app:has(.toolbar.menu-collapsed)
+    .file-list {
+
+        width:
+            calc(100% - 48px);
+
+        margin-left:
+            24px;
+
+        margin-right:
+            24px;
     }
 }
 
 
 /* =========================================================
-   31. SAFE AREA
+   29. iPAD PORTRAIT
+   ========================================================= */
+
+@media
+(min-width: 701px)
+and (max-width: 1366px)
+and (hover: none)
+and (pointer: coarse)
+and (orientation: portrait) {
+
+    .app {
+
+        grid-template-columns:
+            235px
+            minmax(0,1fr);
+    }
+
+    .app:has(.toolbar.menu-collapsed) {
+
+        grid-template-columns:
+            0
+            minmax(0,1fr);
+    }
+
+    .toolbar {
+
+        padding:
+            14px 9px;
+    }
+
+    .toolbar-btn {
+
+        flex-basis:
+            52px;
+
+        height:
+            52px;
+
+        min-height:
+            52px;
+    }
+
+    .toolbar-btn span {
+
+        font-size:
+            10px;
+    }
+}
+
+
+/* =========================================================
+   30. SAFETY
    ========================================================= */
 
 @media (max-width: 1366px) {
 
     html,
     body {
-        min-height: 100dvh;
+
+        min-height:
+            100dvh;
     }
 
     .app {
-        min-height: 100dvh;
+
+        min-height:
+            100dvh;
     }
 }
 
 
 /* =========================================================
-   32. REDUCED MOTION
+   31. REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
