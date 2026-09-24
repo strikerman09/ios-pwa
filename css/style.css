@@ -5540,19 +5540,7 @@ and (orientation: portrait) {
             .01ms !important;
     }
 }
-.v4-paste-fab {
-    left: 50%;
-    right: auto;
-    bottom: calc(16px + env(safe-area-inset-bottom));
-    transform: translateX(calc(-50% - 22px));
-}
 
-.paste-cancel {
-    left: 50%;
-    right: auto;
-    bottom: calc(16px + env(safe-area-inset-bottom) + 11px);
-    transform: translateX(calc(50% + 22px));
-}
 
 /* =========================================================
    END
