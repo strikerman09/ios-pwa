@@ -6829,8 +6829,7 @@ and (orientation: portrait) {
     }
 }
 /* =========================================================
-   MOBILE ACTION PANEL
-   Keep all 5 buttons visible
+   MOBILE ACTION PANEL - MOVE LEFT
    ========================================================= */
 
 @media (max-width:1366px)
@@ -6854,14 +6853,18 @@ and (orientation: portrait) {
         align-items: center;
         justify-content: end;
 
-        padding-left: 3px;
+        padding-left: 2px;
 
-        margin-left: 0;
+        margin-left: -12px;
+        margin-right: 8px;
 
         border-left:
             1px solid rgba(255,255,255,0.07);
 
         box-sizing: border-box;
+
+        position: relative;
+        left: -8px;
     }
 
 
@@ -6882,32 +6885,6 @@ and (orientation: portrait) {
         border-radius: 8px;
 
         font-size: 13px;
-    }
-
-@media (max-width:390px)
-       and (hover:none)
-       and (pointer:coarse) {
-
-    .file-item .item-actions {
-
-        width: 116px;
-        min-width: 116px;
-
-        grid-template-columns:
-            repeat(5, 22px);
-
-        column-gap: 1px;
-    }
-
-
-    .file-item .item-actions button {
-
-        width: 22px;
-        min-width: 22px;
-
-        height: 28px;
-
-        font-size: 12px;
     }
 }
 /* =========================================================
