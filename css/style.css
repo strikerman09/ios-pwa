@@ -5936,5 +5936,898 @@ and (orientation: portrait) {
 
 }
 /* =========================================================
+   FILE ROW SYSTEM
+   Modern iOS / Futuristic File Manager
+   Desktop + iPhone + iPad
+   ========================================================= */
+
+
+/* =========================================================
+   DESKTOP FILE ROW
+   ========================================================= */
+
+.file-item {
+
+    display: grid;
+
+    grid-template-columns:
+        30px
+        50px
+        minmax(0, 1fr)
+        180px;
+
+    align-items: center;
+
+    min-height: 68px;
+
+    margin: 6px 10px;
+
+    padding: 7px 8px;
+
+    box-sizing: border-box;
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    background: var(--card);
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.04);
+
+    transition:
+        background .18s ease,
+        border-color .18s ease,
+        transform .15s ease,
+        box-shadow .18s ease;
+}
+
+
+/* =========================================================
+   POSITION
+   ========================================================= */
+
+.file-item .position {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+    height: 30px;
+
+    font-size: 12px;
+
+    color: var(--secondary);
+
+    opacity: .8;
+
+    user-select: none;
+}
+
+
+/* =========================================================
+   FILE ICON
+   ========================================================= */
+
+.file-item .file-icon {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+
+    border-radius: 12px;
+
+    font-size: 24px;
+
+    background: rgba(0, 122, 255, 0.08);
+
+    box-sizing: border-box;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   FILE INFORMATION
+   ========================================================= */
+
+.file-item .file-info {
+
+    min-width: 0;
+
+    padding: 0 10px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 3px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   FILE NAME
+   ========================================================= */
+
+.file-item .file-name {
+
+    min-width: 0;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    font-size: 15px;
+
+    line-height: 20px;
+
+    font-weight: 600;
+
+    color: var(--text);
+
+    letter-spacing: -0.1px;
+}
+
+
+/* =========================================================
+   FILE TYPE
+   ========================================================= */
+
+.file-item .file-type {
+
+    min-width: 0;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    font-size: 11px;
+
+    line-height: 15px;
+
+    color: var(--secondary);
+
+    opacity: .8;
+}
+
+
+/* =========================================================
+   PATH / SEARCH PATH
+   ========================================================= */
+
+.file-item .recent-file-path,
+.file-item .search-path {
+
+    min-width: 0;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    font-size: 10px;
+
+    line-height: 14px;
+
+    color: var(--secondary);
+
+    opacity: .6;
+}
+
+
+/* =========================================================
+   ACTION AREA
+   ========================================================= */
+
+.file-item .item-actions {
+
+    width: 180px;
+
+    min-width: 180px;
+
+    height: 54px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    align-items: center;
+    justify-items: center;
+
+    border-left: 1px solid var(--border);
+
+    padding-left: 6px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+.file-item .item-actions button {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+    height: 30px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: var(--secondary);
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition:
+        background .15s ease,
+        color .15s ease,
+        transform .12s ease;
+}
+
+
+.file-item .item-actions button:hover {
+
+    background: rgba(0, 122, 255, 0.10);
+
+    color: var(--blue);
+}
+
+
+.file-item .item-actions button:active {
+
+    transform: scale(.90);
+}
+
+
+/* =========================================================
+   SELECTED FILE
+   ========================================================= */
+
+.file-item.selected {
+
+    border-color: rgba(0, 122, 255, 0.45);
+
+    background:
+        rgba(0, 122, 255, 0.08);
+
+    box-shadow:
+        0 4px 14px rgba(0, 122, 255, 0.10);
+}
+
+
+.file-item.selected .file-name {
+
+    color: var(--blue);
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+   iPHONE + iPAD
+   ========================================================= */
+
+@media (max-width:1366px)
+       and (hover:none)
+       and (pointer:coarse) {
+
+    .file-item {
+
+        display: flex;
+
+        align-items: center;
+
+        min-height: 72px;
+
+        margin: 5px 8px;
+
+        padding: 8px 8px;
+
+        border-radius: 16px;
+
+        border: 1px solid rgba(255,255,255,0.07);
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(255,255,255,0.035),
+                rgba(255,255,255,0.015)
+            );
+
+        box-shadow:
+            0 4px 14px rgba(0,0,0,0.20);
+
+        box-sizing: border-box;
+
+        transition:
+            background .18s ease,
+            border-color .18s ease,
+            transform .15s ease;
+    }
+
+
+    /* -----------------------------------------
+       POSITION
+       ----------------------------------------- */
+
+    .file-item .position {
+
+        width: 24px;
+        min-width: 24px;
+
+        height: 32px;
+
+        font-size: 10px;
+
+        color: var(--future-muted);
+
+        opacity: .7;
+    }
+
+
+    /* -----------------------------------------
+       ICON
+       ----------------------------------------- */
+
+    .file-item .file-icon {
+
+        width: 44px;
+        min-width: 44px;
+
+        height: 44px;
+
+        margin-right: 8px;
+
+        border-radius: 13px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(0,229,255,0.10),
+                rgba(0,122,255,0.08)
+            );
+
+        border: 1px solid rgba(0,229,255,0.10);
+
+        font-size: 23px;
+
+        box-shadow:
+            inset 0 0 12px rgba(0,229,255,0.025);
+    }
+
+
+    /* -----------------------------------------
+       INFORMATION
+       ----------------------------------------- */
+
+    .file-item .file-info {
+
+        flex: 1;
+
+        min-width: 0;
+
+        padding: 0 7px 0 2px;
+
+        gap: 2px;
+
+        overflow: hidden;
+    }
+
+
+    /* -----------------------------------------
+       NAME
+       ----------------------------------------- */
+
+    .file-item .file-name {
+
+        font-size: 14px;
+
+        line-height: 19px;
+
+        font-weight: 650;
+
+        color: var(--future-text);
+
+        letter-spacing: -0.1px;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+
+        white-space: nowrap;
+    }
+
+
+    /* -----------------------------------------
+       TYPE
+       ----------------------------------------- */
+
+    .file-item .file-type {
+
+        font-size: 9px;
+
+        line-height: 13px;
+
+        color: var(--future-cyan);
+
+        opacity: .78;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+
+        white-space: nowrap;
+    }
+
+
+    /* -----------------------------------------
+       PATH
+       ----------------------------------------- */
+
+    .file-item .recent-file-path,
+    .file-item .search-path {
+
+        font-size: 8px;
+
+        line-height: 12px;
+
+        color: var(--future-muted);
+
+        opacity: .60;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+
+        white-space: nowrap;
+    }
+
+
+    /* -----------------------------------------
+       ACTIONS
+       ----------------------------------------- */
+
+    .file-item .item-actions {
+
+        width: 140px;
+
+        min-width: 140px;
+
+        height: 48px;
+
+        grid-template-columns:
+            repeat(5, 1fr);
+
+        padding-left: 4px;
+
+        margin-left: 2px;
+
+        border-left:
+            1px solid rgba(255,255,255,0.07);
+    }
+
+
+    /* -----------------------------------------
+       ACTION BUTTONS
+       ----------------------------------------- */
+
+    .file-item .item-actions button {
+
+        width: 28px;
+
+        height: 28px;
+
+        border-radius: 9px;
+
+        color: var(--future-muted);
+
+        background: transparent;
+
+        font-size: 14px;
+
+        -webkit-tap-highlight-color:
+            transparent;
+    }
+
+
+    .file-item .item-actions button:active {
+
+        transform: scale(.88);
+
+        background:
+            rgba(0,229,255,0.10);
+    }
+
+
+    /* -----------------------------------------
+       SELECTED
+       ----------------------------------------- */
+
+    .file-item.selected {
+
+        border-color:
+            rgba(0,229,255,0.30);
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(0,122,255,0.14),
+                rgba(0,229,255,0.055)
+            );
+
+        box-shadow:
+            0 5px 18px rgba(0,122,255,0.12),
+            inset 0 0 18px rgba(0,229,255,0.025);
+    }
+
+
+    .file-item.selected .file-name {
+
+        color: var(--future-blue);
+    }
+}
+
+
+/* =========================================================
+   SMALL iPHONE
+   ========================================================= */
+
+@media (max-width:430px)
+       and (hover:none)
+       and (pointer:coarse) {
+
+    .file-item {
+
+        min-height: 64px;
+
+        margin: 4px 5px;
+
+        padding: 6px 5px;
+
+        border-radius: 14px;
+    }
+
+
+    .file-item .position {
+
+        width: 19px;
+        min-width: 19px;
+
+        font-size: 9px;
+    }
+
+
+    .file-item .file-icon {
+
+        width: 39px;
+        min-width: 39px;
+
+        height: 39px;
+
+        margin-right: 6px;
+
+        border-radius: 11px;
+
+        font-size: 20px;
+    }
+
+
+    .file-item .file-info {
+
+        padding-left: 1px;
+
+        padding-right: 4px;
+    }
+
+
+    .file-item .file-name {
+
+        font-size: 13px;
+
+        line-height: 17px;
+    }
+
+
+    .file-item .file-type {
+
+        font-size: 8px;
+
+        line-height: 11px;
+    }
+
+
+    .file-item .recent-file-path,
+    .file-item .search-path {
+
+        font-size: 7px;
+
+        line-height: 10px;
+    }
+
+
+    .file-item .item-actions {
+
+        width: 116px;
+
+        min-width: 116px;
+
+        height: 44px;
+
+        padding-left: 2px;
+
+        margin-left: 0;
+    }
+
+
+    .file-item .item-actions button {
+
+        width: 24px;
+
+        height: 26px;
+
+        border-radius: 7px;
+
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL iPHONE
+   ========================================================= */
+
+@media (max-width:390px)
+       and (hover:none)
+       and (pointer:coarse) {
+
+    .file-item {
+
+        min-height: 60px;
+
+        margin: 3px 4px;
+
+        padding: 5px 4px;
+    }
+
+
+    .file-item .position {
+
+        width: 16px;
+        min-width: 16px;
+
+        font-size: 8px;
+    }
+
+
+    .file-item .file-icon {
+
+        width: 36px;
+        min-width: 36px;
+
+        height: 36px;
+
+        margin-right: 5px;
+
+        border-radius: 10px;
+
+        font-size: 18px;
+    }
+
+
+    .file-item .file-name {
+
+        font-size: 12px;
+
+        line-height: 16px;
+    }
+
+
+    .file-item .file-type {
+
+        font-size: 7px;
+
+        line-height: 10px;
+    }
+
+
+    .file-item .recent-file-path,
+    .file-item .search-path {
+
+        font-size: 6px;
+
+        line-height: 9px;
+    }
+
+
+    .file-item .item-actions {
+
+        width: 105px;
+
+        min-width: 105px;
+    }
+
+
+    .file-item .item-actions button {
+
+        width: 22px;
+
+        height: 24px;
+
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   iPAD
+   ========================================================= */
+
+@media (min-width:701px)
+       and (max-width:1366px)
+       and (hover:none)
+       and (pointer:coarse) {
+
+    .file-item {
+
+        min-height: 76px;
+
+        margin: 6px 12px;
+
+        padding: 9px 10px;
+
+        border-radius: 17px;
+    }
+
+
+    .file-item .position {
+
+        width: 28px;
+        min-width: 28px;
+
+        font-size: 11px;
+    }
+
+
+    .file-item .file-icon {
+
+        width: 46px;
+        min-width: 46px;
+
+        height: 46px;
+
+        margin-right: 10px;
+
+        border-radius: 13px;
+
+        font-size: 25px;
+    }
+
+
+    .file-item .file-info {
+
+        padding-left: 2px;
+
+        padding-right: 12px;
+
+        gap: 3px;
+    }
+
+
+    .file-item .file-name {
+
+        font-size: 15px;
+
+        line-height: 20px;
+
+        font-weight: 650;
+    }
+
+
+    .file-item .file-type {
+
+        font-size: 10px;
+
+        line-height: 14px;
+    }
+
+
+    .file-item .recent-file-path,
+    .file-item .search-path {
+
+        font-size: 9px;
+
+        line-height: 12px;
+    }
+
+
+    .file-item .item-actions {
+
+        width: 160px;
+
+        min-width: 160px;
+
+        height: 52px;
+
+        padding-left: 6px;
+    }
+
+
+    .file-item .item-actions button {
+
+        width: 32px;
+
+        height: 32px;
+
+        border-radius: 9px;
+
+        font-size: 15px;
+    }
+}
+
+
+/* =========================================================
+   iPAD LANDSCAPE
+   ========================================================= */
+
+@media (min-width:1000px)
+       and (max-width:1366px)
+       and (orientation:landscape)
+       and (hover:none)
+       and (pointer:coarse) {
+
+    .file-item {
+
+        margin-left: 16px;
+
+        margin-right: 16px;
+    }
+}
+
+
+/* =========================================================
+   iPAD PORTRAIT
+   ========================================================= */
+
+@media (min-width:701px)
+       and (max-width:1000px)
+       and (orientation:portrait)
+       and (hover:none)
+       and (pointer:coarse) {
+
+    .file-item {
+
+        margin-left: 10px;
+
+        margin-right: 10px;
+    }
+}
+/* =========================================================
    END
    ========================================================= */
