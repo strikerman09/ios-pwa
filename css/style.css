@@ -5903,5 +5903,38 @@ and (orientation: portrait) {
     display: flex;
 }
 /* =========================================================
+   FILE ROW READABILITY - TOUCH DEVICES ONLY
+   ========================================================= */
+
+@media (max-width:1366px) and (hover:none) and (pointer:coarse) {
+
+    .file-item .file-name {
+        font-weight: 650;
+        letter-spacing: -0.1px;
+    }
+
+    .file-item .file-type {
+        opacity: 0.78;
+    }
+
+    .file-item .recent-file-path,
+    .file-item .search-path {
+        opacity: 0.62;
+    }
+}
+/* =========================================================
+   FILE ACTION AREA - SUBTLE SEPARATOR
+   ========================================================= */
+
+@media (max-width:1366px) and (hover:none) and (pointer:coarse) {
+
+    .file-item .item-actions {
+        border-left: 1px solid rgba(255, 255, 255, 0.08);
+        padding-left: 5px;
+        margin-left: 4px;
+    }
+
+}
+/* =========================================================
    END
    ========================================================= */
