@@ -3104,119 +3104,319 @@ return candidate;
 }
 
 /* =====================================================
-CLONE TREE
+   CLONE TREE - OPTIMIZED
 ===================================================== */
 
 async function cloneItemTree(
-sourceId,
-destinationParentId
+    sourceId,
+    destinationParentId
 ) {
 
+    /*
+     * Read IndexedDB only once.
+     * The old version repeatedly called:
+     *
+     * getAllItems()
+     * getChildren()
+     * getNextPosition()
+     *
+     * for every item.
+     *
+     * This version builds the complete tree in memory
+     * first, then writes the copies.
+     */
 
-const all =
-    await getAllItems();
-
-
-const source =
-    all.find(
-        x =>
-            x.id ===
-            sourceId
-    );
-
-
-if (!source) {
-
-    throw new Error(
-        "ကူးထားသော ဖိုင်/ဖိုင်တွဲ မရှိပါ။"
-    );
-
-}
+    const all =
+        await getAllItems();
 
 
-const children =
-    all.filter(
-        x =>
-            x.parentId ===
-            sourceId
-    );
+    const source =
+        all.find(
+            item =>
+                item.id ===
+                sourceId
+        );
 
 
-const destinationChildren =
-    all.filter(
-        x =>
-            x.parentId ===
-            destinationParentId
-    );
+    if (!source) {
 
-
-const names =
-    new Set(
-        destinationChildren.map(
-            x =>
-                x.name.toLowerCase()
-        )
-    );
-
-
-const rootCopy = {
-
-    ...source,
-
-    id:
-        makeId(),
-
-    parentId:
-        destinationParentId,
-
-    name:
-        getUniqueName(
-            source.name,
-            names
-        ),
-
-    position:
-        await getNextPosition(
-            destinationParentId
-        ),
-
-    createdAt:
-        Date.now()
-
-};
-
-
-names.add(
-    rootCopy.name.toLowerCase()
-);
-
-
-await addItem(
-    rootCopy
-);
-
-
-if (
-    source.type ===
-    "folder"
-) {
-
-    for (
-        const child of children
-    ) {
-
-        await cloneItemTree(
-            child.id,
-            rootCopy.id
+        throw new Error(
+            "ကူးထားသော ဖိုင်/ဖိုင်တွဲ မရှိပါ။"
         );
 
     }
 
-}
+
+    /* -------------------------------------------------
+       GROUP CHILDREN BY PARENT
+    ------------------------------------------------- */
+
+    const childrenMap =
+        new Map();
 
 
-return rootCopy;
+    for (
+        const item of all
+    ) {
 
+        if (
+            !item.parentId
+        ) {
+
+            continue;
+
+        }
+
+
+        if (
+            !childrenMap.has(
+                item.parentId
+            )
+        ) {
+
+            childrenMap.set(
+                item.parentId,
+                []
+            );
+
+        }
+
+
+        childrenMap
+            .get(item.parentId)
+            .push(item);
+
+    }
+
+
+    /* -------------------------------------------------
+       DESTINATION NAMES
+    ------------------------------------------------- */
+
+    const destinationChildren =
+        all.filter(
+            item =>
+                item.parentId ===
+                destinationParentId
+        );
+
+
+    const existingNames =
+        new Set(
+            destinationChildren.map(
+                item =>
+                    item.name.toLowerCase()
+            )
+        );
+
+
+    /* -------------------------------------------------
+       NEXT POSITION
+    ------------------------------------------------- */
+
+    let nextPosition =
+        0;
+
+
+    for (
+        const item of destinationChildren
+    ) {
+
+        const position =
+            Number(
+                item.position
+            ) || 0;
+
+
+        if (
+            position >=
+            nextPosition
+        ) {
+
+            nextPosition =
+                position + 1;
+
+        }
+
+    }
+
+
+    /* -------------------------------------------------
+       CREATE COPY TREE IN MEMORY
+    ------------------------------------------------- */
+
+    const copies =
+        [];
+
+
+    function buildCopy(
+        original,
+        parentId,
+        isRoot
+    ) {
+
+        let copyName;
+
+
+        if (isRoot) {
+
+            copyName =
+                getUniqueName(
+                    original.name,
+                    existingNames
+                );
+
+        } else {
+
+            copyName =
+                original.name;
+
+        }
+
+
+        const copy = {
+
+            ...original,
+
+            id:
+                makeId(),
+
+            parentId:
+                parentId,
+
+            name:
+                copyName,
+
+            position:
+                isRoot
+                    ? nextPosition
+                    : original.position,
+
+            createdAt:
+                Date.now()
+
+        };
+
+
+        copies.push(
+            copy
+        );
+
+
+        if (isRoot) {
+
+            existingNames.add(
+                copyName.toLowerCase()
+            );
+
+        }
+
+
+        const children =
+            childrenMap.get(
+                original.id
+            ) || [];
+
+
+        for (
+            const child of children
+        ) {
+
+            buildCopy(
+                child,
+                copy.id,
+                false
+            );
+
+        }
+
+
+        return copy;
+
+    }
+
+
+    const rootCopy =
+        buildCopy(
+            source,
+            destinationParentId,
+            true
+        );
+
+
+    /* -------------------------------------------------
+       WRITE ALL COPIES
+       ONE INDEXEDDB TRANSACTION
+    ------------------------------------------------- */
+
+    await new Promise(
+        (
+            resolve,
+            reject
+        ) => {
+
+            const transaction =
+                db.transaction(
+                    STORE_NAME,
+                    "readwrite"
+                );
+
+
+            const store =
+                transaction.objectStore(
+                    STORE_NAME
+                );
+
+
+            for (
+                const copy of copies
+            ) {
+
+                store.add(
+                    copy
+                );
+
+            }
+
+
+            transaction.oncomplete =
+                () => {
+
+                    resolve();
+
+                };
+
+
+            transaction.onerror =
+                () => {
+
+                    reject(
+                        transaction.error ||
+                        new Error(
+                            "Copy operation failed."
+                        )
+                    );
+
+                };
+
+
+            transaction.onabort =
+                () => {
+
+                    reject(
+                        transaction.error ||
+                        new Error(
+                            "Copy operation was aborted."
+                        )
+                    );
+
+                };
+
+        }
+    );
+
+
+    return rootCopy;
 
 }
 
