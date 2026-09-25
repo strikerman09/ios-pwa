@@ -3475,189 +3475,263 @@ return false;
 }
 
 /* =====================================================
-PASTE
+   PASTE CLIPBOARD ITEMS - OPTIMIZED
 ===================================================== */
 
 async function pasteClipboardItems() {
 
-
-if (
-    !clipboardItems.length ||
-    reorderMode
-) {
-
-    return;
-
-}
-
-
-try {
-
-    const source =
-        await getItem(
-            clipboardItems[0]
-        );
-
-
-    if (!source) {
-
-        alert(
-            "ကူး/ဖြတ်ထားသော ဖိုင် မရှိပါ။"
-        );
-
+    if (
+        !clipboardItems.length ||
+        reorderMode
+    ) {
         return;
-
     }
 
 
-    if (
-        source.type ===
-        "folder" &&
-        await isDescendantFolder(
-            source.id,
-            currentFolderId
-        )
-    ) {
+    try {
 
-        alert(
-            "ဖိုင်တွဲကို ၎င်း၏အတွင်းပိုင်းထဲသို့ ကပ်၍ မရပါ။"
-        );
-
-        return;
-
-    }
-
-
-    showUploadStatus(
-        clipboardMode === "cut"
-            ? "ဖိုင်ကို ရွှေ့နေပါသည်..."
-            : "ဖိုင်ကို ကူးနေပါသည်..."
-    );
-
-
-    if (
-        clipboardMode ===
-        "cut"
-    ) {
-
-        const children =
-            await getChildren(
-                currentFolderId
+        const source =
+            await getItem(
+                clipboardItems[0]
             );
 
 
-        const existing =
-            children.find(
-                x =>
-                    x.name.toLowerCase() ===
-                    source.name.toLowerCase() &&
-                    x.id !== source.id
+        if (!source) {
+
+            alert(
+                "ကူး/ဖြတ်ထားသော ဖိုင် မရှိပါ။"
             );
 
-
-        if (existing) {
-
-            source.name =
-                getUniqueName(
-                    source.name,
-                    new Set(
-                        children
-                            .filter(
-                                x =>
-                                    x.id !==
-                                    existing.id
-                            )
-                            .map(
-                                x =>
-                                    x.name.toLowerCase()
-                            )
-                    )
-                );
+            return;
 
         }
 
 
-        source.parentId =
-            currentFolderId;
+        /* -------------------------------------------------
+           PREVENT FOLDER PASTE INTO ITSELF
+        ------------------------------------------------- */
+
+        if (
+            source.type === "folder" &&
+            await isDescendantFolder(
+                source.id,
+                currentFolderId
+            )
+        ) {
+
+            alert(
+                "ဖိုင်တွဲကို ၎င်း၏အတွင်းပိုင်းထဲသို့ ကပ်၍ မရပါ။"
+            );
+
+            return;
+
+        }
 
 
-        source.position =
-            await getNextPosition(
+        /* -------------------------------------------------
+           SHOW STATUS
+        ------------------------------------------------- */
+
+        showUploadStatus(
+            clipboardMode === "cut"
+                ? "ဖိုင်ကို ရွှေ့နေပါသည်..."
+                : "ဖိုင်ကို ကူးနေပါသည်..."
+        );
+
+
+        /* =================================================
+           CUT
+        ================================================= */
+
+        if (
+            clipboardMode === "cut"
+        ) {
+
+            /*
+             * Read all items only once.
+             *
+             * Old version:
+             *
+             * getChildren()
+             * getNextPosition()
+             *
+             * caused multiple full database scans.
+             */
+
+            const all =
+                await getAllItems();
+
+
+            const destinationChildren =
+                all.filter(
+                    item =>
+                        item.parentId ===
+                        currentFolderId
+                );
+
+
+            /* -------------------------------------------------
+               EXISTING NAMES
+            ------------------------------------------------- */
+
+            const existingNames =
+                new Set(
+                    destinationChildren
+                        .filter(
+                            item =>
+                                item.id !==
+                                source.id
+                        )
+                        .map(
+                            item =>
+                                item.name.toLowerCase()
+                        )
+                );
+
+
+            /* -------------------------------------------------
+               UNIQUE NAME
+            ------------------------------------------------- */
+
+            const originalName =
+                source.name;
+
+
+            const newName =
+                getUniqueName(
+                    originalName,
+                    existingNames
+                );
+
+
+            source.name =
+                newName;
+
+
+            /* -------------------------------------------------
+               NEXT POSITION
+            ------------------------------------------------- */
+
+            let nextPosition =
+                0;
+
+
+            for (
+                const item of
+                destinationChildren
+            ) {
+
+                const position =
+                    Number(
+                        item.position
+                    ) || 0;
+
+
+                if (
+                    position >=
+                    nextPosition
+                ) {
+
+                    nextPosition =
+                        position + 1;
+
+                }
+
+            }
+
+
+            /* -------------------------------------------------
+               MOVE ITEM
+            ------------------------------------------------- */
+
+            source.parentId =
+                currentFolderId;
+
+
+            source.position =
+                nextPosition;
+
+
+            await updateItem(
+                source
+            );
+
+
+            /* -------------------------------------------------
+               CLEAR CLIPBOARD
+            ------------------------------------------------- */
+
+            clipboardItems = [];
+
+            clipboardMode = null;
+
+        }
+
+
+        /* =================================================
+           COPY
+        ================================================= */
+
+        else {
+
+            /*
+             * Keep the optimized cloneItemTree()
+             * exactly as already installed.
+             */
+
+            await cloneItemTree(
+                source.id,
                 currentFolderId
             );
 
 
-        await updateItem(
-            source
+            clipboardItems = [];
+
+            clipboardMode = null;
+
+        }
+
+
+        /* -------------------------------------------------
+           CLEAN UP
+        ------------------------------------------------- */
+
+        hideUploadStatus();
+
+        closeTouchMenu();
+
+
+        clipboardItems = [];
+
+        clipboardMode = null;
+
+
+        actionMenuItemId = null;
+
+
+        updatePasteFab();
+
+
+        await displayCurrentFolder();
+
+
+        message.textContent =
+            "ကပ်ပြီးပါပြီ။";
+
+
+    } catch (error) {
+
+        hideUploadStatus();
+
+        console.error(error);
+
+
+        alert(
+            "ကပ်၍ မရပါ။\n\n" +
+            error.message
         );
-
-
-        clipboardItems =
-            [];
-
-
-        clipboardMode =
-            null;
-
-    } else {
-
-        await cloneItemTree(
-            source.id,
-            currentFolderId
-        );
-
-
-        clipboardItems =
-            [];
-
-
-        clipboardMode =
-            null;
 
     }
-
-
-    hideUploadStatus();
-
-
-    closeTouchMenu();
-
-
-    clipboardItems =
-        [];
-
-
-    clipboardMode =
-        null;
-
-
-    actionMenuItemId =
-        null;
-
-
-    updatePasteFab();
-
-
-    await displayCurrentFolder();
-
-
-    message.textContent =
-        "ကပ်ပြီးပါပြီ။";
-
-
-} catch (error) {
-
-    hideUploadStatus();
-
-    console.error(error);
-
-    alert(
-        "ကပ်၍ မရပါ။\n\n" +
-        error.message
-    );
-
-}
-
 
 }
 
