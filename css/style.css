@@ -6883,6 +6883,32 @@ and (orientation: portrait) {
 
         font-size: 13px;
     }
+
+@media (max-width:390px)
+       and (hover:none)
+       and (pointer:coarse) {
+
+    .file-item .item-actions {
+
+        width: 116px;
+        min-width: 116px;
+
+        grid-template-columns:
+            repeat(5, 22px);
+
+        column-gap: 1px;
+    }
+
+
+    .file-item .item-actions button {
+
+        width: 22px;
+        min-width: 22px;
+
+        height: 28px;
+
+        font-size: 12px;
+    }
 }
 /* =========================================================
    END
