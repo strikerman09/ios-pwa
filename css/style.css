@@ -6829,5 +6829,61 @@ and (orientation: portrait) {
     }
 }
 /* =========================================================
+   MOBILE ACTION PANEL
+   Keep all 5 buttons visible
+   ========================================================= */
+
+@media (max-width:1366px)
+       and (hover:none)
+       and (pointer:coarse) {
+
+    .file-item .item-actions {
+
+        width: 128px;
+        min-width: 128px;
+
+        height: 48px;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(5, 24px);
+
+        column-gap: 1px;
+
+        align-items: center;
+        justify-content: end;
+
+        padding-left: 3px;
+
+        margin-left: 0;
+
+        border-left:
+            1px solid rgba(255,255,255,0.07);
+
+        box-sizing: border-box;
+    }
+
+
+    .file-item .item-actions button {
+
+        width: 24px;
+        min-width: 24px;
+
+        height: 30px;
+
+        padding: 0;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 8px;
+
+        font-size: 13px;
+    }
+}
+/* =========================================================
    END
    ========================================================= */
