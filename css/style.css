@@ -5644,5 +5644,155 @@ and (orientation: portrait) {
         block;
 }
 /* =========================================================
+   23. PASTE FAB
+   ========================================================= */
+
+.v4-paste-fab {
+
+    position:
+        fixed;
+
+    right:
+        18px;
+
+    bottom:
+        calc(
+            18px +
+            env(safe-area-inset-bottom)
+        );
+
+    z-index:
+        1200;
+
+    width:
+        58px;
+
+    height:
+        58px;
+
+    min-width:
+        58px;
+
+    min-height:
+        58px;
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        0;
+
+    border:
+        0;
+
+    border-radius:
+        18px;
+
+    background:
+        var(--blue);
+
+    color:
+        #fff;
+
+    box-shadow:
+        0 8px 28px
+        rgba(0, 122, 255, .28);
+
+    font-size:
+        15px;
+
+    font-weight:
+        700;
+}
+
+
+/* SHOW PASTE ONLY WHEN COPY / CUT EXISTS */
+
+.v4-paste-fab.show {
+
+    display:
+        flex;
+}
+
+
+.v4-paste-fab:active {
+
+    transform:
+        scale(.93);
+}
+
+
+.paste-label {
+
+    display:
+        block;
+}
+
+
+/* X BUTTON */
+
+.paste-cancel {
+
+    display:
+        none;
+
+    position:
+        fixed;
+
+    right:
+        14px;
+
+    bottom:
+        calc(
+            82px +
+            env(safe-area-inset-bottom)
+        );
+
+    z-index:
+        1201;
+
+    width:
+        32px;
+
+    height:
+        32px;
+
+    border:
+        0;
+
+    border-radius:
+        50%;
+
+    background:
+        #555;
+
+    color:
+        #fff;
+
+    font-size:
+        20px;
+
+    line-height:
+        32px;
+
+    text-align:
+        center;
+}
+
+
+/* SHOW X ONLY WHEN COPY / CUT EXISTS */
+
+.paste-cancel.show {
+
+    display:
+        block;
+}
+/* =========================================================
    END
    ========================================================= */
